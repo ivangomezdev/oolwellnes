@@ -93,9 +93,9 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984565/VO_OolCorazon2-11_jn5xod.jpg"
+              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984570/VO_ool-22_yakzkr.jpg"
             }
-            alt="Decorative image 2"
+            alt="Decorative image 3"
           />
 
         </div>
