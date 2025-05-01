@@ -602,7 +602,7 @@
 
   .dateContent__content {
 
-    padding-bottom: 700px;
+    padding-bottom: 750px;
   }
 
   .dateContent__description {
@@ -659,6 +659,7 @@
   .dateContent button {
     top: 490px;
     margin-left: -10px;
+ 
 
   }
 
