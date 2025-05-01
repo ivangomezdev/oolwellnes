@@ -4,7 +4,7 @@ import "./contact.css"
 import React from 'react'
 import "@/components/Navbar.css"
 import Image from 'next/image'
-const page = () => {
+const Page = () => {
   return (
     <div>
       <div className="navbar-container">
@@ -34,4 +34,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

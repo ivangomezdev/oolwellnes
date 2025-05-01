@@ -13,13 +13,7 @@ export default function Home() {
   return (
 <>
 <HeroComponent/>
-<AlmaCuerpoMente/>
-<MovementBar/>
-<DateContent/>
-<PopUpExperience/>
-<WhyOol/>
-<BigCollabs/>
-<Footer/>
+
 </>
   );
 }
