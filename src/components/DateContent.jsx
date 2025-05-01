@@ -138,6 +138,10 @@ const DateContent = () => {
             </svg>
           </button>
         </div>
+        <div className="retreat__logo">
+        <Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"} width={1060} alt="logo" height={640} />
+</div>
+      
       </div>
     </div>
   );

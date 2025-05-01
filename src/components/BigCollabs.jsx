@@ -74,26 +74,8 @@ const BigCollabs = () => {
 
   return (
     <div className="bigCollabs__content">
-      <h2>Grandes Colaboradores</h2>
-      <div className="bigCollabs__carousel-container">
-        <div className="bigCollabs__icons" ref={carouselRef}>
-          {[...Array(10)].map((_, index) => (
-            <div
-              key={index}
-              className={`bigCollabs__icon ${index % 2 === 1 ? 'bigCollabs__icon--offset' : ''}`}
-              ref={(el) => (iconsRef.current[index] = el)}
-            ></div>
-          ))}
-        </div>
-        <div className="bigCollabs__carousel-controls">
-          <button className="bigCollabs__carousel-btn prev-btn" onClick={prevSlide}>
-            &lt;
-          </button>
-          <button className="bigCollabs__carousel-btn next-btn" onClick={nextSlide}>
-            &gt;
-          </button>
-        </div>
-      </div>
+      <h2>Partnerships</h2>
+     
     </div>
   );
 };

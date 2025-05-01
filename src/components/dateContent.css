@@ -392,7 +392,7 @@
   }
 
   .dateContent {
-  top: 60px;
+  top: 100px;
   }
   
   .animated-button {
@@ -507,12 +507,21 @@
 
   
   .dateContent{
-    margin-left: -50px;
+    margin-left: 50px;
   }
 
  
 }
 
+.retreat__logo{
+  position: absolute;
+}
+
+.retreat__logo img{
+  position: relative;
+  top: 270px;
+  opacity: 0.4;
+}
 
 @media(max-width:820px){
   .dateContent__content {
@@ -599,6 +608,26 @@
    top: 434px;
   }
 }
+
+@media(max-width:1920px){
+.dateContent{
+  margin-left: -230px;
+}
+.dateContent button{
+  margin-left: -50px;
+}
+}
+
+
+@media(max-width:1620px){
+  .dateContent{
+    margin-left: -80px;
+    margin-top: -50px;
+  }
+  .dateContent button{
+    margin-left: 0px;
+  }
+  }
 
 @media(max-width:750px){
   .image__four img {
