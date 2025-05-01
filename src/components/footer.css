@@ -65,8 +65,8 @@ background-color: rgba(240, 255, 255, 0.356);
 
    
 
-    @media(max-width:385px){
+    @media(max-width:405px){
         .footer__cont img{
-max-width: 270px;
+max-width: 240px;
         }
     }

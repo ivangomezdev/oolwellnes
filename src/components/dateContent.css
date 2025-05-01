@@ -632,7 +632,8 @@
   }
 
   .dateContent img {
-    margin-top: 30px;
+    margin-top: 40px;
+    
     
   }
 
@@ -642,6 +643,7 @@
 
   .dateContent button {
     margin-top: 30px;
+    margin-left: -10px;
   }
 
   @keyframes fadeFirst {
