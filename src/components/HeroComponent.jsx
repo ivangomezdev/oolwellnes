@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import "./heroComponent.css"
-import Navbar from "./navbar"
+import Navbar from "./Navbar"
 import QuienesSomos from "./QuienesSomos"
 
 const HeroComponent = () => {

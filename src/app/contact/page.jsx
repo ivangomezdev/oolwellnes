@@ -2,7 +2,7 @@ import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 import "./contact.css"
 import React from 'react'
-import "../../components/navBar.css"
+import "@/components/NavBar.css"
 import Image from 'next/image'
 const page = () => {
   return (

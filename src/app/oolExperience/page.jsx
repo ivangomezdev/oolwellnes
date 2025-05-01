@@ -7,7 +7,7 @@ import ThePlaceTextAndImg from '@/components/ThePlaceTextAndImg'
 import VideoWLogo from '@/components/VideoWLogo'
 import YesOrNot from '@/components/YesOrNot'
 import React, { useState } from 'react'
-import "../../components/navBar.css"
+import "@/components/NavBar.css"
 import Image from 'next/image'
 import Link from 'next/link'
 

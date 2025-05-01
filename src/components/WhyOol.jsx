@@ -1,5 +1,5 @@
 import React from 'react';
-import "./WhyOol.css";
+import "./whyOol.css";
 
 const WhyOol = () => {
   // Generate 60 question marks
