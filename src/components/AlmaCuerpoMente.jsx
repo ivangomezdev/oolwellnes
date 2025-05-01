@@ -18,8 +18,8 @@ export default function AlmaCuerpoMente() {
         }
       },
       {
-        threshold: 0.5,
-      },
+        threshold: 0.3,
+      }
     )
 
     if (containerRef.current) {
@@ -34,23 +34,25 @@ export default function AlmaCuerpoMente() {
   }, [])
 
   return (
-    <div className="alma-cuerpo-mente" ref={containerRef}>
+    <div className={`alma-cuerpo-mente ${isVisible ? "alma-cuerpo-mente--visible" : ""}`} ref={containerRef}>
       <div className="alma-cuerpo-mente__content">
         <div className="alma-cuerpo-mente__words">
-          <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-            <Image alt="soul"  src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"} width={120} height={120}/>
-            <span className="alma-cuerpo-mente__text">Soul</span>
-          </div>
-          <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-          <Image alt="body"  src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"} width={120} height={120}/>
-            <span className="alma-cuerpo-mente__text">Body</span>
-          </div>
-          <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-          <Image alt="mind" src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"} width={120} height={120}/>
-            <span className="alma-cuerpo-mente__text">Mind</span>
-          </div>
+          {["Soul", "Body", "Mind"].map((text, index) => (
+            <div
+              key={text}
+              className="alma-cuerpo-mente__word"
+              style={{ animationDelay: `${index * 0.3}s` }}
+            >
+              <Image
+                alt={text.toLowerCase()}
+                src={`https://res.cloudinary.com/dc5zbh38m/image/upload/v174598197${index === 0 ? '6/Logo_Icono_SOUL_2_pxukpq.png' : index === 1 ? '7/Logo_Icono_Cuerpo_2_vahswu.png' : '7/Logo_Icono_Mente_1_cu5qom.png'}`}
+                width={120}
+                height={120}
+              />
+              <span className="alma-cuerpo-mente__text">{text}</span>
+            </div>
+          ))}
         </div>
-      
       </div>
     </div>
   )

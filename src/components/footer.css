@@ -1,4 +1,72 @@
 .footer__cont{
-    background-color: #9F9668;
+    background-color: #f2e2ce;
     height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
 }
+
+
+.footer__cont img{
+   padding: 20px;
+}
+
+.card__title{
+    color: black;
+    font-family: "Broadsheet Regular";
+    font-size: 23px;
+}
+
+.card__content{
+    font-family: "CalSans";
+}
+
+.card__form input{
+border-radius: 5px;
+padding: 5px;
+background-color: rgba(240, 255, 255, 0.356);
+}
+
+.card__form button{
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #9B956A;
+    color: wheat;
+    margin-left: 10px;
+    font-family: "CalSans";
+    }
+
+    @media(max-width:632px){
+        .footer__cont{
+          flex-direction: column-reverse !important;
+          height: auto;
+          padding-bottom: 50px;
+          padding-top: 50px;
+            
+        }
+
+        .footer__cont{
+            flex-direction: column;
+            height: auto;
+            padding-bottom: 100px;
+              
+          }
+
+          .card{
+            max-width: 250px;
+            margin-bottom: 30px;
+          }
+
+          .card__title{
+           font-size: 30px;
+          }
+    }
+
+   
+
+    @media(max-width:385px){
+        .footer__cont img{
+max-width: 270px;
+        }
+    }

@@ -1,5 +1,5 @@
 .alma-cuerpo-mente {
-  height: 30dvh; /* Maintains dynamic viewport height */
+  height: 30dvh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,21 +8,19 @@
   font-family: 'Broadsheet Regular';
   background-color: #9B956a;
   background-position: 0 -950px;
-  position: relative; /* For positioning water pseudo-elements */
+  position: relative;
 }
 
-/* Main content container */
 .alma-cuerpo-mente__content {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
   max-width: 1200px;
-  padding: 0 2vw; /* Responsive padding */
-  z-index: 2; /* Above water effect */
+  padding: 0 2vw;
+  z-index: 2;
 }
 
-/* Words container */
 .alma-cuerpo-mente__words {
   display: flex;
   flex-direction: row;
@@ -31,14 +29,13 @@
   text-shadow: 0.1vw 0.3vw 0.2vw rgba(0, 0, 0, 0.177);
 }
 
-/* Individual word styling */
 .alma-cuerpo-mente__word {
   position: relative;
-  width: 15vw; /* Responsive width */
-  min-width: 120px; /* Minimum width for smaller screens */
-  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
+  width: 15vw;
+  min-width: 120px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   overflow: hidden;
-  margin: 0 1vw; /* Responsive margin */
+  margin: 0 1vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -48,55 +45,29 @@
 
 .alma-cuerpo-mente__text {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(2vh);
-  color: #F3E3D1 !important;
-  clip-path: inset(0 100% 0 0);
+  color: #F3E3D1;
   width: auto;
   text-shadow: 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.495);
   text-align: center;
 }
 
-.alma-cuerpo-mente__word--visible .alma-cuerpo-mente__text {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  color: rgba(245, 222, 179, 0.551);
-}
-
-/* Image styling */
 .alma-cuerpo-mente__word img {
   filter: drop-shadow(0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.566));
-  opacity: 0;
-  transform: translateY(2vh);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  width: clamp(80px, 8vw, 100px); /* Responsive image size */
+  width: clamp(80px, 8vw, 100px);
   height: clamp(80px, 8vw, 100px);
 }
 
-.alma-cuerpo-mente__word--visible img {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
-}
-
-/* Water stream effects */
 .alma-cuerpo-mente::after {
   content: "";
   position: absolute;
   left: 0;
   top: 50%;
   width: 100%;
-  height: clamp(1.5px, 0.2vw, 2px); /* Responsive thickness */
-  background: linear-gradient(
-    to right,
-    rgba(135, 206, 235, 0.9) 0%,
-    rgba(0, 191, 255, 0.7) 50%,
-    rgba(135, 206, 235, 0.2) 100%
-  );
+  height: clamp(1.5px, 0.2vw, 2px);
+
   opacity: 0;
   transform: translateY(-50%) translateX(-100%);
-  box-shadow: 0 0 0.5vw rgba(135, 206, 235, 0.5);
+
   z-index: 1;
 }
 
@@ -108,20 +79,14 @@
   left: 50%;
   top: 50%;
   width: 50%;
-  height: clamp(1px, 0.15vw, 1.5px); /* Responsive thickness */
-  background: linear-gradient(
-    to right,
-    rgba(135, 206, 235, 0.7) 0%,
-    rgba(0, 191, 255, 0.5) 50%,
-    rgba(135, 206, 235, 0) 100%
-  );
+  height: clamp(1px, 0.15vw, 1.5px);
+
   opacity: 0;
   transform: translateY(-50%) translateX(-100%);
   box-shadow: 0 0 0.3vw rgba(135, 206, 235, 0.3);
   z-index: 1;
 }
 
-/* Visible state animations */
 .alma-cuerpo-mente--visible::after {
   animation: flowWaterMain 3.5s ease-in-out forwards;
 }
@@ -141,7 +106,6 @@
   transform: translateY(-50%) rotate(-10deg);
 }
 
-/* Main water animation */
 @keyframes flowWaterMain {
   0% {
     opacity: 0;
@@ -149,7 +113,7 @@
   }
   50% {
     opacity: 0.9;
-    transform: translateY(-50%) translateX(0) translateY(2vh); /* Responsive curve */
+    transform: translateY(-50%) translateX(0) translateY(2vh);
   }
   100% {
     opacity: 0.7;
@@ -157,7 +121,6 @@
   }
 }
 
-/* Branching water animation */
 @keyframes flowWaterBranch {
   0% {
     opacity: 0;
@@ -172,29 +135,9 @@
   }
 }
 
-/* Typing animation for text */
-.alma-cuerpo-mente__word--visible:nth-child(1) .alma-cuerpo-mente__text {
-  animation: typing 1s steps(4) forwards;
-}
-
-.alma-cuerpo-mente__word--visible:nth-child(2) .alma-cuerpo-mente__text {
-  animation: typing 1s steps(6) forwards;
-}
-
-.alma-cuerpo-mente__word--visible:nth-child(3) .alma-cuerpo-mente__text {
-  animation: typing 1s steps(5) forwards;
-}
-
-@keyframes typing {
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-/* Responsive adjustments with media queries */
 @media (max-width: 1440px) {
   .alma-cuerpo-mente {
-    background-position: 0 -65dvh; /* Responsive background position */
+    background-position: 0 -65dvh;
   }
   .alma-cuerpo-mente__word {
     width: 12vw;
@@ -225,7 +168,7 @@
 
 @media (max-width: 653px) {
   .alma-cuerpo-mente {
-    height: 50dvh; /* Increase height for better visibility */
+    height: 50dvh;
     background-position: 0 -35dvh;
   }
   .alma-cuerpo-mente__word {
@@ -240,32 +183,63 @@
   }
   .alma-cuerpo-mente__words {
     width: 100%;
-   
     align-items: center;
-  }
-  .alma-cuerpo-mente__word {
-    margin: 1vh 0; /* Vertical spacing */
   }
 }
 
-@media (max-width: 393px) {
+@media (max-width: 450px) {
   .alma-cuerpo-mente {
-    height: 30dvh;
+    height: 80dvh;
     background-position: 0 -25dvh;
   }
+  .alma-cuerpo-mente__words {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    font-size: 25px !important;
+    gap: 4vh;
+  }
   .alma-cuerpo-mente__word {
-    width: 35vw;
-    min-width: 70px;
-    font-size: clamp(0.9rem, 2.8vw, 1.3rem);
+    width: 80%;
+    min-width: 120px;
+  font-size: 25px !important;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(30px);
   }
   .alma-cuerpo-mente__word img {
-    width: clamp(40px, 5.5vw, 50px);
-    height: clamp(40px, 5.5vw, 50px);
+   width: 150px !important;
+   height: 150px;
+  }
+  .alma-cuerpo-mente--visible .alma-cuerpo-mente__word {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  .alma-cuerpo-mente__word:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .alma-cuerpo-mente__word:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .alma-cuerpo-mente__word:nth-child(3) {
+    animation-delay: 0.6s;
   }
   .alma-cuerpo-mente::after,
   .alma-cuerpo-mente::before,
   .alma-cuerpo-mente .water-branch-1,
   .alma-cuerpo-mente .water-branch-2 {
-    height: 1px; /* Thinner streams */
+    height: 1px;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

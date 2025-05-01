@@ -1,0 +1,53 @@
+/* Bloque principal */
+.movement-barCollab {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: #9b956a;
+  }
+  
+  /* Contenedor del carrusel */
+  .movement-bar__container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Track que contiene los conjuntos de iconos */
+  .movement-bar__tracks {
+    display: flex;
+    width: fit-content;
+    animation: scroll 90s linear infinite;
+  }
+  
+  /* Cada conjunto de iconos */
+  .movement-bar__icons {
+    display: flex;
+    white-space: nowrap;
+  }
+  
+  /* Cada icono individual */
+  .movement-bar__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px;
+    flex-shrink: 0;
+  }
+  
+  /* Animación para el desplazamiento continuo */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Movemos exactamente la longitud del primer conjunto de iconos */
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Cuando el usuario pasa el cursor por encima, pausa la animación */
+  .movement-bar:hover .movement-bar__track {
+    animation-play-state: paused;
+  }
+  

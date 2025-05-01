@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
 import './BigCollabs.css';
+import CollabsMove from './CollabsMove';
 
 const BigCollabs = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -75,7 +76,7 @@ const BigCollabs = () => {
   return (
     <div className="bigCollabs__content">
       <h2>Partnerships</h2>
-     
+      <CollabsMove/>
     </div>
   );
 };
