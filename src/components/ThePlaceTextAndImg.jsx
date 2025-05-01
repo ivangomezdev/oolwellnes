@@ -13,37 +13,37 @@ const ThePlaceTextAndImg = () => {
     {
       id: 1,
       name: "Sol Terrace",
-      image: "/images/sol-terrace.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "Enjoy the vibrant atmosphere of our sunlit terrace, perfect for relaxing with a drink."
     },
     {
       id: 2,
       name: "Terra Room",
-      image: "/images/terra-room.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "A cozy and earthy space designed for intimate gatherings and events."
     },
     {
       id: 3,
       name: "Lua Room",
-      image: "/images/lua-room.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "Experience tranquility in our moon-inspired room with serene decor."
     },
     {
       id: 4,
       name: "Laranja",
-      image: "/images/laranja.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "A bright and zesty space with citrus-themed accents for lively events."
     },
     {
       id: 5,
       name: "Espacio Verde",
-      image: "/images/espacio-verde.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "Our green oasis, ideal for nature lovers and outdoor gatherings."
     },
     {
       id: 6,
       name: "Agua Room",
-      image: "/images/agua-room.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
       description: "A refreshing aquatic-themed room with calming water elements."
     },
   ]
