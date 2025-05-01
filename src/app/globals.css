@@ -1,0 +1,40 @@
+html,body{
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+
+}
+
+@font-face {
+  font-family: "TotShriftBold";
+  src: url("/fonts/TotShriftBold.otf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Opcional: controla cómo se muestra la fuente mientras se carga */
+}
+
+
+@font-face {
+  font-family: "CalSans";
+  src: url("/fonts/CalSans.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Opcional: controla cómo se muestra la fuente mientras se carga */
+}
+
+@font-face {
+  font-family: 'Broadsheet Regular'; /* El nombre que usarás en tu CSS */
+  src: url('/fonts/Broadsheet Regular.ttf') format('truetype'); /* Ajusta la ruta y el formato según tu archivo */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Opcional: controla cómo se muestra la fuente mientras se carga */
+}
+
+@font-face {
+  font-family: 'Broadsheet Regular';
+  src: url('/fonts/Broadsheet Regular.woff2') format('woff2'),
+       url('/fonts/Broadsheet Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

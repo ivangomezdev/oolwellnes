@@ -1,0 +1,111 @@
+/* Layout - Base component */
+.layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Broadsheet Regular";
+    
+  }
+  
+  /* Layout - Title */
+  .layout__title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: black;
+    margin-bottom: 4rem;
+  }
+  
+  /* Layout - Content container */
+  .layout__content {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 2rem;
+  }
+  
+  /* Layout - Text column (left) */
+  .layout__text-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Layout - Image column (center) */
+  .layout__image-column {
+    flex: 1;
+    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745935079/man-and-woman-in-lotus-pose-yoga-meditation-line-art-drawing-illustration-simple-line-drawing-two-persons-sit-back-to-back-in-lotus-position-silhouette-meditating-people-vector-removebg-preview-remove_jpeovt.png");
+    display: flex;
+    background-size: contain;
+    background-position: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  /* Layout - Right column */
+  .layout__right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* Layout - Text area */
+  .layout__text-area {
+    font-size: 32px;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:gray;
+  }
+  
+  /* Layout - Image container */
+  .layout__image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Layout - Image */
+  .layout__image {
+    width: 200px;
+    height: 100px;
+
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f0e68c;
+  }
+  
+  /* Layout - Button container */
+  .layout__button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Layout - Button */
+  .layout__button {
+    border-radius: 5px;
+    background-color: transparent;
+    color: #ffffff;
+    background-color: #DABCA4;
+    padding: 0.5rem 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    min-width: 150px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .layout__content {
+      flex-direction: column;
+    }
+  
+    .layout__image-column {
+      order: -1;
+    }
+  }
+  

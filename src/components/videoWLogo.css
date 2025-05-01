@@ -1,0 +1,113 @@
+.video-w-logo {
+    width: 100vw;
+    margin: 0 auto;
+    overflow: hidden;
+    font-family: "BroadSheet Regular";
+    background-color: #ecdcd097;
+  }
+
+
+  
+  .video-w-logo__container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    height: 400px;
+  }
+  
+  .video-w-logo__video-section {
+    width: 75%;
+    background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745715217/IMG_3349_isi4y9.jpg"); /* Color rojo oscuro similar al de la imagen */
+    position: relative;
+    background-size: cover;
+    background-position: 0px 1300px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .video-w-logo__text-section {
+    width: 430px;
+    
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+  }
+  
+  .video-w-logo__title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    z-index: 10;
+    white-space: nowrap;
+  }
+  
+  .video-w-logo__title--hidden {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  
+  .video-w-logo__title-yellow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    white-space: nowrap;
+  }
+  
+  .video-w-logo__title-yellow--visible {
+    opacity: 1;
+  }
+  
+  .video-w-logo__video-placeholder {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 0.7;
+  }
+  
+  .video-w-logo__text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    margin-top: 60px;
+  }
+  
+  .video-w-logo__text--visible {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 20px !important;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+ 
+  
+
+  
+    .video-w-logo__title-yellow {
+      top: 20%;
+    }
+  
+    .video-w-logo__text {
+      margin-top: 80px;
+    }
+  }
+  

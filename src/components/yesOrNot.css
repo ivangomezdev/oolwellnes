@@ -1,0 +1,86 @@
+.yesOrNot {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #dabca485;
+    color: #0a4a2f;
+   
+    position: relative;
+    overflow: hidden;
+
+    margin: 0 auto;
+  }
+  .yesOrNot__title--included{
+    font-weight: bold;
+  color: #000; /* Color del texto */
+  position: relative; /* Para posicionar el subrayado */
+  display: inline-block;
+  }
+
+ 
+
+
+
+
+
+
+  .yesOrNot__column {
+    flex: 1;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  
+  .yesOrNot__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    color: black;
+    display: inline-block;
+    font-family: "Broadsheet Regular";
+  }
+  
+
+
+
+  
+  .yesOrNot__list {
+    list-style-type: none;
+    padding: 0;
+
+  }
+  
+  .yesOrNot__item {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .yesOrNot__item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0a4a2f;
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .yesOrNot {
+      flex-direction: column;
+    }
+  
+    .yesOrNot__column {
+      margin-bottom: 2rem;
+    }
+  
+    .yesOrNot__title {
+      font-size: 2rem;
+    }
+  
+    .yesOrNot__item {
+      font-size: 1rem;
+    }
+  }
+  

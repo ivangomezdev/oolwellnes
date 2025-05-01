@@ -1,0 +1,12 @@
+.thePlace__content{
+    height: 400px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;  
+    background-color: #ecdcd097;   /* Centra verticalmente */
+}
+.thePlace__text{
+ 
+    text-align: center;
+        margin: 0 auto;
+}

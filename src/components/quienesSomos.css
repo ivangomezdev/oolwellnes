@@ -1,0 +1,90 @@
+.quienesSomos__cont {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 60vh; /* Maintain height relative to viewport */
+  min-height: 400px; /* Ensure minimum height for smaller screens */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.414), rgba(0, 0, 0, 0.879)),
+    url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745715217/IMG_3351_hvo3tp.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  padding: 20px; /* Add padding for smaller screens */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.quienesSomos__who {
+  font-family: 'Broadsheet Regular', sans-serif;
+  font-size: clamp(60px, 10vw, 120px); /* Responsive font size */
+  font-weight: 100;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 0 0 20px 0; /* Add margin for spacing */
+}
+
+.quienesSomos__cont h1:not(.quienesSomos__who) {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.6rem); /* Responsive font size */
+  color: rgb(255, 255, 255);
+  font-family: 'CalSans', sans-serif;
+  letter-spacing: 1.5px;
+  max-width: 90%; /* Prevent text from touching edges */
+  margin: 0 auto;
+  line-height: 1.5; /* Improve readability */
+}
+
+.quienesSomos__cont::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.049), transparent);
+  z-index: -1;
+}
+
+/* Remove unused .elemento::before */
+.elemento::before {
+  display: none; /* Removed since .elemento is not used in the JSX */
+}
+
+/* Media Queries for additional responsiveness */
+@media (max-width: 768px) {
+  .quienesSomos__cont {
+    height: 50vh; /* Slightly reduce height for tablets */
+    min-height: 350px;
+    padding: 15px;
+  }
+
+  .quienesSomos__who {
+    font-size: clamp(40px, 8vw, 80px); /* Smaller font for tablets */
+  }
+
+  .quienesSomos__cont h1:not(.quienesSomos__who) {
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .quienesSomos__cont {
+    height: 70vh; /* Increase height for mobile to fit content */
+    min-height: 300px;
+    padding: 10px;
+  }
+
+  .quienesSomos__who {
+    font-size: 60px; /* Further reduce for mobile */
+  }
+
+  .quienesSomos__cont h1:not(.quienesSomos__who) {
+    font-size: clamp(0.8rem, 1.8vw, 1.2rem);
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

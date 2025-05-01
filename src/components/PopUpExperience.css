@@ -1,0 +1,229 @@
+.pop-up-experience__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Behind other content */
+}
+
+.pop-up-experience {
+  position: relative; /* Ensure canvas is positioned relative to this */
+  display: flex;
+  justify-content: center;
+  font-family: "Broadsheet Regular";
+  align-items: center;
+  height: 400px;
+  background: #F2E5D0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745810736/IMG_3345_t8u5ox.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #333;
+  overflow: hidden; /* Prevent particles from overflowing */
+}
+
+.pop-up-experience__title {
+  margin-left: -300px;
+  font-size: 65px;
+  color: rgba(255, 255, 255, 0.493);
+  z-index: 2; /* Above canvas */
+}
+
+.popUp-content {
+  position: relative;
+  left: 300px;
+  z-index: 2; /* Above canvas */
+}
+
+.pop-up-experience__bubble--pop1 {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  border: solid 1px gray;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  bottom: 10px;
+}
+
+.pop-up-experience__bubble--pop2 {
+  position: relative;
+  border: solid 1px gray;
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  bottom: 10px;
+  left: 110px;
+}
+
+.pop-up-experience__bubble--coming-soon {
+  position: relative;
+  border: solid 1px gray;
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  bottom: 0px;
+  left: 190px;
+}
+
+.pop-up-experience__info {
+  position: relative;
+  top: 150px;
+  left: 120px;
+  width: 150px;
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: #dabda5da;
+  font-family: "Broadsheet Regular";
+  color: white;
+  z-index: 2; /* Above canvas */
+}
+
+@media (max-width: 941px) {
+  .pop-up-experience__title {
+    margin-left: 50px; /* Move title slightly to the right */
+    font-size: 50px; /* Smaller font size */
+  }
+
+  .popUp-content {
+    position: relative;
+    left: 50px; /* Move bubbles to the right */
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 130px;
+    height: 90px;
+    font-size: 14px;
+  }
+
+  .pop-up-experience__info {
+    left: -90px; /* Adjust button position */
+    box-shadow: 1px 2px 6px rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 3px;
+    background: linear-gradient(
+      183deg,
+      rgba(236, 230, 189, 0.644) 0%,
+      rgba(218, 188, 164, 0.675) 100%
+    );
+    font-weight: 200;
+    --hover-bgc: #dabca4;
+    --hover-color: #ece6bd;
+    --hover-borderSize: 0px;
+    --hover-width: 245px;
+  }
+}
+
+@media (max-width: 740px) {
+  .pop-up-experience__title {
+    margin-left: -100px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 100px;
+    height: 60px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 595px) {
+  .pop-up-experience__title {
+    margin-left: 0px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 70px;
+    height: 40px;
+    font-size: 14px;
+    margin-left: -100px;
+  }
+}
+
+@media (max-width: 525px) {
+  .pop-up-experience__title {
+    margin-left: 0px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 70px;
+    height: 40px;
+    font-size: 14px;
+    margin-left: -160px;
+  }
+}
+
+@media (max-width: 455px) {
+  .pop-up-experience__title {
+    margin-left: 0px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 70px;
+    height: 40px;
+    font-size: 14px;
+    margin-left: -190px;
+  }
+
+  .popUp-content {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 382px) {
+  .pop-up-experience__title {
+    margin-left: 0px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 70px;
+    height: 40px;
+    font-size: 14px;
+    margin-left: -210px;
+  }
+
+  .popUp-content {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 377px) {
+  .pop-up-experience__title {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 328px) {
+  .pop-up-experience__title {
+    margin-left: 10px;
+  }
+
+  .pop-up-experience__bubble--pop1,
+  .pop-up-experience__bubble--pop2,
+  .pop-up-experience__bubble--coming-soon {
+    width: 70px;
+    height: 40px;
+    font-size: 14px;
+    margin-left: -230px;
+  }
+
+  .popUp-content {
+    margin-top: -60px;
+  }
+}
