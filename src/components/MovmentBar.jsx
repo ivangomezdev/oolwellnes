@@ -27,7 +27,7 @@ export default function MovementBar() {
           <div className="movement-bar__icons">
             {repeatedIcons.map((icon, index) => (
               <div className="movement-bar__icon" key={`icon-set1-${index}`}>
-               <Image src={icon.Icon} width={32} height={32} style={{ color: icon.color,filter:"drop-shadow(1px 1px 4px rgb(238, 254, 222))"}} />
+               <Image alt="movement" src={icon.Icon} width={32} height={32} style={{ color: icon.color,filter:"drop-shadow(1px 1px 4px rgb(238, 254, 222))"}} />
               </div>
             ))}
           </div>
@@ -36,7 +36,7 @@ export default function MovementBar() {
           <div className="movement-bar__icons">
             {repeatedIcons.map((icon, index) => (
               <div className="movement-bar__icon" key={`icon-set2-${index}`}>
-                <Image src={icon.Icon} width={32} height={32} style={{ color: icon.color }} />
+                <Image alt="icons" src={icon.Icon} width={32} height={32} style={{ color: icon.color }} />
               </div>
             ))}
           </div>

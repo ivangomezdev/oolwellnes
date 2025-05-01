@@ -38,15 +38,15 @@ export default function AlmaCuerpoMente() {
       <div className="alma-cuerpo-mente__content">
         <div className="alma-cuerpo-mente__words">
           <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-            <Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"} width={120} height={120}/>
+            <Image alt="soul"  src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"} width={120} height={120}/>
             <span className="alma-cuerpo-mente__text">Soul</span>
           </div>
           <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-          <Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"} width={120} height={120}/>
+          <Image alt="body"  src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"} width={120} height={120}/>
             <span className="alma-cuerpo-mente__text">Body</span>
           </div>
           <div className={`alma-cuerpo-mente__word ${isVisible ? "alma-cuerpo-mente__word--visible" : ""}`}>
-          <Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"} width={120} height={120}/>
+          <Image alt="mind" src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"} width={120} height={120}/>
             <span className="alma-cuerpo-mente__text">Mind</span>
           </div>
         </div>

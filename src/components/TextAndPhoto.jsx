@@ -9,7 +9,7 @@ const TextAndPhoto = () => {
       </div>
  <div className='textAndPhoto__imgAndBtn'>
 <div className='textAndPhoto__img'>Imagen</div>
-<div><Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/alma-removebg-preview_kzfpoe.png"} width={100} height={100}/></div>
+<div><Image alt='imagen' src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/alma-removebg-preview_kzfpoe.png"} width={100} height={100}/></div>
 
  </div>
     </div>

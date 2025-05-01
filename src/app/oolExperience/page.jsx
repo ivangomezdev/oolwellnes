@@ -40,7 +40,7 @@ const Page = () => {
               </div>
             </div>
             <div className="navbar-logo">
-              <Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"} width={60} height={40}/>
+              <Image alt="logo" src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"} width={60} height={40}/>
             </div>
             <div className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}>
               <div 

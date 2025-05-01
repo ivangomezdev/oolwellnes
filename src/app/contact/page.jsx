@@ -16,7 +16,7 @@ const page = () => {
             About
           </a>
         </div>
-        <div className="navbar-logo"><Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745778743/logo-removebg-preview_rckx9y.png"} width={120} height={80}/></div>
+        <div className="navbar-logo"><Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745778743/logo-removebg-preview_rckx9y.png"} alt='logo' width={120} height={80}/></div>
         <div className="nav-links right">
           <a href="#" className="nav-link services">
             Services

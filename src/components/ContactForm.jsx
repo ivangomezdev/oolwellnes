@@ -115,7 +115,7 @@ const ContactForm = () => {
             </div>
           </div>
         )}
-        <Image  src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745715216/IMG_3347_qsaieo.jpg"} width={800} height={860} />
+        <Image alt="logo" src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745715216/IMG_3347_qsaieo.jpg"} width={800} height={860} />
       </div>
     </div>
   )

@@ -106,7 +106,7 @@ const ThePlaceTextAndImg = () => {
       <div className="thePlaceText__imgs">
         <div className="carousel-container">
           <button className="arrow-btn prev-btn" onClick={prevSlide}>
-            <span className="arrow"><Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745779085/mente-removebg-preview_1_gjy7z2.png"} width={100} height={100}/></span>
+            <span className="arrow"><Image alt="arrow" src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745779085/mente-removebg-preview_1_gjy7z2.png"} width={100} height={100}/></span>
           </button>
 
           <div className="carousel-track-container">
