@@ -117,6 +117,8 @@ const HeroComponent = () => {
             <video
               className={showVideo ? "fade-in" : "fade-out"}
               autoPlay
+              playsInline
+              preload="metadata"
               muted
               loop
             >
