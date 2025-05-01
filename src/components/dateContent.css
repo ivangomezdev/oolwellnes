@@ -593,12 +593,25 @@
 }
 
 @media (max-width: 500px) {
-
   .dateContent__imgs {
     width: 350px;
     height: 500px;
     position: relative;
-   
+    padding-bottom:60px;
+  }
+
+  .dateContent__content {
+
+    padding-bottom: 700px;
+  }
+
+  .dateContent__description {
+    display: block;
+    width: 90%;
+    color: #ffffff;
+    margin-top: -25px;
+    font-weight: 100;
+    letter-spacing: 1px;
   }
 
   .image__four {
@@ -607,7 +620,7 @@
     position: relative;
     left: -20px;
     margin-top: -100px;
-    
+  
   }
 
   .image__four img {
@@ -618,23 +631,25 @@
     top: 0;
     left: 0;
     transition: opacity 1s ease-in-out;
-  
   }
 
-  .image__four img:first-child {
+  .image__four img:nth-child(1) {
     opacity: 1;
-    animation: fadeFirst 10s infinite ease-in-out;
+    animation: fadeFirst 15s infinite ease-in-out;
   }
 
-  .image__four img:last-child {
+  .image__four img:nth-child(2) {
     opacity: 0;
-    animation: fadeSecond 10s infinite ease-in-out;
+    animation: fadeSecond 15s infinite ease-in-out;
+  }
+
+  .image__four img:nth-child(3) {
+    opacity: 0;
+    animation: fadeThird 15s infinite ease-in-out;
   }
 
   .dateContent img {
     margin-top: 40px;
-    
-    
   }
 
   .text {
@@ -642,18 +657,22 @@
   }
 
   .dateContent button {
-    margin-top: 30px;
+    top: 490px;
     margin-left: -10px;
+
   }
 
   @keyframes fadeFirst {
     0% {
       opacity: 1;
     }
-    40% {
+    22% {
+      opacity: 1;
+    }
+    33% {
       opacity: 0;
     }
-    60% {
+    88% {
       opacity: 0;
     }
     100% {
@@ -665,10 +684,34 @@
     0% {
       opacity: 0;
     }
-    40% {
+    22% {
+      opacity: 0;
+    }
+    33% {
       opacity: 1;
     }
-    60% {
+    55% {
+      opacity: 1;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeThird {
+    0% {
+      opacity: 0;
+    }
+    55% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 1;
+    }
+    88% {
       opacity: 1;
     }
     100% {

@@ -6,7 +6,7 @@ import "./dateContent.css";
 
 const DateContent = () => {
   const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [imageVisibility, setImageVisibility] = useState({
     one: false,
     two: false,
@@ -14,25 +14,6 @@ const DateContent = () => {
     four: false,
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2 } // 20% of the component visible
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (isVisible) {
@@ -108,6 +89,15 @@ const DateContent = () => {
             }
             alt="Decorative image 2"
           />
+                    <Image
+            width={500}
+            height={750}
+            src={
+              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984565/VO_OolCorazon2-11_jn5xod.jpg"
+            }
+            alt="Decorative image 2"
+          />
+
         </div>
       </div>
       <div className="dateContent-bg">
