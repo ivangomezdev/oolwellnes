@@ -14,6 +14,25 @@ const DateContent = () => {
     four: false,
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 } // 20% of the component visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (isVisible) {
@@ -67,7 +86,6 @@ const DateContent = () => {
             alt="Decorative image"
           />
         </div>
-
         <div
           className={`image__four ${
             imageVisibility.four ? "image-visible" : ""
@@ -85,19 +103,20 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984563/VOEUX_OolTakesOverTulum12-7_ygrnml.jpg"
+              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984570/VO_ool-22_yakzkr.jpg"
             }
             alt="Decorative image 2"
+            className="small-screen-only"
           />
-                    <Image
+          <Image
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984570/VO_ool-22_yakzkr.jpg"
+              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984563/VOEUX_OolTakesOverTulum12-7_ygrnml.jpg"
             }
             alt="Decorative image 3"
+            className="small-screen-only"
           />
-
         </div>
       </div>
       <div className="dateContent-bg">

@@ -1,3 +1,4 @@
+
 .dateContent__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -464,14 +465,16 @@
 
 @media(max-width:820px) {
   .dateContent__content {
-    background-size: 1090px;
+    background-size: cover;
+    background-position-x: -80px;
+   
   }
   .image__four img {
     position: absolute;
-    left: 80px;
+    left: 10px;
     bottom: 160px;
     border-radius: 3px;
-    width: 300px;
+    width: 350px;
     height: 500px;
     z-index: -333;
   }
@@ -491,8 +494,8 @@
     width: 208px;
     height: 280px;
   }
-  .dateContent {
-    margin-left: -50px;
+  .dateContent p{
+   width: 300px;
   }
 }
 
@@ -506,6 +509,20 @@
     height: 500px;
     z-index: -333;
   }
+
+  .dateContent p{
+    width: 250px;
+   }
+
+   .dateContent img{
+    width: 300px;
+   }
+
+   .dateContent button{
+   margin-top: 50px;
+   }
+
+
   .image__one img {
     position: relative;
     border-radius: 3px;
@@ -534,7 +551,7 @@
   }
 }
 
-@media(max-width:750px) {
+@media(max-width:720px) {
   .image__four img {
     position: relative;
     left: -50px;
@@ -555,40 +572,94 @@
     background-position: -70px;
   }
   .dateContent {
-    margin-left: -150px;
-    margin-top: -50px;
+    left: 90px;
+    margin-top: -100px;
   }
+  .dateContent p{
+    
+    margin-top: -10px;
+  }
+
   .animated-button {
-    top: 434px;
+    top: 400px;
+    left: 10px;
   }
 }
 
-@media(max-width:680px) {
+@media(max-width:1244px) {
+.dateContent{
+  margin-left: -100px;
+}
+}
+
+@media(max-width:1170px) {
+
+  .dateContent{
+    margin-left: -150px;
+    
+  }
+  .dateContent__imgs{
+    width: 400px;
+  }
+  }
+  
+
+  
+@media(max-width:1072px) {
+
+  .dateContent{
+    margin-left: -170px;
+    
+  }
+
+  .dateContent__imgs{
+    width: 400px;
+  }
+  }
+  
+
+@media(max-width:660px) {
   .dateContent__content {
     grid-template-columns: 1fr;
     justify-items: center;
-    padding-bottom: 300px;
+    padding-bottom: 200px;
+    padding-top: 100px;
   }
   .dateContent__content {
     height: 570px;
   }
   .dateContent img {
-    top: -80px;
+    bottom: 120px;
+    left: 40px;
   }
   .animated-button {
     top: 140px;
   }
-  .dateContent__description {
-    display: none;
+  .dateContent__description{
+display: none;
   }
+
+  .animated-button{
+    top: 60px;
+    left: 90px;
+    margin-top: -300px;
+  }
+  
+  
   .dateContent__imgs img {
     width: 350px;
-    margin-left: -20px;
+    margin-left: 20px;
     border-radius: 5px;
   }
   .dateContent__content {
     background-size: cover;
     background-position: 0px;
+  }
+}
+
+@media (min-width: 501px) {
+  .small-screen-only {
+    display: none;
   }
 }
 
@@ -598,20 +669,22 @@
     height: 500px;
     position: relative;
     padding-bottom:60px;
+    margin-left: 0px;
   }
 
   .dateContent__content {
-
-    padding-bottom: 750px;
+    padding-bottom: 600px;
+    
   }
 
   .dateContent__description {
     display: block;
-    width: 90%;
+    width: 300px !important;
     color: #ffffff;
     margin-top: -25px;
     font-weight: 100;
     letter-spacing: 1px;
+    margin-left: 65px;
   }
 
   .image__four {
@@ -620,7 +693,6 @@
     position: relative;
     left: -20px;
     margin-top: -100px;
-  
   }
 
   .image__four img {
@@ -649,7 +721,7 @@
   }
 
   .dateContent img {
-    margin-top: 40px;
+    margin-top: 100px;
   }
 
   .text {
@@ -657,10 +729,9 @@
   }
 
   .dateContent button {
-    top: 490px;
+    top: 400px;
     margin-left: -10px;
- 
-
+    margin-bottom:0px;
   }
 
   @keyframes fadeFirst {
@@ -675,6 +746,9 @@
     }
     88% {
       opacity: 0;
+    }
+    89% {
+      opacity: 1;
     }
     100% {
       opacity: 1;
@@ -715,20 +789,20 @@
     88% {
       opacity: 1;
     }
+    89% {
+      opacity: 0;
+    }
     100% {
       opacity: 0;
     }
   }
 }
 
-
-@media (max-width: 450px) {
-
+@media (max-width: 390px) {
   .dateContent__imgs {
     width: 330px;
     height: 490px;
     position: relative;
-   
   }
 
   .image__four {
@@ -737,7 +811,6 @@
     position: relative;
     left: -40px;
     margin-top: -100px;
-    
   }
 
   .image__four img {
@@ -748,7 +821,6 @@
     top: 0;
     left: 0;
     transition: opacity 1s ease-in-out;
-  
   }
 
   .image__four img:first-child {
@@ -756,14 +828,18 @@
     animation: fadeFirst 10s infinite ease-in-out;
   }
 
-  .image__four img:last-child {
+  .image__four img:nth-child(2) {
     opacity: 0;
     animation: fadeSecond 10s infinite ease-in-out;
   }
 
+  .image__four img:nth-child(3) {
+    opacity: 0;
+    animation: fadeThird 10s infinite ease-in-out;
+  }
+
   .dateContent img {
     margin-top: 30px;
-    
   }
 
   .text {
@@ -773,43 +849,26 @@
   .dateContent button {
     margin-top: 30px;
   }
-
 }
-  @media (max-width: 413px) {
 
-    .dateContent__imgs {
-      width: 300px;
-      height: 490px;
-      position: relative;
-     
-    }
-  
-    .image__four {
-      width: 300px;
-      height: 490px;
-      position: relative;
-      left: -60px;
-      margin-top: -100px;
-      
-    }
 
+@media (max-width: 384px) {
+
+ 
+  .dateContent__imgs {
+    width: 300px !important;
+    height: 470px !important;
+    position: relative;
+    margin-right: -35px;
+ 
   }
 
-    @media (max-width: 384px) {
-
-      .dateContent__imgs {
-        width: 300px !important;
-        height: 470px !important;
-        position: relative;
-        margin-right: -55px;
-       
-      }
-    
-      .image__four img{
-        width: 300px !important;
-        height: 470px !important;
- 
-       
-        
-      }
-    }
+  .dateContent__imgage{
+    top: -60px;
+    width: 400px;
+  }
+  .image__four img {
+    width: 300px !important;
+    height: 470px !important;
+  }
+}
