@@ -30,8 +30,8 @@ export async function POST(request) {
       ],
       customer_email: email, // Email del cliente
       mode: 'payment', // Modo de pago único (no suscripción)
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/success`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets/success`,
       metadata: {
         ticketType: priceId, // Puedes usar esto para rastrear el tipo de boleto
       },
