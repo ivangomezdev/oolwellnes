@@ -1,5 +1,5 @@
 import { adminDb } from '../../../lib/firebase';
-import { doc, setDoc } from 'firebase-admin/firestore';
+import { doc, setDoc } from 'firebase-admin/firestore'; // Importaciones explícitas
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
@@ -68,7 +68,8 @@ export async function POST(request) {
         const qrCode = await QRCode.toDataURL(qrContent);
 
         console.log(`Guardando ticket en Firestore: ${ticketId}`);
-        await setDoc(doc(adminDb, 'tickets', ticketId), {
+        const ticketRef = doc(adminDb, 'tickets', ticketId);
+        await setDoc(ticketRef, {
           ticketId,
           email,
           priceId,

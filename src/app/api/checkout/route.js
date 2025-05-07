@@ -11,13 +11,13 @@ export async function POST(request) {
     // Obtén los datos del cuerpo de la solicitud
     const { priceId, email } = await request.json();
 
-    // Validar datos
     if (!priceId || !email) {
       return NextResponse.json(
         { error: 'Faltan priceId o email' },
         { status: 400 }
       );
     }
+    
 
     // Crea una sesión de checkout en Stripe
     const session = await stripe.checkout.sessions.create({
