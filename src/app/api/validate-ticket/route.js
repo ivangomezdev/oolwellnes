@@ -1,6 +1,6 @@
-// api/validate-ticket/route.js
 import { adminDb } from '../../../lib/firebase';
 import { z } from 'zod';
+import { doc, getDoc, updateDoc } from 'firebase-admin/firestore';
 
 const schema = z.object({
   ticketId: z.string(),
@@ -10,15 +10,16 @@ export async function POST(req) {
   try {
     // Verificar que adminDb esté inicializado
     if (!adminDb) {
-      throw new Error('Firebase Admin no está inicializado. Verifica la configuración de serviceAccountKey.json');
+      throw new Error('Firebase Admin no está inicializado. Verifica las variables de entorno.');
     }
 
     const { ticketId } = schema.parse(await req.json());
 
-    const ticketRef = adminDb.collection('tickets').doc(ticketId);
-    const ticketSnap = await ticketRef.get();
+    // Referencia al documento del ticket
+    const ticketRef = doc(adminDb, 'tickets', ticketId);
+    const ticketSnap = await getDoc(ticketRef);
 
-    if (!ticketSnap.exists) {
+    if (!ticketSnap.exists()) {
       return new Response(JSON.stringify({ error: 'Entrada no encontrada' }), {
         status: 404,
       });
@@ -32,7 +33,8 @@ export async function POST(req) {
       });
     }
 
-    await ticketRef.update({ used: true });
+    // Marca el ticket como usado
+    await updateDoc(ticketRef, { used: true });
 
     return new Response(
       JSON.stringify({
@@ -44,8 +46,9 @@ export async function POST(req) {
     );
   } catch (err) {
     console.error('Error validando entrada:', err.message, err.stack);
-    return new Response(JSON.stringify({ error: 'Error validando entrada: ' + err.message }), {
-      status: 500,
-    });
+    return new Response(
+      JSON.stringify({ error: 'Error validando entrada: ' + err.message }),
+      { status: 500 }
+    );
   }
 }
