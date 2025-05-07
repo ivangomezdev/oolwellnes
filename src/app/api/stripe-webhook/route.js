@@ -1,5 +1,4 @@
 import { adminDb } from '../../../lib/firebase';
-import { doc, setDoc } from 'firebase-admin/firestore'; // Importaciones explícitas
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
@@ -11,7 +10,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: Number(process.env.EMAIL_PORT),
-  secure: false, // Usa STARTTLS para puerto 587
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -26,8 +25,9 @@ export async function POST(request) {
 
   try {
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
-      throw new Error('STRIPE_WEBHOOK_SECRET no está definido');
+      throw new Error('Falta STRIPE_WEBHOOK_SECRET');
     }
+
     event = stripe.webhooks.constructEvent(
       body,
       sig,
@@ -49,58 +49,47 @@ export async function POST(request) {
     if (session.payment_status === 'paid' && session.mode === 'payment') {
       try {
         if (!adminDb) {
-          throw new Error('adminDb no está inicializado');
+          throw new Error('Firebase Admin no está inicializado');
         }
 
         if (!process.env.NEXT_PUBLIC_BASE_URL) {
-          throw new Error('NEXT_PUBLIC_BASE_URL no está definido');
+          throw new Error('Falta NEXT_PUBLIC_BASE_URL');
         }
 
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-          throw new Error('Credenciales de correo no están definidas');
-        }
-
-        console.log(`Procesando ticket para email: ${email}, sessionId: ${sessionId}`);
+        console.log(`✅ Procesando ticket para ${email} - Session ID: ${sessionId}`);
 
         const ticketId = sessionId;
         const qrContent = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-ticket/${ticketId}`;
-        console.log(`Generando QR para: ${qrContent}`);
         const qrCode = await QRCode.toDataURL(qrContent);
 
-        console.log(`Guardando ticket en Firestore: ${ticketId}`);
-        const ticketRef = doc(adminDb, 'tickets', ticketId);
-        await setDoc(ticketRef, {
+        await adminDb.collection('tickets').doc(ticketId).set({
           ticketId,
           email,
           priceId,
           qrCode,
-          createdAt: new Date(),
-          status: 'active',
-          used: false,
+          createdAt: new Date().toISOString(),
         });
 
-        console.log(`Enviando correo a: ${email}`);
-        await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+        const mailOptions = {
+          from: `"Entradas" <${process.env.EMAIL_USER}>`,
           to: email,
-          subject: 'Tu entrada para Xcaret Wellness Ret',
+          subject: 'Tu entrada con QR',
           html: `
-            <h1>¡Gracias por tu compra!</h1>
-            <p>Tu entrada para el evento está lista. Escanea el código QR a continuación para acceder:</p>
-            <img src="${qrCode}" alt="Código QR de la entrada" />
-            <p>Detalles de la entrada:</p>
-            <ul>
-              <li>ID: ${ticketId}</li>
-              <li>Evento: ${process.env.NEXT_PUBLIC_EVENT_NAME || 'Xcaret Wellness Ret'}</li>
-              <li>Tipo: ${priceId === 'price_1RLvqlRWJlybi2c9hUQf8Aaa' ? 'KIN - Regular' : 'HA - VIP'}</li>
-            </ul>
+            <h1>Gracias por tu compra</h1>
+            <p>Escanea este código QR al ingresar:</p>
+            <img src="${qrCode}" alt="QR Code" style="width:200px;height:200px;" />
           `,
-        });
+        };
 
-        console.log(`Entrada generada y enviada para ${email}`);
-      } catch (error) {
-        console.error('Error procesando webhook:', error.message, error.stack);
-        return new Response(JSON.stringify({ error: 'Error interno: ' + error.message }), {
+        await transporter.sendMail(mailOptions);
+        console.log(`📨 Correo enviado a ${email}`);
+
+        return new Response(JSON.stringify({ message: 'Webhook procesado con éxito' }), {
+          status: 200,
+        });
+      } catch (err) {
+        console.error('❌ Error procesando el ticket:', err);
+        return new Response(JSON.stringify({ error: err.message }), {
           status: 500,
         });
       }
