@@ -66,7 +66,7 @@ export async function POST(request) {
 
         // Enviar correo con Resend
         const emailSent = await resend.emails.send({
-          from: 'your_email@example.com',
+          from: 'ivansangomez6@gmail.com',
           to: email,
           subject: 'Tu entrada con QR',
           html: `
