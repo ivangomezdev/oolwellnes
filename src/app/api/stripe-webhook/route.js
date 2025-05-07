@@ -48,7 +48,7 @@ export async function POST(request) {
       const ticketId = sessionId;
 
       // Genera el contenido del QR (puede ser un enlace o el ticketId)
-      const qrContent = `https://tudominio.com/verify-ticket/${ticketId}`;
+      const qrContent = `https://oolwellnes.vercel.app/verify-ticket/${ticketId}`;
       const qrCode = await QRCode.toDataURL(qrContent); // Genera el QR como Data URL
 
       // Almacena la entrada en Firestore
