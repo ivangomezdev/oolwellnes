@@ -1,7 +1,7 @@
 import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
-import { Resend } from '@resend/web';
+import { Resend } from 'resend';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-06-20',
