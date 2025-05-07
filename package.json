@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.0.2",
@@ -26,6 +27,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-slick": "^0.30.3",
+    "resend": "^4.5.1",
     "slick-carousel": "^1.8.1",
     "stripe": "^18.1.0",
     "swiper": "^11.2.6",

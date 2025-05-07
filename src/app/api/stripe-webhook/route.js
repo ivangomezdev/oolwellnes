@@ -1,21 +1,14 @@
 import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
-import nodemailer from 'nodemailer';
+import { Resend } from '@resend/web';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-06-20',
 });
 
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: Number(process.env.EMAIL_PORT),
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+// Inicializar Resend con tu API Key
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   const sig = request.headers.get('stripe-signature');
@@ -62,6 +55,7 @@ export async function POST(request) {
         const qrContent = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-ticket/${ticketId}`;
         const qrCode = await QRCode.toDataURL(qrContent);
 
+        // Guardar los datos en Firestore
         await adminDb.collection('tickets').doc(ticketId).set({
           ticketId,
           email,
@@ -70,8 +64,9 @@ export async function POST(request) {
           createdAt: new Date().toISOString(),
         });
 
-        const mailOptions = {
-          from: `"Entradas" <${process.env.EMAIL_USER}>`,
+        // Enviar correo con Resend
+        const emailSent = await resend.emails.send({
+          from: 'your_email@example.com',
           to: email,
           subject: 'Tu entrada con QR',
           html: `
@@ -79,10 +74,9 @@ export async function POST(request) {
             <p>Escanea este código QR al ingresar:</p>
             <img src="${qrCode}" alt="QR Code" style="width:200px;height:200px;" />
           `,
-        };
+        });
 
-        await transporter.sendMail(mailOptions);
-        console.log(`📨 Correo enviado a ${email}`);
+        console.log('📨 Correo enviado:', emailSent);
 
         return new Response(JSON.stringify({ message: 'Webhook procesado con éxito' }), {
           status: 200,
