@@ -30,8 +30,8 @@ export async function POST(request) {
       ],
       customer_email: email, // Email del cliente
       mode: 'payment', // Modo de pago único (no suscripción)
-      success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`, // URL de éxito
-      cancel_url: `${request.headers.get('origin')}/tickets`, // URL de cancelación
+      success_url: `https://oolwellnes.vercel.app/success?session_id={CHECKOUT_SESSION_ID}`, // URL de éxito
+      cancel_url: `https://oolwellnes.vercel.app/tickets`, // URL de cancelación
       metadata: {
         ticketType: priceId, // Puedes usar esto para rastrear el tipo de boleto
       },
