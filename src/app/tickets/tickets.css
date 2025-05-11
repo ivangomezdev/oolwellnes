@@ -1,0 +1,60 @@
+.tickets__videoAndForm video{
+ height: 100vh;
+
+}
+
+.tickets__videoAndForm{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.tickets__videoAndForm form{
+    display: flex;
+    flex-direction: column;
+}
+@media(max-width:1414px){
+.tickets__videoAndForm{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 100dvh;
+}
+}
+
+
+@media(max-width:856px){
+    .tickets__videoAndForm{
+        padding-top: 50px ;
+    }
+}
+
+@media(max-width:750px){
+    .tickets__videoAndForm{
+        padding-top: 0px ;
+    }
+}
+/*@media(max-width:1415px){
+  .tickets__videoAndForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+}*/
+
+
+
+
+
+
+@media (max-width: 750px) {
+.tickets__videoAndForm{
+  display: flex !important;
+  flex-direction: column !important;
+
+    margin: 0px;
+
+}
+
+}

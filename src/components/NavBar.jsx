@@ -9,33 +9,17 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
   const [popupOpen, setPopupOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mobilePopupOpen, setMobilePopupOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setPopupOpen(false);
     setServicesOpen(false);
-    setMobilePopupOpen(false);
-    setMobileServicesOpen(false);
   };
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
     setPopupOpen(false);
     setServicesOpen(false);
-    setMobilePopupOpen(false);
-    setMobileServicesOpen(false);
-  };
-
-  const toggleMobilePopup = () => {
-    setMobilePopupOpen(!mobilePopupOpen);
-    setMobileServicesOpen(false);
-  };
-
-  const toggleMobileServices = () => {
-    setMobileServicesOpen(!mobileServicesOpen);
-    setMobilePopupOpen(false);
   };
 
   return (
@@ -113,32 +97,12 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
         <Link href="/" className="nav-link" onClick={handleLinkClick}>
           HOME
         </Link>
-        <div className="nav-link dropdown-mobile" onClick={toggleMobilePopup}>
+        <Link href="/" className="nav-link" onClick={handleLinkClick}>
           POP UP EXPERIENCE
-          {mobilePopupOpen && (
-            <div className="dropdown-menu-mobile">
-              <Link href="/takes-over-tulum" className="dropdown-item" onClick={handleLinkClick}>
-                Takes Over Tulum
-              </Link>
-              <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={handleLinkClick}>
-                Takes Over Geely Cancun
-              </Link>
-              <Link href="/proximas" className="dropdown-item" onClick={handleLinkClick}>
-                Proximas
-              </Link>
-            </div>
-          )}
-        </div>
-        <div className="nav-link dropdown-mobile" onClick={toggleMobileServices}>
+        </Link>
+        <Link href="/oolExperience" className="nav-link" onClick={handleLinkClick}>
           RETREATS
-          {mobileServicesOpen && (
-            <div className="dropdown-menu-mobile">
-              <Link href="/oolExperience" className="dropdown-item" onClick={handleLinkClick}>
-                Rivera Maya 2025
-              </Link>
-            </div>
-          )}
-        </div>
+        </Link>
         <Link href="/contact" className="nav-link" onClick={handleLinkClick}>
           CONTACT
         </Link>
