@@ -1,86 +1,140 @@
-.yesOrNot {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-    background-color: #dabca485;
-    color: #0a4a2f;
-   
-    position: relative;
-    overflow: hidden;
-
-    margin: 0 auto;
-  }
-  .yesOrNot__title--included{
-    font-weight: bold;
-  color: #000; /* Color del texto */
-  position: relative; /* Para posicionar el subrayado */
-  display: inline-block;
-  }
-
- 
-
-
-
-
-
-
-  .yesOrNot__column {
-    flex: 1;
-    padding: 0 1.5rem;
-    position: relative;
-  }
-  
-  .yesOrNot__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    position: relative;
-    color: black;
-    display: inline-block;
-    font-family: "Broadsheet Regular";
-  }
-  
-
-
-
-  
-  .yesOrNot__list {
-    list-style-type: none;
-    padding: 0;
-
-  }
-  
-  .yesOrNot__item {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-    line-height: 1.5;
-  }
-  
-  .yesOrNot__item::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #0a4a2f;
-    font-size: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
     .yesOrNot {
-      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 100px;
+      background-color: #dabca485;
+      color: #0a4a2f;
+      padding-bottom: 100px;
+      position: relative;
     }
-  
-    .yesOrNot__column {
-      margin-bottom: 2rem;
-    }
-  
+
     .yesOrNot__title {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 5rem;
+      margin-top: -50px;
+      text-align: center;
+      color: #333333;
+      font-family: "Broadsheet Regular";
+      display: block;
+      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746851328/Dise%C3%B1o_sin_t%C3%ADtulo_5_wvxjyq.png');
+      background-size: 800px;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 1rem;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-50px);
     }
-  
+
+    .yesOrNot__title--included {
+      color: #333333;
+      position: relative;
+      display: block;
+    }
+
+
+
+    .yesOrNot__title--bg-animated {
+      animation: fadeInBackground 0.5s ease-out forwards;
+    }
+
+    .yesOrNot__title--text-animated {
+      animation: slideInFromLeft 0.5s ease-out forwards;
+    }
+
+    .yesOrNot__column {
+      flex: 1;
+      padding: 0 1.5rem;
+      position: relative;
+      margin: 0 auto;
+    
+    }
+
+    .yesOrNot__list {
+      list-style: none;
+      padding-left: 0;
+      font-family: "CalSans";
+    }
+
     .yesOrNot__item {
-      font-size: 1rem;
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: #333333;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateX(-50px);
     }
-  }
-  
+
+    .yesOrNot__item--animated {
+      animation: slideInFromLeft 0.5s ease-out forwards;
+    }
+
+    .yesOrNot__item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* Alternating icons for list items */
+    .yesOrNot__list li:nth-child(3n+1)::before {
+      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png');
+    }
+
+    .yesOrNot__list li:nth-child(3n+2)::before {
+      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png');
+    }
+
+    .yesOrNot__list li:nth-child(3n+3)::before {
+      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png');
+    }
+
+    /* Animation keyframes */
+    @keyframes fadeInBackground {
+      from {
+        background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746851328/Dise%C3%B1o_sin_t%C3%ADtulo_5_wvxjyq.png');
+        opacity: 0;
+      }
+      to {
+        background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746851328/Dise%C3%B1o_sin_t%C3%ADtulo_5_wvxjyq.png');
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .yesOrNot {
+        flex-direction: column;
+      }
+
+      .yesOrNot__column {
+        margin-bottom: 2rem;
+             padding-top: 60px ;
+      }
+
+      .yesOrNot__title {
+        font-size: 2rem;
+   
+      }
+
+      .yesOrNot__item {
+        font-size: 1rem;
+        
+      }
+    }

@@ -1,111 +1,154 @@
 /* Layout - Base component */
 .layout {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: "Broadsheet Regular";
-    
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Broadsheet Regular';
+  position: relative; /* Necesario para que las imágenes absolutas se posicionen relativas a este contenedor */
+}
+
+
+/* Imágenes decorativas */
+.layout__decorative-image {
+  position: absolute;
+  z-index: 0; /* Para que las imágenes estén detrás del contenido */
+  pointer-events: none; /* Evita que las imágenes interfieran con interacciones */
+
+}
+
+/* Ajustar tamaño de las imágenes decorativas */
+.layout__decorative-image img {
+  width: 100px;
+  height: 100px;
   
-  /* Layout - Title */
-  .layout__title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: black;
-    margin-bottom: 4rem;
-  }
-  
-  /* Layout - Content container */
+}
+
+/* Resto de los estilos sin cambios */
+.layout__title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 4rem;
+  background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png');
+  background-size: 500px 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+}
+
+.layout__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.layout__text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__image-column {
+  flex: 1;
+  display: flex;
+  background-size: contain;
+  background-position: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.layout__right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.layout__text-area {
+  font-size: 32px;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f1e4cf;
+}
+
+.layout__text-area p {
+  font-size: 26px;
+}
+
+.layout__image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.layout__image {
+  width: 200px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0e68c;
+}
+
+.layout__button-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png');
+  background-size: cover;
+}
+
+.layout__button {
+  border-radius: 5px;
+  font-family: 'CalSans';
+  color: #ffffff;
+  padding: 0.5rem 2rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
   .layout__content {
-    display: flex;
-    justify-content: space-between;
-
-    gap: 2rem;
-  }
-  
-  /* Layout - Text column (left) */
-  .layout__text-column {
-    flex: 1;
-    display: flex;
     flex-direction: column;
   }
-  
-  /* Layout - Image column (center) */
+
   .layout__image-column {
-    flex: 1;
-    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745935079/man-and-woman-in-lotus-pose-yoga-meditation-line-art-drawing-illustration-simple-line-drawing-two-persons-sit-back-to-back-in-lotus-position-silhouette-meditating-people-vector-removebg-preview-remove_jpeovt.png");
-    display: flex;
-    background-size: contain;
-    background-position: 15px;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    order: -1;
   }
-  
-  /* Layout - Right column */
-  .layout__right-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  /* Layout - Text area */
-  .layout__text-area {
-    font-size: 32px;
-    padding: 1.5rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color:gray;
-  }
-  
-  /* Layout - Image container */
-  .layout__image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Layout - Image */
-  .layout__image {
-    width: 200px;
-    height: 100px;
 
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f0e68c;
+  /* Ajustar posiciones de imágenes decorativas en pantallas pequeñas */
+  .layout__decorative-image {
+    transform: scale(0.8); /* Reducir tamaño en pantallas pequeñas */
+    display: none;
   }
-  
-  /* Layout - Button container */
-  .layout__button-container {
-    display: flex;
-    justify-content: center;
+
+  /* Reubicar imágenes específicas si es necesario */
+  .layout__decorative-image:nth-child(1) {
+    top: 5%;
+    left: 2%;
   }
-  
-  /* Layout - Button */
-  .layout__button {
-    border-radius: 5px;
-    background-color: transparent;
-    color: #ffffff;
-    background-color: #DABCA4;
-    padding: 0.5rem 2rem;
-    font-size: 1.3rem;
-    cursor: pointer;
-    min-width: 150px;
+
+  .layout__decorative-image:nth-child(2) {
+    top: 25%;
+
+    right: 2%;
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .layout__content {
-      flex-direction: column;
-    }
-  
-    .layout__image-column {
-      order: -1;
-    }
+
+  .layout__decorative-image:nth-child(3) {
+    bottom: 15%;
+    left: 5%;
   }
-  
+
+  .layout__decorative-image:nth-child(4) {
+    bottom: 5%;
+    right: 5%;
+  }
+}

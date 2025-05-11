@@ -1,3 +1,4 @@
+//api/stripe-webhook/route.js
 import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';

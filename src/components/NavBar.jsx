@@ -53,13 +53,13 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
             POP UP EXPERIENCE
             {popupOpen && (
               <div className="dropdown-menu">
-                <Link href="/takes-over-tulum" className="dropdown-item" onClick={handleLinkClick}>
-                  Takes Over Tulum
+                <Link href="/" className="dropdown-item" onClick={handleLinkClick}>
+                  Takes Over Tulum (Soon)
                 </Link>
-                <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={handleLinkClick}>
-                  Takes Over Geely Cancun
+                <Link href="/" className="dropdown-item" onClick={handleLinkClick}>
+                  Takes Over Geely Cancun (Soon)
                 </Link>
-                <Link href="/proximas" className="dropdown-item" onClick={handleLinkClick}>
+                <Link href="/" className="dropdown-item" onClick={handleLinkClick}>
                   Proximas
                 </Link>
               </div>
@@ -83,7 +83,7 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
             RETREATS
             {servicesOpen && (
               <div className="dropdown-menu">
-                <Link href="/rivera-maya-2025" className="dropdown-item" onClick={handleLinkClick}>
+                <Link href="/oolExperience" className="dropdown-item" onClick={handleLinkClick}>
                   Rivera Maya 2025
                 </Link>
               </div>

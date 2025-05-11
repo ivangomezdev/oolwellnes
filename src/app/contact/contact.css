@@ -1,3 +1,8 @@
 .contact__content{
-    background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745809646/bg_yhojxm.png") ;
+    background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984881/Fondo_Retiro_vqqpq4.png") ;
+}
+
+.contactForm__title{
+    font-family: "Broadsheet Regular";
+    font-size: 50px;
 }

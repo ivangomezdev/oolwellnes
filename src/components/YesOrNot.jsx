@@ -1,42 +1,91 @@
-import React from 'react'
-import "./yesOrNot.css"
-const YesOrNot = () => {
-  return (
-    <div className="yesOrNot">
-    <div className="yesOrNot__column">
-      <h2 className="yesOrNot__title yesOrNot__title--included">
-        ¿Qué Si?
-        <span className="yesOrNot__underline"></span>
-      </h2>
-      <ul className="yesOrNot__list">
-        <li className="yesOrNot__item">4 comidas de comidas en comidas en comidas comidas en comidas</li>
-        <li className="yesOrNot__item">comidas las comidas (comidas + comidas comidas!)</li>
-        <li className="yesOrNot__item">
-          comidas a comidas las comidas (comidas, comidas, comidas comidas)
-        </li>
-        <li className="yesOrNot__item">comidas de comidas</li>
-        <li className="yesOrNot__item">comidas de comidas comidas por el comidas</li>
-      </ul>
-    </div>
+import React, { useEffect, useRef, useState } from 'react';
+import './yesOrNot.css';
 
-    <div className="yesOrNot__column">
-      <h2 className="yesOrNot__title yesOrNot__title--not-included">
-        ¿Qué no?
-        <span className="yesOrNot__circle"></span>
-      </h2>
-      <ul className="yesOrNot__list">
-        <li className="yesOrNot__item">Alimentos Alimentos</li>
-        <li className="yesOrNot__item">
-          Alimentos y Alimentos Alimentos Alimentos de Alimentos Alimentos de Alimentos Alimentos
-        </li>
-        <li className="yesOrNot__item">AlimentosAlimentos a la AlimentosAlimentos</li>
-        <li className="yesOrNot__item">AlimentosAlimentos AlimentosAlimentos</li>
-        <li className="yesOrNot__item">AlimentosAlimentos AlimentosAlimentos en la AlimentosAlimentos</li>
-        <li className="yesOrNot__item">AlimentosAlimentos AlimentosAlimentos para el AlimentosAlimentos del AlimentosAlimentos</li>
-      </ul>
+function YesOrNot() {
+  const [animateTitles, setAnimateTitles] = useState(false);
+  const [animatedPairs, setAnimatedPairs] = useState([]);
+  const yesOrNotRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateTitles(true); // Activar animación de títulos
+          // Animar los pares de elementos secuencialmente
+          const totalPairs = 4; // Número de pares
+          let currentPair = 0;
+          const interval = setInterval(() => {
+            if (currentPair < totalPairs) {
+              setAnimatedPairs((prev) => [...prev, currentPair]);
+              currentPair++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 500); // 500ms entre pares
+          observer.disconnect(); // Desconectar después de la primera ejecución
+        }
+      },
+      { threshold: 0.01 } // Reducir el umbral para mayor sensibilidad
+    );
+
+    if (yesOrNotRef.current) {
+      observer.observe(yesOrNotRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="yesOrNot" ref={yesOrNotRef}>
+      <div className="yesOrNot__column">
+        <h2
+          className={`yesOrNot__title yesOrNot__title--included ${
+            animateTitles ? 'yesOrNot__title--bg-animated yesOrNot__title--text-animated' : ''
+          }`}
+        >
+          ¿Qué Sí?
+          <span className="yesOrNot__underline"></span>
+        </h2>
+        <ul className="yesOrNot__list">
+          <li className={`yesOrNot__item ${animatedPairs.includes(0) ? 'yesOrNot__item--animated' : ''}`}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+          </li>
+         
+          <li className={`yesOrNot__item ${animatedPairs.includes(2) ? 'yesOrNot__item--animated' : ''}`}>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+          </li>
+          <li className={`yesOrNot__item ${animatedPairs.includes(3) ? 'yesOrNot__item--animated' : ''}`}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+          </li>
+        </ul>
+      </div>
+
+      <div className="yesOrNot__column">
+        <h2
+          className={`yesOrNot__title yesOrNot__title--not-included ${
+            animateTitles ? 'yesOrNot__title--bg-animated yesOrNot__title--text-animated' : ''
+          }`}
+        >
+          ¿Qué No?
+        </h2>
+        <ul className="yesOrNot__list">
+          <li className={`yesOrNot__item ${animatedPairs.includes(0) ? 'yesOrNot__item--animated' : ''}`}>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </li>
+       
+          <li className={`yesOrNot__item ${animatedPairs.includes(2) ? 'yesOrNot__item--animated' : ''}`}>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </li>
+          <li className={`yesOrNot__item ${animatedPairs.includes(3) ? 'yesOrNot__item--animated' : ''}`}>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default YesOrNot
+export default YesOrNot;

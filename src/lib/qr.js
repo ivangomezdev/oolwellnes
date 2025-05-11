@@ -3,7 +3,7 @@ import QRCode from 'qrcode';
 
 export async function generateQRCode(ticketId) {
   try {
-    const url = `https://your-event-site.com/validate?ticketId=${ticketId}`;
+    const url = `oolwellnes.vercel.app/validate?ticketId=${ticketId}`;
     return await QRCode.toDataURL(url);
   } catch (err) {
     console.error('Error generando QR:', err);

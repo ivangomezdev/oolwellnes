@@ -1,197 +1,336 @@
 .thePlaceText__cont {
-  width: 100%;
-  max-width: 1200px;
+  height: auto;
+  display: flex;
+  gap: 150px;
   margin: 0 auto;
   padding: 20px;
   font-family: "Broadsheet Regular";
   letter-spacing: 2px;
   font-size: 20px;
+  background-color: #BEAA88;
+  align-items: center;
+  position: relative;
+  z-index: 99999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-.thePlaceText__cont h3 {
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-  line-height: 1.5;
+.thePlaceText__cont.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.firefly-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .thePlaceText__imgs {
   position: relative;
-  width: 100%;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 800px;
+  z-index: 1;
 }
 
-/* Carousel Container */
 .carousel-container {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
-  overflow: hidden;
+  max-width: 100% !important;
+  height: 400px;
 }
 
-/* Carousel Track Container */
 .carousel-track-container {
   width: 100%;
   overflow: hidden;
 }
 
-/* Carousel Track */
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
 }
 
-/* Carousel Slide */
 .carousel-slide {
-  min-width: calc(100% / 3);
-  flex: 0 0 calc(100% / 3);
+  min-width: 100%;
   position: relative;
   padding: 0 10px;
   box-sizing: border-box;
-  cursor: pointer; /* Indicate clickability */
+  cursor: pointer;
 }
 
-/* Image Container */
+.carousel-slide img {
+  border-radius: 5px;
+  position: relative;
+  padding: 0 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 .image-container {
   width: 100%;
-  height: 300px;
+  height: 400px;
   overflow: hidden;
-  border-radius: 8px;
+  position: relative;
 }
 
 .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Place Name */
-.place-name {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 1.5rem;
-  color: #2e7d32;
-  font-weight: 600;
+.image-overlay {
+  border-radius: 5px;
 }
 
-/* Arrow Buttons */
+.thePlaceText__description {
+  width: 50%;
+  text-align: left;
+  padding: 20px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.thePlaceText__description h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #DABCA4;
+}
+
+.thePlaceText__description p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-family: "CalSans" !important;
+  width: 400px;
+}
+
+.view-more-btn {
+  padding: 10px 20px;
+  background-color: #9F9668;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.view-more-btn:hover {
+  background-color: #6a6449;
+}
+
 .arrow-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color:#F4EAE3;
+  background-color: #9F9668;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.1s ease;
+}
+
+.arrow-btn:active {
+  transform: translateY(-50%) scale(0.9);
 }
 
 .arrow-btn:hover {
-  background-color: rgba(76, 175, 80, 1);
+  background-color: #3C92A6;
 }
 
 .prev-btn {
-  left: 10px;
+  left: 5px;
 }
 
-.prev-btn img{
-  transform: scaleX(-1); /* Invierte horizontalmente la imagen original */
-
- 
+.prev-btn img {
+  transform: scaleX(-1);
 }
 
 .next-btn {
-  right: 10px;
+  right: 5px;
 }
 
-.arrow {
-  font-size: 20px;
+.arrow-btn img {
+  width: 70px !important;
+  height: 70px;
 }
 
-/* Carousel Navigation */
 .carousel-nav {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 .carousel-indicator {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: #DABCA4;
   border: none;
-  margin: 0 5px;
+  margin: 0 3px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .carousel-indicator.active {
-  background-color: #4caf50;
+  background-color: #F2E2C6;
 }
 
-/* Popup Styles */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100000;
+  overflow: hidden;
 }
 
 .popup-content {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border-radius: 8px;
-  max-width: 800px;
   width: 90%;
-  max-height: 80vh;
-  overflow: auto;
+  max-width: 1200px;
+  max-height: 90vh;
+  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative; /* Ensure content stays within overlay */
+}
+
+.popup-image-section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .popup-image-container {
-  flex: 1;
-  padding: 20px;
+  padding: 10px;
 }
 
 .popup-image-container img {
   width: 100%;
   height: auto;
+  max-height: 400px;
+  object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding: 5px 0;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
 }
 
 .popup-description {
-  flex: 1;
-  padding: 20px;
+  width: 50%;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .popup-description h4 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 10px;
-  color: #2e7d32;
+  color: #9F9668;
 }
 
 .popup-description p {
   font-size: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   line-height: 1.5;
+  font-family: "CalSans";
+}
+
+.additional-info-list {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+  list-style-type: disc;
+  padding-left: 20px;
+    font-family: "CalSans";
+
+}
+
+.additional-info-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.buy-tickets-btn {
+  padding: 10px 20px;
+  width: 200px;
+  margin: 0 auto;
+  background-color: #9F9668;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  font-size: 20px;
+  font-family: "Broadsheet Regular";
+}
+
+.buy-tickets-btn:hover {
+  background-color: #45a049;
+}
+
+.ticket-icon {
+  font-size: 1.2rem;
 }
 
 .popup-close-btn {
@@ -210,82 +349,149 @@
   background-color: #45a049;
 }
 
-/* Responsive Styles */
-@media (min-width: 1200px) {
-  .carousel-slide {
-    min-width: 25%;
-    flex: 0 0 25%;
-  }
+.enlarged-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11000;
 }
 
-@media (max-width: 991px) {
-  .carousel-slide {
-    min-width: calc(100% / 3);
-    flex: 0 0 calc(100% / 3);
-  }
+.enlarged-image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
 
-  .image-container {
-    height: 250px;
-  }
+.enlarged-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.enlarged-close-btn:hover {
+  background-color: #ddd;
+}
+
+body.popup-open {
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
-  .carousel-slide {
-    min-width: 50%;
-    flex: 0 0 50%;
+  .thePlaceText__cont {
+    flex-direction: column;
+    font-size: 16px;
+  }
+  
+
+  .thePlaceText__imgs {
+    width: 100%;
+    margin-bottom: -180px;
   }
 
-  .image-container {
-    height: 200px;
+  .thePlaceText__description {
+    width: 90%;
+    text-align: center !important;
+    margin-top: -50px !important;
+    margin: 0 auto;
+    align-items: center;
   }
+.thePlaceText__description p{
+  text-align:  center;
+  margin: 0 auto;
+  width:250px;
+  padding-bottom: 30px;
+}
 
-  .place-name {
-    font-size: 1rem;
-  }
+.view-more-btn {
+  z-index: 9999999999;
+  position: relative;
+  font-family: "CalSans";
+}
 
-  /* Popup responsive */
   .popup-content {
     flex-direction: column;
-    max-width: 95%;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .popup-image-section {
+    width: 100%;
+    margin-top: 10px; /* Add slight margin to avoid clipping at the top */
   }
 
   .popup-image-container {
-    padding: 10px;
+    padding: 5px; /* Reduce padding to save space */
+  }
+
+  .popup-image-container img {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
+    padding-top: 360px;
   }
 
   .popup-description {
     padding: 10px;
+    margin-top: 10px; /* Ensure description doesn't overlap with image */
   }
 
-  .popup-description h4 {
-    font-size: 1.2rem;
-  }
 
-  .popup-description p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-slide {
-    min-width: 100%;
-    flex: 0 0 100%;
+  .image-container {
+    height: 300px;
   }
 
   .popup-content {
-    max-height: 90vh;
+    flex-direction: column;
+  }
+
+  .popup-image-section {
+    width: 100%;
+  }
+
+  .popup-description {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .popup-image-container img {
+    max-height: 300px;
   }
 }
 
 @media (min-width: 768px) {
-  .carousel-container {
-    max-height: 600px;
+  .thePlaceText__cont {
+    flex-direction: row;
+  }
+
+  .thePlaceText__imgs {
+    width: 50%;
+  }
+
+  .thePlaceText__description {
+    width: 50%;
   }
 }
 
-@media (max-width: 767px) {
-  .arrow-btn {
-    width: 40px;
-    height: 40px;
+@media(max-width:400px){
+    .popup-image-container img {
+
+    padding-top: 400px;
   }
 }

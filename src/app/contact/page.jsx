@@ -1,31 +1,120 @@
+"use client"
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 import "./contact.css"
-import React from 'react'
+import React, { useState } from 'react'
 import "@/components/Navbar.css"
 import Image from 'next/image'
+import Link from 'next/link'
 const Page = () => {
+   const [showLogo, setShowLogo] = useState(true)
+   const [showNavbarLinks, setShowNavbarLinks] = useState(true)
+   const [popupOpen, setPopupOpen] = useState(false)
+   const [servicesOpen, setServicesOpen] = useState(false)
+   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false)
+        const toggleMobileMenu = () => {
+    setIsMobileMenuActive(!isMobileMenuActive)
+  }
   return (
     <div>
-      <div className="navbar-container">
-        <div className="nav-links left">
-          <a href="#" className="nav-link home">
+      <nav className={`navbar ${showLogo ? "logo-visible" : ""}`}>
+        <div className="navbar-container">
+          {/* Hamburguesa */}
+          <div
+            className={`hamburger ${isMobileMenuActive ? "active" : ""}`}
+            onClick={toggleMobileMenu}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+
+          {/* Enlaces de la izquierda */}
+          <div className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}>
+            <Link href="/" className="nav-link home">
+              Home
+            </Link>
+            
+            <div
+              className="nav-link about dropdown"
+              onMouseEnter={() => setPopupOpen(true)}
+              onMouseLeave={() => setPopupOpen(false)}
+            >
+              Pop Up Experience
+              {popupOpen && (
+                <div className="dropdown-menu">
+                  <Link href="/takes-over-tulum" className="dropdown-item">Takes Over Tulum</Link>
+                  <Link href="/takes-over-geely-cancun" className="dropdown-item">Takes Over Geely Cancun</Link>
+                  <Link href="/proximas" className="dropdown-item">Proximas</Link>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Logo */}
+          <div className="navbarLogo2">
+            <Image
+              alt="logo"
+              src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"}
+              width={90}
+              height={90}
+            />
+          </div>
+
+          {/* Enlaces de la derecha */}
+          <div className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}>
+            <div
+              className="nav-link services dropdown"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              Services
+              {servicesOpen && (
+                <div className="dropdown-menu">
+                  <Link href="/rivera-maya-2025" className="dropdown-item">Rivera Maya 2025</Link>
+                </div>
+              )}
+            </div>
+            <Link href="/contact" className="nav-link contact">
+              Contact
+            </Link>
+          </div>
+        </div>
+
+        {/* Menú móvil */}
+        <div className={`mobile-menu ${isMobileMenuActive ? "active" : ""}`}>
+          <Link href="/" className="nav-link" onClick={toggleMobileMenu}>
             Home
-          </a>
-          <a href="#" className="nav-link about">
-            About
-          </a>
-        </div>
-        <div className="navbar-logo"><Image src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745778743/logo-removebg-preview_rckx9y.png"} alt='logo' width={120} height={80}/></div>
-        <div className="nav-links right">
-          <a href="#" className="nav-link services">
-            Services
-          </a>
-          <a href="#" className="nav-link contact">
+          </Link>
+          <div className="dropdown-mobile">
+            Pop Up Experience
+            {/* Submenús ocultos en el menú móvil */}
+            <div className="dropdown-menu-mobile" style={{ display: 'none' }}>
+              <Link href="/takes-over-tulum" className="dropdown-item" onClick={toggleMobileMenu}>
+                Takes Over Tulum
+              </Link>
+              <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={toggleMobileMenu}>
+                Takes Over Geely Cancun
+              </Link>
+              <Link href="/proximas" className="dropdown-item" onClick={toggleMobileMenu}>
+                Proximas
+              </Link>
+            </div>
+          </div>
+          <div className="dropdown-mobile">
+            Retreats
+            {/* Submenú oculto en el menú móvil */}
+            <div className="dropdown-menu-mobile" style={{ display: 'none' }}>
+              <Link href="/oolExperience" className="dropdown-item" onClick={toggleMobileMenu}>
+                Rivera Maya 2025
+              </Link>
+            </div>
+          </div>
+          <Link href="/contact" className="nav-link" onClick={toggleMobileMenu}>
             Contact
-          </a>
+          </Link>
         </div>
-      </div>
+      </nav>
       <div className='contact__content'>
       <ContactForm/>
       <Footer/>

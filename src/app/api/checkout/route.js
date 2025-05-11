@@ -1,3 +1,4 @@
+// api/checkout/route.js
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -17,7 +18,7 @@ export async function POST(request) {
         { status: 400 }
       );
     }
-    
+
 
     // Crea una sesión de checkout en Stripe
     const session = await stripe.checkout.sessions.create({
