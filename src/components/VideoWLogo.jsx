@@ -29,7 +29,7 @@ export default function VideoWLogo() {
           <div className="video-w-logo__video-placeholder"></div>
         </div>
         <div className="video-w-logo__text-section">
-          <video src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1745893649/loop_vjxdwx.mp4"  autoPlay loop muted style={{width:"400px"}} />
+          <video  src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1745893649/loop_vjxdwx.mp4"  autoPlay loop muted playsInline style={{width:"400px"}} />
           <div className={`video-w-logo__title-yellow ${titleMoved ? "video-w-logo__title-yellow--visible" : ""}`}>
           </div>
         </div>

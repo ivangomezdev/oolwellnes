@@ -9,6 +9,7 @@ const ThePlace = () => {
         autoPlay
         loop
         muted
+        playsInline
         src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746835040/WhatsApp_Video_2025-05-09_at_18.53.11_vtkdmq.mp4"
       ></video>
       <div className="thePlace__overlay"></div>
