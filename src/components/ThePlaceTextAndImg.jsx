@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./thePlaceTextAndImg.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const ThePlaceTextAndImg = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -315,9 +316,11 @@ const ThePlaceTextAndImg = () => {
                     <li key={index}>{item.trim()}</li>
                   ))}
               </ul>
+              <Link style={{textDecoration:"none",color:"white"}} href={"/tickets"}>
               <button className="buy-tickets-btn">
                 <span className="ticket-icon">🎟️</span> Buy Tickets
               </button>
+              </Link>
             </div>
           </div>
         </div>
