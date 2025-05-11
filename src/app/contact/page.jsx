@@ -71,7 +71,7 @@ const Page = () => {
               Services
               {servicesOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/rivera-maya-2025" className="dropdown-item">Rivera Maya 2025</Link>
+                  <Link href="/oolExperience" className="dropdown-item">Rivera Maya 2025</Link>
                 </div>
               )}
             </div>
