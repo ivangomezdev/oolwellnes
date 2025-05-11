@@ -133,7 +133,7 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
           RETREATS
           {mobileServicesOpen && (
             <div className="dropdown-menu-mobile">
-              <Link href="/rivera-maya-2025" className="dropdown-item" onClick={handleLinkClick}>
+              <Link href="/oolExperience" className="dropdown-item" onClick={handleLinkClick}>
                 Rivera Maya 2025
               </Link>
             </div>
