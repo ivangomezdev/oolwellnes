@@ -1,14 +1,14 @@
-//api/stripe-webhook/route.js
+// api/stripe-webhook/route.js
 import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
+import { createWalletPass } from '../../src/lib/wallet-pass'; // Importa la función
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-06-20',
 });
 
-// Inicializar Resend con tu API Key
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
@@ -56,6 +56,14 @@ export async function POST(request) {
         const qrContent = `${process.env.NEXT_PUBLIC_BASE_URL}/verify-ticket/${ticketId}`;
         const qrCode = await QRCode.toDataURL(qrContent);
 
+        // Generar el pase de Apple Wallet
+        const passBuffer = await createWalletPass(
+          ticketId,
+          email,
+          'OOL Wellness 2025', // Nombre del evento
+          '2025-05-20' // Fecha del evento (ajusta según sea necesario)
+        );
+
         // Guardar los datos en Firestore
         await adminDb.collection('tickets').doc(ticketId).set({
           ticketId,
@@ -65,19 +73,27 @@ export async function POST(request) {
           createdAt: new Date().toISOString(),
         });
 
-        // Enviar correo con Resend
+        // Enviar correo con Resend, incluyendo el QR y el pase
         const emailSent = await resend.emails.send({
           from: 'ivansangomez6@gmail.com',
           to: email,
-          subject: 'Tu entrada con QR',
+          subject: 'Tu entrada con QR y pase para Apple Wallet',
           html: `
             <h1>Gracias por tu compra</h1>
             <p>Escanea este código QR al ingresar:</p>
             <img src="${qrCode}" alt="QR Code" style="width:200px;height:200px;" />
+            <p>Adjunto encontrarás tu pase para Apple Wallet. Haz clic para añadirlo.</p>
           `,
+          attachments: [
+            {
+              filename: 'event-pass.pkpass',
+              content: passBuffer.toString('base64'), // Convertir el buffer a base64
+              contentType: 'application/vnd.apple.pkpass',
+            },
+          ],
         });
 
-        console.log('📨 Correo enviado:', emailSent);
+        console.log('📨 Correo enviado con pase:', emailSent);
 
         return new Response(JSON.stringify({ message: 'Webhook procesado con éxito' }), {
           status: 200,
