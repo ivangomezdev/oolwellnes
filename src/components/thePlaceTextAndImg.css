@@ -116,8 +116,10 @@
 
 .view-more-btn {
   padding: 10px 20px;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
   background-color: #9F9668;
   color: white;
+  font-family: "CalSans";
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -218,15 +220,15 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #f2e2ce;
   border-radius: 8px;
   width: 90%;
-  max-width: 1200px;
+ 
   max-height: 90vh;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  overflow-y: auto;
+  
   position: relative; /* Ensure content stays within overlay */
 }
 
@@ -311,6 +313,7 @@
   width: 200px;
   margin: 0 auto;
   background-color: #9F9668;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
   color: white;
   border: none;
   border-radius: 5px;
@@ -322,7 +325,7 @@
   margin-bottom: 10px;
   transition: background-color 0.3s;
   font-size: 20px;
-  font-family: "Broadsheet Regular";
+  font-family: "CalSans";
 }
 
 .buy-tickets-btn:hover {

@@ -108,6 +108,7 @@ const CheckoutPopup = ({ ticket, onClose }) => {
   return (
     <div className={styles.popup__overlay}>
       <div className={styles.popup__content}>
+        <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png" alt="" style={{top:"10px",width:"90px",position:"absolute"}} />
         <h2 className={styles.popup__title}>Complete Your Purchase</h2>
         <form onSubmit={handleSubmit} className={styles.popup__form}>
           <input
@@ -151,7 +152,9 @@ const CheckoutPopup = ({ ticket, onClose }) => {
 const FeaturesPopup = ({ ticket, onClose }) => {
   return (
     <div className={styles.popup__overlay}>
+
       <div className={styles.popup__content}>
+      <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png" alt="" style={{top:"10px",width:"90px",position:"absolute"}} />
         <h2 className={styles.popup__title}>{ticket.name}</h2>
         <ul className={styles.popup__features}>
           {ticket.features.map((feature, idx) => (
@@ -334,6 +337,7 @@ export default function TicketsPage() {
             src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746950529/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis.mp4"
             autoPlay
             muted
+            playsInline
             loop
           ></video>
           <div className={styles.tickets__titleAndTickets}>

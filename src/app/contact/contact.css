@@ -1,8 +1,19 @@
 .contact__content{
     background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984881/Fondo_Retiro_vqqpq4.png") ;
+    background-color: #9B956A;
+}
+
+@media(max-width:769px){
+   .contact__content{
+    background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984881/Fondo_Retiro_vqqpq4.png") ;
+margin-top: 90px;
+}  
 }
 
 .contactForm__title{
     font-family: "Broadsheet Regular";
     font-size: 50px;
+    margin-top: 80px;
+    text-align: center;
+    color: #F2E2C6;
 }
