@@ -3,7 +3,7 @@ import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
-import { createWalletPass } from '../../src/lib/wallet-pass'; // Importa la función
+import { createWalletPass } from '../../../../src/lib/wallet-pass'; // Importa la función
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-06-20',
