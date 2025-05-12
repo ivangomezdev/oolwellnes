@@ -3,7 +3,7 @@ import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
-import { createWalletPass } from '../../../../src/lib/wallet-pass'; // Importa la función
+import { createWalletPass } from '../../../lib/wallet-pass';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-06-20',
@@ -57,12 +57,18 @@ export async function POST(request) {
         const qrCode = await QRCode.toDataURL(qrContent);
 
         // Generar el pase de Apple Wallet
-        const passBuffer = await createWalletPass(
-          ticketId,
-          email,
-          'OOL Wellness 2025', // Nombre del evento
-          '2025-05-20' // Fecha del evento (ajusta según sea necesario)
-        );
+        let passBuffer;
+        try {
+          passBuffer = await createWalletPass(
+            ticketId,
+            email,
+            'OOL Wellness 2025',
+            '2025-05-20'
+          );
+        } catch (passError) {
+          console.error('Error generando el pase de Apple Wallet:', passError);
+          throw new Error('No se pudo generar el pase de Apple Wallet');
+        }
 
         // Guardar los datos en Firestore
         await adminDb.collection('tickets').doc(ticketId).set({
@@ -73,7 +79,7 @@ export async function POST(request) {
           createdAt: new Date().toISOString(),
         });
 
-        // Enviar correo con Resend, incluyendo el QR y el pase
+        // Enviar correo con Resend
         const emailSent = await resend.emails.send({
           from: 'ivansangomez6@gmail.com',
           to: email,
@@ -87,7 +93,7 @@ export async function POST(request) {
           attachments: [
             {
               filename: 'event-pass.pkpass',
-              content: passBuffer.toString('base64'), // Convertir el buffer a base64
+              content: passBuffer.toString('base64'),
               contentType: 'application/vnd.apple.pkpass',
             },
           ],
