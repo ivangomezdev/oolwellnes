@@ -1,16 +1,19 @@
 import { createWalletPass } from '@/lib/wallet-pass';
 import Stripe from 'stripe';
-import { Resend } from 'resend';
+import EmailJS from '@emailjs/nodejs';
 import { NextResponse } from 'next/server';
 
-// Inicializar Stripe y Resend
+// Inicializar Stripe y EmailJS
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const resend = new Resend(process.env.RESEND_API_KEY);
+EmailJS.init({
+  userId: process.env.EMAILJS_USER_ID,
+  serviceId: process.env.EMAILJS_SERVICE_ID,
+});
 
 export async function POST(req) {
   try {
     const sig = req.headers.get('stripe-signature');
-    const body = await req.text(); // Usar req.text() en App Router
+    const body = await req.text();
 
     let event;
     try {
@@ -31,23 +34,28 @@ export async function POST(req) {
 
       // Generar el pase
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate);
+      console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
-      // Enviar correo con el pase
-      await resend.emails.send({
-        from: 'tickets@oolwellness.com',
-        to: email,
-        subject: 'Tu entrada para OOL Wellness 2025',
-        text: 'Adjuntamos tu entrada para el evento. Por favor, añádela a tu Apple Wallet.',
-        attachments: [
-          {
-            filename: 'ticket.pkpass',
-            content: passBuffer.toString('base64'),
-            contentType: 'application/vnd.apple.pkpass',
-          },
-        ],
-      });
+      // Configurar los parámetros de la plantilla
+      const templateParams = {
+        to_email: email,
+        recipient_name: 'Cliente', // Placeholder para el nombre
+        event_name: eventName, // Placeholder para el nombre del evento
+        message: 'Adjuntamos tu entrada para el evento. Por favor, añádela a tu Apple Wallet.', // Placeholder para el mensaje
+        attachment: {
+          filename: 'ticket.pkpass',
+          content: passBuffer.toString('base64'),
+          contentType: 'application/vnd.apple.pkpass',
+        },
+      };
 
-      console.log('Correo enviado con el pase');
+      // Enviar correo con EmailJS
+      const response = await EmailJS.send(
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+      console.log('Correo enviado con el pase:', response);
     }
 
     return NextResponse.json({ message: 'Webhook recibido' }, { status: 200 });
