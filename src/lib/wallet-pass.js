@@ -1,12 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
-import { exec } from 'child_process';
-import util from 'util';
+import forge from 'node-forge';
 import AdmZip from 'adm-zip';
-
-// Promisify exec para usar async/await
-const execPromise = util.promisify(exec);
 
 // Directorios
 const CERTS_DIR = path.join(process.cwd(), 'src', 'certs');
@@ -101,31 +97,71 @@ async function createManifest(passDir, files) {
   return manifestPath;
 }
 
-// Función para firmar el manifest
+// Función para firmar el manifest con node-forge
 async function signManifest(manifestPath, passDir) {
   const certPath = path.join(CERTS_DIR, 'pass_certificate.pem');
   const keyPath = path.join(CERTS_DIR, 'pass_key.pem');
   const wwdrPath = path.join(CERTS_DIR, 'wwdr.pem');
   const signaturePath = path.join(passDir, 'signature');
 
-  // Verificar que los certificados existan
-  for (const cert of [certPath, keyPath, wwdrPath]) {
-    try {
-      await fs.access(cert);
-    } catch (err) {
-      console.error(`Certificado no encontrado: ${cert}`);
-      throw new Error(`Certificado no encontrado: ${cert}`);
-    }
+  // Leer certificados y clave privada
+  let certPem, keyPem, wwdrPem;
+  try {
+    certPem = await fs.readFile(certPath, 'utf8');
+    keyPem = await fs.readFile(keyPath, 'utf8');
+    wwdrPem = await fs.readFile(wwdrPath, 'utf8');
+  } catch (err) {
+    console.error(`Error leyendo certificados: ${err.message}`);
+    throw new Error(`No se pudo leer certificado: ${err.message}`);
   }
 
-  const command = `openssl smime -binary -sign -certfile "${wwdrPath}" -signer "${certPath}" -inkey "${keyPath}" -in "${manifestPath}" -out "${signaturePath}" -outform DER -passin pass:mypassword123`;
+  // Cargar certificados y clave privada
+  let cert, key, wwdrCert;
+  try {
+    cert = forge.pki.certificateFromPem(certPem);
+    key = forge.pki.decryptRsaPrivateKey(keyPem, 'mypassword123');
+    wwdrCert = forge.pki.certificateFromPem(wwdrPem);
+  } catch (err) {
+    console.error(`Error procesando certificados: ${err.message}`);
+    throw new Error(`No se pudo procesar certificado o clave: ${err.message}`);
+  }
+
+  // Leer manifest.json
+  const manifestContent = await fs.readFile(manifestPath);
+
+  // Crear firma PKCS #7
+  const p7 = forge.pkcs7.createSignedData();
+  p7.content = forge.util.createBuffer(manifestContent, 'utf8');
+  p7.technology = 'Apple';
+  p7.addCertificate(cert);
+  p7.addCertificate(wwdrCert);
+  p7.addSigner({
+    key: key,
+    certificate: cert,
+    digestAlgorithm: forge.pki.oids.sha1,
+    authenticatedAttributes: [
+      {
+        type: forge.pki.oids.contentType,
+        value: forge.pki.oids.data,
+      },
+      {
+        type: forge.pki.oids.messageDigest,
+      },
+      {
+        type: forge.pki.oids.signingTime,
+        value: new Date(),
+      },
+    ],
+  });
 
   try {
-    await execPromise(command);
-    console.log('Manifest firmado correctamente');
+    p7.sign({ detached: true });
+    const der = forge.asn1.toDer(p7.toAsn1()).getBytes();
+    await fs.writeFile(signaturePath, Buffer.from(der, 'binary'));
+    console.log('Manifest firmado correctamente con node-forge');
   } catch (err) {
-    console.error('Error firmando el manifest:', err);
-    throw new Error(`Error firmando el manifest: ${err.message}`);
+    console.error(`Error firmando manifest con node-forge: ${err.message}`);
+    throw new Error(`No se pudo firmar el manifest: ${err.message}`);
   }
 }
 
