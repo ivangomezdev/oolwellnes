@@ -41,7 +41,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
 
     console.log('Certificados configurados, añadiendo imagen...');
 
-    pass.addFile('icon.png', fs.readFileSync('./images/2525.png'));
+    pass.addFile('icon.png', fs.readFileSync('./images/icon.png'));
 
     console.log('Imagen añadida, generando pase...');
 
