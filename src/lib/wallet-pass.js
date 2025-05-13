@@ -46,12 +46,6 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Configurar certificados
     template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
 
-    // Añadir imágenes
-    template.images({
-      icon: fs.readFileSync(iconPath),
-      logo: fs.readFileSync(logoPath),
-    });
-
     // Configurar campos del pase
     template.primaryFields.add({
       key: 'event',
@@ -75,6 +69,13 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
         if (err) {
           return reject(err);
         }
+
+        // Añadir imágenes al pase
+        pass.files({
+          'icon.png': fs.readFileSync(iconPath),
+          'logo.png': fs.readFileSync(logoPath),
+        });
+
         pass.generate((err, buffer) => {
           if (err) {
             return reject(err);
