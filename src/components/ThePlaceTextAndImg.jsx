@@ -17,37 +17,31 @@ const ThePlaceTextAndImg = () => {
     {
       id: 1,
       name: "Suite Garden",
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONMUSICA-MR-EC-002_ttkosh.jpg",
       description: "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo: "Vista al jardín 60 m2 I 645.8 ft2 I Capacidad máxima hasta 3 adultos I 2 adultos + 1 menor de 16 a 17 años I 1 adulto + 2 menores de 16 a 17 años I Shuttle aeropuerto - hotel - aeropuerto cada 30 minutos de 9:00 a 17:00 horas y cada 60 minutos de 17:00 a 9:00 horas I ALL-FUN INCLUSIVE",
       gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104273/HABITACIONPIRAMIDE-Sug-EC-001_ukt5zv.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONPAZ-ADA-EC-001_rmctqv.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONPIRAMIDE-SR-EC-003_truolf.jpg",
+       
       ],
     },
     {
       id: 2,
       name: "Suite Ocean Front",
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-JSOF-EC-002_ofssvv.jpg",
       description: "A cozy and earthy space designed for intimate gatherings and events.",
       additionalInfo: "The Terra Room features natural wood finishes and warm lighting I creating a welcoming environment for private dinners or small celebrations.",
       gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADABA%C3%91O-EC-001_w9sa7q.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADAKING-EC-002_acy1oo.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONPIRAMIDE-MSOV-EC-002_lfwhlz.jpg",
+        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq.jpg"
       ],
     },
-    {
-      id: 3,
-      name: "Suite Ocean Front (Adultos)",
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
-      description: "Experience tranquility in our moon-inspired room with serene decor.",
-      additionalInfo: "Inspired by lunar tranquility I the Lua Room is perfect for meditation sessions or quiet retreats I with soft colors and minimalist design.",
-      gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhluswBou.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg",
-      ],
-    },
+   
   ];
 
   useEffect(() => {

@@ -25,7 +25,7 @@ const TextAndPhoto = () => {
     <div className="textAndPhoto__cont">
       <div className="textAndPhoto__textCont">
         <p>
-          En Óol, creemos que el verdadero viaje es hacia el interior.{' '}
+          En Óol, creemos que el verdadero viaje es hacia el interior.{' '} <br />
           <span style={{ color: '#F2E2C6' }}>
             Este retiro es una invitación a pausar, soltar el ruido y sumergirte en una experiencia que despierta, nutre y transforma en comunidad.
           </span>

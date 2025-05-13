@@ -25,7 +25,14 @@ export default function VideoWLogo() {
      
       <div className="video-w-logo__container">
         <div className="video-w-logo__video-section">
-          <div className={`video-w-logo__title ${titleMoved ? "video-w-logo__title--hidden" : ""}`}>THIS IS OOL</div>
+         <div className={`video-w-logo__overlay ${titleMoved ? "video-w-logo__overlay--hidden" : ""}`}>
+  <img
+    src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745896756/oollogo-removebg-preview_ehhgld.png"
+    alt="OOL Logo"
+    className="video-w-logo__logo"
+  />
+</div>
+
           <div className="video-w-logo__video-placeholder"></div>
         </div>
         <div className="video-w-logo__text-section">

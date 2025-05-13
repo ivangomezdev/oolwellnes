@@ -23,6 +23,14 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Log para depurar archivos en src/certs/
     console.log('Archivos en src/certs:', fs.readdirSync(path.join(process.cwd(), 'src', 'certs')));
 
+    // Log para depurar PASS_KEY_PASSWORD
+    console.log('PASS_KEY_PASSWORD configurada:', !!process.env.PASS_KEY_PASSWORD);
+
+    // Verificar que PASS_KEY_PASSWORD esté definida
+    if (process.env.PASS_KEY_PASSWORD === undefined) {
+      throw new Error('PASS_KEY_PASSWORD no está configurada en las variables de entorno');
+    }
+
     // Crear el pase
     const pass = new PKPass(
       {
@@ -33,14 +41,14 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
         wwdr: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'wwdr.pem')),
         signerCert: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_certificate.pem')),
         signerKey: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_key.pem')),
-        signerKeyPassphrase: process.env.PASS_KEY_PASSWORD || '',
+        signerKeyPassphrase: process.env.PASS_KEY_PASSWORD,
       },
       {
         formatVersion: 1,
-        passTypeIdentifier: 'pass.com.oolwellness.event2025',
-        teamIdentifier: '6UM33LQATP',
+        passTypeIdentifier: 'pass.com.oolwellness.event2025', // Pass Type ID registrado
+        teamIdentifier: '6UM33LQATP', // Tu Team ID
         organizationName: 'OOL Wellness',
-        description: 'Entrada para OOL Wellness 2025',
+        description: 'Entrada para OOL Wellness 2025', // Descripción del pase
         serialNumber: ticketId,
         backgroundColor: 'rgb(255, 255, 255)',
         foregroundColor: 'rgb(0, 0, 0)',
