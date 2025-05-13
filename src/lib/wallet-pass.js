@@ -1,4 +1,4 @@
-import { PKPass } from 'passkit-generator';
+import { Template } from '@walletpass/pass-js';
 import fs from 'fs';
 import path from 'path';
 
@@ -25,11 +25,9 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     const certFiles = fs.readdirSync(certsPath);
     console.log('Archivos en src/certs:', certFiles);
 
-    const requiredCerts = ['pass_certificate.pem', 'pass_key.pem', 'wwdr.pem'];
-    for (const cert of requiredCerts) {
-      if (!certFiles.includes(cert)) {
-        throw new Error(`Falta certificado ${cert} en ${certsPath}`);
-      }
+    const passCertPath = path.join(certsPath, 'pass.p12');
+    if (!fs.existsSync(passCertPath)) {
+      throw new Error(`Falta certificado pass.p12 en ${certsPath}`);
     }
 
     // Verificar PASS_KEY_PASSWORD
@@ -37,35 +35,35 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
       console.log('Advertencia: PASS_KEY_PASSWORD no está configurada. Se asumirá que el certificado no requiere contraseña.');
     }
 
-    // Crear el pase
-    const pass = new PKPass({
-      wwdr: fs.readFileSync(path.join(certsPath, 'wwdr.pem')),
-      signerCert: fs.readFileSync(path.join(certsPath, 'pass_certificate.pem')),
-      signerKey: fs.readFileSync(path.join(certsPath, 'pass_key.pem')),
-      signerKeyPassphrase: process.env.PASS_KEY_PASSWORD || '',
+    // Crear el template del pase
+    const template = new Template('eventTicket', {
+      passTypeIdentifier: 'pass.com.oolwellness.event2025',
+      teamIdentifier: '6UM33LQATP',
+      organizationName: 'OOL Wellness',
+      description: 'Entrada para OOL Wellness 2025',
+      serialNumber: ticketId,
+      backgroundColor: 'rgb(255, 255, 255)',
+      foregroundColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgb(0, 0, 0)',
     });
 
-    // Configurar metadatos del pase
-    pass.setPassTypeIdentifier('pass.com.oolwellness.event2025');
-    pass.setTeamIdentifier('6UM33LQATP');
-    pass.setSerialNumber(ticketId);
-    pass.setOrganizationName('OOL Wellness');
-    pass.setDescription('Entrada para OOL Wellness 2025');
-    pass.setBackgroundColor('rgb(255, 255, 255)');
-    pass.setForegroundColor('rgb(0, 0, 0)');
-    pass.setLabelColor('rgb(0, 0, 0)');
+    // Configurar certificados
+    template.setCertificate(
+      fs.readFileSync(passCertPath),
+      process.env.PASS_KEY_PASSWORD || ''
+    );
 
     // Añadir imágenes
-    pass.addBuffer('icon.png', fs.readFileSync(iconPath));
-    pass.addBuffer('logo.png', fs.readFileSync(logoPath));
+    template.images.add('icon', fs.readFileSync(iconPath));
+    template.images.add('logo', fs.readFileSync(logoPath));
 
     // Configurar campos del pase
-    pass.primaryFields.push({
+    template.primaryFields.add({
       key: 'event',
       label: 'Evento',
       value: eventName,
     });
-    pass.auxiliaryFields.push({
+    template.auxiliaryFields.add({
       key: 'date',
       label: 'Fecha',
       value: eventDate,
@@ -74,7 +72,8 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     });
 
     // Generar el pase
-    const buffer = await pass.getAsBuffer();
+    const pass = await template.createPass();
+    const buffer = await pass.asBuffer();
 
     console.log('Pase generado exitosamente');
     return buffer;

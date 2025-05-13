@@ -47,6 +47,8 @@
   height: 400px;
 }
 
+
+
 .carousel-track-container {
   width: 100%;
   overflow: hidden;
@@ -86,6 +88,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 20px !important;
 }
 
 .image-overlay {

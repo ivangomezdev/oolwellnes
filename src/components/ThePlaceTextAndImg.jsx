@@ -198,7 +198,7 @@ const ThePlaceTextAndImg = () => {
             >
               {places.map((place) => (
                 <div
-                  style={{ height: "300px" }}
+                
                   className="carousel-slide"
                   key={place.id}
                   onClick={() => openPopup(place)}
