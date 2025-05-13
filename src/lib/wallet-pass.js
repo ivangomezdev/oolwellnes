@@ -1,4 +1,3 @@
-// src/lib/wallet-pass.js (mínimo)
 const { Pass } = require('@walletpass/pass-js');
 const fs = require('fs');
 
@@ -6,14 +5,14 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
 
-    if (!fs.existsSync('./images/2525.png')) {
-      throw new Error('Falta imagen 2525.png en images/');
+    if (!fs.existsSync('../images/icon.png')) {
+      throw new Error('Falta imagen icon.png en images/');
     }
 
     const pass = new Pass({
       model: 'eventTicket',
-      passTypeIdentifier: 'pass.com.oolwellness.event2025', // TU Pass Type ID
-      teamIdentifier: '6UM33LQATP', // TU Team ID
+      passTypeIdentifier: 'pass.com.oolwellness.event2025',
+      teamIdentifier: '6UM33LQATP',
       organizationName: 'OOL Wellness',
       description: 'Entrada para OOL Wellness 2025',
       serialNumber: ticketId,
@@ -41,7 +40,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
 
     console.log('Certificados configurados, añadiendo imagen...');
 
-    pass.addFile('icon.png', fs.readFileSync('./images/icon.png'));
+    pass.addFile('icon.png', fs.readFileSync('../images/icon.png'));
 
     console.log('Imagen añadida, generando pase...');
 
