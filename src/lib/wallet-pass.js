@@ -7,7 +7,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     const pass = new Pass({
       model: 'eventTicket',
       passTypeIdentifier: 'pass.com.oolwellness.event2025', // Reemplaza con TU Pass Type ID
-      teamIdentifier: 'TU_TEAM_ID', // Reemplaza con TU Team ID
+      teamIdentifier: '6UM33LQATP', // Reemplaza con TU Team ID
       organizationName: 'OOL Wellness',
       description: 'Entrada para OOL Wellness 2025',
       serialNumber: ticketId,
