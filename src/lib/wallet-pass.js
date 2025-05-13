@@ -1,13 +1,13 @@
 const { Pass } = require('@walletpass/pass-js');
 const fs = require('fs');
-
+import "../images/logo.png"
 async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase de Apple Wallet', { ticketId, email, eventName, eventDate });
 
     // Verificar existencia de imágenes
     if (!fs.existsSync('../images/icon.png') || !fs.existsSync('../images/logo.png')) {
-      throw new Error('Faltan imágenes icon.png o logo.png en src/images/');
+      throw new Error('Faltan imágenes 2525.png o 591.png en images/');
     }
 
     const pass = new Pass({
