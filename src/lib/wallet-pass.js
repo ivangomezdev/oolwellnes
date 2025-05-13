@@ -6,7 +6,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     console.log('Iniciando generación del pase de Apple Wallet', { ticketId, email, eventName, eventDate });
 
     // Verificar existencia de imágenes
-    if (!fs.existsSync('./src/images/icon.png') || !fs.existsSync('./src/images/logo.png')) {
+    if (!fs.existsSync('../images/icon.png') || !fs.existsSync('../images/logo.png')) {
       throw new Error('Faltan imágenes icon.png o logo.png en src/images/');
     }
 
