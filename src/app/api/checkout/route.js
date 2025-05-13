@@ -1,89 +1,50 @@
-const Passbook = require('passbook');
-const fs = require('fs');
-const path = require('path');
+// api/checkout/route.js
+import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
 
-async function createWalletPass(ticketId, email, eventName, eventDate) {
+// Inicializa Stripe con la clave secreta
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2024-06-20', // Usa la versión más reciente de la API
+});
+
+export async function POST(request) {
   try {
-    console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
+    // Obtén los datos del cuerpo de la solicitud
+    const { priceId, email } = await request.json();
 
-    const iconPath = path.join(process.cwd(), 'public', 'images', 'icon.png');
-    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
-
-    if (!fs.existsSync(iconPath)) {
-      throw new Error(`Falta imagen icon.png en ${iconPath}`);
+    if (!priceId || !email) {
+      return NextResponse.json(
+        { error: 'Faltan priceId o email' },
+        { status: 400 }
+      );
     }
 
-    if (!fs.existsSync(logoPath)) {
-      throw new Error(`Falta imagen logo.png en ${logoPath}`);
-    }
 
-    if (!process.env.PASS_KEY_PASSWORD) {
-      throw new Error('PASS_KEY_PASSWORD no está configurada en las variables de entorno');
-    }
-
-    console.log('Archivos en src/certs:', fs.readdirSync(path.join(process.cwd(), 'src', 'certs')));
-    console.log('PASS_KEY_PASSWORD configurada:', !!process.env.PASS_KEY_PASSWORD);
-
-    const template = Passbook('eventTicket', {
-      passTypeIdentifier: 'pass.com.oolwellness.event2025',
-      teamIdentifier: '6UM33LQATP',
-      organizationName: 'OOL Wellness',
-      description: 'Entrada para OOL Wellness 2025',
-      serialNumber: ticketId,
-      backgroundColor: 'rgb(255, 255, 255)',
-      foregroundColor: 'rgb(0, 0, 0)',
-      labelColor: 'rgb(0, 0, 0)',
+    // Crea una sesión de checkout en Stripe
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'], // Métodos de pago aceptados
+      line_items: [
+        {
+          price: priceId, // ID del precio desde el frontend
+          quantity: 1, // Cantidad fija (1 boleto)
+        },
+      ],
+      customer_email: email, // Email del cliente
+      mode: 'payment', // Modo de pago único (no suscripción)
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets`,
+      metadata: {
+        ticketType: priceId, // Puedes usar esto para rastrear el tipo de boleto
+      },
     });
 
-    // Configurar certificados
-    template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
-
-    // Añadir imágenes al template
-    template.images({
-      'icon.png': fs.readFileSync(iconPath),
-      'logo.png': fs.readFileSync(logoPath),
-    });
-
-    // Agregar campos al pase
-    template.primaryFields.add({
-      key: 'event',
-      label: 'Evento',
-      value: eventName,
-    });
-
-    template.auxiliaryFields.add({
-      key: 'date',
-      label: 'Fecha',
-      value: eventDate,
-      dateStyle: 'medium',
-      timeStyle: 'none',
-    });
-
-    console.log('Pase creado, generando...');
-
-    // Generar pase como buffer
-    const buffer = await new Promise((resolve, reject) => {
-      template.createPass((err, pass) => {
-        if (err) return reject(err);
-
-        pass.generate((err, buffer) => {
-          if (err) return reject(err);
-          resolve(buffer);
-        });
-      });
-    });
-
-    console.log('Pase generado exitosamente');
-    return buffer;
-  } catch (err) {
-    console.error('Error detallado generando el pase:', {
-      message: err.message,
-      stack: err.stack,
-      ticketId,
-      email,
-    });
-    throw new Error('No se pudo generar el pase: ' + err.message);
+    // Retorna el ID de la sesión
+    return NextResponse.json({ sessionId: session.id });
+  } catch (error) {
+    console.error('Error creando sesión de Stripe:', error);
+    return NextResponse.json(
+      { error: error.message || 'Error interno del servidor' },
+      { status: 500 }
+    );
   }
 }
-
-module.exports = { createWalletPass };
