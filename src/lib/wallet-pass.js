@@ -53,9 +53,9 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
         backgroundColor: 'rgb(255, 255, 255)',
         foregroundColor: 'rgb(0, 0, 0)',
         labelColor: 'rgb(0, 0, 0)',
-        // Especificar explícitamente el tipo de pase
+        passType: 'eventTicket', // Añadir explícitamente el tipo de pase
         eventTicket: {
-          headerFields: [], // Opcional, pero incluimos para estructura completa
+          headerFields: [],
           primaryFields: [
             {
               key: 'event',
@@ -63,7 +63,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
               value: eventName,
             },
           ],
-          secondaryFields: [], // Opcional
+          secondaryFields: [],
           auxiliaryFields: [
             {
               key: 'date',
@@ -73,7 +73,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
               timeStyle: 'PKDateStyleNone',
             },
           ],
-          backFields: [], // Opcional
+          backFields: [],
         },
       }
     );
