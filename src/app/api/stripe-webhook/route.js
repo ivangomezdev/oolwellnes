@@ -1,4 +1,4 @@
-import { createWalletPass } from '../../../lib/wallet-pass'; // Ajusta la ruta según tu estructura
+import { createWalletPass } from '../../../lib/wallet-pass';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
 
@@ -36,7 +36,7 @@ export async function POST(request) {
         from: 'tickets@oolwellness.com',
         to: email,
         subject: 'Tu entrada para OOL Wellness 2025',
-        text: 'Adjuntamos tu entrada para el evento.',
+        text: 'Adjuntamos tu entrada para el evento. Por favor, añádela a tu Apple Wallet.',
         attachments: [
           {
             filename: 'ticket.pkpass',
