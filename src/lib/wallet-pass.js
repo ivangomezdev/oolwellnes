@@ -1,6 +1,6 @@
 const { Pass } = require('@walletpass/pass-js');
 const fs = require('fs');
-import "../images/2525.png"
+
 async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase de Apple Wallet', { ticketId, email, eventName, eventDate });
