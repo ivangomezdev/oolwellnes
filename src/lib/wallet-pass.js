@@ -4,10 +4,12 @@ const fs = require('fs');
 
 async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
+    console.log('Iniciando generación del pase de Apple Wallet', { ticketId, email, eventName, eventDate });
+
     const pass = new Pass({
       model: 'eventTicket',
       passTypeIdentifier: 'pass.com.oolwellness.event2025', // Reemplaza con TU Pass Type ID
-      teamIdentifier: '6UM33LQATP', // Reemplaza con TU Team ID
+      teamIdentifier: 'TU_TEAM_ID', // Reemplaza con TU Team ID
       organizationName: 'OOL Wellness',
       description: 'Entrada para OOL Wellness 2025',
       serialNumber: ticketId,
@@ -15,6 +17,8 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       foregroundColor: 'rgb(0, 0, 0)',
       labelColor: 'rgb(0, 0, 0)',
     });
+
+    console.log('Pase creado, añadiendo estructura...');
 
     // Añadir campos al pase
     pass.addStructure({
@@ -34,12 +38,16 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       ],
     });
 
+    console.log('Estructura añadida, añadiendo código QR...');
+
     // Añadir código QR
-    pass.addBarcode({
+    pass.addBarcode ({
       message: `https://oolwellness.vercel.app/verify-ticket/${ticketId}`,
       format: 'PKBarcodeFormatQR',
       messageEncoding: 'iso-8859-1',
     });
+
+    console.log('Código QR añadido, configurando certificados...');
 
     // Configurar certificados
     pass.setCertificates({
@@ -49,16 +57,26 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       password: '', // Ajusta si usaste una contraseña
     });
 
+    console.log('Certificados configurados, añadiendo imágenes...');
+
     // Añadir imágenes
     pass.addFile('icon.png', fs.readFileSync('../images/2525.png'));
     pass.addFile('logo.png', fs.readFileSync('../images/591.png'));
 
+    console.log('Imágenes añadidas, generando pase...');
+
     // Generar el pase
     const buffer = await pass.generate();
+    console.log('Pase generado exitosamente');
     return buffer;
   } catch (err) {
-    console.error('Error generando el pase de Apple Wallet:', err);
-    throw err;
+    console.error('Error detallado generando el pase de Apple Wallet:', {
+      message: err.message,
+      stack: err.stack,
+      ticketId,
+      email,
+    });
+    throw new Error('No se pudo generar el pase de Apple Wallet: ' + err.message);
   }
 }
 
