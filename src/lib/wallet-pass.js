@@ -46,21 +46,6 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Configurar certificados
     template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
 
-    // Configurar campos del pase
-    template.primaryFields.add({
-      key: 'event',
-      label: 'Evento',
-      value: eventName,
-    });
-
-    template.auxiliaryFields.add({
-      key: 'date',
-      label: 'Fecha',
-      value: eventDate,
-      dateStyle: 'medium',
-      timeStyle: 'none',
-    });
-
     console.log('Pase creado, generando...');
 
     // Generar el pase como buffer
@@ -75,6 +60,25 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
           'icon.png': fs.readFileSync(iconPath),
           'logo.png': fs.readFileSync(logoPath),
         });
+
+        // Configurar campos del pase
+        pass.fields.primaryFields = [
+          {
+            key: 'event',
+            label: 'Evento',
+            value: eventName,
+          },
+        ];
+
+        pass.fields.auxiliaryFields = [
+          {
+            key: 'date',
+            label: 'Fecha',
+            value: eventDate,
+            dateStyle: 'medium',
+            timeStyle: 'none',
+          },
+        ];
 
         pass.generate((err, buffer) => {
           if (err) {
