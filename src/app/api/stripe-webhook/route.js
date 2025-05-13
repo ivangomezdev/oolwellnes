@@ -1,4 +1,3 @@
-// api/stripe-webhook/route.js
 import { adminDb } from '../../../lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
@@ -67,7 +66,7 @@ export async function POST(request) {
           );
         } catch (passError) {
           console.error('Error generando el pase de Apple Wallet:', passError);
-          throw new Error('No se pudo generar el pase de Apple Wallet');
+          throw new Error('No se pudo generar el pase de Apple Wallet: ' + passError.message);
         }
 
         // Guardar los datos en Firestore
