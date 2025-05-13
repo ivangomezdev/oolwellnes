@@ -1,14 +1,10 @@
 import { createWalletPass } from '@/lib/wallet-pass';
+import { sendTicketEmail } from '@/lib/nodemailer';
 import Stripe from 'stripe';
-import EmailJS from '@emailjs/nodejs';
 import { NextResponse } from 'next/server';
 
-// Inicializar Stripe y EmailJS
+// Inicializar Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-EmailJS.init({
-  userId: process.env.EMAILJS_USER_ID,
-  serviceId: process.env.EMAILJS_SERVICE_ID,
-});
 
 export async function POST(req) {
   try {
@@ -36,26 +32,9 @@ export async function POST(req) {
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
-      // Configurar los parámetros de la plantilla
-      const templateParams = {
-        to_email: email,
-        recipient_name: 'Cliente', // Placeholder para el nombre
-        event_name: eventName, // Placeholder para el nombre del evento
-        message: 'Adjuntamos tu entrada para el evento. Por favor, añádela a tu Apple Wallet.', // Placeholder para el mensaje
-        attachment: {
-          filename: 'ticket.pkpass',
-          content: passBuffer.toString('base64'),
-          contentType: 'application/vnd.apple.pkpass',
-        },
-      };
-
-      // Enviar correo con EmailJS
-      const response = await EmailJS.send(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
-        templateParams
-      );
-      console.log('Correo enviado con el pase:', response);
+      // Enviar correo con Nodemailer
+      const info = await sendTicketEmail(email, ticketId, eventName, eventDate, passBuffer);
+      console.log('Correo enviado con el pase:', info);
     }
 
     return NextResponse.json({ message: 'Webhook recibido' }, { status: 200 });
