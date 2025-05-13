@@ -1,4 +1,4 @@
-import { createWalletPass } from '../../../src/lib/wallet-pass'; // Ajusta la ruta según tu estructura
+import { createWalletPass } from '../../../lib/wallet-pass'; // Ajusta la ruta según tu estructura
 import Stripe from 'stripe';
 import { Resend } from 'resend';
 
