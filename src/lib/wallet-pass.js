@@ -1,4 +1,4 @@
-const { Pass } = require('@walletpass/pass-js');
+const { Pass, PassStyle } = require('@walletpass/pass-js');
 const fs = require('fs');
 const path = require('path');
 
@@ -6,15 +6,13 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
 
-    // Usar process.cwd() para obtener la raíz del proyecto en producción
     const iconPath = path.join(process.cwd(), 'public', 'images', 'icon.png');
-    console.log('Buscando icon.png en:', iconPath); // Log para depurar
+    console.log('Buscando icon.png en:', iconPath);
     if (!fs.existsSync(iconPath)) {
       throw new Error(`Falta imagen icon.png en ${iconPath}`);
     }
 
     const pass = new Pass({
-      model: 'eventTicket',
       passTypeIdentifier: 'pass.com.oolwellness.event2025',
       teamIdentifier: '6UM33LQATP',
       organizationName: 'OOL Wellness',
@@ -24,6 +22,9 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       foregroundColor: 'rgb(0, 0, 0)',
       labelColor: 'rgb(0, 0, 0)',
     });
+
+    // Configurar explícitamente el estilo del pase
+    pass.passStyle = PassStyle.eventTicket;
 
     console.log('Pase creado, añadiendo campo...');
 
