@@ -1,4 +1,4 @@
-const { Pass, PassStyle } = require('@walletpass/pass-js');
+const { PKPass } = require('passkit-generator');
 const fs = require('fs');
 const path = require('path');
 
@@ -6,50 +6,70 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
 
+    // Verificar la existencia de icon.png
     const iconPath = path.join(process.cwd(), 'public', 'images', 'icon.png');
     console.log('Buscando icon.png en:', iconPath);
     if (!fs.existsSync(iconPath)) {
       throw new Error(`Falta imagen icon.png en ${iconPath}`);
     }
 
-    const pass = new Pass({
-      passTypeIdentifier: 'pass.com.oolwellness.event2025',
-      teamIdentifier: '6UM33LQATP',
-      organizationName: 'OOL Wellness',
-      description: 'Entrada para OOL Wellness 2025',
-      serialNumber: ticketId,
-      backgroundColor: 'rgb(255, 255, 255)',
-      foregroundColor: 'rgb(0, 0, 0)',
-      labelColor: 'rgb(0, 0, 0)',
-    });
+    // Opcional: Verificar logo.png si es necesario
+    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
+    console.log('Buscando logo.png en:', logoPath);
+    if (!fs.existsSync(logoPath)) {
+      throw new Error(`Falta imagen logo.png en ${logoPath}`);
+    }
 
-    // Configurar explícitamente el estilo del pase
-    pass.passStyle = PassStyle.eventTicket;
+    // Crear el pase
+    const pass = new PKPass(
+      {
+        // Archivos estáticos (imágenes)
+        icon: fs.readFileSync(iconPath),
+        logo: fs.readFileSync(logoPath),
+      },
+      {
+        // Certificados
+        wwdr: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'wwdr.pem')),
+        signerCert: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_certificate.pem')),
+        signerKey: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_key.pem')),
+        signerKeyPassphrase: process.env.PASS_KEY_PASSWORD || '',
+      },
+      {
+        // Datos del pase
+        formatVersion: 1,
+        passTypeIdentifier: 'pass.com.oolwellness.event2025',
+        teamIdentifier: '6UM33LQATP',
+        organizationName: 'OOL Wellness',
+        description: 'Entrada para OOL Wellness 2025',
+        serialNumber: ticketId,
+        backgroundColor: 'rgb(255, 255, 255)',
+        foregroundColor: 'rgb(0, 0, 0)',
+        labelColor: 'rgb(0, 0, 0)',
+        eventTicket: {
+          primaryFields: [
+            {
+              key: 'event',
+              label: 'Evento',
+              value: eventName,
+            },
+          ],
+          auxiliaryFields: [
+            {
+              key: 'date',
+              label: 'Fecha',
+              value: eventDate,
+              dateStyle: 'PKDateStyleMedium',
+              timeStyle: 'PKDateStyleNone',
+            },
+          ],
+        },
+      }
+    );
 
-    console.log('Pase creado, añadiendo campo...');
+    console.log('Pase creado, generando...');
 
-    pass.primaryFields.push({
-      key: 'event',
-      label: 'Evento',
-      value: eventName,
-    });
-
-    console.log('Campo añadido, configurando certificados...');
-
-    pass.setCertificates({
-      certificate: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_certificate.pem')),
-      key: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_key.pem')),
-      wwdr: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'wwdr.pem')),
-      password: process.env.PASS_KEY_PASSWORD || '',
-    });
-
-    console.log('Certificados configurados, añadiendo imagen...');
-
-    pass.addFile('icon.png', fs.readFileSync(iconPath));
-
-    console.log('Imagen añadida, generando pase...');
-
-    const buffer = await pass.generate();
+    // Generar el pase como buffer
+    const buffer = await pass.getAsBuffer();
     console.log('Pase generado exitosamente');
     return buffer;
   } catch (err) {
