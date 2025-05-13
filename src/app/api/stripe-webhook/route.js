@@ -1,22 +1,23 @@
-import { createWalletPass } from '../../../lib/wallet-pass';
+import { createWalletPass } from '@/lib/wallet-pass';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
+import { NextResponse } from 'next/server';
 
 // Inicializar Stripe y Resend
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request) {
+export async function POST(req) {
   try {
-    const sig = request.headers.get('stripe-signature');
-    const body = await request.text();
+    const sig = req.headers.get('stripe-signature');
+    const body = await req.text(); // Usar req.text() en App Router
 
     let event;
     try {
       event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch (err) {
       console.error('Error verificando webhook:', err);
-      return new Response(`Webhook Error: ${err.message}`, { status: 400 });
+      return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
     }
 
     if (event.type === 'checkout.session.completed') {
@@ -49,9 +50,9 @@ export async function POST(request) {
       console.log('Correo enviado con el pase');
     }
 
-    return new Response('Webhook recibido', { status: 200 });
+    return NextResponse.json({ message: 'Webhook recibido' }, { status: 200 });
   } catch (err) {
     console.error('❌ Error procesando el ticket:', err);
-    return new Response(`Error: ${err.message}`, { status: 500 });
+    return NextResponse.json({ error: `Error: ${err.message}` }, { status: 500 });
   }
 }
