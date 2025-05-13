@@ -1,6 +1,6 @@
 const { Pass } = require('@walletpass/pass-js');
 const fs = require('fs');
-
+import "../images/2525.png"
 async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase de Apple Wallet', { ticketId, email, eventName, eventDate });
@@ -59,8 +59,8 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     console.log('Certificados configurados, añadiendo imágenes...');
 
     // Añadir imágenes
-    pass.addFile('icon.png', fs.readFileSync('../images/591.png'));
-    pass.addFile('logo.png', fs.readFileSync('../images/2525.png'));
+    pass.addFile('icon.png', fs.readFileSync('../images/icon.png'));
+    pass.addFile('logo.png', fs.readFileSync('../images/logo.png'));
 
     console.log('Imágenes añadidas, generando pase...');
 
