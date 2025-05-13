@@ -1,8 +1,8 @@
-const Passbook = require('passbook');
-const fs = require('fs');
-const path = require('path');
+import { Template } from '@walletpass/pass-js';
+import fs from 'fs';
+import path from 'path';
 
-async function createWalletPass(ticketId, email, eventName, eventDate) {
+export async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
 
@@ -23,16 +23,13 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Log para depurar archivos en src/certs/
     console.log('Archivos en src/certs:', fs.readdirSync(path.join(process.cwd(), 'src', 'certs')));
 
-    // Log para depurar PASS_KEY_PASSWORD
-    console.log('PASS_KEY_PASSWORD configurada:', !!process.env.PASS_KEY_PASSWORD);
-
-    // Verificar que PASS_KEY_PASSWORD esté definida
-    if (process.env.PASS_KEY_PASSWORD === undefined) {
+    // Verificar PASS_KEY_PASSWORD
+    if (!process.env.PASS_KEY_PASSWORD) {
       throw new Error('PASS_KEY_PASSWORD no está configurada en las variables de entorno');
     }
 
     // Crear el template del pase
-    const template = Passbook('eventTicket', {
+    const template = new Template('eventTicket', {
       passTypeIdentifier: 'pass.com.oolwellness.event2025',
       teamIdentifier: '6UM33LQATP',
       organizationName: 'OOL Wellness',
@@ -44,57 +41,32 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     });
 
     // Configurar certificados
-    template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
+    template.setCertificate(
+      fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass.p12')),
+      process.env.PASS_KEY_PASSWORD
+    );
 
-    console.log('Pase creado, generando...');
+    // Añadir imágenes
+    template.images.add('icon', fs.readFileSync(iconPath));
+    template.images.add('logo', fs.readFileSync(logoPath));
 
-    // Generar el pase como buffer con tiempo de espera
-    const buffer = await new Promise((resolve, reject) => {
-      // Establecer un tiempo de espera de 30 segundos
-      const timeout = setTimeout(() => {
-        reject(new Error('Tiempo de espera agotado al generar el pase (30 segundos)'));
-      }, 120000);
-
-      template.createPass((err, pass) => {
-        if (err) {
-          clearTimeout(timeout);
-          return reject(err);
-        }
-
-        // Añadir imágenes al pase
-        pass.files({
-          'icon.png': fs.readFileSync(iconPath),
-          'logo.png': fs.readFileSync(logoPath),
-        });
-
-        // Configurar campos del pase
-        pass.fields.primaryFields = [
-          {
-            key: 'event',
-            label: 'Evento',
-            value: eventName,
-          },
-        ];
-
-        pass.fields.auxiliaryFields = [
-          {
-            key: 'date',
-            label: 'Fecha',
-            value: eventDate,
-            dateStyle: 'medium',
-            timeStyle: 'none',
-          },
-        ];
-
-        pass.generate((err, buffer) => {
-          clearTimeout(timeout);
-          if (err) {
-            return reject(err);
-          }
-          resolve(buffer);
-        });
-      });
+    // Configurar campos del pase
+    template.primaryFields.add({
+      key: 'event',
+      label: 'Evento',
+      value: eventName,
     });
+    template.auxiliaryFields.add({
+      key: 'date',
+      label: 'Fecha',
+      value: eventDate,
+      dateStyle: 'PKDateStyleMedium',
+      timeStyle: 'PKDateStyleNone',
+    });
+
+    // Generar el pase
+    const pass = await template.createPass();
+    const buffer = await pass.asBuffer();
 
     console.log('Pase generado exitosamente');
     return buffer;
@@ -105,9 +77,6 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       ticketId,
       email,
     });
-    throw new Error('No se pudo generar el pase: ' + err.message);
+    throw new Error(`No se pudo generar el pase: ${err.message}`);
   }
 }
-
-console.log('Exportando createWalletPass');
-module.exports = { createWalletPass };
