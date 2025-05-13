@@ -1,112 +1,35 @@
-const Passbook = require('passbook');
-const fs = require('fs');
-const path = require('path');
-
+const { Pass } = require('@walletpass/pass-js');
 async function createWalletPass(ticketId, email, eventName, eventDate) {
-  try {
-    console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
-
-    // Verificar la existencia de icon.png
-    const iconPath = path.join(process.cwd(), 'public', 'images', 'icon.png');
-    console.log('Buscando icon.png en:', iconPath);
-    if (!fs.existsSync(iconPath)) {
-      throw new Error(`Falta imagen icon.png en ${iconPath}`);
-    }
-
-    // Verificar la existencia de logo.png
-    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
-    console.log('Buscando logo.png en:', logoPath);
-    if (!fs.existsSync(logoPath)) {
-      throw new Error(`Falta imagen logo.png en ${logoPath}`);
-    }
-
-    // Log para depurar archivos en src/certs/
-    console.log('Archivos en src/certs:', fs.readdirSync(path.join(process.cwd(), 'src', 'certs')));
-
-    // Log para depurar PASS_KEY_PASSWORD
-    console.log('PASS_KEY_PASSWORD configurada:', !!process.env.PASS_KEY_PASSWORD);
-
-    // Verificar que PASS_KEY_PASSWORD esté definida
-    if (process.env.PASS_KEY_PASSWORD === undefined) {
-      throw new Error('PASS_KEY_PASSWORD no está configurada en las variables de entorno');
-    }
-
-    // Crear el template del pase
-    const template = Passbook('eventTicket', {
-      passTypeIdentifier: 'pass.com.oolwellness.event2025',
-      teamIdentifier: '6UM33LQATP',
-      organizationName: 'OOL Wellness',
-      description: 'Entrada para OOL Wellness 2025',
-      serialNumber: ticketId,
-      backgroundColor: 'rgb(255, 255, 255)',
-      foregroundColor: 'rgb(0, 0, 0)',
-      labelColor: 'rgb(0, 0, 0)',
-    });
-
-    // Configurar certificados
-    template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
-
-    console.log('Pase creado, generando...');
-
-    // Generar el pase como buffer con tiempo de espera
-    const buffer = await new Promise((resolve, reject) => {
-      // Establecer un tiempo de espera de 30 segundos
-      const timeout = setTimeout(() => {
-        reject(new Error('Tiempo de espera agotado al generar el pase (30 segundos)'));
-      }, 30000);
-
-      template.createPass((err, pass) => {
-        if (err) {
-          clearTimeout(timeout);
-          return reject(err);
-        }
-
-        // Añadir imágenes al pase
-        pass.files({
-          'icon.png': fs.readFileSync(iconPath),
-          'logo.png': fs.readFileSync(logoPath),
-        });
-
-        // Configurar campos del pase
-        pass.fields.primaryFields = [
-          {
-            key: 'event',
-            label: 'Evento',
-            value: eventName,
-          },
-        ];
-
-        pass.fields.auxiliaryFields = [
-          {
-            key: 'date',
-            label: 'Fecha',
-            value: eventDate,
-            dateStyle: 'medium',
-            timeStyle: 'none',
-          },
-        ];
-
-        pass.generate((err, buffer) => {
-          clearTimeout(timeout);
-          if (err) {
-            return reject(err);
-          }
-          resolve(buffer);
-        });
-      });
-    });
-
-    console.log('Pase generado exitosamente');
-    return buffer;
-  } catch (err) {
-    console.error('Error detallado generando el pase:', {
-      message: err.message,
-      stack: err.stack,
-      ticketId,
-      email,
-    });
-    throw new Error('No se pudo generar el pase: ' + err.message);
-  }
+  const startTime = Date.now();
+  console.log('Iniciando generación del pase a los', startTime);
+  const template = new Pass({
+    model: 'eventTicket',
+    passTypeIdentifier: 'pass.com.oolwellness.event2025',
+    teamIdentifier: '6UM33LQATP',
+    organizationName: 'OOL Wellness',
+    description: 'Entrada para OOL Wellness 2025',
+    serialNumber: ticketId,
+    backgroundColor: 'rgb(255, 255, 255)',
+    foregroundColor: 'rgb(0, 0, 0)',
+    labelColor: 'rgb(0, 0, 0)',
+  });
+  template.addFields('eventTicket', {
+    primaryFields: [
+      { key: 'event', label: 'Evento', value: eventName },
+    ],
+    auxiliaryFields: [
+      { key: 'date', label: 'Fecha', value: eventDate, dateStyle: 'medium', timeStyle: 'none' },
+    ],
+  });
+  template.setCertificates({
+    wwdr: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'wwdr.pem')),
+    signerCert: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_certificate.pem')),
+    signerKey: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_key.pem')),
+    signerKeyPassphrase: process.env.PASS_KEY_PASSWORD,
+  });
+  template.addFile('icon.png', fs.readFileSync(path.join(process.cwd(), 'public', 'images', 'icon.png')));
+  template.addFile('logo.png', fs.readFileSync(path.join(process.cwd(), 'public', 'images', 'logo.png')));
+  const buffer = await template.sign();
+  console.log('Pase generado exitosamente en', Date.now() - startTime, 'ms');
+  return buffer;
 }
-
-module.exports = { createWalletPass };
