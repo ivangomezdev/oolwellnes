@@ -11,7 +11,7 @@ const execPromise = util.promisify(exec);
 // Directorios
 const CERTS_DIR = path.join(process.cwd(), 'src', 'certs');
 const IMAGES_DIR = path.join(process.cwd(), 'src', 'images');
-const TEMP_DIR = path.join(process.cwd(), 'temp');
+const TEMP_DIR = '/tmp'; // Usar /tmp para entornos serverless
 
 // Configuración del pase
 const PASS_CONFIG = {
@@ -28,9 +28,10 @@ const PASS_CONFIG = {
 async function ensureTempDir() {
   try {
     await fs.mkdir(TEMP_DIR, { recursive: true });
+    console.log(`Directorio temporal creado o existente: ${TEMP_DIR}`);
   } catch (err) {
     console.error('Error creando directorio temporal:', err);
-    throw err;
+    throw new Error(`No se pudo crear el directorio temporal: ${err.message}`);
   }
 }
 
@@ -86,9 +87,14 @@ async function createManifest(passDir, files) {
   const manifest = {};
   for (const file of files) {
     const filePath = path.join(passDir, file);
-    const content = await fs.readFile(filePath);
-    const hash = crypto.createHash('sha1').update(content).digest('hex');
-    manifest[file] = hash;
+    try {
+      const content = await fs.readFile(filePath);
+      const hash = crypto.createHash('sha1').update(content).digest('hex');
+      manifest[file] = hash;
+    } catch (err) {
+      console.error(`Error generando hash para ${file}:`, err);
+      throw new Error(`No se pudo generar hash para ${file}: ${err.message}`);
+    }
   }
   const manifestPath = path.join(passDir, 'manifest.json');
   await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
@@ -102,10 +108,21 @@ async function signManifest(manifestPath, passDir) {
   const wwdrPath = path.join(CERTS_DIR, 'wwdr.pem');
   const signaturePath = path.join(passDir, 'signature');
 
+  // Verificar que los certificados existan
+  for (const cert of [certPath, keyPath, wwdrPath]) {
+    try {
+      await fs.access(cert);
+    } catch (err) {
+      console.error(`Certificado no encontrado: ${cert}`);
+      throw new Error(`Certificado no encontrado: ${cert}`);
+    }
+  }
+
   const command = `openssl smime -binary -sign -certfile "${wwdrPath}" -signer "${certPath}" -inkey "${keyPath}" -in "${manifestPath}" -out "${signaturePath}" -outform DER -passin pass:mypassword123`;
 
   try {
     await execPromise(command);
+    console.log('Manifest firmado correctamente');
   } catch (err) {
     console.error('Error firmando el manifest:', err);
     throw new Error(`Error firmando el manifest: ${err.message}`);
@@ -129,7 +146,7 @@ async function packagePass(passDir) {
 
 // Función principal para crear el pase
 export async function createWalletPass(ticketId, email, eventName, eventDate) {
-  const passDir = path.join(TEMP_DIR, ticketId);
+  const passDir = path.join(TEMP_DIR, `pass-${ticketId}`);
   await ensureTempDir();
   await fs.mkdir(passDir, { recursive: true });
 
@@ -137,6 +154,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Crear pass.json
     const passJson = createPassJson(ticketId, email, eventName, eventDate);
     await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
+    console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
     const images = ['icon.png', 'logo.png'];
@@ -144,6 +162,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
         await fs.copyFile(imagePath, path.join(passDir, image));
+        console.log(`Imagen copiada: ${image}`);
       } catch (err) {
         console.error(`Error copiando ${image}:`, err);
         throw new Error(`Falta el archivo ${image} en ${IMAGES_DIR}`);
@@ -153,15 +172,18 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     // Crear manifest.json
     const filesToManifest = ['pass.json', ...images];
     const manifestPath = await createManifest(passDir, filesToManifest);
+    console.log('manifest.json creado');
 
     // Firmar el manifest
     await signManifest(manifestPath, passDir);
 
     // Empaquetar el pase
     const passBuffer = await packagePass(passDir);
+    console.log('Pase .pkpass empaquetado');
 
     // Limpiar directorio temporal
     await fs.rm(passDir, { recursive: true, force: true });
+    console.log('Directorio temporal limpiado');
 
     return passBuffer;
   } catch (err) {
