@@ -1,14 +1,21 @@
 const { Pass } = require('@walletpass/pass-js');
 const fs = require('fs');
+const path = require('path');
 
 async function createWalletPass(ticketId, email, eventName, eventDate) {
   try {
     console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
 
-    if (!fs.existsSync('../images/icon.png')) {
-      throw new Error('Falta imagen icon.png en images/');
+    const iconPath = path.join(__dirname, '..', '..', 'public', 'images', 'icon.png');
+    if (!fs.existsSync(iconPath)) {
+      throw new Error(`Falta imagen icon.png en ${iconPath}`);
     }
+    const logoPath = path.join(__dirname, '..', '..', 'public', 'images', 'logo.png');
+if (!fs.existsSync(logoPath)) {
+  throw new Error(`Falta imagen logo.png en ${logoPath}`);
+}
 
+console.log('Archivos en public/images:', fs.readdirSync(path.join(__dirname, '..', '..', 'public', 'images')));
     const pass = new Pass({
       model: 'eventTicket',
       passTypeIdentifier: 'pass.com.oolwellness.event2025',
@@ -32,16 +39,16 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     console.log('Campo añadido, configurando certificados...');
 
     pass.setCertificates({
-      certificate: fs.readFileSync('./src/certs/pass_certificate.pem'),
-      key: fs.readFileSync('./src/certs/pass_key.pem'),
-      wwdr: fs.readFileSync('./src/certs/wwdr.pem'),
+      certificate: fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'certs', 'pass_certificate.pem')),
+      key: fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'certs', 'pass_key.pem')),
+      wwdr: fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'certs', 'wwdr.pem')),
       password: process.env.PASS_KEY_PASSWORD || '',
     });
 
     console.log('Certificados configurados, añadiendo imagen...');
 
-    pass.addFile('icon.png', fs.readFileSync('../images/icon.png'));
-
+    pass.addFile('icon.png', fs.readFileSync(iconPath));
+pass.addFile('logo.png', fs.readFileSync(logoPath));
     console.log('Imagen añadida, generando pase...');
 
     const buffer = await pass.generate();
