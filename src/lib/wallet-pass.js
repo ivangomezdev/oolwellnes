@@ -13,29 +13,29 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       throw new Error(`Falta imagen icon.png en ${iconPath}`);
     }
 
-    // Opcional: Verificar logo.png si es necesario
+    // Verificar la existencia de logo.png
     const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
     console.log('Buscando logo.png en:', logoPath);
     if (!fs.existsSync(logoPath)) {
       throw new Error(`Falta imagen logo.png en ${logoPath}`);
     }
 
+    // Log para depurar archivos en src/certs/
+    console.log('Archivos en src/certs:', fs.readdirSync(path.join(process.cwd(), 'src', 'certs')));
+
     // Crear el pase
     const pass = new PKPass(
       {
-        // Archivos estáticos (imágenes)
         icon: fs.readFileSync(iconPath),
         logo: fs.readFileSync(logoPath),
       },
       {
-        // Certificados
         wwdr: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'wwdr.pem')),
         signerCert: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_certificate.pem')),
         signerKey: fs.readFileSync(path.join(process.cwd(), 'src', 'certs', 'pass_key.pem')),
         signerKeyPassphrase: process.env.PASS_KEY_PASSWORD || '',
       },
       {
-        // Datos del pase
         formatVersion: 1,
         passTypeIdentifier: 'pass.com.oolwellness.event2025',
         teamIdentifier: '6UM33LQATP',
@@ -68,7 +68,6 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
 
     console.log('Pase creado, generando...');
 
-    // Generar el pase como buffer
     const buffer = await pass.getAsBuffer();
     console.log('Pase generado exitosamente');
     return buffer;
