@@ -45,15 +45,17 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       },
       {
         formatVersion: 1,
-        passTypeIdentifier: 'pass.com.oolwellness.event2025', // Pass Type ID registrado
-        teamIdentifier: '6UM33LQATP', // Tu Team ID
+        passTypeIdentifier: 'pass.com.oolwellness.event2025',
+        teamIdentifier: '6UM33LQATP',
         organizationName: 'OOL Wellness',
-        description: 'Entrada para OOL Wellness 2025', // Descripción del pase
+        description: 'Entrada para OOL Wellness 2025',
         serialNumber: ticketId,
         backgroundColor: 'rgb(255, 255, 255)',
         foregroundColor: 'rgb(0, 0, 0)',
         labelColor: 'rgb(0, 0, 0)',
+        // Especificar explícitamente el tipo de pase
         eventTicket: {
+          headerFields: [], // Opcional, pero incluimos para estructura completa
           primaryFields: [
             {
               key: 'event',
@@ -61,6 +63,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
               value: eventName,
             },
           ],
+          secondaryFields: [], // Opcional
           auxiliaryFields: [
             {
               key: 'date',
@@ -70,6 +73,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
               timeStyle: 'PKDateStyleNone',
             },
           ],
+          backFields: [], // Opcional
         },
       }
     );
