@@ -1,89 +1,172 @@
-import { Template } from '@walletpass/pass-js';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
+import crypto from 'crypto';
+import { exec } from 'child_process';
+import util from 'util';
+import AdmZip from 'adm-zip';
 
-export async function createWalletPass(ticketId, email, eventName, eventDate) {
+// Promisify exec para usar async/await
+const execPromise = util.promisify(exec);
+
+// Directorios
+const CERTS_DIR = path.join(process.cwd(), 'src', 'certs');
+const IMAGES_DIR = path.join(process.cwd(), 'src', 'images');
+const TEMP_DIR = path.join(process.cwd(), 'temp');
+
+// Configuración del pase
+const PASS_CONFIG = {
+  passTypeIdentifier: 'pass.com.oolwellness.event2025',
+  teamIdentifier: '6UM33LQATP',
+  organizationName: 'OOL Wellness',
+  description: 'Entrada para OOL Wellness 2025',
+  foregroundColor: 'rgb(255, 255, 255)',
+  backgroundColor: 'rgb(0, 102, 204)',
+  labelColor: 'rgb(255, 255, 255)',
+};
+
+// Función para asegurar que el directorio temporal existe
+async function ensureTempDir() {
   try {
-    console.log('Iniciando generación del pase', { ticketId, email, eventName, eventDate });
-
-    // Verificar la existencia de icon.png
-    const iconPath = path.join(process.cwd(), 'public', 'images', 'icon.png');
-    console.log('Buscando icon.png en:', iconPath);
-    if (!fs.existsSync(iconPath)) {
-      throw new Error(`Falta imagen icon.png en ${iconPath}`);
-    }
-
-    // Verificar la existencia de logo.png
-    const logoPath = path.join(process.cwd(), 'public', 'images', 'logo.png');
-    console.log('Buscando logo.png en:', logoPath);
-    if (!fs.existsSync(logoPath)) {
-      throw new Error(`Falta imagen logo.png en ${logoPath}`);
-    }
-
-    // Verificar certificados
-    const certsPath = path.join(process.cwd(), 'src', 'certs');
-    const certFiles = fs.readdirSync(certsPath);
-    console.log('Archivos en src/certs:', certFiles);
-
-    const passCertPath = path.join(certsPath, 'pass.p12');
-    if (!fs.existsSync(passCertPath)) {
-      throw new Error(`Falta certificado pass.p12 en ${certsPath}`);
-    }
-
-    // Verificar PASS_KEY_PASSWORD
-    if (!process.env.PASS_KEY_PASSWORD) {
-      console.log('Advertencia: PASS_KEY_PASSWORD no está configurada. Se asumirá que el certificado no requiere contraseña.');
-    }
-
-    // Crear el template del pase
-    const template = new Template('eventTicket', {
-      passTypeIdentifier: 'pass.com.oolwellness.event2025',
-      teamIdentifier: '6UM33LQATP',
-      organizationName: 'OOL Wellness',
-      description: 'Entrada para OOL Wellness 2025',
-      serialNumber: ticketId,
-      backgroundColor: 'rgb(255, 255, 255)',
-      foregroundColor: 'rgb(0, 0, 0)',
-      labelColor: 'rgb(0, 0, 0)',
-    });
-
-    // Configurar certificados
-    template.setCertificate(
-      fs.readFileSync(passCertPath),
-      process.env.PASS_KEY_PASSWORD || ''
-    );
-
-    // Añadir imágenes
-    template.images.add('icon', fs.readFileSync(iconPath));
-    template.images.add('logo', fs.readFileSync(logoPath));
-
-    // Configurar campos del pase
-    template.primaryFields.add({
-      key: 'event',
-      label: 'Evento',
-      value: eventName,
-    });
-    template.auxiliaryFields.add({
-      key: 'date',
-      label: 'Fecha',
-      value: eventDate,
-      dateStyle: 'PKDateStyleMedium',
-      timeStyle: 'PKDateStyleNone',
-    });
-
-    // Generar el pase
-    const pass = await template.createPass();
-    const buffer = await pass.asBuffer();
-
-    console.log('Pase generado exitosamente');
-    return buffer;
+    await fs.mkdir(TEMP_DIR, { recursive: true });
   } catch (err) {
-    console.error('Error detallado generando el pase:', {
-      message: err.message,
-      stack: err.stack,
-      ticketId,
-      email,
-    });
-    throw new Error(`No se pudo generar el pase: ${err.message}`);
+    console.error('Error creando directorio temporal:', err);
+    throw err;
+  }
+}
+
+// Función para generar pass.json
+function createPassJson(ticketId, email, eventName, eventDate) {
+  return {
+    formatVersion: 1,
+    passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
+    teamIdentifier: PASS_CONFIG.teamIdentifier,
+    organizationName: PASS_CONFIG.organizationName,
+    description: PASS_CONFIG.description,
+    serialNumber: ticketId,
+    foregroundColor: PASS_CONFIG.foregroundColor,
+    backgroundColor: PASS_CONFIG.backgroundColor,
+    labelColor: PASS_CONFIG.labelColor,
+    eventTicket: {
+      primaryFields: [
+        {
+          key: 'event',
+          label: 'Evento',
+          value: eventName,
+        },
+      ],
+      secondaryFields: [
+        {
+          key: 'date',
+          label: 'Fecha',
+          value: new Date(eventDate).toISOString(),
+          dateStyle: 'PKDateStyleMedium',
+          timeStyle: 'PKDateStyleShort',
+        },
+      ],
+      auxiliaryFields: [
+        {
+          key: 'email',
+          label: 'Correo',
+          value: email,
+        },
+      ],
+    },
+    barcode: {
+      format: 'PKBarcodeFormatQR',
+      message: ticketId,
+      messageEncoding: 'iso-8859-1',
+      altText: `Ticket ID: ${ticketId}`,
+    },
+    relevantDate: new Date(eventDate).toISOString(),
+  };
+}
+
+// Función para crear el archivo manifest.json
+async function createManifest(passDir, files) {
+  const manifest = {};
+  for (const file of files) {
+    const filePath = path.join(passDir, file);
+    const content = await fs.readFile(filePath);
+    const hash = crypto.createHash('sha1').update(content).digest('hex');
+    manifest[file] = hash;
+  }
+  const manifestPath = path.join(passDir, 'manifest.json');
+  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+  return manifestPath;
+}
+
+// Función para firmar el manifest
+async function signManifest(manifestPath, passDir) {
+  const certPath = path.join(CERTS_DIR, 'pass_certificate.pem');
+  const keyPath = path.join(CERTS_DIR, 'pass_key.pem');
+  const wwdrPath = path.join(CERTS_DIR, 'wwdr.pem');
+  const signaturePath = path.join(passDir, 'signature');
+
+  const command = `openssl smime -binary -sign -certfile "${wwdrPath}" -signer "${certPath}" -inkey "${keyPath}" -in "${manifestPath}" -out "${signaturePath}" -outform DER -passin pass:mypassword123`;
+
+  try {
+    await execPromise(command);
+  } catch (err) {
+    console.error('Error firmando el manifest:', err);
+    throw new Error(`Error firmando el manifest: ${err.message}`);
+  }
+}
+
+// Función para empaquetar el pase en .pkpass
+async function packagePass(passDir) {
+  const zip = new AdmZip();
+  const files = await fs.readdir(passDir);
+  for (const file of files) {
+    const filePath = path.join(passDir, file);
+    const stats = await fs.stat(filePath);
+    if (stats.isFile()) {
+      zip.addLocalFile(filePath);
+    }
+  }
+  const passBuffer = zip.toBuffer();
+  return passBuffer;
+}
+
+// Función principal para crear el pase
+export async function createWalletPass(ticketId, email, eventName, eventDate) {
+  const passDir = path.join(TEMP_DIR, ticketId);
+  await ensureTempDir();
+  await fs.mkdir(passDir, { recursive: true });
+
+  try {
+    // Crear pass.json
+    const passJson = createPassJson(ticketId, email, eventName, eventDate);
+    await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
+
+    // Copiar imágenes (icon.png, logo.png)
+    const images = ['icon.png', 'logo.png'];
+    for (const image of images) {
+      const imagePath = path.join(IMAGES_DIR, image);
+      try {
+        await fs.copyFile(imagePath, path.join(passDir, image));
+      } catch (err) {
+        console.error(`Error copiando ${image}:`, err);
+        throw new Error(`Falta el archivo ${image} en ${IMAGES_DIR}`);
+      }
+    }
+
+    // Crear manifest.json
+    const filesToManifest = ['pass.json', ...images];
+    const manifestPath = await createManifest(passDir, filesToManifest);
+
+    // Firmar el manifest
+    await signManifest(manifestPath, passDir);
+
+    // Empaquetar el pase
+    const passBuffer = await packagePass(passDir);
+
+    // Limpiar directorio temporal
+    await fs.rm(passDir, { recursive: true, force: true });
+
+    return passBuffer;
+  } catch (err) {
+    // Limpiar en caso de error
+    await fs.rm(passDir, { recursive: true, force: true });
+    throw err;
   }
 }
