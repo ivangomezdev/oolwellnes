@@ -53,7 +53,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
       // Establecer un tiempo de espera de 30 segundos
       const timeout = setTimeout(() => {
         reject(new Error('Tiempo de espera agotado al generar el pase (30 segundos)'));
-      }, 60000);
+      }, 120000);
 
       template.createPass((err, pass) => {
         if (err) {
