@@ -47,9 +47,9 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
     template.keys(path.join(process.cwd(), 'src', 'certs'), process.env.PASS_KEY_PASSWORD);
 
     // Añadir imágenes
-    template.loadImages({
-      icon: iconPath,
-      logo: logoPath,
+    template.images({
+      icon: fs.readFileSync(iconPath),
+      logo: fs.readFileSync(logoPath),
     });
 
     // Configurar campos del pase
