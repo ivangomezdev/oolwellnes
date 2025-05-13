@@ -48,10 +48,16 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
 
     console.log('Pase creado, generando...');
 
-    // Generar el pase como buffer
+    // Generar el pase como buffer con tiempo de espera
     const buffer = await new Promise((resolve, reject) => {
+      // Establecer un tiempo de espera de 30 segundos
+      const timeout = setTimeout(() => {
+        reject(new Error('Tiempo de espera agotado al generar el pase (30 segundos)'));
+      }, 30000);
+
       template.createPass((err, pass) => {
         if (err) {
+          clearTimeout(timeout);
           return reject(err);
         }
 
@@ -81,6 +87,7 @@ async function createWalletPass(ticketId, email, eventName, eventDate) {
         ];
 
         pass.generate((err, buffer) => {
+          clearTimeout(timeout);
           if (err) {
             return reject(err);
           }

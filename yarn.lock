@@ -4717,7 +4717,7 @@ strip-json-comments@^3.1.1:
 
 stripe@^18.1.0:
   version "18.1.0"
-  resolved "https://registry.npmjs.org/stripe/-/stripe-18.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-18.1.0.tgz#e546d328b051ae9cb0536c80d406ba04855ccacd"
   integrity sha512-MLDiniPTHqcfIT3anyBPmOEcaiDhYa7/jRaNypQ3Rt2SJnayQZBvVbFghIziUCZdltGAndm/ZxVOSw6uuSCDig==
   dependencies:
     qs "^6.11.0"
