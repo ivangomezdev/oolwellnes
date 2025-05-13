@@ -1,5 +1,5 @@
 import { createWalletPass } from '@/lib/wallet-pass';
-import { sendTicketEmail } from '@/lib/nodemailer';
+import { sendTicketEmail } from '../../../lib/nodeMailer';
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 
