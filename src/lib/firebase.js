@@ -1,33 +1,57 @@
-import { initializeApp as initializeClientApp } from 'firebase/app';
-import { getFirestore as getClientFirestore } from 'firebase/firestore';
-import { initializeApp as initializeAdminApp, cert } from 'firebase-admin/app';
-import { getFirestore as getAdminFirestore } from 'firebase-admin/firestore';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
+  apiKey: 'AIzaSyClkbyTOCU0iA3iC1d1DLtqtAFcI2pAnsA',
+  authDomain: 'oolwell.firebaseapp.com',
+  projectId: 'oolwell',
+  storageBucket: 'oolwell.firebasestorage.app',
+  messagingSenderId: '749442381409',
+  appId: '1:749442381409:web:e4323c727666cb1aa35c20',
 };
 
-const clientApp = initializeClientApp(firebaseConfig);
-export const db = getClientFirestore(clientApp);
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const serviceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-};
-
-let adminApp;
-try {
-  adminApp = initializeAdminApp({
-    credential: cert(serviceAccount),
-  });
-} catch (error) {
-  console.error('Error inicializando Firebase Admin:', error);
+// Guardar ticket
+export async function saveTicket(ticketId, email, eventName) {
+  try {
+    await setDoc(doc(db, 'tickets', ticketId), {
+      ticketId,
+      email,
+      eventName,
+      status: 'valid',
+      used: false,
+      createdAt: new Date().toISOString(),
+    });
+    console.log(`Ticket ${ticketId} guardado en Firestore`);
+  } catch (error) {
+    console.error('Error guardando ticket:', error);
+    throw error;
+  }
 }
 
-export const adminDb = adminApp ? getAdminFirestore(adminApp) : null;
+// Validar ticket
+export async function validateTicket(ticketId) {
+  try {
+    const ticketRef = doc(db, 'tickets', ticketId);
+    const ticketSnap = await getDoc(ticketRef);
+    
+    if (!ticketSnap.exists()) {
+      return { valid: false, message: 'Ticket no encontrado' };
+    }
+
+    const ticket = ticketSnap.data();
+    if (ticket.used) {
+      return { valid: false, message: 'Ticket ya usado' };
+    }
+
+    // Marcar como usado
+    await updateDoc(ticketRef, { used: true });
+    return { valid: true, ticket };
+  } catch (error) {
+    console.error('Error validando ticket:', error);
+    throw error;
+  }
+}

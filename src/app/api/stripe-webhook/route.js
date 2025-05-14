@@ -1,9 +1,10 @@
 import { createWalletPass } from '@/lib/wallet-pass';
-import { sendTicketEmail } from '../../../lib/nodeMailer';
+import { sendTicketEmail } from '@/lib/nodemailer';
+import { saveTicket } from '@/lib/firebase';
 import Stripe from 'stripe';
+import QRCode from 'qrcode';
 import { NextResponse } from 'next/server';
 
-// Inicializar Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
@@ -28,12 +29,19 @@ export async function POST(req) {
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
-      // Generar el pase
+      // Guardar ticket en Firebase
+      await saveTicket(ticketId, email, eventName);
+
+      // Generar pase
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
-      // Enviar correo con Nodemailer
-      const info = await sendTicketEmail(email, ticketId, eventName, eventDate, passBuffer);
+      // Generar QR
+      const qrData = `ticket-${ticketId}`;
+      const qrImage = await QRCode.toDataURL(qrData);
+
+      // Enviar correo
+      const info = await sendTicketEmail(email, ticketId, eventName, eventDate, passBuffer, qrImage);
       console.log('Correo enviado con el pase:', info);
     }
 
