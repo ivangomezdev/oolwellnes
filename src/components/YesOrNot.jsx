@@ -37,6 +37,7 @@ function YesOrNot() {
 
   return (
     <div className="yesOrNot" ref={yesOrNotRef}>
+   
       <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--included ${
@@ -48,7 +49,10 @@ function YesOrNot() {
           Misión
           <span className="yesOrNot__underline"></span>
         </h2>
-        <h2 style={{ color: "#333333" }} className="yesOrNot__list">
+        <h2
+          style={{ color: "#333333", textAlign: "center" }}
+          className="yesOrNot__list"
+        >
           Diseñamos experiencias de bienestar integral que combinan movimiento,
           salud y conexión,{" "}
           <strong style={{ color: "#F1E6D1" }}>
@@ -70,13 +74,19 @@ function YesOrNot() {
         >
           Visión
         </h2>
-        <h2 style={{color:"#333333"}} className="yesOrNot__list">
+        <h2
+          style={{ color: "#333333", textAlign: "center" }}
+          className="yesOrNot__list"
+        >
           Ser un referente en el mundo del wellness, ofreciendo espacios y
           experiencias que inspiran un estilo de vida consciente, saludable y
           sostenible, con impacto positivo en las personas y su entorno. Nuestro
           Propósito Impulsar el bienestar personal como motor de transformación
-          colectiva. <strong style={{color:"#F1E6D1"}}>Creemos que cuando cada persona vive desde su mejor
-          versión, contribuye a un mundo más equilibrado, humano y pleno.</strong>
+          colectiva.{" "}
+          <strong style={{ color: "#F1E6D1" }}>
+            Creemos que cuando cada persona vive desde su mejor versión,
+            contribuye a un mundo más equilibrado, humano y pleno.
+          </strong>
         </h2>
       </div>
     </div>

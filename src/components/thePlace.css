@@ -31,9 +31,12 @@
   font-size: 68px; /* Adjust size as needed */
   font-family: 'Broadsheet Regular', sans-serif; /* Match your site’s font */
   text-align: center;
- 
+   text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.7);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   z-index: 2; /* Places text above overlay */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+ 
 }
 
 .thePlace__text2 {
@@ -44,29 +47,130 @@
   font-size: 68px;
   font-family: 'Broadsheet Regular', sans-serif;
   text-align: center;
-  letter-spacing: 14px;
+  letter-spacing: 10px;
   z-index: 2;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.7);
 
-  background: linear-gradient(
-    to right,
-    
-    #004a99, /* azul oscuro */
-    #8a007c, /* magenta */
-    
-    
-    #ffcb05, /* amarillo */
-   
-    #009640  /* verde oscuro */
-  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 
+@media(max-width:1300px){
+.thePlace__text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  
+ 
+}
+
+
+
+.thePlace__text2 {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  
+}
+}
+
+@media(max-width:1047px){
+.thePlace__text {
+  position: absolute;
+  top: 10%;
+  width: 1000px;
+  left: 50%;
+  
+ 
+}
+
+.thePlace__text2 {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px; 
+}
+}
+
+@media(max-width:1047px){
+.thePlace__text {
+  position: absolute;
+  top: 20%;
+  width: 1000px;
+  left: 50%;
+  
+ 
+}
+
+.thePlace__text2 {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px; 
+}
+}
+
+
+@media(max-width:678px){
+.thePlace__text {
+  font-size: 50px;
+
+  
+ 
+}
+
+.thePlace__text2 {
+ font-size: 50px;
+}
+}
+
+
+
+@media(max-width:536px){
+.thePlace__text {
+  font-size: 40px;
+
+  
+ 
+}
+
+.thePlace__text2 {
+ font-size: 40px;
+}
+}
+
+
+
+
+
 @media(max-width:460px){
   .thePlace__text {
   letter-spacing:1px;
-  font-size: 50px;
+  font-size: 40px;
+  top: 30%;
 }
+
+
+.thePlace__text2 {
+ font-size: 40px;
+ width: 400px;
+}
+
+}
+
+
+@media(max-width:346px){
+  .thePlace__text {
+  letter-spacing:1px;
+  font-size: 30px;
+  top: 30%;
+}
+
+
+.thePlace__text2 {
+ font-size: 30px;
+ width: 300px;
+}
+
 }
