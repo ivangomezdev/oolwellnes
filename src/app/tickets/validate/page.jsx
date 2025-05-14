@@ -1,9 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function ValidateTicketPage() {
+// Componente interno que usa useSearchParams
+function ValidateTicketContent() {
   const searchParams = useSearchParams();
   const ticketId = searchParams.get('ticketId');
   const [ticket, setTicket] = useState(null);
@@ -114,3 +115,15 @@ export default function ValidateTicketPage() {
     </div>
   );
 }
+
+// Componente principal con Suspense
+export default function ValidateTicketPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ValidateTicketContent />
+    </Suspense>
+  );
+}
+
+// Forzar renderizado dinámico para evitar prerenderizado estático
+export const dynamic = 'force-dynamic';
