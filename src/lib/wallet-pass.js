@@ -1,3 +1,4 @@
+
 import fs from 'fs/promises';
 import path from 'path';
 import os from 'os';
@@ -7,7 +8,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const TEMP_DIR = os.tmpdir();
 const CERT_DIR = path.join(process.cwd(), 'certs');
-const ASSETS_DIR = path.join(process.cwd(), 'assets');
+const ASSETS_DIR = path.join(process.cwd(), 'src', 'images'); // Corregido a src/images
 
 const ticketNameMap = {
   'price_1RLvqlRWJlybi2c9hUQf8Aaa': 'KIN - Regular Package',
@@ -22,11 +23,13 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
   const name = ticketSnap.exists() ? ticketSnap.data().name : 'Asistente';
   const ticketName = priceId ? ticketNameMap[priceId] || 'Unknown Package' : 'Unknown Package';
 
+  console.log(`Creando pase para ticketId: ${ticketId}, ticketName: ${ticketName}, name: ${name}`);
+
   const passJson = {
     formatVersion: 1,
     passTypeIdentifier: 'pass.com.oolwellness.ticket',
     serialNumber: ticketId,
-    teamIdentifier: 'YOUR_TEAM_ID',
+    teamIdentifier: '6UM33LQATP', // Reemplaza con tu Team ID de Apple
     organizationName: 'OOL Wellness',
     description: `Entrada para ${ticketName}`,
     logoText: 'OOL Wellness',
@@ -96,20 +99,21 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
   console.log('pass.json creado');
 
   const images = ['icon.png', 'logo.png'];
+  const existingImages = [];
   for (const image of images) {
     const sourcePath = path.join(ASSETS_DIR, image);
     const destPath = path.join(passDir, image);
     try {
+      await fs.access(sourcePath); // Verificar si existe
       await fs.copyFile(sourcePath, destPath);
+      existingImages.push(image);
+      console.log(`Imagen ${image} copiada desde ${sourcePath}`);
     } catch (err) {
-      console.warn(`Imagen ${image} no encontrada, omitiendo`);
+      console.warn(`Imagen ${image} no encontrada en ${sourcePath}, omitiendo`);
     }
   }
-  console.log('Archivos de imagen copiados');
 
-  const files = ['pass.json', ...images.filter(async (image) => {
-    return await fs.access(path.join(passDir, image)).then(() => true).catch(() => false);
-  })];
+  const files = ['pass.json', ...existingImages];
   const manifest = {};
   for (const file of files) {
     const content = await fs.readFile(path.join(passDir, file));
@@ -118,39 +122,44 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
   await fs.writeFile(path.join(passDir, 'manifest.json'), JSON.stringify(manifest));
   console.log('manifest.json creado');
 
-  const cert = await fs.readFile(path.join(CERT_DIR, 'pass_certificate.pem'));
-  const key = await fs.readFile(path.join(CERT_DIR, 'pass_key.pem'));
-  const wwdr = await fs.readFile(path.join(CERT_DIR, 'wwdr.pem'));
+  try {
+    const cert = await fs.readFile(path.join(CERT_DIR, 'pass_certificate.pem'));
+    const key = await fs.readFile(path.join(CERT_DIR, 'pass_key.pem'));
+    const wwdr = await fs.readFile(path.join(CERT_DIR, 'wwdr.pem'));
 
-  const p12 = forge.pkcs12.toPkcs12Asn1(
-    forge.pki.privateKeyFromPem(key),
-    [forge.pki.certificateFromPem(cert), forge.pki.certificateFromPem(wwdr)],
-    'mypassword123',
-    { algorithm: '3des' }
-  );
-  const asn1 = forge.asn1.fromDer(forge.util.decode64(forge.util.encode64(p12)));
-  const p12Parsed = forge.pkcs12.pkcs12FromAsn1(asn1, 'mypassword123');
-  const bags = p12Parsed.getBags({ bagType: forge.pki.oids.pkcs8ShroudedKeyBag });
-  const privateKey = bags[forge.pki.oids.pkcs8ShroudedKeyBag][0].key;
+    const p12 = forge.pkcs12.toPkcs12Asn1(
+      forge.pki.privateKeyFromPem(key),
+      [forge.pki.certificateFromPem(cert), forge.pki.certificateFromPem(wwdr)],
+      'mypassword123', // Ajusta si usas otra contraseña
+      { algorithm: '3des' }
+    );
+    const asn1 = forge.asn1.fromDer(forge.util.decode64(forge.util.encode64(p12)));
+    const p12Parsed = forge.pkcs12.pkcs12FromAsn1(asn1, 'mypassword123');
+    const bags = p12Parsed.getBags({ bagType: forge.pki.oids.pkcs8ShroudedKeyBag });
+    const privateKey = bags[forge.pki.oids.pkcs8ShroudedKeyBag][0].key;
 
-  const manifestContent = await fs.readFile(path.join(passDir, 'manifest.json'));
-  const signature = forge.pkcs7.createSignedData();
-  signature.content = forge.util.createBuffer(manifestContent);
-  signature.addCertificate(cert);
-  signature.addSigner({
-    key: privateKey,
-    certificate: cert,
-    digestAlgorithm: forge.pki.oids.sha1,
-    authenticatedAttributes: [
-      { type: forge.pki.oids.contentType, value: forge.pki.oids.data },
-      { type: forge.pki.oids.messageDigest },
-      { type: forge.pki.oids.signingTime, value: new Date() },
-    ],
-  });
-  signature.sign();
-  const signatureDer = forge.asn1.toDer(signature.toAsn1()).getBytes();
-  await fs.writeFile(path.join(passDir, 'signature'), signatureDer, 'binary');
-  console.log('Manifest firmado correctamente con node-forge');
+    const manifestContent = await fs.readFile(path.join(passDir, 'manifest.json'));
+    const signature = forge.pkcs7.createSignedData();
+    signature.content = forge.util.createBuffer(manifestContent);
+    signature.addCertificate(cert);
+    signature.addSigner({
+      key: privateKey,
+      certificate: cert,
+      digestAlgorithm: forge.pki.oids.sha1,
+      authenticatedAttributes: [
+        { type: forge.pki.oids.contentType, value: forge.pki.oids.data },
+        { type: forge.pki.oids.messageDigest },
+        { type: forge.pki.oids.signingTime, value: new Date() },
+      ],
+    });
+    signature.sign();
+    const signatureDer = forge.asn1.toDer(signature.toAsn1()).getBytes();
+    await fs.writeFile(path.join(passDir, 'signature'), signatureDer, 'binary');
+    console.log('Manifest firmado correctamente con node-forge');
+  } catch (certErr) {
+    console.error('Error con certificados:', certErr);
+    throw new Error(`Fallo al procesar certificados: ${certErr.message}`);
+  }
 
   const zip = new AdmZip();
   for (const file of files.concat(['signature'])) {
