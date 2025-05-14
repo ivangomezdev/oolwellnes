@@ -43,7 +43,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
-    logoText: 'Tu Organización', // Texto del logo
+    
     passInformation: {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
@@ -60,21 +60,21 @@ function createPassJson(ticketId, email, eventName, eventDate) {
         {
           key: 'location',
           label: 'Ubicación',
-          value: 'Estadio Central', // Ejemplo
+          value: 'Xcaret Arte', // Ejemplo
         },
       ],
       primaryFields: [
         {
           key: 'event',
           label: 'Evento',
-          value: eventName,
+          value: "OOL Retreat",
         },
       ],
       secondaryFields: [
         {
           key: 'date',
           label: 'Fecha',
-          value: new Date(eventDate).toISOString(),
+          value: "01/08/2025",
           dateStyle: 'PKDateStyleMedium',
           timeStyle: 'PKDateStyleShort',
         },
