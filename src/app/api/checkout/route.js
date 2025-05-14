@@ -1,4 +1,3 @@
-// api/checkout/route.js
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -10,15 +9,14 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 export async function POST(request) {
   try {
     // Obtén los datos del cuerpo de la solicitud
-    const { priceId, email } = await request.json();
+    const { priceId, email, name } = await request.json();
 
-    if (!priceId || !email) {
+    if (!priceId || !email || !name) {
       return NextResponse.json(
-        { error: 'Faltan priceId o email' },
+        { error: 'Faltan priceId, email o name' },
         { status: 400 }
       );
     }
-
 
     // Crea una sesión de checkout en Stripe
     const session = await stripe.checkout.sessions.create({
@@ -34,7 +32,8 @@ export async function POST(request) {
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}tickets`,
       metadata: {
-        ticketType: priceId, // Puedes usar esto para rastrear el tipo de boleto
+        ticketType: priceId, // Rastrear el tipo de boleto
+        customerName: name, // Incluir el nombre en los metadatos
       },
     });
 

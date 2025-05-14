@@ -1,3 +1,4 @@
+//app/tickets/success/page.jsx
 'use client';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';

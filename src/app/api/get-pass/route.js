@@ -35,6 +35,7 @@ export async function GET(req) {
     try {
       const session = await stripe.checkout.sessions.retrieve(ticketId);
       const email = session.customer_details?.email;
+      const customerName = session.metadata?.customerName || 'Asistente'; // Obtener el nombre desde metadata
       if (!email) {
         console.error('Error: Email no encontrado en la sesión de Stripe');
         throw new Error('Email no encontrado en la sesión');
@@ -45,7 +46,8 @@ export async function GET(req) {
         ticketId,
         email,
         'OOL Wellness 2025',
-        '2025-05-20'
+        '2025-05-20',
+        customerName // Pasar el nombre
       );
       await fs.writeFile(filePath, passBuffer);
       console.log(`Pase regenerado y guardado en: ${filePath}`);

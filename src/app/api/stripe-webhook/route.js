@@ -26,14 +26,19 @@ export async function POST(req) {
       const ticketId = session.id;
       const eventName = 'OOL Wellness 2025';
       const eventDate = '2025-08-01';
+      const customerName = session.metadata.customerName || 'Asistente'; // Nombre desde metadata
+      const ticketType = session.metadata.ticketType; // priceId desde metadata
+
+      // Determinar el plan basado en el priceId
+      const plan = ticketType === 'price_1RLvqlRWJlybi2c9hUQf8Aaa' ? 'KIN - Regular Package' : 'HA - VIP Package';
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
-      // Guardar ticket en Firebase
-      await saveTicket(ticketId, email, eventName);
+      // Guardar ticket en Firebase con el plan y el nombre
+      await saveTicket(ticketId, email, eventName, plan, customerName);
 
-      // Generar pase
-      const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate);
+      // Generar pase con el nombre
+      const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
       // Generar QR
