@@ -62,17 +62,13 @@ function createPassJson(ticketId, email, eventName, eventDate) {
         },
       ],
       primaryFields: [
-        {
-          key: 'event',
-          label: 'Evento',
-          value: "OOL Retreat",
-        },
+       
       ],
       secondaryFields: [
         {
           key: 'date',
           label: 'Fecha',
-          value: "01/08/2025",
+          value: new Date(eventDate).toISOString(),
           dateStyle: 'PKDateStyleMedium',
           timeStyle: 'PKDateStyleShort',
         },
@@ -211,7 +207,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png',"strip.png"];
+    const images = ['icon.png', 'logo.png',""];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
