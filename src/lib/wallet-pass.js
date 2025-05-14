@@ -51,9 +51,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
       stripImage: {
         value: 'strip.png', // Ruta o nombre de la imagen de la franja
       },
-      backgroundImage: {
-        value: 'background.png', // Ruta o nombre de la imagen de fondo
-      },
+     
     },
     eventTicket: {
       headerFields: [
@@ -92,6 +90,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
       message: ticketId,
       messageEncoding: 'iso-8859-1',
       altText: `Ticket ID: ${ticketId}`,
+      backgroundColor:"#F2E2C6"
     },
     relevantDate: new Date(eventDate).toISOString(),
   };
@@ -212,7 +211,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png','background.png'];
+    const images = ['icon.png', 'logo.png',"strip.png"];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
