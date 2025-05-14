@@ -1,6 +1,6 @@
 import { createWalletPass } from '@/lib/wallet-pass';
-import { sendTicketEmail } from '../../../lib/nodeMailer';
-import { saveTicket } from '@/lib/firebase';
+import { sendTicketEmail } from '@/lib/nodemailer';
+import { saveTicket, savePass } from '@/lib/firebase';
 import Stripe from 'stripe';
 import QRCode from 'qrcode';
 import { NextResponse } from 'next/server';
@@ -26,21 +26,21 @@ export async function POST(req) {
       const ticketId = session.id;
       const eventName = 'OOL Wellness 2025';
       const eventDate = '2025-05-20';
+      const priceId = session.metadata?.priceId;
+      const name = session.metadata?.name;
 
-      console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
+      console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}, Price ID: ${priceId}, Name: ${name}`);
 
-      // Guardar ticket en Firebase
-      await saveTicket(ticketId, email, eventName);
+      await saveTicket(ticketId, email, eventName, priceId, name);
 
-      // Generar pase
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
-      // Generar QR
+      await savePass(ticketId, passBuffer);
+
       const qrData = `ticket-${ticketId}`;
       const qrImage = await QRCode.toDataURL(qrData);
 
-      // Enviar correo
       const info = await sendTicketEmail(email, ticketId, eventName, eventDate, passBuffer, qrImage);
       console.log('Correo enviado con el pase:', info);
     }

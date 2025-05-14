@@ -1,230 +1,169 @@
 import fs from 'fs/promises';
 import path from 'path';
-import crypto from 'crypto';
-import forge from 'node-forge';
+import os from 'os';
 import AdmZip from 'adm-zip';
+import forge from 'node-forge';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
-// Directorios
-const CERTS_DIR = path.join(process.cwd(), 'src', 'certs');
-const IMAGES_DIR = path.join(process.cwd(), 'src', 'images');
-const TEMP_DIR = '/tmp'; // Usar /tmp para entornos serverless
+const TEMP_DIR = os.tmpdir();
+const CERT_DIR = path.join(process.cwd(), 'certs');
+const ASSETS_DIR = path.join(process.cwd(), 'assets');
 
-// Configuración del pase
-const PASS_CONFIG = {
-  passTypeIdentifier: 'pass.com.oolwellness.event2025',
-  teamIdentifier: '6UM33LQATP',
-  organizationName: 'OOL Wellness',
-  description: 'Entrada para OOL Wellness 2025',
-  foregroundColor: 'rgb(255, 255, 255)',
-  backgroundColor: 'rgb(0, 102, 204)',
-  labelColor: 'rgb(255, 255, 255)',
+const ticketNameMap = {
+  'price_1RLvqlRWJlybi2c9hUQf8Aaa': 'KIN - Regular Package',
+  'price_1RLvrQRWJlybi2c92NvXjLYX': 'HA - VIP Package',
 };
 
-// Función para asegurar que el directorio temporal existe
-async function ensureTempDir() {
-  try {
-    await fs.mkdir(TEMP_DIR, { recursive: true });
-    console.log(`Directorio temporal creado o existente: ${TEMP_DIR}`);
-  } catch (err) {
-    console.error('Error creando directorio temporal:', err);
-    throw new Error(`No se pudo crear el directorio temporal: ${err.message}`);
-  }
-}
+export async function createWalletPass(ticketId, email, eventName, eventDate) {
+  const db = getFirestore();
+  const ticketRef = doc(db, 'tickets', ticketId);
+  const ticketSnap = await getDoc(ticketRef);
+  const priceId = ticketSnap.exists() ? ticketSnap.data().priceId : null;
+  const name = ticketSnap.exists() ? ticketSnap.data().name : 'Asistente';
+  const ticketName = priceId ? ticketNameMap[priceId] || 'Unknown Package' : 'Unknown Package';
 
-// Función para generar pass.json
-function createPassJson(ticketId, email, eventName, eventDate) {
-  return {
+  const passJson = {
     formatVersion: 1,
-    passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
-    teamIdentifier: PASS_CONFIG.teamIdentifier,
-    organizationName: PASS_CONFIG.organizationName,
-    description: PASS_CONFIG.description,
+    passTypeIdentifier: 'pass.com.oolwellness.ticket',
     serialNumber: ticketId,
-    foregroundColor: PASS_CONFIG.foregroundColor,
-    backgroundColor: PASS_CONFIG.backgroundColor,
-    labelColor: PASS_CONFIG.labelColor,
+    teamIdentifier: 'YOUR_TEAM_ID',
+    organizationName: 'OOL Wellness',
+    description: `Entrada para ${ticketName}`,
+    logoText: 'OOL Wellness',
     eventTicket: {
       primaryFields: [
         {
           key: 'event',
-          label: 'Evento',
+          label: 'Festival',
           value: eventName,
         },
       ],
       secondaryFields: [
         {
+          key: 'ticketType',
+          label: 'Paquete',
+          value: ticketName,
+        },
+        {
           key: 'date',
           label: 'Fecha',
-          value: new Date(eventDate).toISOString(),
-          dateStyle: 'PKDateStyleMedium',
-          timeStyle: 'PKDateStyleShort',
+          value: new Date(eventDate).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
         },
       ],
       auxiliaryFields: [
+        {
+          key: 'name',
+          label: 'Nombre',
+          value: name,
+        },
         {
           key: 'email',
           label: 'Correo',
           value: email,
         },
       ],
+      backFields: [
+        {
+          key: 'terms',
+          label: 'Términos y Condiciones',
+          value: 'Entrada válida solo para OOL Wellness 2025. No reembolsable.',
+        },
+        {
+          key: 'contact',
+          label: 'Contacto',
+          value: 'Correo: support@oolwellness.com\nTeléfono: +34 123 456 789',
+        },
+      ],
     },
     barcode: {
       format: 'PKBarcodeFormatQR',
-      message: ticketId,
+      message: `ticket-${ticketId}`,
       messageEncoding: 'iso-8859-1',
-      altText: `Ticket ID: ${ticketId}`,
+      altText: `ID: ${ticketId}`,
     },
-    relevantDate: new Date(eventDate).toISOString(),
+    backgroundColor: '#9F9668',
+    foregroundColor: '#FFFFFF',
+    labelColor: '#000000',
   };
-}
 
-// Función para crear el archivo manifest.json
-async function createManifest(passDir, files) {
-  const manifest = {};
-  for (const file of files) {
-    const filePath = path.join(passDir, file);
+  const passDir = path.join(TEMP_DIR, `pass-${ticketId}`);
+  await fs.mkdir(passDir, { recursive: true });
+  await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
+  console.log('pass.json creado');
+
+  const images = ['icon.png', 'logo.png'];
+  for (const image of images) {
+    const sourcePath = path.join(ASSETS_DIR, image);
+    const destPath = path.join(passDir, image);
     try {
-      const content = await fs.readFile(filePath);
-      const hash = crypto.createHash('sha1').update(content).digest('hex');
-      manifest[file] = hash;
+      await fs.copyFile(sourcePath, destPath);
     } catch (err) {
-      console.error(`Error generando hash para ${file}:`, err);
-      throw new Error(`No se pudo generar hash para ${file}: ${err.message}`);
+      console.warn(`Imagen ${image} no encontrada, omitiendo`);
     }
   }
-  const manifestPath = path.join(passDir, 'manifest.json');
-  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
-  return manifestPath;
-}
+  console.log('Archivos de imagen copiados');
 
-// Función para firmar el manifest con node-forge
-async function signManifest(manifestPath, passDir) {
-  const certPath = path.join(CERTS_DIR, 'pass_certificate.pem');
-  const keyPath = path.join(CERTS_DIR, 'pass_key.pem');
-  const wwdrPath = path.join(CERTS_DIR, 'wwdr.pem');
-  const signaturePath = path.join(passDir, 'signature');
-
-  // Leer certificados y clave privada
-  let certPem, keyPem, wwdrPem;
-  try {
-    certPem = await fs.readFile(certPath, 'utf8');
-    keyPem = await fs.readFile(keyPath, 'utf8');
-    wwdrPem = await fs.readFile(wwdrPath, 'utf8');
-  } catch (err) {
-    console.error(`Error leyendo certificados: ${err.message}`);
-    throw new Error(`No se pudo leer certificado: ${err.message}`);
+  const files = ['pass.json', ...images.filter(async (image) => {
+    return await fs.access(path.join(passDir, image)).then(() => true).catch(() => false);
+  })];
+  const manifest = {};
+  for (const file of files) {
+    const content = await fs.readFile(path.join(passDir, file));
+    manifest[file] = forge.util.encode64(forge.md.sha1.create().update(content).digest().bytes());
   }
+  await fs.writeFile(path.join(passDir, 'manifest.json'), JSON.stringify(manifest));
+  console.log('manifest.json creado');
 
-  // Cargar certificados y clave privada
-  let cert, key, wwdrCert;
-  try {
-    cert = forge.pki.certificateFromPem(certPem);
-    key = forge.pki.decryptRsaPrivateKey(keyPem, 'mypassword123');
-    wwdrCert = forge.pki.certificateFromPem(wwdrPem);
-  } catch (err) {
-    console.error(`Error procesando certificados: ${err.message}`);
-    throw new Error(`No se pudo procesar certificado o clave: ${err.message}`);
-  }
+  const cert = await fs.readFile(path.join(CERT_DIR, 'pass_certificate.pem'));
+  const key = await fs.readFile(path.join(CERT_DIR, 'pass_key.pem'));
+  const wwdr = await fs.readFile(path.join(CERT_DIR, 'wwdr.pem'));
 
-  // Leer manifest.json
-  const manifestContent = await fs.readFile(manifestPath);
+  const p12 = forge.pkcs12.toPkcs12Asn1(
+    forge.pki.privateKeyFromPem(key),
+    [forge.pki.certificateFromPem(cert), forge.pki.certificateFromPem(wwdr)],
+    'mypassword123',
+    { algorithm: '3des' }
+  );
+  const asn1 = forge.asn1.fromDer(forge.util.decode64(forge.util.encode64(p12)));
+  const p12Parsed = forge.pkcs12.pkcs12FromAsn1(asn1, 'mypassword123');
+  const bags = p12Parsed.getBags({ bagType: forge.pki.oids.pkcs8ShroudedKeyBag });
+  const privateKey = bags[forge.pki.oids.pkcs8ShroudedKeyBag][0].key;
 
-  // Crear firma PKCS #7
-  const p7 = forge.pkcs7.createSignedData();
-  p7.content = forge.util.createBuffer(manifestContent, 'utf8');
-  p7.technology = 'Apple';
-  p7.addCertificate(cert);
-  p7.addCertificate(wwdrCert);
-  p7.addSigner({
-    key: key,
+  const manifestContent = await fs.readFile(path.join(passDir, 'manifest.json'));
+  const signature = forge.pkcs7.createSignedData();
+  signature.content = forge.util.createBuffer(manifestContent);
+  signature.addCertificate(cert);
+  signature.addSigner({
+    key: privateKey,
     certificate: cert,
     digestAlgorithm: forge.pki.oids.sha1,
     authenticatedAttributes: [
-      {
-        type: forge.pki.oids.contentType,
-        value: forge.pki.oids.data,
-      },
-      {
-        type: forge.pki.oids.messageDigest,
-      },
-      {
-        type: forge.pki.oids.signingTime,
-        value: new Date(),
-      },
+      { type: forge.pki.oids.contentType, value: forge.pki.oids.data },
+      { type: forge.pki.oids.messageDigest },
+      { type: forge.pki.oids.signingTime, value: new Date() },
     ],
   });
+  signature.sign();
+  const signatureDer = forge.asn1.toDer(signature.toAsn1()).getBytes();
+  await fs.writeFile(path.join(passDir, 'signature'), signatureDer, 'binary');
+  console.log('Manifest firmado correctamente con node-forge');
 
-  try {
-    p7.sign({ detached: true });
-    const der = forge.asn1.toDer(p7.toAsn1()).getBytes();
-    await fs.writeFile(signaturePath, Buffer.from(der, 'binary'));
-    console.log('Manifest firmado correctamente con node-forge');
-  } catch (err) {
-    console.error(`Error firmando manifest con node-forge: ${err.message}`);
-    throw new Error(`No se pudo firmar el manifest: ${err.message}`);
-  }
-}
-
-// Función para empaquetar el pase en .pkpass
-async function packagePass(passDir) {
   const zip = new AdmZip();
-  const files = await fs.readdir(passDir);
-  for (const file of files) {
-    const filePath = path.join(passDir, file);
-    const stats = await fs.stat(filePath);
-    if (stats.isFile()) {
-      zip.addLocalFile(filePath);
-    }
+  for (const file of files.concat(['signature'])) {
+    zip.addLocalFile(path.join(passDir, file));
   }
   const passBuffer = zip.toBuffer();
+  console.log('Pase .pkpass empaquetado');
+
+  const filePath = path.join(TEMP_DIR, `ticket-${ticketId}.pkpass`);
+  await fs.writeFile(filePath, passBuffer);
+  console.log(`Pase guardado en: ${filePath}`);
+
+  await fs.rm(passDir, { recursive: true, force: true });
+
   return passBuffer;
-}
-
-// Función principal para crear el pase
-export async function createWalletPass(ticketId, email, eventName, eventDate) {
-  const passDir = path.join(TEMP_DIR, `pass-${ticketId}`);
-  await ensureTempDir();
-  await fs.mkdir(passDir, { recursive: true });
-
-  try {
-    // Crear pass.json
-    const passJson = createPassJson(ticketId, email, eventName, eventDate);
-    await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
-    console.log('pass.json creado');
-
-    // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png'];
-    for (const image of images) {
-      const imagePath = path.join(IMAGES_DIR, image);
-      try {
-        await fs.copyFile(imagePath, path.join(passDir, image));
-        console.log(`Imagen copiada: ${image}`);
-      } catch (err) {
-        console.error(`Error copiando ${image}:`, err);
-        throw new Error(`Falta el archivo ${image} en ${IMAGES_DIR}`);
-      }
-    }
-
-    // Crear manifest.json
-    const filesToManifest = ['pass.json', ...images];
-    const manifestPath = await createManifest(passDir, filesToManifest);
-    console.log('manifest.json creado');
-
-    // Firmar el manifest
-    await signManifest(manifestPath, passDir);
-
-    // Empaquetar el pase
-    const passBuffer = await packagePass(passDir);
-    console.log('Pase .pkpass empaquetado');
-
-    // Limpiar directorio temporal
-    await fs.rm(passDir, { recursive: true, force: true });
-    console.log('Directorio temporal limpiado');
-
-    return passBuffer;
-  } catch (err) {
-    // Limpiar en caso de error
-    await fs.rm(passDir, { recursive: true, force: true });
-    throw err;
-  }
 }
