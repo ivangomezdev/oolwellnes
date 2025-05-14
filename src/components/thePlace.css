@@ -24,16 +24,43 @@
 
 .thePlace__text {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%); /* Centers text */
   color: white; /* White text for contrast */
   font-size: 68px; /* Adjust size as needed */
   font-family: 'Broadsheet Regular', sans-serif; /* Match your site’s font */
   text-align: center;
-  letter-spacing: 20px;
+ 
   z-index: 2; /* Places text above overlay */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+}
+
+.thePlace__text2 {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 68px;
+  font-family: 'Broadsheet Regular', sans-serif;
+  text-align: center;
+  letter-spacing: 14px;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+
+  background: linear-gradient(
+    to right,
+    
+    #004a99, /* azul oscuro */
+    #8a007c, /* magenta */
+    
+    
+    #ffcb05, /* amarillo */
+   
+    #009640  /* verde oscuro */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 

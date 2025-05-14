@@ -28,7 +28,7 @@
 
 .quienesSomos__cont h1:not(.quienesSomos__who) {
   text-align: center;
-  font-size: clamp(1rem, 2.5vw, 1.6rem); /* Responsive font size */
+  font-size: clamp(0.8rem, 1.3vw, 1.2rem); /* Responsive font size */
   color: rgb(255, 255, 255);
   font-family: 'CalSans', sans-serif;
   letter-spacing: 1.5px;
@@ -57,7 +57,7 @@
 @media (max-width: 768px) {
   .quienesSomos__cont {
     height: 50vh; /* Slightly reduce height for tablets */
-    min-height: 350px;
+    min-height: 390px;
     padding: 15px;
   }
 
@@ -73,8 +73,8 @@
 
 @media (max-width: 480px) {
   .quienesSomos__cont {
-    height: 70vh; /* Increase height for mobile to fit content */
-    min-height: 300px;
+    height: 75vh; /* Increase height for mobile to fit content */
+    min-height: 350px;
     padding: 10px;
   }
 
@@ -87,4 +87,15 @@
     max-width: 100%;
     padding: 0 10px;
   }
+}
+
+
+@media (max-width: 380px) {
+  .quienesSomos__cont {
+    height: 85vh; /* Increase height for mobile to fit content */
+    min-height: 350px;
+    padding: 10px;
+  }
+
+  
 }

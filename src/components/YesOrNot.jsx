@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './yesOrNot.css';
+import React, { useEffect, useRef, useState } from "react";
+import "./yesOrNot.css";
 
 function YesOrNot() {
   const [animateTitles, setAnimateTitles] = useState(false);
@@ -40,49 +40,44 @@ function YesOrNot() {
       <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--included ${
-            animateTitles ? 'yesOrNot__title--bg-animated yesOrNot__title--text-animated' : ''
+            animateTitles
+              ? "yesOrNot__title--bg-animated yesOrNot__title--text-animated"
+              : ""
           }`}
         >
-          ¿Qué Sí?
+          Misión
           <span className="yesOrNot__underline"></span>
         </h2>
-        <ul className="yesOrNot__list">
-          <li className={`yesOrNot__item ${animatedPairs.includes(0) ? 'yesOrNot__item--animated' : ''}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-          </li>
-         
-          <li className={`yesOrNot__item ${animatedPairs.includes(2) ? 'yesOrNot__item--animated' : ''}`}>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-          </li>
-          <li className={`yesOrNot__item ${animatedPairs.includes(3) ? 'yesOrNot__item--animated' : ''}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-          </li>
-        </ul>
+        <h2 style={{ color: "#333333" }} className="yesOrNot__list">
+          Diseñamos experiencias de bienestar integral que combinan movimiento,
+          salud y conexión,{" "}
+          <strong style={{ color: "#F1E6D1" }}>
+            {" "}
+            con el objetivo de guiar a las personas hacia su mejor versión.
+          </strong>{" "}
+          Creamos espacios donde cuerpo, mente y espíritu se fortalecen en
+          comunidad en el corazón de La Riviera Maya.
+        </h2>
       </div>
 
       <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--not-included ${
-            animateTitles ? 'yesOrNot__title--bg-animated yesOrNot__title--text-animated' : ''
+            animateTitles
+              ? "yesOrNot__title--bg-animated yesOrNot__title--text-animated"
+              : ""
           }`}
         >
-          ¿Qué No?
+          Visión
         </h2>
-        <ul className="yesOrNot__list">
-          <li className={`yesOrNot__item ${animatedPairs.includes(0) ? 'yesOrNot__item--animated' : ''}`}>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
-       
-          <li className={`yesOrNot__item ${animatedPairs.includes(2) ? 'yesOrNot__item--animated' : ''}`}>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
-          <li className={`yesOrNot__item ${animatedPairs.includes(3) ? 'yesOrNot__item--animated' : ''}`}>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </li>
-        </ul>
+        <h2 style={{color:"#333333"}} className="yesOrNot__list">
+          Ser un referente en el mundo del wellness, ofreciendo espacios y
+          experiencias que inspiran un estilo de vida consciente, saludable y
+          sostenible, con impacto positivo en las personas y su entorno. Nuestro
+          Propósito Impulsar el bienestar personal como motor de transformación
+          colectiva. <strong style={{color:"#F1E6D1"}}>Creemos que cuando cada persona vive desde su mejor
+          versión, contribuye a un mundo más equilibrado, humano y pleno.</strong>
+        </h2>
       </div>
     </div>
   );

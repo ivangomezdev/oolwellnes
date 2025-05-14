@@ -14,10 +14,10 @@ const PASS_CONFIG = {
   passTypeIdentifier: 'pass.com.oolwellness.event2025',
   teamIdentifier: '6UM33LQATP',
   organizationName: 'OOL Wellness',
-  description: 'Entrada para OOL Wellness 2025',
-  foregroundColor: 'rgb(255, 255, 255)',
-  backgroundColor: 'rgb(0, 102, 204)',
-  labelColor: 'rgb(255, 255, 255)',
+  description: 'Retreats Rivera Maya',
+  foregroundColor: '#1D1A04',
+  backgroundColor: '#9F9668',
+  labelColor: '#333333',
 };
 
 // Función para asegurar que el directorio temporal existe
