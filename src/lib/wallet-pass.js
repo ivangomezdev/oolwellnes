@@ -1,5 +1,5 @@
 
-import fs from 'fs/promises';
+ import fs from 'fs/promises';
 import path from 'path';
 import os from 'os';
 import AdmZip from 'adm-zip';
@@ -7,8 +7,8 @@ import forge from 'node-forge';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const TEMP_DIR = os.tmpdir();
-const CERT_DIR = path.join(process.cwd(), 'certs');
-const ASSETS_DIR = path.join(process.cwd(), 'src', 'images'); // Corregido a src/images
+const CERT_DIR = path.join(process.cwd(), 'src', 'certs'); // Corregido a src/certs
+const ASSETS_DIR = path.join(process.cwd(), 'src', 'images'); // Correcto en src/images
 
 const ticketNameMap = {
   'price_1RLvqlRWJlybi2c9hUQf8Aaa': 'KIN - Regular Package',
@@ -104,7 +104,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate) {
     const sourcePath = path.join(ASSETS_DIR, image);
     const destPath = path.join(passDir, image);
     try {
-      await fs.access(sourcePath); // Verificar si existe
+      await fs.access(sourcePath);
       await fs.copyFile(sourcePath, destPath);
       existingImages.push(image);
       console.log(`Imagen ${image} copiada desde ${sourcePath}`);
