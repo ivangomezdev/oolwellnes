@@ -43,7 +43,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
-    logoText: 'Tu Organización', // Texto del logo
+    logoText: '', // Texto del logo
     passInformation: {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
@@ -71,14 +71,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
         },
       ],
       secondaryFields: [
-        {
-          key: 'date',
-          label: 'Fecha',
-          value: new Date(eventDate).toISOString(),
-          dateStyle: 'PKDateStyleMedium',
-          timeStyle: 'PKDateStyleShort',
-          textAlignment: 'PKTextAlignmentNatural',
-        },
+       
       ],
       auxiliaryFields: [
         {
