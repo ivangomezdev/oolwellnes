@@ -1,6 +1,8 @@
+import fs from 'fs/promises';
+import path from 'path';
+import os from 'os';
 import { NextResponse } from 'next/server';
 import { createWalletPass } from '@/lib/wallet-pass';
-import { getPass } from '@/lib/firebase';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -14,17 +16,20 @@ export async function GET(req) {
     return NextResponse.json({ error: 'ticketId es requerido' }, { status: 400 });
   }
 
+  const filePath = path.join(os.tmpdir(), `ticket-${ticketId}.pkpass`);
+  console.log(`Intentando leer pase desde: ${filePath}`);
+
   try {
-    const passBuffer = await getPass(ticketId);
-    console.log(`Pase enviado, tamaño: ${(passBuffer.length / 1024).toFixed(2)} KB`);
-    return new NextResponse(passBuffer, {
+    const fileBuffer = await fs.readFile(filePath);
+    console.log(`Pase encontrado, tamaño: ${(fileBuffer.length / 1024).toFixed(2)} KB`);
+    return new NextResponse(fileBuffer, {
       headers: {
         'Content-Type': 'application/vnd.apple.pkpass',
         'Content-Disposition': `attachment; filename=ticket-${ticketId}.pkpass`,
       },
     });
   } catch (err) {
-    console.error('Error al recuperar el pase de Storage:', err);
+    console.error('Error al leer el pase:', err);
     console.log('Intentando regenerar el pase...');
 
     try {
@@ -42,8 +47,8 @@ export async function GET(req) {
         'OOL Wellness 2025',
         '2025-05-20'
       );
-      await savePass(ticketId, passBuffer);
-      console.log(`Pase regenerado y guardado en Firebase Storage`);
+      await fs.writeFile(filePath, passBuffer);
+      console.log(`Pase regenerado y guardado en: ${filePath}`);
 
       return new NextResponse(passBuffer, {
         headers: {
