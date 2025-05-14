@@ -61,7 +61,13 @@ function createPassJson(ticketId, email, eventName, eventDate) {
           value: 'Xcaret Arte', // Ejemplo
         },
       ],
-     
+      primaryFields: [
+        {
+          key: 'event',
+          label: 'Evento',
+          value: "",
+        },
+      ],
       secondaryFields: [
         {
           key: 'date',
