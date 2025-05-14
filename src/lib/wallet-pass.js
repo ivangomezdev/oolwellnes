@@ -77,6 +77,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
           value: new Date(eventDate).toISOString(),
           dateStyle: 'PKDateStyleMedium',
           timeStyle: 'PKDateStyleShort',
+          textAlignment: 'PKTextAlignmentNatural',
         },
       ],
       auxiliaryFields: [
@@ -84,6 +85,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
           key: 'email',
           label: 'Correo',
           value: email,
+          textAlignment: 'PKTextAlignmentNatural',
         },
       ],
     },
@@ -91,7 +93,7 @@ function createPassJson(ticketId, email, eventName, eventDate) {
   format: 'PKBarcodeFormatQR',
   message: ticketId,
   messageEncoding: 'iso-8859-1',
-  altText: `Ticket ID: ${ticketId}`,
+
 },
     relevantDate: new Date(eventDate).toISOString(),
   };
