@@ -25,7 +25,7 @@ export async function POST(req) {
       const email = session.customer_details.email;
       const ticketId = session.id;
       const eventName = 'OOL Wellness 2025';
-      const eventDate = '2025-05-20';
+      const eventDate = '2025-08-01';
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
