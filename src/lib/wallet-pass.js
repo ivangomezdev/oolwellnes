@@ -34,7 +34,7 @@ async function ensureTempDir() {
 // Función para generar pass.json
 function createPassJson(ticketId, email, eventName, eventDate) {
   return {
-    formatVersion: 1,
+   formatVersion: 1,
     passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
     teamIdentifier: PASS_CONFIG.teamIdentifier,
     organizationName: PASS_CONFIG.organizationName,
@@ -43,7 +43,26 @@ function createPassJson(ticketId, email, eventName, eventDate) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
+    logoText: 'Tu Organización', // Texto del logo
+    passInformation: {
+      thumbnail: {
+        value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
+      },
+      stripImage: {
+        value: 'strip.png', // Ruta o nombre de la imagen de la franja
+      },
+      backgroundImage: {
+        value: 'background.png', // Ruta o nombre de la imagen de fondo
+      },
+    },
     eventTicket: {
+      headerFields: [
+        {
+          key: 'location',
+          label: 'Ubicación',
+          value: 'Estadio Central', // Ejemplo
+        },
+      ],
       primaryFields: [
         {
           key: 'event',
