@@ -1,4 +1,3 @@
-//app/tickets/success/page.jsx
 'use client';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
@@ -12,7 +11,7 @@ function SuccessContent() {
 
   useEffect(() => {
     if (sessionId) {
-      QRCode.toDataURL(`ticket-${sessionId}`, (err, url) => {
+      QRCode.toDataURL(`${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${sessionId}`, (err, url) => {
         if (!err) setQrImage(url);
       });
     }

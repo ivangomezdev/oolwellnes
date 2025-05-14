@@ -34,15 +34,15 @@ export async function POST(req) {
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
-      // Guardar ticket en Firebase con el plan y el nombre
+      // Guardar ticket en Firebase
       await saveTicket(ticketId, email, eventName, plan, customerName);
 
-      // Generar pase con el nombre
+      // Generar pase
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
-      // Generar QR
-      const qrData = `ticket-${ticketId}`;
+      // Generar QR con URL de validación
+      const qrData = `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`;
       const qrImage = await QRCode.toDataURL(qrData);
 
       // Enviar correo

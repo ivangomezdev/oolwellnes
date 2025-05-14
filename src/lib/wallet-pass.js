@@ -89,7 +89,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
     },
     barcode: {
       format: 'PKBarcodeFormatQR',
-      message: ticketId,
+      message: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`, // URL de validación
       messageEncoding: 'iso-8859-1',
     },
     relevantDate: new Date(eventDate).toISOString(),
