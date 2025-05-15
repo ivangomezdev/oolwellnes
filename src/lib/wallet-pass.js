@@ -43,7 +43,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
-    logoText: 'Retreats', // Texto del logo
+    logoText: '', // Texto del logo
     passInformation: {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
@@ -51,9 +51,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
      /* stripImage: {
         value: 'strip.png', // Ruta o nombre de la imagen de la franja
       },*/
-      backgroundImage:{
-        value:"background.png"
-      },
+ 
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la franja
       },
@@ -61,9 +59,9 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
     eventTicket: {
       headerFields: [
         {
-          key: 'location',
-          label: 'Ubicación',
-          value: 'Xcaret Arte',
+          key: 'date',
+          label: 'Date',
+          value: "1,2 & 3 August"
         },
       ],
       primaryFields: [
