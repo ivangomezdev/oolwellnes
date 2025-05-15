@@ -15,9 +15,9 @@ const PASS_CONFIG = {
   teamIdentifier: '6UM33LQATP',
   organizationName: 'OOL Wellness',
   description: 'Retreat Rivera Maya',
-  foregroundColor: 'white',
+  foregroundColor: '#F2E2C6',
   backgroundColor: '#9F9668',
-  labelColor: 'white',
+  labelColor: '#F2E2C6',
 };
 
 // Función para asegurar que el directorio temporal existe
@@ -48,16 +48,17 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
       },
-      backgroundImage: {
-        value: 'background.png', // Ruta o nombre de la imagen de la franja
-      },
+     /* stripImage: {
+        value: 'strip.png', // Ruta o nombre de la imagen de la franja
+      },*/
+ 
     },
     eventTicket: {
       headerFields: [
         {
           key: 'date',
-          label: 'Fecha del evento',
-          value: "1,2 & 3 Agosto,2025"
+          label: 'Date',
+          value: "1,2 & 3 August,2025"
         },
       ],
       primaryFields: [
@@ -71,7 +72,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       secondaryFields: [
      {
           key: 'email',
-          label: 'E-mail',
+          label: 'Correo',
           value: email,
           textAlignment: 'PKTextAlignmentNatural',
         },
@@ -79,19 +80,19 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       auxiliaryFields: [
         {
           key: 'Venue',
-          label: 'Lugar',
+          label: 'Venue',
           value: "Xcaret Arte",
           textAlignment: 'PKTextAlignmentCenter',
         },
             {
           key: 'plan',
           label: 'Paquete',
-          value: "VIP: HA'",
+          value: "XA",
           textAlignment: 'PKTextAlignmentCenter',
         },
             {
           key: 'ticket',
-          label: 'Ticket ID',
+          label: 'TicketID',
           value: "312312312312",
           textAlignment: 'PKTextAlignmentCenter',
         },
@@ -221,7 +222,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate, cu
     console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png',"thumbnail.png","background.png"];
+    const images = ['icon.png', 'logo.png',"background.png","thumbnail.png"];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
