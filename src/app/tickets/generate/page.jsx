@@ -1,11 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { v4 as uuidv4 } from 'uuid';
-import { saveTicket } from '@/lib/firebase';
-import { createWalletPass } from '@/lib/wallet-pass';
-import { sendTicketEmail } from '@/lib/nodeMailer';
-import QRCode from 'qrcode';
 
 export default function GenerateTicketPage() {
   const [formData, setFormData] = useState({
@@ -28,33 +23,17 @@ export default function GenerateTicketPage() {
     setError(null);
     setSuccess(null);
 
-    const { firstName, lastName, email, plan } = formData;
-    const customerName = `${firstName} ${lastName}`.trim();
-    const ticketId = `manual-${uuidv4()}`; // Generar ticketId único
-    const eventName = 'OOL Wellness 2025';
-    const eventDate = '2025-08-01';
-
     try {
-      // Validar campos
-      if (!firstName || !lastName || !email || !plan) {
-        throw new Error('Todos los campos son requeridos');
+      const response = await fetch('/api/generate-ticket', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Error generando la entrada');
       }
-      if (!email.includes('@')) {
-        throw new Error('Email inválido');
-      }
-
-      // Guardar ticket en Firebase
-      await saveTicket(ticketId, email, eventName, plan, customerName);
-
-      // Generar pase
-      const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
-
-      // Generar QR
-      const qrData = `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`;
-      const qrImage = await QRCode.toDataURL(qrData);
-
-      // Enviar correo
-      await sendTicketEmail(email, ticketId, eventName, eventDate, passBuffer, qrImage);
 
       setSuccess('¡Entrada generada y enviada exitosamente!');
       setFormData({ firstName: '', lastName: '', email: '', plan: 'KIN - Regular Package' });
