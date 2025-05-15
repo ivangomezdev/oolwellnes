@@ -57,7 +57,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       headerFields: [
         {
           key: 'date',
-          label: 'Date',
+          label: 'Fecha del evento',
           value: "1,2 & 3 August,2025"
         },
       ],
@@ -72,7 +72,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       secondaryFields: [
      {
           key: 'email',
-          label: 'Correo',
+          label: 'Email',
           value: email,
           textAlignment: 'PKTextAlignmentNatural',
         },
@@ -80,7 +80,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       auxiliaryFields: [
         {
           key: 'Venue',
-          label: 'Venue',
+          label: 'Lugar',
           value: "Xcaret Arte",
           textAlignment: 'PKTextAlignmentCenter',
         },
@@ -92,7 +92,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
         },
             {
           key: 'ticket',
-          label: 'TicketID',
+          label: 'Ticket ID',
           value: "312312312312",
           textAlignment: 'PKTextAlignmentCenter',
         },
