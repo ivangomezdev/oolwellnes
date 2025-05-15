@@ -8,7 +8,8 @@
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   background-color: #f2e2c6;
-  background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984881/Fondo_Retiro_vqqpq4.png');
+  background-color: #9B956A;
+  background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745983033/Textura_iconos_oso3to.png');
   background-size: 1900px;
 }
 

@@ -48,8 +48,11 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
       },
-      stripImage: {
+     /* stripImage: {
         value: 'strip.png', // Ruta o nombre de la imagen de la franja
+      },*/
+      backgroundImage:{
+        value:"background.png"
       },
       footer: {
         value: 'strip.png', // Ruta o nombre de la imagen de la franja
@@ -211,7 +214,7 @@ export async function createWalletPass(ticketId, email, eventName, eventDate, cu
     console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png', 'strip.png', 'footer.png'];
+    const images = ['icon.png', 'logo.png', 'strip.png', 'footer.png',"background.png"];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {

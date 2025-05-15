@@ -46,25 +46,24 @@ function YesOrNot() {
               : ""
           }`}
         >
-          Misión
+          Qué incluye
           <span className="yesOrNot__underline"></span>
         </h2>
-        <h2
+        <ul
           style={{ color: "#333333", textAlign: "center" }}
           className="yesOrNot__list"
         >
-          Diseñamos experiencias de bienestar integral que combinan movimiento,
-          salud y conexión,{" "}
-          <strong style={{ color: "#F1E6D1" }}>
-            {" "}
-            con el objetivo de guiar a las personas hacia su mejor versión.
-          </strong>{" "}
-          Creamos espacios donde cuerpo, mente y espíritu se fortalecen en
-          comunidad en el corazón de La Riviera Maya.
-        </h2>
+          <li className="yesOrNot__item">Hospedaje 2 noches en Hotel xcaret Arte</li>
+          <li>All inclusive (Alimentos y bebidas)</li>
+          <li>Transporte aeropuerto-hotel</li>
+          <li>Acceso completo a las actividades wellness y clases, conferencias y rituales</li>
+          <li>Goodie bag</li>
+            <li>Goodie bag</li>
+            <li>All Fun Inclusive</li>
+        </ul>
       </div>
 
-      <div className="yesOrNot__column">
+     {/* <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--not-included ${
             animateTitles
@@ -88,7 +87,7 @@ function YesOrNot() {
             contribuye a un mundo más equilibrado, humano y pleno.
           </strong>
         </h2>
-      </div>
+      </div>*/}
     </div>
   );
 }
