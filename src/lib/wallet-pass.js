@@ -48,7 +48,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
       },
-      background: {
+      backgroundImage: {
         value: 'background.png', // Ruta o nombre de la imagen de la franja
       },
     },
