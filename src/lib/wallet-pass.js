@@ -67,7 +67,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
         {
           key: 'event',
           label: 'Evento',
-          value: eventName,
+          value: "",
         },
       ],
       secondaryFields: [

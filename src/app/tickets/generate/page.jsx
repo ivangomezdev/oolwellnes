@@ -46,7 +46,7 @@ export default function GenerateTicketPage() {
 
   return (
     <div className="container">
-      <h1>Generar Entrada - OOL Wellness 2025</h1>
+      <h1>Generar Entrada - OOL Retreats 2025</h1>
       <p>Complete el formulario para generar y enviar una entrada al usuario.</p>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
