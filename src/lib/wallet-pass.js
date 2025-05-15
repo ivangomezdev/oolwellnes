@@ -43,7 +43,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
-    logoText: '', // Texto del logo
+    logoText: 'Retreats', // Texto del logo
     passInformation: {
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
@@ -68,25 +68,38 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
       ],
       primaryFields: [
         {
-          key: 'event',
-          label: 'Evento',
-          value: "Retreats",
-        },
-      ],
-      secondaryFields: [
-        {
           key: 'name',
           label: 'Nombre',
           value: customerName, // Mostrar el nombre en el pase
           textAlignment: 'PKTextAlignmentNatural',
         },
       ],
-      auxiliaryFields: [
-        {
+      secondaryFields: [
+     {
           key: 'email',
           label: 'Correo',
           value: email,
           textAlignment: 'PKTextAlignmentNatural',
+        },
+      ],
+      auxiliaryFields: [
+        {
+          key: 'Venue',
+          label: 'Venue',
+          value: "Xcaret Arte",
+          textAlignment: 'PKTextAlignmentCenter',
+        },
+            {
+          key: 'plan',
+          label: 'Paquete',
+          value: "XA",
+          textAlignment: 'PKTextAlignmentCenter',
+        },
+            {
+          key: 'ticket',
+          label: 'TicketID',
+          value: "312312312312",
+          textAlignment: 'PKTextAlignmentCenter',
         },
       ],
     },
