@@ -12,9 +12,26 @@ export default function GenerateTicketPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [password, setPassword] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [passwordError, setPasswordError] = useState(null);
+
+  // Contraseña fija (cámbiala según necesites)
+  const FIXED_PASSWORD = 'ool2025admin';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    setPasswordError(null);
+    if (password === FIXED_PASSWORD) {
+      setIsUnlocked(true);
+    } else {
+      setPasswordError('Contraseña incorrecta');
+      setPassword('');
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -44,6 +61,109 @@ export default function GenerateTicketPage() {
     }
   };
 
+  // Si no está desbloqueado, mostrar el formulario de contraseña
+  if (!isUnlocked) {
+    return (
+      <div className="container">
+        <h1>Acceso Restringido - OOL Retreats 2025</h1>
+        <p>Ingrese la contraseña para acceder al generador de entradas.</p>
+        <form onSubmit={handlePasswordSubmit} className="form">
+          <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Ingrese la contraseña"
+              required
+            />
+          </div>
+          <button type="submit">Desbloquear</button>
+        </form>
+        {passwordError && <p className="error">{passwordError}</p>}
+
+        <style jsx>{`
+          .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #F2E2C6;
+            color: #000000;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+          }
+          h1 {
+            color: #9F9668;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+          }
+          p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+          }
+          .form {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+          }
+          label {
+            font-size: 1.1rem;
+            color: #9F9668;
+            margin-bottom: 0.5rem;
+          }
+          input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #9F9668;
+            border-radius: 4px;
+            outline: none;
+          }
+          input:focus {
+            border-color: #8A8257;
+          }
+          button {
+            background-color: #9F9668;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+          }
+          button:hover {
+            background-color: #8A8257;
+            transform: scale(1.05);
+          }
+          .error {
+            color: #d32f2f;
+            background-color: #ffe6e6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+          }
+        `}</style>
+      </div>
+    );
+  }
+
+  // Si está desbloqueado, mostrar el formulario de generación de tickets
   return (
     <div className="container">
       <h1>Generar Entrada - OOL Retreats 2025</h1>
