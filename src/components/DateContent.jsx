@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import "./dateContent.css";
+import Link from "next/link";
 
 const DateContent = () => {
   const containerRef = useRef(null);
@@ -131,12 +132,15 @@ const DateContent = () => {
             className="dateContent__imgage"
           />
           <p className="dateContent__description">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            Más que una retiro, una experiencia expansiva. <span style={{color:"white"}}>Tres días de conexión,
+          movimiento y comunidad.</span>
             <br />
             <br />
-            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-            penatibus et
+ Sumérgete en el arte del bienestar. Muévete,
+          Siente, Reconecta. <span style={{color:"white"}}>Tu cuerpo, tu mente y tu espíritu te están
+          esperando.</span>
           </p>
+          <Link href={"/oolExperience"}>
           <button className="animated-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +149,7 @@ const DateContent = () => {
             >
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
-            <span className="text">More information</span>
+            <span className="text">Más Información</span>
             <span className="circle"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -155,6 +159,7 @@ const DateContent = () => {
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
           </button>
+          </Link>
         </div>
         <div className="retreat__logo">
           <Image

@@ -85,17 +85,19 @@
   font-weight: 600;
   top: 500px;
   left: 100px;
-  color: #1e1e1e;
-  box-shadow: 0 0 0 2px #1e1e1e;
+  margin-top: 20px;
+  color: #FEFEFE;
+  box-shadow: 0 0 0 2px #F2E2C6;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
 }
 
 .animated-button svg {
   position: absolute;
   width: 24px;
-  fill: black;
+  fill: #FEFEFE;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }

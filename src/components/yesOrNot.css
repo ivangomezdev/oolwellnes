@@ -140,3 +140,148 @@
         
       }
     }
+
+    .yesOrNot__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 20px;
+  background-color: #beaa88;
+  font-family: Arial, sans-serif;
+  flex-wrap: wrap;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746859857/removerbg_oaho1s.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.yesOrNot__card-wrapper {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.yesOrNot__card {
+  background-color: #9B956A;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.37);
+  display: flex;
+  flex-direction: column;
+  height: 390px
+  
+}
+
+.yesOrNot__header {
+  padding: 20px;
+  text-align: center;
+  color: #f1e2ce;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.yesOrNot__icon {
+  background-color: transparent;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yesOrNot__titleCard {
+  font-size: 1.8rem;
+  
+  font-family: "Broadsheet Regular";
+  margin: 0;
+}
+
+.yesOrNot__content {
+  
+  padding: 30px 20px;
+  border-radius: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.yesOrNot__description {
+  color: #ece9d4;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-top: -30px;
+  flex-grow: 1;
+    font-family: "CalSans";
+}
+
+.yesOrNot__price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #9B956A;
+  text-shadow: 0px 0px 5px #9B956A;
+  margin: 20px 0;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png");
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.yesOrNot__price1{
+   font-size: 1.8rem;
+  font-weight: bold;
+  color: #9B956A;
+  text-shadow: 0px 0px 5px #9B956A;
+  margin-top: 46px;
+    margin-bottom: 18px;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.yesOrNot__btn{
+  background-color:#7f7b58 ;
+  width: 150px;
+  padding: 7px;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-family: "CalSans";
+  border: none;
+  color: #ECE9D4;
+  letter-spacing: 1px;
+  font-size: 17px;
+  transition: ease background-color 0.5s;
+}
+
+.yesOrNot__btn:hover{
+  background-color:#aea877 ;
+  cursor: pointer;
+
+}
+
+
+.yesOrNot__note {
+  font-size: 0.9rem;
+  color: #F1E2CE;
+  font-style: "CalSans";
+  margin-top: auto;
+  background-color: #333333;
+
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .yesOrNot__container {
+    flex-direction: column;
+  }
+
+  .yesOrNot__card-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+}

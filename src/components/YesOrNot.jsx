@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./yesOrNot.css";
+import Link from "next/link";
 
 function YesOrNot() {
   const [animateTitles, setAnimateTitles] = useState(false);
@@ -49,18 +50,47 @@ function YesOrNot() {
           Qué incluye
           <span className="yesOrNot__underline"></span>
         </h2>
-        <ul
-          style={{ color: "#333333", textAlign: "center" }}
-          className="yesOrNot__list"
-        >
-          <li className="yesOrNot__item">Hospedaje 2 noches en Hotel xcaret Arte</li>
-          <li>All inclusive (Alimentos y bebidas)</li>
-          <li>Transporte aeropuerto-hotel</li>
-          <li>Acceso completo a las actividades wellness y clases, conferencias y rituales</li>
-          <li>Goodie bag</li>
-            <li>Goodie bag</li>
-            <li>All Fun Inclusive</li>
-        </ul>
+        <div className="yesOrNot__container">
+      <div className="yesOrNot__card-wrapper">
+        <div className="yesOrNot__card">
+          <div className="yesOrNot__header">
+            <div className="yesOrNot__icon">
+              <img style={{filter:"drop-shadow(1px 0px 2px black)"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747316831/logo_h8tebi.png" alt="" />
+            </div>
+            <div className="yesOrNot__titleCard">Standar: KIN'</div>
+          </div>
+          <div className="yesOrNot__content">
+            <p className="yesOrNot__description">
+              Hospedaje + Traslados + Acceso completo a las actividades wellness, clases, conferencias y rituales.
+            </p>
+            <div className="yesOrNot__price1">$35,000.00</div>
+         <Link href={"/tickets"}>
+              <button className="yesOrNot__btn">Preventa</button>
+             </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="yesOrNot__card-wrapper">
+        <div className="yesOrNot__card">
+          <div className="yesOrNot__header">
+            <div className="yesOrNot__icon">
+           <img style={{filter:"drop-shadow(1px 0px 2px black)"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747316831/logo_h8tebi.png" alt="" />
+            </div>
+            <div className="yesOrNot__titleCard">VIP: HA'</div>
+          </div>
+          <div className="yesOrNot__content">
+            <p className="yesOrNot__description">
+              Hospedaje Ocean View + Traslados+ Todo lo incluido en Aire, más beneficios premium, accesos preferenciales
+              y detalles exclusivos.
+            </p>
+            <div className="yesOrNot__price">$55,000.00</div>
+          
+          <button className="yesOrNot__btn">Preventa</button>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
 
      {/* <div className="yesOrNot__column">
