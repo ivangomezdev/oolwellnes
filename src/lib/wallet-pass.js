@@ -15,9 +15,9 @@ const PASS_CONFIG = {
   teamIdentifier: '6UM33LQATP',
   organizationName: 'OOL Wellness',
   description: 'Retreat Rivera Maya',
-  foregroundColor: '#F2E2C6',
+  foregroundColor: 'white',
   backgroundColor: '#9F9668',
-  labelColor: '#F2E2C6',
+  labelColor: 'white',
 };
 
 // Función para asegurar que el directorio temporal existe
@@ -86,7 +86,7 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
             {
           key: 'plan',
           label: 'Paquete',
-          value: "XA",
+          value: "VIP: HA'",
           textAlignment: 'PKTextAlignmentCenter',
         },
             {
