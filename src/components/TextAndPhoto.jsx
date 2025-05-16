@@ -81,7 +81,7 @@ const TextAndPhoto = () => {
             />
           </div>
           <p style={{ marginTop: "10px", fontSize: "36px", color: "#F4E1D1" }}>
-            Join us for 3 days and 2 nights at{" "}
+           Únetenos por 3 dias y 2 noches en{" "}  <br />
             <span style={{ color: "white" }}>
               Hotel Xcaret Arte, Riviera Maya.
             </span>

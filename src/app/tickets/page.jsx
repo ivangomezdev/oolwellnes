@@ -55,6 +55,19 @@ const ticketOptions = [
     features: [
       "3 days / 2 nights at Hotel Xcaret Arte (Ocean Front Suite)",
       "Early Check-in (from 9AM) & Late Check-out (6PM)",
+        
+      "All-Inclusive gourmet experience – Menus designed by Michelin-star chefs",
+      "All-Fun Inclusive – Unlimited access to all Grupo Xcaret parks and tours",
+      "Round-trip airport transportation (CUN – hotel – CUN)",
+      "Welcome Social Gathering with DJ",
+      "Closing Sunset Party",
+      "6 high-energy cycling sessions with top coaches like Kristina Girod, Pepe Abreu, and Majo Ake",
+      "2 functional training sessions",
+      "1 somatic therapy session",
+      "1 guided breathwork experience",
+      "Lifestyle activities: kayak, paddle board, ceramics, ice bath, embroidery",
+      "Wellness keynote",
+      "Exclusive Welcome Kit",
       // ... other features
     ],
     image:

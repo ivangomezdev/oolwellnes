@@ -5,7 +5,7 @@ import TextAndPhoto from '@/components/TextAndPhoto'
 import ThePlace from '@/components/ThePlace'
 import ThePlaceTextAndImg from '@/components/ThePlaceTextAndImg'
 import VideoWLogo from '@/components/VideoWLogo'
-
+import PlansPreSaleInfo from "@/components/PlansPreSaleInfo"
 import React, { useState } from 'react'
 import "@/components/Navbar.css"
 import Image from 'next/image'
@@ -128,6 +128,7 @@ const Page = () => {
       <TextAndPhoto />
   
       <ThePlace />
+      <PlansPreSaleInfo/>
       <ThePlaceTextAndImg />
       <CoachSelector />
       <LayoutData />
