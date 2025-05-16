@@ -279,3 +279,36 @@
   }
 
 }
+
+@media(max-width:420px){
+  .yesOrNot__card{
+    height: 400px;
+  }
+}
+
+@media (max-width: 373px) {
+  .yesOrNot__container {
+    flex-direction: column;
+  }
+
+}
+
+@media(max-width:420px){
+  .yesOrNot__card{
+    height: 440px;
+  }
+
+  .yesOrNot__container{
+ 
+    margin: 0 auto;
+  }
+
+
+}
+
+@media(max-width:370px){
+    .yesOrNot__column{
+    width: 80%;
+    margin-left: -20px;
+  }
+}

@@ -13,6 +13,26 @@
   background-size: 1900px;
 }
 
+@media(max-width:472px){
+ .dateContent__content.is-visible img {
+top: -100px;
+}
+.dateContent-bg {
+margin-top: -70px
+}
+
+.animated-button {
+top: 540px !important;
+
+}
+
+.retreat__logo{
+  display: none;
+}
+
+
+}
+
 .dateContent__content.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -48,6 +68,7 @@
   color: #f2e2c6;
   font-weight: normal;
 }
+
 
 .dateContent__button {
   position: absolute;
