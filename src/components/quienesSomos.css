@@ -26,6 +26,10 @@
   margin: 0 0 20px 0; /* Add margin for spacing */
 }
 
+.quienesSomos__cont span{
+color: #432E1A;
+}
+
 .quienesSomos__cont h1:not(.quienesSomos__who) {
   text-align: center;
   font-size: clamp(0.8rem, 1.3vw, 1.2rem); /* Responsive font size */

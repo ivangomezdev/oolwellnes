@@ -3,14 +3,35 @@
   align-items: center;
   justify-content: center;
   font-family: "Broadsheet Regular";
-  padding-bottom: 10px;
+  border-top: 10px solid #BEAA88;
+  border-bottom: 10px solid #BEAA88;
   background-color: #9F9668;
   height: 300px;
+  margin-top: -6px;
 }
+
+.image-wrapper{
+  background-position: center;
+  background-size: 150px;
+  width: 160px;
+  height: 160px;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746900192/Dise%C3%B1o_sin_t%C3%ADtulo_7_swdgte.png");
+}
+
+.image-wrapper img{
+  margin-left: 26px;
+  margin-top: 26px;
+    filter: drop-shadow(0px 0px 3px black);
+}
+
+.centered{
+   filter: drop-shadow(0px 0px 0px) !important;
+}
+
 
 .textAndPhoto__textCont {
   width: 80%;
-margin: 0 auto;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +46,6 @@ margin: 0 auto;
 .textAndPhoto__cont p {
   font-size: 30px;
   max-width: 600px;
-
   margin: 0 auto;
 }
 
@@ -37,95 +57,133 @@ margin: 0 auto;
   flex-shrink: 0;
 }
 
-.textAndPhoto__img {
-  width: 200px;
-  border: solid 1px gray;
-  border-radius: 5px;
-  height: 200px;
+.textAndPhoto__labels {
+  max-width: 600px;
+
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+  margin-top: 25px;
+
 }
 
-.textAndPhoto__btn {
-  background-color: antiquewhite;
+.label-pair {
+  min-width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+
+.textAndPhoto__labels span {
+  flex: 1;
+  min-width: 200px;
+  color: white;
   border-radius: 5px;
   padding: 5px;
-  width: 70px;
+  font-size: 26px;
+  display: flex;
+ 
+  text-align: center;
 }
 
-.textAndPhoto__imgAndBtn img {
-
-  filter: drop-shadow(1px 1px 1px black);
-
-}
-
-@media (max-width: 852px) {
-  .textAndPhoto__cont p {
-    font-size: 25px;
-  }
-
-  .textAndPhoto__textCont {
-    width: 90%;
-    gap: 15px;
-  }
-}
-
-@media (max-width: 500px) {
+@media (max-width: 725px) {
   .textAndPhoto__cont {
+    height: 500px; /* Increased height */
     flex-direction: column;
-    height: auto;
     padding: 50px 0;
   }
 
   .textAndPhoto__textCont {
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-top: 20px;
     width: 90%;
     max-width: 400px;
-    flex-direction: column;
-    text-align: center;
   }
 
-  .textAndPhoto__cont p {
-    font-size: 22px;
-    margin: 0 auto;
-    max-width: 100%;
-    padding-bottom: 50px;
-  }
-
-  .textAndPhoto__imgAndBtn {
+  .textAndPhoto__textCont p {
     margin-top: 20px;
+    width: 100%;
+    font-size: 25px;
+    padding-bottom: 20px;
   }
 
-  .animated-image {
-    margin-top: 50px;
+  .textAndPhoto__labels {
+    height: 40px; /* Single item height */
+    max-width: 300px;
   }
 
-    .image-wrapper {
-    margin-top: -50px !important;
+  .label-pair {
+    min-width: 100%;
+    justify-content: center;
+     margin-left: 0px;
+  }
+
+  .textAndPhoto__labels span {
+    min-width: unset;
+    width: 100%;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .image-wrapper {
+    margin-top: 20px;
   }
 }
 
-@media (max-width: 436px) {
+@media (max-width: 510px) {
   .textAndPhoto__cont {
-    flex-direction: column;
-    padding-bottom: 60px;
-    padding-top: 30px;
+    height: 450px;
+    padding: 30px 0;
   }
 
   .textAndPhoto__textCont {
     width: 90%;
     max-width: 300px;
-    flex-direction: column;
-    text-align: center;
   }
 
   .textAndPhoto__cont p {
-    font-size: 23px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding-bottom: 30px;
+    font-size: 20px; /* Reduced font size */
+    max-width: 280px; /* Constrain width */
+    line-height: 1.4; /* Improve readability */
+    padding-bottom: 20px;
   }
 
-  .textAndPhoto__imgAndBtn {
-    margin-top: 10px;
+  .textAndPhoto__labels {
+    max-width: 250px;
   }
 
+  .textAndPhoto__labels span {
+    font-size: 20px;
+  }
 
+  .text-content{
+   width: 350px;
+  }
+}
+
+@media (max-width: 436px) {
+  .textAndPhoto__cont {
+    height: 470px;
+    padding: 20px 0;
+  }
+
+  .textAndPhoto__textCont {
+    max-width: 280px;
+  }
+
+  .textAndPhoto__cont p {
+    font-size: 18px;
+    max-width: 260px;
+  }
+
+  .textAndPhoto__labels {
+    max-width: 240px;
+  }
+
+  .textAndPhoto__labels span {
+    font-size: 18px;
+  }
 }

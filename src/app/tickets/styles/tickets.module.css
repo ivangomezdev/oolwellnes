@@ -3,21 +3,49 @@
   margin: 0 auto;
 }
 
-.tickets__title {
- 
-  font-size: 4rem;
-  width: 700px;
-  color: #F2E2CE;
-  margin: 0 auto;
-  font-weight: 100;
+/* Ensure content respects navbar height */
+.tickets__Content {
+  padding-top: 100px; /* Adjust based on your navbar height (e.g., 80px or measure it) */
+
+}
+
+ .tickets__title {
   text-align: center;
-  margin-bottom: 2rem;
+  max-width: 450px;
+  font-size: 45px;
+  padding-top: 60px;
+  color: #D9BCA3;
   font-family: "Broadsheet Regular";
+  }
+
+/* Video container */
+.tickets__videoAndForm {
+  position: relative;
+  width: 100dvh;
+
+}
+
+.tickets__videoAndTitle {
+  position: relative;
+  top: 100px;
+}
+
+.tickets__videoAndTitle h1 {
+  position: absolute;
+  z-index: 9999999999;
+  top: 100px;
+  left: 500px;
+  font-family: "Broadsheet Regular";
+  color: #D9BCA3;
+}
+
+.tickets__videoAndForm video {
+  width: 100%;
+  object-fit: cover; /* Ensure video covers the container without distortion */
 }
 
 .tickets__titleVertical {
   display: none; /* Hidden by default */
-  
   font-size: 2.5rem;
   color: #F2E2CE;
   font-weight: 100;
@@ -35,63 +63,40 @@
   align-items: center;
   position: relative;
   width: 100%;
-   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png");
-    background-size: 600px;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 .tickets__gridAndTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin: 0 auto;
+
+  
 }
 
 .tickets__grid {
   display: flex;
   gap: 2rem;
+  margin: 0 auto;
 }
 
 .ticket {
-  border: 4px solid #9F9668;
+  border: 4px solid #9F9668; /* Reverted to original dashed border */
   border-style: dashed;
   padding: 1.5rem;
   border-radius: 8px;
   width: 350px;
+  height: 240px !important;
   position: relative;
   text-align: center;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png");
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: center top;
   background-color: #D9BCA3;
-}
-
-.ticketIcons {
-  position: absolute;
-  display: flex;
-  left: 354px;
-  bottom: 50px;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.ticketIcons img {
-  width: 30px;
-}
-
-.ticketIconsTwo img {
-  width: 30px;
-}
-
-.ticketIconsTwo {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  left: 6px;
-  gap: 10px;
-  bottom: 50px;
 }
 
 .ticket__name {
@@ -127,7 +132,8 @@
   background-color: #9F9668;
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
   color: white;
-  margin-top: 20px;
+  margin-top: 240px;
+  margin-right: 20px;
   padding: 8px;
   border: none;
   border-radius: 4px;
@@ -193,7 +199,8 @@
 .ticket__seeMore {
   background-color: #9F9668;
   color: white;
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-left: 50px;
   padding: 8px;
   border: none;
   border-radius: 4px;
@@ -201,10 +208,8 @@
   font-size: 1rem;
   font-family: "CalSans";
   margin-right: 20px;
-  
   background-position: center;
-    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
-
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
 }
 
 .ticket__seeMore:hover {
@@ -225,10 +230,13 @@
 }
 
 .popup__content {
-  background: #fff;
+  border: 7px solid #4F4B34;
+  border-style: dashed;
+  background: #9f9668;
   padding: 2rem;
   border-radius: 8px;
   max-width: 500px;
+  margin-top: 100px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
@@ -255,169 +263,6 @@
   margin-bottom: 0.5rem;
 }
 
-.popup__close {
-  background-color: #e74c3c;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  display: block;
-  margin: 0 auto;
-}
-
-.popup__close:hover {
-  background-color: #c0392b;
-}
-
-@media (max-width: 1414px) {
-  .tickets__title {
-    display: none; /* Hide the original title */
-  }
-
-  .tickets__titleVertical {
-    display: block; /* Show the vertical title */
-    font-size: 2.5rem;
-    min-width: 50px; /* Ensure title has enough space */
-    margin: 0;
-  }
-
-  .tickets__titleAndTickets {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-
-  .tickets__gridAndTitle {
-    display: flex;
-    flex-direction: row; /* Grid and title side by side */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    gap: 2rem; /* Space between grid and title */
-  
-  }
-
-  .tickets__grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center tickets horizontally */
-    margin: 0;
-     position: relative;
-     top:40px;
-     gap: 15px;
-  }
-
-  .tickets__titleVertical {
-    display: flex;
-    justify-content: center; /* Center horizontally within its space */
-    align-items: center; /* Center vertically within its space */
-    height: 100%; /* Match the height of the container */
-
-  }
-
-  .ticket {
-    width: 100%;
-    max-width: 350px;
-       height: 190px;
-  }
-
-  .ticket__button{
-    position: absolute;
-    top: -10px;
-    right: 60px;
-    padding: 4px;
-  }
-
-  .ticket__seeMore{
-    position: absolute;
-     top: -10px;
-     padding: 4px;
-    left: 74px;
-    
-  }
-
-  .ticketIcons {
-    left: auto;
-    right: 10px;
-    bottom: 0px;
-  }
-
-  .ticketIconsTwo {
-    left: 10px;
-    bottom: 0px;
-  }
-}
-
-@media (max-width: 768px) {
-  .tickets__titleVertical {
-    font-size: 2rem; /* Smaller font for mobile */
-    min-width: 40px; /* Adjust for smaller screens */
-  }
-
-  .tickets__gridAndTitle {
-    gap: 1rem; /* Reduce gap on smaller screens */
-  }
-
-  .ticket {
-    max-width: 300px; /* Slightly smaller tickets for mobile */
-  }
-}
-
-@media (max-width: 870px) {
-  .tickets__titleVertical {
-    font-size: 2rem; /* Smaller font for mobile */
-    min-width: 40px; /* Adjust for smaller screens */
-  }
-
-  .tickets__gridAndTitle {
-    gap: 1rem; /* Reduce gap on smaller screens */
-  }
-
-  .ticket {
-    max-width: 300px; /* Slightly smaller tickets for mobile */
-  }
-}
-
-@media(max-width:750px){
-    .tickets__grid {
-  padding-bottom: 100px !important;
-     top:0px;
-  
-  }
-
-
-    .tickets__title {
-    display: block; /* Hide the original title */
-    font-size: 40px;
-    width: 300px;
-  }
-
-  .tickets__titleVertical {
-    display: none; /* Show the vertical title */
-    font-size: 2.5rem;
-    min-width: 50px; /* Ensure title has enough space */
-    margin: 0;
-  }
-
-}
-
-
-.popup__content {
-  border: 7px solid #4F4B34 ;
-  border-style: dashed;
-  background: #9f9668;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 500px;
-  margin-top: 100px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-}
-
 .popup__form {
   display: flex;
   flex-direction: column;
@@ -429,7 +274,7 @@
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin:0 auto;
+  margin: 0 auto;
   width: 90%;
 }
 
@@ -441,8 +286,8 @@
 
 .popup__button {
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745809227/bg_jgyrb3.png");
-  color: #F2E2C6;
-  text-shadow: 1px 0px 1px black;
+  color: black;
+  
   padding: 0.75rem;
   border: none;
   width: 95%;
@@ -455,7 +300,6 @@
   background-position: 0% center; /* Start position for animation */
   background-repeat: no-repeat; /* Prevent tiling */
   transition: ease 2s color;
-  
   animation: slideBackground 120s linear infinite; /* Animation properties */
 }
 
@@ -474,7 +318,6 @@
 .popup__button:hover {
   animation: slideBackground 20s linear infinite; /* Animation properties */
   color: #9F9668;
-
 }
 
 .popup__button:disabled {
@@ -493,10 +336,142 @@
   margin-top: 1rem;
   display: block;
   margin-left: auto;
-    font-family: "CalSans";
+  font-family: "CalSans";
   margin-right: auto;
 }
 
 .popup__close:hover {
   background-color: #c0392b;
+}
+
+/* Media query for screens 750px or wider */
+@media (min-width: 750px) {
+  .tickets__videoAndForm {
+    height: 120vh; /* Full viewport height */
+    margin-top: 80px;
+  }
+
+  .tickets__videoAndTitle {
+    background: rgba(0, 0, 0, 0.5); /* Maintain semi-transparent background */
+  }
+
+  .tickets__videoAndForm video {
+    height: 100vh; /* Full height */
+    width: 100%;
+    object-fit: cover; /* Cover the container */
+  }
+
+  .tickets__title {
+    margin-top: 20px; /* Add space from the top */
+    
+  }
+}
+
+
+
+/* Media queries from original CSS */
+@media (max-width: 1914px) {
+  .tickets__titleVertical {
+    display: none; /* Show the vertical title */
+    font-size: 2.5rem;
+    min-width: 50px; /* Ensure title has enough space */
+    margin: 0;
+  }
+
+  .tickets__titleAndTickets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tickets__gridAndTitle {
+    display: flex;
+    flex-direction: row; /* Grid and title side by side */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    gap: 2rem; /* Space between grid and title */
+  }
+
+  .tickets__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center tickets horizontally */
+    margin: 0;
+    position: relative;
+    top: 100px;
+    gap: 15px;
+  }
+
+ 
+
+  .ticket {
+    width: 100%;
+    max-width: 350px;
+    height: 190px;
+  }
+
+  .ticket__button {
+    position: absolute;
+    top: -10px;
+    right: 60px;
+    padding: 4px;
+  }
+
+  .ticket__seeMore {
+    position: absolute;
+    top: 180px;
+    padding: 4px;
+    left: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .tickets__gridAndTitle {
+    gap: 1rem; /* Reduce gap on smaller screens */
+  }
+
+  .ticket {
+    max-width: 300px; /* Slightly smaller tickets for mobile */
+  }
+}
+
+@media (max-width: 870px) {
+  .tickets__gridAndTitle {
+    gap: 1rem; /* Reduce gap on smaller screens */
+  }
+
+  .ticket {
+    max-width: 300px; /* Slightly smaller tickets for mobile */
+  }
+}
+
+@media (max-width: 750px) {
+  .tickets__grid {
+    padding-bottom: 100px !important;
+    top: 0px;
+  }
+
+  .tickets__title {
+    display: block; /* Hide the original title */
+    font-size: 40px;
+    width: 300px;
+    padding-top:60px ;
+  }
+
+  .tickets__titleVertical {
+    display: none; /* Show the vertical title */
+    font-size: 2.5rem;
+    min-width: 50px; /* Ensure title has enough space */
+    margin: 0;
+  }
+
+  .tickets__videoAndForm video {
+    height: auto; /* Allow video to scale naturally on smaller screens */
+  }
+
+  .tickets__videoAndTitle {
+    background: rgba(0, 0, 0, 0.5); /* Maintain semi-transparent background */
+  }
 }

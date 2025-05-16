@@ -1,60 +1,46 @@
-.tickets__videoAndForm video{
- height: 100vh;
-
+/* Default styles for .tickets__videoAndForm */
+.tickets__videoAndForm {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
-.tickets__videoAndForm{
-    display: flex;
-    align-items: center;
-    gap: 50px;
+/* Ensure video covers the container */
+.tickets__videoAndForm video {
+  width: 100%;
+  height: 100%; /* Match container height */
+  object-fit: cover; /* Cover without distortion */
 }
 
-.tickets__videoAndForm form{
-    display: flex;
-    flex-direction: column;
-}
-@media(max-width:1414px){
-.tickets__videoAndForm{
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    height: 100dvh;
-}
-}
+/* Media query for screens 750px or wider */
+@media (min-width: 750px) {
+  .tickets__videoAndForm {
+    height: 100vh; /* Full viewport height */
 
+  }
 
-@media(max-width:856px){
-    .tickets__videoAndForm{
-        padding-top: 50px ;
-    }
+  .tickets__videoAndForm video {
+    width: 100%;
+    height: 100%; /* Ensure video fills container */
+    object-fit: cover;
+  }
 }
 
-@media(max-width:750px){
-    .tickets__videoAndForm{
-        padding-top: 0px ;
-    }
-}
-/*@media(max-width:1415px){
-  .tickets__videoAndForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-}
-}*/
-
-
-
-
-
-
+/* For smaller screens */
 @media (max-width: 750px) {
-.tickets__videoAndForm{
-  display: flex !important;
-  flex-direction: column !important;
+  .tickets__videoAndForm {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: auto; /* Allow natural scaling */
+    padding-top: 0;
+  }
 
-    margin: 0px;
-
-}
-
+  .tickets__videoAndForm video {
+    width: 100%;
+    height: auto; /* Scale naturally */
+    object-fit: cover;
+  }
 }

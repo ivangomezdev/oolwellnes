@@ -138,7 +138,7 @@ const CheckoutPopup = ({ ticket, onClose }) => {
             disabled={loading}
             className={styles.popup__button}
           >
-            {loading ? "Processing..." : `Pay $${ticket.price} MXN`}
+            {loading ? "Processing..." : `Pay $${ticket.price},00 MXN`}
           </button>
           <button
             type="button"
@@ -209,7 +209,7 @@ export default function TicketsPage() {
   };
 
   return (
-    <div>
+    <>
       <nav className={`navbar ${showLogo ? "logo-visible" : ""}`}>
         <div className="navbar-container">
           {/* Hamburger */}
@@ -339,75 +339,31 @@ export default function TicketsPage() {
           </Link>
         </div>
       </nav>
+
+    <div>
+    
       <div className="tickets__Content">
         <div className="tickets__videoAndForm">
+          <div className={styles.tickets__videoAndTitle}> 
+         
           <video
             src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746950529/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis.mp4"
             autoPlay
             muted
             playsInline
             loop
-          ></video>
+          ></video></div>
+          
           <div className={styles.tickets__titleAndTickets}>
-            <h1 className={styles.tickets__title}>
-              Get your tickets {process.env.NEXT_PUBLIC_EVENT_NAME || "Evento"}
-            </h1>
+           
             <div className={styles.tickets__gridAndTitle}>
               <div className={styles.tickets__grid}>
+                   <h1 className={styles.tickets__title}>
+             Preventa <br/> "Rivera Maya 2025"
+            </h1>
                 {ticketOptions.map((ticket) => (
                   <div key={ticket.id} className={styles.ticket}>
-                    <div className={styles.ticketIcons}>
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className={styles.ticketIconsTwo}>
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png"
-                        alt=""
-                      />
-                      <img
-                        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png"
-                        alt=""
-                      />
-                    </div>
+               
                     <h2 className={styles.ticket__name}>{ticket.name}</h2>
                     <p className={styles.ticket__price}>${ticket.price} MXN</p>
                     <ul className={styles.ticket__features}>
@@ -452,5 +408,6 @@ export default function TicketsPage() {
         </div>
       </div>
     </div>
+        </>
   );
 }
