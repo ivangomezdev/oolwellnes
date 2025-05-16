@@ -116,3 +116,28 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.PlanPre__btns{
+        display: flex;
+margin-left: 20px;
+    gap: 20px;
+}
+.PlanPre__btns button{
+    margin-top: 20px;
+    background-color: #CEAF87;
+    font-family: "CalSans";
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: ease 1s background-color;
+
+}
+
+.PlanPre__btns button:hover{
+    margin-top: 20px;
+    background-color: #ffe6c5;
+    cursor: pointer;
+
+
+
+}

@@ -1,0 +1,349 @@
+@font-face {
+  font-family: "CalSans";
+  src: url("/fonts/CalSans-SemiBold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Broadsheet Regular";
+  src: url("/fonts/BroadsheetRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "CalSans", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Broadsheet Regular", serif;
+  font-weight: normal;
+  color: #9F9668 !important;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Componente principal */
+.xcaret {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Hero section */
+.xcaret__hero {
+  position: relative;
+  height: 500px;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747377865/arte1_z0wexp.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.xcaret__nav-button {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.xcaret__nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Contenido principal */
+.xcaret__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Secciones */
+.xcaret__section {
+  margin-bottom: 40px;
+  text-align: center;
+  background-color: #F2E2C6;
+}
+
+.xcaret__title {
+  color: #6a1b9a;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.xcaret__description {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333333;
+  letter-spacing: 2px;
+}
+
+/* Casas */
+.xcaret__casa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.xcaret__casa-title {
+  color: #6a1b9a;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.xcaret__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.xcaret__list-item {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Separador */
+.xcaret__separator {
+  width: 80%;
+  height: 1px;
+  background-color: #ddd;
+  margin: 30px auto;
+}
+
+/* Sección CTA */
+.xcaret__cta-section {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.xcaret__cta-title {
+  color: #6a1b9a;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.xcaret__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.xcaret__button {
+  background-color: #F2E2C6;
+  border-radius: 5px;
+  color: #666;
+  border: none;
+  padding: 12px 30px;
+  font-family: "CalSans", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.xcaret__button:hover {
+  background-color: #bba681;
+}
+
+/* Hoteles */
+.xcaret__hotels,
+.xcaret__parks,
+.xcaret__tours {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.xcaret__section-title {
+  font-size: 1.5rem;
+  color: #6a1b9a;
+  margin-bottom: 20px;
+}
+
+.xcaret__logos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.xcaret__logo {
+  text-align: center;
+}
+
+.xcaret__logo-img {
+  max-width: 100px;
+}
+
+/* Enlaces de parques */
+.xcaret__park-links,
+.xcaret__tour-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.xcaret__park-link,
+.xcaret__tour-link {
+  color: #555;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.xcaret__park-link:hover,
+.xcaret__tour-link:hover {
+  color: #6a1b9a;
+}
+
+/* Marca */
+.xcaret__brand {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.xcaret__brand-img {
+  max-width: 200px;
+}
+
+/* Footer */
+.xcaret__footer {
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+}
+
+.xcaret__footer-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.xcaret__footer-title {
+  font-size: 1.2rem;
+  color: #6a1b9a;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.xcaret__footer-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.xcaret__footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.xcaret__footer-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.xcaret__footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.xcaret__footer-link {
+  font-size: 0.9rem;
+  color: #777;
+  transition: color 0.3s;
+}
+
+.xcaret__footer-link:hover {
+  color: #6a1b9a;
+}
+
+.xcaret__payment {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.xcaret__payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.xcaret__payment-img {
+  height: 30px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .xcaret__footer-links {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .xcaret__footer-column {
+    text-align: center;
+  }
+
+  .xcaret__logos {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .xcaret__hero {
+    height: 300px;
+  }
+
+  .xcaret__title {
+    font-size: 2rem;
+  }
+
+  .xcaret__casa-title {
+    font-size: 1.5rem;
+  }
+
+  .xcaret__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
