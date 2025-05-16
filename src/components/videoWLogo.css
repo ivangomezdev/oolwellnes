@@ -18,7 +18,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* capa negra transparente */
+  background-color: rgba(0, 0, 0, 0.705); /* capa negra transparente */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +36,7 @@
 
 
 .video-w-logo__video-section {
-  width: 75%;
-
+  width: 100%;
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102635/LIFESTYLE-EC-AGO2021-068_whro8a.jpg");
   position: relative;
   background-size: cover;
@@ -122,28 +121,3 @@
   }
 }
 
-@media (max-width: 700px) {
-  .video-w-logo__video-section {
-    display: none;
-  }
-
-  .video-w-logo__container {
-    height: auto; /* Ajusta la altura para adaptarse al video */
-    justify-content: center; /* Centra el contenido */
-  }
-
-  .video-w-logo__text-section {
-    width: 100%; /* Ocupa todo el ancho */
-    max-width: 100%; /* Evita desbordes */
-    margin: 0 auto; /* Centra el contenedor */
-    padding: 0; /* Elimina cualquier padding innecesario */
-  }
-
-  .video-w-logo__text-section video {
-    width: 100% !important; /* Forza el ancho completo */
-    max-width: 600px; /* Limita el tamaño máximo en pantallas pequeñas */
-    height: auto; /* Mantiene la proporción */
-    display: block; /* Asegura que el video sea un bloque */
-    margin: 0 auto; /* Centra el video */
-  }
-}

@@ -13,12 +13,12 @@
 .bigCollabs__content h2{
   font-family: "Broadsheet Regular";
   font-weight: 100;
-  font-size: 90px;
+  font-size: 70px;
 }
 
 
 @media(max-width:420px){
   .bigCollabs__content h2{
-    font-size: 70px;
+    font-size: 50px;
   }
 }

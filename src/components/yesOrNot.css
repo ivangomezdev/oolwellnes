@@ -121,9 +121,7 @@
     }
 
     @media (max-width: 768px) {
-      .yesOrNot {
-        flex-direction: column;
-      }
+
 
       .yesOrNot__column {
         margin-bottom: 2rem;
@@ -150,7 +148,7 @@
   background-color: #beaa88;
   font-family: Arial, sans-serif;
   flex-wrap: wrap;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746859857/removerbg_oaho1s.png");
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351134/iconsbg_tlapjg.png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -280,8 +278,4 @@
     flex-direction: column;
   }
 
-  .yesOrNot__card-wrapper {
-    width: 100%;
-    max-width: 100%;
-  }
 }

@@ -38,7 +38,6 @@ function YesOrNot() {
 
   return (
     <div className="yesOrNot" ref={yesOrNotRef}>
-   
       <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--included ${
@@ -47,53 +46,71 @@ function YesOrNot() {
               : ""
           }`}
         >
-          Qué incluye
+      ¿Qué incluye?
           <span className="yesOrNot__underline"></span>
         </h2>
         <div className="yesOrNot__container">
-      <div className="yesOrNot__card-wrapper">
-        <div className="yesOrNot__card">
-          <div className="yesOrNot__header">
-            <div className="yesOrNot__icon">
-              <img style={{filter:"drop-shadow(1px 0px 2px black)"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747316831/logo_h8tebi.png" alt="" />
+          <div style={{overflow:"hidden"}} className="yesOrNot__card-wrapper">
+               <div style={{ position: "relative" }}>
+                    <img style={{position:"absolute",right:"100px",bottom:"-260px"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746936901/Dise%C3%B1o_sin_t%C3%ADtulo_8_n2o3nm.png" alt="" />
+                  </div>
+            <div className="yesOrNot__card">
+              
+              <div className="yesOrNot__header">
+                <div className="yesOrNot__icon">
+                  <img
+                    style={{ width: "80px" }}
+                    src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351565/esd_aflm96.png"
+                    alt=""
+                  />
+                </div>
+                <div className="yesOrNot__titleCard">Standar: KIN'</div>
+              </div>
+              <div className="yesOrNot__content">
+                <p className="yesOrNot__description">
+                  Hospedaje + Traslados + Acceso completo a las actividades
+                  wellness, clases, conferencias y rituales.
+                </p>
+                <div className="yesOrNot__price1">$35,000.00</div>
+                <Link href={"/tickets"}>
+                  <button className="yesOrNot__btn">Preventa</button>
+                </Link>
+              </div>
             </div>
-            <div className="yesOrNot__titleCard">Standar: KIN'</div>
           </div>
-          <div className="yesOrNot__content">
-            <p className="yesOrNot__description">
-              Hospedaje + Traslados + Acceso completo a las actividades wellness, clases, conferencias y rituales.
-            </p>
-            <div className="yesOrNot__price1">$35,000.00</div>
-         <Link href={"/tickets"}>
-              <button className="yesOrNot__btn">Preventa</button>
-             </Link>
+
+          <div className="yesOrNot__card-wrapper">
+            <div className="yesOrNot__card">
+              <div className="yesOrNot__header">
+                <div className="yesOrNot__icon">
+                  <div style={{ position: "relative" }}>
+                    <img style={{position:"absolute"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746936901/Dise%C3%B1o_sin_t%C3%ADtulo_8_n2o3nm.png" alt="" />
+                  </div>
+                  <img
+                    style={{ width: "80px" }}
+                    src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351565/esd_aflm96.png"
+                    alt=""
+                  />
+                </div>
+                <div className="yesOrNot__titleCard">VIP: HA'</div>
+                   
+              </div>
+              <div className="yesOrNot__content">
+                <p className="yesOrNot__description">
+                  Hospedaje Ocean View + Traslados+ Todo lo incluido en Aire,
+                  más beneficios premium, accesos preferenciales y detalles
+                  exclusivos.
+                </p>
+                <div className="yesOrNot__price">$55,000.00</div>
+
+                <button className="yesOrNot__btn">Preventa</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="yesOrNot__card-wrapper">
-        <div className="yesOrNot__card">
-          <div className="yesOrNot__header">
-            <div className="yesOrNot__icon">
-           <img style={{filter:"drop-shadow(1px 0px 2px black)"}} src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747316831/logo_h8tebi.png" alt="" />
-            </div>
-            <div className="yesOrNot__titleCard">VIP: HA'</div>
-          </div>
-          <div className="yesOrNot__content">
-            <p className="yesOrNot__description">
-              Hospedaje Ocean View + Traslados+ Todo lo incluido en Aire, más beneficios premium, accesos preferenciales
-              y detalles exclusivos.
-            </p>
-            <div className="yesOrNot__price">$55,000.00</div>
-          
-          <button className="yesOrNot__btn">Preventa</button>
-          </div>
-        </div>
-      </div>
-    </div>
-      </div>
-
-     {/* <div className="yesOrNot__column">
+      {/* <div className="yesOrNot__column">
         <h2
           className={`yesOrNot__title yesOrNot__title--not-included ${
             animateTitles

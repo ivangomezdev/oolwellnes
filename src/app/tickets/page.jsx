@@ -109,7 +109,11 @@ const CheckoutPopup = ({ ticket, onClose }) => {
   return (
     <div className={styles.popup__overlay}>
       <div className={styles.popup__content}>
-        <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png" alt="" style={{top:"10px",width:"90px",position:"absolute"}} />
+        <img
+          src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
+          alt=""
+          style={{ top: "10px", width: "90px", position: "absolute" }}
+        />
         <h2 className={styles.popup__title}>Complete Your Purchase</h2>
         <form onSubmit={handleSubmit} className={styles.popup__form}>
           <input
@@ -153,9 +157,12 @@ const CheckoutPopup = ({ ticket, onClose }) => {
 const FeaturesPopup = ({ ticket, onClose }) => {
   return (
     <div className={styles.popup__overlay}>
-
       <div className={styles.popup__content}>
-      <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png" alt="" style={{top:"10px",width:"90px",position:"absolute"}} />
+        <img
+          src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
+          alt=""
+          style={{ top: "10px", width: "90px", position: "absolute" }}
+        />
         <h2 className={styles.popup__title}>{ticket.name}</h2>
         <ul className={styles.popup__features}>
           {ticket.features.map((feature, idx) => (
@@ -222,26 +229,16 @@ export default function TicketsPage() {
             <Link href="/" className="nav-link home">
               Home
             </Link>
-
             <div
-              className="nav-link about dropdown"
-              onMouseEnter={() => setPopupOpen(true)}
-              onMouseLeave={() => setPopupOpen(false)}
+              className="nav-link services dropdown"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
             >
-              Pop Up Experience
-              {popupOpen && (
+              ÓOL Retreats
+              {servicesOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/takes-over-tulum" className="dropdown-item">
-                    Takes Over Tulum
-                  </Link>
-                  <Link
-                    href="/takes-over-geely-cancun"
-                    className="dropdown-item"
-                  >
-                    Takes Over Geely Cancun
-                  </Link>
-                  <Link href="/proximas" className="dropdown-item">
-                    Proximas
+                  <Link href="/oolExperience" className="dropdown-item">
+                    Rivera Maya 2025
                   </Link>
                 </div>
               )}
@@ -265,19 +262,29 @@ export default function TicketsPage() {
             className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}
           >
             <div
-              className="nav-link services dropdown"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
+              className="nav-link about dropdown"
+              onMouseEnter={() => setPopupOpen(true)}
+              onMouseLeave={() => setPopupOpen(false)}
             >
-              Services
-              {servicesOpen && (
+              Pop Up Experience
+              {popupOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/oolExperience" className="dropdown-item">
-                    Rivera Maya 2025
+                  <Link href="/takes-over-tulum" className="dropdown-item">
+                    Takes Over Tulum
+                  </Link>
+                  <Link
+                    href="/takes-over-geely-cancun"
+                    className="dropdown-item"
+                  >
+                    Takes Over Geely Cancun
+                  </Link>
+                  <Link href="/proximas" className="dropdown-item">
+                    Proximas
                   </Link>
                 </div>
               )}
             </div>
+
             <Link href="/contact" className="nav-link contact">
               Contact
             </Link>
@@ -414,7 +421,7 @@ export default function TicketsPage() {
                       onClick={() => openFeaturesPopup(ticket)}
                       className={styles.ticket__seeMore}
                     >
-                    More info
+                      More info
                     </button>
                     <button
                       onClick={() => openCheckoutPopup(ticket)}
@@ -425,10 +432,15 @@ export default function TicketsPage() {
                   </div>
                 ))}
               </div>
-              <h1 className={styles.tickets__titleVertical}>Get your tickets!</h1>
+              <h1 className={styles.tickets__titleVertical}>
+                Get your tickets!
+              </h1>
             </div>
             {popupTicket && (
-              <FeaturesPopup ticket={popupTicket} onClose={closeFeaturesPopup} />
+              <FeaturesPopup
+                ticket={popupTicket}
+                onClose={closeFeaturesPopup}
+              />
             )}
             {checkoutTicket && (
               <CheckoutPopup

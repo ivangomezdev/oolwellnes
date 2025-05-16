@@ -29,8 +29,32 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
           <Link href="/" className="nav-link home" onClick={handleLinkClick}>
             HOME
           </Link>
-          <div 
+           <div 
             className="nav-link about dropdown"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            ÓOL RETREATS
+            {servicesOpen && (
+              <div className="dropdown-menu">
+                <Link href="/oolExperience" className="dropdown-item" onClick={handleLinkClick}>
+                  Rivera Maya 2025
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="navbar-logo">
+          <Image 
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745979884/LogoOolWeb_ri9tvt.png" 
+            width={160} 
+            height={80} 
+            alt="Ool Retreat Logo"
+          />
+        </div>
+        <div className={`nav-links right ${showLinks ? "links-visible" : ""}`}>
+         <div 
+            className="nav-link services dropdown"
             onMouseEnter={() => setPopupOpen(true)}
             onMouseLeave={() => setPopupOpen(false)}
           >
@@ -49,30 +73,7 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
               </div>
             )}
           </div>
-        </div>
-        <div className="navbar-logo">
-          <Image 
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745979884/LogoOolWeb_ri9tvt.png" 
-            width={160} 
-            height={80} 
-            alt="Ool Retreat Logo"
-          />
-        </div>
-        <div className={`nav-links right ${showLinks ? "links-visible" : ""}`}>
-          <div 
-            className="nav-link services dropdown"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
-            RETREATS
-            {servicesOpen && (
-              <div className="dropdown-menu">
-                <Link href="/oolExperience" className="dropdown-item" onClick={handleLinkClick}>
-                  Rivera Maya 2025
-                </Link>
-              </div>
-            )}
-          </div>
+         
           <Link href="/contact" className="nav-link contact" onClick={handleLinkClick}>
             CONTACT
           </Link>

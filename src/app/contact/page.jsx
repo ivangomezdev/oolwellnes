@@ -35,17 +35,15 @@ const Page = () => {
               Home
             </Link>
             
-            <div
+               <div
               className="nav-link about dropdown"
-              onMouseEnter={() => setPopupOpen(true)}
-              onMouseLeave={() => setPopupOpen(false)}
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
             >
-              Pop Up Experience
-              {popupOpen && (
+              Retreats
+              {servicesOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/takes-over-tulum" className="dropdown-item">Takes Over Tulum</Link>
-                  <Link href="/takes-over-geely-cancun" className="dropdown-item">Takes Over Geely Cancun</Link>
-                  <Link href="/proximas" className="dropdown-item">Proximas</Link>
+                  <Link href="/oolExperience" className="dropdown-item">Rivera Maya 2025</Link>
                 </div>
               )}
             </div>
@@ -63,18 +61,23 @@ const Page = () => {
 
           {/* Enlaces de la derecha */}
           <div className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}>
+            
             <div
-              className="nav-link services dropdown"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
+              className="nav-link services  dropdown"
+              onMouseEnter={() => setPopupOpen(true)}
+              onMouseLeave={() => setPopupOpen(false)}
             >
-              Services
-              {servicesOpen && (
+              Pop Up Experience
+              {popupOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/oolExperience" className="dropdown-item">Rivera Maya 2025</Link>
+                  <Link href="/takes-over-tulum" className="dropdown-item">Takes Over Tulum</Link>
+                  <Link href="/takes-over-geely-cancun" className="dropdown-item">Takes Over Geely Cancun</Link>
+                  <Link href="/proximas" className="dropdown-item">Proximas</Link>
                 </div>
               )}
             </div>
+
+         
             <Link href="/contact" className="nav-link contact">
               Contact
             </Link>
