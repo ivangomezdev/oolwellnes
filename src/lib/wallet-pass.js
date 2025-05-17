@@ -32,7 +32,7 @@ async function ensureTempDir() {
 }
 
 // Función para generar pass.json
-function createPassJson(ticketId, email, eventName, eventDate, customerName, plan) { // Añade 'plan' como parámetro
+function createPassJson(ticketId, email, eventName, eventDate, customerName) {
   return {
     formatVersion: 1,
     passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
@@ -48,6 +48,10 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName, pla
       thumbnail: {
         value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
       },
+     /* stripImage: {
+        value: 'strip.png', // Ruta o nombre de la imagen de la franja
+      },*/
+ 
     },
     eventTicket: {
       headerFields: [
@@ -61,12 +65,13 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName, pla
         {
           key: 'name',
           label: '',
-          textAlignment: "PKTextAlignmentCenter",
+          textAlignment:"PKTextAlignmentCenter",
           value: customerName, // Mostrar el nombre en el pase
+      
         },
       ],
       secondaryFields: [
-        {
+     {
           key: 'E-mail',
           label: 'Correo',
           value: email,
@@ -80,16 +85,16 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName, pla
           value: "Xcaret Arte",
           textAlignment: 'PKTextAlignmentCenter',
         },
-        {
+            {
           key: 'plan',
           label: 'Paquete',
-          value: plan, // Usa el parámetro 'plan' en lugar de "XA"
+          value: "XA",
           textAlignment: 'PKTextAlignmentCenter',
         },
-        {
+            {
           key: 'ticket',
           label: 'Ticket ID',
-          value: ticketId, // Cambia "312312312312" por ticketId para que sea dinámico
+          value: "312312312312",
           textAlignment: 'PKTextAlignmentCenter',
         },
       ],
@@ -206,19 +211,19 @@ async function packagePass(passDir) {
 }
 
 // Función principal para crear el pase
-export async function createWalletPass(ticketId, email, eventName, eventDate, customerName, plan) { // Añade 'plan' como parámetro
+export async function createWalletPass(ticketId, email, eventName, eventDate, customerName) {
   const passDir = path.join(TEMP_DIR, `pass-${ticketId}`);
   await ensureTempDir();
   await fs.mkdir(passDir, { recursive: true });
 
   try {
     // Crear pass.json
-    const passJson = createPassJson(ticketId, email, eventName, eventDate, customerName, plan); // Pasa 'plan'
+    const passJson = createPassJson(ticketId, email, eventName, eventDate, customerName);
     await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
     console.log('pass.json creado');
 
     // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png', "background.png", "thumbnail.png"];
+    const images = ['icon.png', 'logo.png',"background.png","thumbnail.png"];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
