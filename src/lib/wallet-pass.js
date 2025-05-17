@@ -7,7 +7,7 @@ import AdmZip from 'adm-zip';
 // Directorios
 const CERTS_DIR = path.join(process.cwd(), 'src', 'certs');
 const IMAGES_DIR = path.join(process.cwd(), 'src', 'images');
-const TEMP_DIR = '/tmp'; // Usar /tmp para entornos serverless
+const TEMP_DIR = '/tmp';
 
 // Configuración del pase
 const PASS_CONFIG = {
@@ -32,7 +32,7 @@ async function ensureTempDir() {
 }
 
 // Función para generar pass.json
-function createPassJson(ticketId, email, eventName, eventDate, customerName) {
+function createPassJson(ticketId, email, eventName, eventDate, customerName, plan) {
   return {
     formatVersion: 1,
     passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
@@ -43,15 +43,11 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
     foregroundColor: PASS_CONFIG.foregroundColor,
     backgroundColor: PASS_CONFIG.backgroundColor,
     labelColor: PASS_CONFIG.labelColor,
-    logoText: '', // Texto del logo
+    logoText: '',
     passInformation: {
       thumbnail: {
-        value: 'thumbnail.png', // Ruta o nombre de la imagen de la miniatura
+        value: 'thumbnail.png',
       },
-     /* stripImage: {
-        value: 'strip.png', // Ruta o nombre de la imagen de la franja
-      },*/
- 
     },
     eventTicket: {
       headerFields: [
@@ -65,13 +61,12 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
         {
           key: 'name',
           label: '',
-          textAlignment:"PKTextAlignmentCenter",
-          value: customerName, // Mostrar el nombre en el pase
-      
+          textAlignment: "PKTextAlignmentCenter",
+          value: customerName,
         },
       ],
       secondaryFields: [
-     {
+        {
           key: 'E-mail',
           label: 'Correo',
           value: email,
@@ -85,23 +80,23 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName) {
           value: "Xcaret Arte",
           textAlignment: 'PKTextAlignmentCenter',
         },
-            {
+        {
           key: 'plan',
           label: 'Paquete',
-          value: "XA",
+          value: plan, // Usar el valor del parámetro plan
           textAlignment: 'PKTextAlignmentCenter',
         },
-            {
+        {
           key: 'ticket',
           label: 'Ticket ID',
-          value: "312312312312",
+          value: ticketId,
           textAlignment: 'PKTextAlignmentCenter',
         },
       ],
     },
     barcode: {
       format: 'PKBarcodeFormatQR',
-      message: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`, // URL de validación
+      message: `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`,
       messageEncoding: 'iso-8859-1',
     },
     relevantDate: new Date(eventDate).toISOString(),
@@ -134,7 +129,6 @@ async function signManifest(manifestPath, passDir) {
   const wwdrPath = path.join(CERTS_DIR, 'wwdr.pem');
   const signaturePath = path.join(passDir, 'signature');
 
-  // Leer certificados y clave privada
   let certPem, keyPem, wwdrPem;
   try {
     certPem = await fs.readFile(certPath, 'utf8');
@@ -145,7 +139,6 @@ async function signManifest(manifestPath, passDir) {
     throw new Error(`No se pudo leer certificado: ${err.message}`);
   }
 
-  // Cargar certificados y clave privada
   let cert, key, wwdrCert;
   try {
     cert = forge.pki.certificateFromPem(certPem);
@@ -156,10 +149,7 @@ async function signManifest(manifestPath, passDir) {
     throw new Error(`No se pudo procesar certificado o clave: ${err.message}`);
   }
 
-  // Leer manifest.json
   const manifestContent = await fs.readFile(manifestPath);
-
-  // Crear firma PKCS #7
   const p7 = forge.pkcs7.createSignedData();
   p7.content = forge.util.createBuffer(manifestContent, 'utf8');
   p7.technology = 'Apple';
@@ -211,19 +201,17 @@ async function packagePass(passDir) {
 }
 
 // Función principal para crear el pase
-export async function createWalletPass(ticketId, email, eventName, eventDate, customerName) {
+export async function createWalletPass(ticketId, email, eventName, eventDate, customerName, plan) {
   const passDir = path.join(TEMP_DIR, `pass-${ticketId}`);
   await ensureTempDir();
   await fs.mkdir(passDir, { recursive: true });
 
   try {
-    // Crear pass.json
-    const passJson = createPassJson(ticketId, email, eventName, eventDate, customerName);
+    const passJson = createPassJson(ticketId, email, eventName, eventDate, customerName, plan);
     await fs.writeFile(path.join(passDir, 'pass.json'), JSON.stringify(passJson, null, 2));
     console.log('pass.json creado');
 
-    // Copiar imágenes (icon.png, logo.png)
-    const images = ['icon.png', 'logo.png',"background.png","thumbnail.png"];
+    const images = ['icon.png', 'logo.png', "background.png", "thumbnail.png"];
     for (const image of images) {
       const imagePath = path.join(IMAGES_DIR, image);
       try {
@@ -235,25 +223,19 @@ export async function createWalletPass(ticketId, email, eventName, eventDate, cu
       }
     }
 
-    // Crear manifest.json
     const filesToManifest = ['pass.json', ...images];
     const manifestPath = await createManifest(passDir, filesToManifest);
     console.log('manifest.json creado');
 
-    // Firmar el manifest
     await signManifest(manifestPath, passDir);
-
-    // Empaquetar el pase
     const passBuffer = await packagePass(passDir);
     console.log('Pase .pkpass empaquetado');
 
-    // Limpiar directorio temporal
     await fs.rm(passDir, { recursive: true, force: true });
     console.log('Directorio temporal limpiado');
 
     return passBuffer;
   } catch (err) {
-    // Limpiar en caso de error
     await fs.rm(passDir, { recursive: true, force: true });
     throw err;
   }
