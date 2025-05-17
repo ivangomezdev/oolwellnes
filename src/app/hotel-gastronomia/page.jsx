@@ -3,152 +3,152 @@
 import { useState } from "react"
 import Image from "next/image"
 import "./gastronomia.css"
-import Link from "next/link";
-import "../../components/Navbar.css";
-export default function Home() {
-  const [activeTab, setActiveTab] = useState<"restaurantes" | "bares">("bares")
+import Link from "next/link"
+import "../../components/Navbar.css"
 
-  const [showLogo, setShowLogo] = useState(true);
-  const [showNavbarLinks, setShowNavbarLinks] = useState(true);
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
+export default function Home() {
+  const [activeTab, setActiveTab] = useState("bares")
+  const [showLogo, setShowLogo] = useState(true)
+  const [showNavbarLinks, setShowNavbarLinks] = useState(true)
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [isMobileMenuActive, setIsMobileMenuActive] = useState(false)
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuActive(!isMobileMenuActive);
-  };
+    setIsMobileMenuActive(!isMobileMenuActive)
+  }
 
   return (
     <main className="page">
       <nav className={`navbar ${showLogo ? "logo-visible" : ""}`}>
-              <div className="navbar-container">
-                {/* Hamburger */}
-                <div
-                  className={`hamburger ${isMobileMenuActive ? "active" : ""}`}
-                  onClick={toggleMobileMenu}
-                >
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                  <span className="bar"></span>
-                </div>
-      
-                {/* Left nav links */}
-                <div
-                  className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}
-                >
-                  <Link href="/" className="nav-link home">
-                    Home
-                  </Link>
-                  <div
-                    className="nav-link services dropdown"
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    ÓOL Retreats
-                    {servicesOpen && (
-                      <div className="dropdown-menu">
-                        <Link href="/oolExperience" className="dropdown-item">
-                          Rivera Maya 2025
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </div>
-      
-                {/* Logo */}
-                <div className="navbarLogo2">
-                  <Image
-                    alt="logo"
-                    src={
-                      "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
-                    }
-                    width={90}
-                    height={90}
-                  />
-                </div>
-      
-                {/* Right nav links */}
-                <div
-                  className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}
-                >
-                  <div
-                    className="nav-link about dropdown"
-                    onMouseEnter={() => setPopupOpen(true)}
-                    onMouseLeave={() => setPopupOpen(false)}
-                  >
-                    Pop Up Experience
-                    {popupOpen && (
-                      <div className="dropdown-menu">
-                        <Link href="/takes-over-tulum" className="dropdown-item">
-                          Takes Over Tulum
-                        </Link>
-                        <Link
-                          href="/takes-over-geely-cancun"
-                          className="dropdown-item"
-                        >
-                          Takes Over Geely Cancun
-                        </Link>
-                        <Link href="/proximas" className="dropdown-item">
-                          Proximas
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-      
-                  <Link href="/contact" className="nav-link contact">
-                    Contact
+        <div className="navbar-container">
+          {/* Hamburger */}
+          <div
+            className={`hamburger ${isMobileMenuActive ? "active" : ""}`}
+            onClick={toggleMobileMenu}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+
+          {/* Left nav links */}
+          <div
+            className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}
+          >
+            <Link href="/" className="nav-link home">
+              Home
+            </Link>
+            <div
+              className="nav-link services dropdown"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              ÓOL Retreats
+              {servicesOpen && (
+                <div className="dropdown-menu">
+                  <Link href="/oolExperience" className="dropdown-item">
+                    Rivera Maya 2025
                   </Link>
                 </div>
-              </div>
-      
-              {/* Mobile menu */}
-              <div className={`mobile-menu ${isMobileMenuActive ? "active" : ""}`}>
-                <Link href="/" className="nav-link" onClick={toggleMobileMenu}>
-                  Home
-                </Link>
-                <div className="dropdown-mobile">
-                  Pop Up Experience
-                  <div className="dropdown-menu-mobile" style={{ display: "none" }}>
-                    <Link
-                      href="/takes-over-tulum"
-                      className="dropdown-item"
-                      onClick={toggleMobileMenu}
-                    >
-                      Takes Over Tulum
-                    </Link>
-                    <Link
-                      href="/takes-over-geely-cancun"
-                      className="dropdown-item"
-                      onClick={toggleMobileMenu}
-                    >
-                      Takes Over Geely Cancun
-                    </Link>
-                    <Link
-                      href="/proximas"
-                      className="dropdown-item"
-                      onClick={toggleMobileMenu}
-                    >
-                      Proximas
-                    </Link>
-                  </div>
+              )}
+            </div>
+          </div>
+
+          {/* Logo */}
+          <div className="navbarLogo2">
+            <Image
+              alt="logo"
+              src={
+                "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
+              }
+              width={90}
+              height={90}
+            />
+          </div>
+
+          {/* Right nav links */}
+          <div
+            className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}
+          >
+            <div
+              className="nav-link about dropdown"
+              onMouseEnter={() => setPopupOpen(true)}
+              onMouseLeave={() => setPopupOpen(false)}
+            >
+              Pop Up Experience
+              {popupOpen && (
+                <div className="dropdown-menu">
+                  <Link href="/takes-over-tulum" className="dropdown-item">
+                    Takes Over Tulum
+                  </Link>
+                  <Link
+                    href="/takes-over-geely-cancun"
+                    className="dropdown-item"
+                  >
+                    Takes Over Geely Cancun
+                  </Link>
+                  <Link href="/proximas" className="dropdown-item">
+                    Proximas
+                  </Link>
                 </div>
-                <div className="dropdown-mobile">
-                  Retreats
-                  <div className="dropdown-menu-mobile" style={{ display: "none" }}>
-                    <Link
-                      href="/oolExperience"
-                      className="dropdown-item"
-                      onClick={toggleMobileMenu}
-                    >
-                      Rivera Maya 2025
-                    </Link>
-                  </div>
-                </div>
-                <Link href="/contact" className="nav-link" onClick={toggleMobileMenu}>
-                  Contact
-                </Link>
-              </div>
-            </nav>
+              )}
+            </div>
+
+            <Link href="/contact" className="nav-link contact">
+              Contact
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div className={`mobile-menu ${isMobileMenuActive ? "active" : ""}`}>
+          <Link href="/" className="nav-link" onClick={toggleMobileMenu}>
+            Home
+          </Link>
+          <div className="dropdown-mobile">
+            Pop Up Experience
+            <div className="dropdown-menu-mobile" style={{ display: "none" }}>
+              <Link
+                href="/takes-over-tulum"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
+                Takes Over Tulum
+              </Link>
+              <Link
+                href="/takes-over-geely-cancun"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
+                Takes Over Geely Cancun
+              </Link>
+              <Link
+                href="/proximas"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
+                Proximas
+              </Link>
+            </div>
+          </div>
+          <div className="dropdown-mobile">
+            Retreats
+            <div className="dropdown-menu-mobile" style={{ display: "none" }}>
+              <Link
+                href="/oolExperience"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
+                Rivera Maya 2025
+              </Link>
+            </div>
+          </div>
+          <Link href="/contact" className="nav-link" onClick={toggleMobileMenu}>
+            Contact
+          </Link>
+        </div>
+      </nav>
       <nav className="nav">
         <div className="nav__container">
           <button
@@ -176,13 +176,11 @@ function BaresContent() {
   return (
     <div className="bares">
       <section className="bares__header">
-
         <h1 className="bares__title">BARES</h1>
         <p className="bares__description">
           Para completar esta ópera culinaria, Hotel Xcaret Arte también cuenta con una mixología contemporánea y
           siempre magnífica.
         </p>
-    
       </section>
 
       <section className="bares__item">
@@ -201,7 +199,6 @@ function BaresContent() {
             height={400}
             className="bares__image"
           />
-        
         </div>
       </section>
 
@@ -214,7 +211,13 @@ function BaresContent() {
           </p>
         </div>
         <div className="bares__image-container">
-          <Image src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafeteca_nxl1nd.webp" alt="Cafeteca coffee" width={600} height={400} className="bares__image" />
+          <Image
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafeteca_nxl1nd.webp"
+            alt="Cafeteca coffee"
+            width={600}
+            height={400}
+            className="bares__image"
+          />
         </div>
       </section>
 
@@ -226,8 +229,13 @@ function BaresContent() {
           </p>
         </div>
         <div className="bares__image-container">
-          <Image src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafecito_bowu49.webp" alt="Cafecito coffee" width={600} height={400} className="bares__image" />
-        
+          <Image
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafecito_bowu49.webp"
+            alt="Cafecito coffee"
+            width={600}
+            height={400}
+            className="bares__image"
+          />
         </div>
       </section>
     </div>
@@ -236,8 +244,6 @@ function BaresContent() {
 
 function RestaurantesContent() {
   const restaurants = [
-
-  
     {
       name: "ENCANTA",
       description:
@@ -259,7 +265,6 @@ function RestaurantesContent() {
       image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-VI_AI_PY-1_bukjd6.webp",
       chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/alejandro-ruiz_dawd4n.webp",
     },
-   
     {
       name: "MERCADO SAN JUAN",
       description:
@@ -283,62 +288,55 @@ function RestaurantesContent() {
 
   return (
     <div className="restaurantes">
-        <section className="bares__header">
-
+      <section className="bares__header">
         <h1 className="bares__title">RESTAURANTES</h1>
         <p className="bares__description">
           Experiencias gastronómicas a cargo del mejor Colectivo Gastronómico del país conformado por verdaderos artistas del sabor.
         </p>
-    
       </section>
-      {restaurants.map((restaurant, index) =>
-        restaurant.isHeader ? (
-          <section key={index} className="restaurantes__header">
-            <h1 className="restaurantes__title">{restaurant.name}</h1>
-            <p className="restaurantes__description">{restaurant.description}</p>
-          </section>
-        ) : (
-          <section key={index} className={`bares__item ${index % 2 !== 0 ? "bares__item--reverse" : ""}`}>
-            <div className="restaurantes__info">
-              <h2 className="bares__item-title">{restaurant.name}</h2>
-              <p className="bares__item-description">{restaurant.description}</p>
-         
+      {restaurants.map((restaurant, index) => (
+        <section
+          key={index}
+          className={`bares__item ${index % 2 !== 0 ? "bares__item--reverse" : ""}`}
+        >
+          <div className="restaurantes__info">
+            <h2 className="bares__item-title">{restaurant.name}</h2>
+            <p className="bares__item-description">{restaurant.description}</p>
+          </div>
+          <div className="restaurantes__media">
+            <div className="restaurantes__image-container">
+              <Image
+                src={restaurant.image || "/placeholder.svg"}
+                alt={`Restaurante ${restaurant.name}`}
+                width={600}
+                height={400}
+                className="restaurantes__image"
+              />
+              {index === 0 && <button className="restaurantes__vista360">Vista 360</button>}
             </div>
-            <div className="restaurantes__media">
-              <div className="restaurantes__image-container">
+            {restaurant.chef && (
+              <div className="restaurantes__chef-container">
                 <Image
-                  src={restaurant.image || "/placeholder.svg"}
-                  alt={`Restaurante ${restaurant.name}`}
-                  width={600}
-                  height={400}
-                  className="restaurantes__image"
+                  src={restaurant.chef}
+                  alt={`Chef de ${restaurant.name}`}
+                  width={150}
+                  height={200}
+                  className="restaurantes__chef"
                 />
-                {index === 0 && <button className="restaurantes__vista360">Vista 360</button>}
               </div>
-              {restaurant.chef && (
-                <div className="restaurantes__chef-container">
-                  <Image
-                    src={restaurant.chef || "/placeholder.svg"}
-                    alt={`Chef de ${restaurant.name}`}
-                    width={150}
-                    height={200}
-                    className="restaurantes__chef"
-                  />
-                </div>
-              )}
-            </div>
-           
-          </section>
-        ),
-        
-      )}
-           <section className="xcaret__cta-section">
-          <h2 className="xcaret__cta-title">VER MÁS</h2>
-          <div className="xcaret__buttons">
-           <Link href={"/hotel-gastronomia"}> <button className="xcaret__button">Gastronomía</button></Link>
-            <button className="xcaret__button">Spa & Wellness</button>
+            )}
           </div>
         </section>
+      ))}
+      <section className="xcaret__cta-section">
+        <h2 className="xcaret__cta-title">VER MÁS</h2>
+        <div className="xcaret__buttons">
+          <Link href="/hotel-gastronomia">
+            <button className="xcaret__button">Gastronomía</button>
+          </Link>
+          <button className="xcaret__button">Spa & Wellness</button>
+        </div>
+      </section>
     </div>
   )
 }
