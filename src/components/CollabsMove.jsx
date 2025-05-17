@@ -6,14 +6,13 @@ import Image from "next/image"
 export default function CollabsMove() {
   // Array de imágenes
   const icons = [
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746069829/Colaboradores_Mesa_de_trabajo_1_copia_4_phaie7.png" },
+    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747520119/mark_vw5b8h.png" },
     { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746069835/Colaboradores_Mesa_de_trabajo_1_copia_3_mi4pfy.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746069835/Colaboradores_Mesa_de_trabajo_1_copia_2_czghhg.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746070031/Colaboradores_Mesa_de_trabajo_1_lbjasp.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746070031/Colaboradores_Mesa_de_trabajo_1_copia_oxajkw.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746070031/Colaboradores_Mesa_de_trabajo_1_copia_7_qq8tyq.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746070031/Colaboradores_Mesa_de_trabajo_1_copia_6_ktk8hs.png" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746070035/Colaboradores_Mesa_de_trabajo_1_copia_5_h9rm2a.png" },
+    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519830/maxresdefault_uoblio.png" },
+    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519579/rode-up_uxey41.png" },
+    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747520392/Azul-e1724207354672_seovov.png" },
+
+   
   ]
 
   const repeatedIcons = [...icons, ...icons, ...icons, ...icons]
@@ -29,8 +28,8 @@ export default function CollabsMove() {
                 <Image
                   alt="movement"
                   src={icon.Icon}
-                  width={152}
-                  height={152}
+                  width={192}
+                  height={102}
                 />
               </div>
             ))}
@@ -43,8 +42,8 @@ export default function CollabsMove() {
                 <Image
                   alt="icons"
                   src={icon.Icon}
-                  width={152}
-                  height={152}
+                  width={202}
+                  height={172}
                 />
               </div>
             ))}

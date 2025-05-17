@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Broadsheet Regular";
+  src: url("/fonts/broadsheet.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CalSans";
+  src: url("/fonts/calsans.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.container {
+  background-color: #beaa88;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.content {
+  max-width: 800px;
+  width: 100%;
+  background-color: #d0c0a4;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: "Broadsheet Regular", serif;
+  color: #9b956a;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #9b956a;
+  padding-bottom: 1rem;
+}
+
+.intro {
+  font-family: "CalSans", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-family: "Broadsheet Regular", serif;
+  color: #9b956a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.paragraph {
+  font-family: "CalSans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.list {
+  font-family: "CalSans", sans-serif;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .intro,
+  .paragraph {
+    font-size: 0.95rem;
+  }
+}

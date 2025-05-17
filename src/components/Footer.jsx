@@ -5,12 +5,11 @@ const Footer = () => {
     <div className='footer__cont'>
       <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745979884/LogoOolWeb_ri9tvt.png" alt="" />
       <div className="card">
-    <span className="card__title">Subscribe</span>
-    <p className="card__content">Get fresh web design resources delivered straight to your inbox every week.
+    <span className="card__title">Política de privacidad</span>
+    <p className="card__content">Por favor asegúrate de leerlos solo te llevara 1 minuto.
     </p>
     <div className="card__form">
-        <input placeholder="Your Email" type="text"/>
-        <button className="sign-up"> Sign up</button>
+    <a style={{textDecoration:"none",color:"#9B956A"}} href="/politicas">Ver política de privacidad</a>
     </div>
 </div>
     </div>
