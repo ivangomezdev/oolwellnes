@@ -1,4 +1,3 @@
-
 .dateContent__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -26,9 +25,7 @@ top: 540px !important;
 
 }
 
-.retreat__logo{
-  display: none;
-}
+
 
 
 }
@@ -39,13 +36,16 @@ top: 540px !important;
 }
 
 .dateContent__imgs {
-  margin-left: 100px;
+  margin-left: 160px;
+  margin-top: 200px !important;
+ 
 }
 
 .dateContent img {
   position: relative;
-  right: 30px;
+  right: 20px;
 }
+
 
 .dateContent {
   position: relative;
@@ -56,6 +56,8 @@ top: 540px !important;
   font-family: 'CalSans';
   text-align: center;
   border-radius: 5px;
+  
+
 }
 
 .dateContent__description {
@@ -69,7 +71,10 @@ top: 540px !important;
   font-weight: normal;
   padding: 5px;
 
+  
+
 }
+
 
  @media(max-width:497px){
   .dateContent__description {
@@ -81,11 +86,7 @@ top: 540px !important;
 }
  }
 
-  @media(max-width:818px){
-  .animated-button {
- display: none !important;
-}
- }
+
 
    @media(max-width:450px){
   .animated-button {
@@ -134,6 +135,7 @@ top: 540px !important;
   box-shadow: 0 0 0 2px #F2E2C6;
   cursor: pointer;
   overflow: hidden;
+  z-index: inherit 9999999;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 
 }
@@ -141,6 +143,7 @@ top: 540px !important;
 .animated-button svg {
   position: absolute;
   width: 24px;
+    z-index: inherit 9999999;
   fill: #FEFEFE;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -229,7 +232,7 @@ top: 540px !important;
 
 .image__four img {
   position: absolute;
-  left: 180px;
+  left: 240px;
   bottom: 180px;
   border-radius: 3px;
   z-index: -333;
@@ -249,11 +252,6 @@ top: 540px !important;
   border-radius: 3px;
 }
 
-.image-visible {
-  position: relative;
-  top: 100px;
-}
-
 .dateContent-bg {
   display: flex;
   justify-content: center;
@@ -261,12 +259,16 @@ top: 540px !important;
 
 .retreat__logo {
   position: absolute;
+  z-index: -2;
+  top:250px;
+
 }
 
 .retreat__logo img {
   position: relative;
   top: 270px;
   opacity: 0.4;
+  z-index: 3;
 }
 
 @media(max-width:1920px) {
@@ -294,7 +296,7 @@ top: 540px !important;
   }
   .image__four img {
     position: absolute;
-    left: 140px;
+    
     bottom: 170px;
     border-radius: 3px;
     width: 380px;
@@ -319,7 +321,7 @@ top: 540px !important;
   }
   .dateContent__description {
     right: 20px;
-    max-width: 400px;
+    width: 370px;
     font-size: 20px;
   }
   .dateContent img {
@@ -344,7 +346,7 @@ top: 540px !important;
   }
   .image__four img {
     position: absolute;
-    left: 140px;
+    
     bottom: 170px;
     border-radius: 3px;
     width: 380px;
@@ -369,7 +371,7 @@ top: 540px !important;
   }
   .dateContent__description {
     right: 20px;
-    max-width: 400px;
+    width: 350px;
     font-size: 20px;
   }
   .dateContent img {
@@ -394,13 +396,20 @@ top: 540px !important;
   }
   .image__four img {
     position: absolute;
-    left: 100px;
+    left: 190px;
     bottom: 170px;
     border-radius: 3px;
     width: 330px;
     height: 530px;
     z-index: -333;
   }
+
+    .dateContent__description {
+    
+    width: 310px;
+
+  }
+
   .image__one img {
     position: relative;
     border-radius: 3px;
@@ -431,7 +440,7 @@ top: 540px !important;
     top: 100px;
   }
   .animated-button {
-    top: 460px;
+    top: 500px;
     left: 30px;
   }
   .dateContent-bg {
@@ -455,22 +464,8 @@ top: 540px !important;
     height: 500px;
     z-index: -333;
   }
-  .image__one img {
-    position: relative;
-    border-radius: 3px;
-    bottom: 100px;
-    width: 208px;
-    height: 280px;
-    right: 80px;
-  }
-  .image__two img {
-    position: relative;
-    right: 80px;
-    bottom: 140px;
-    border-radius: 3px;
-    width: 208px;
-    height: 280px;
-  }
+
+  
   .dateContent {
     margin-left: -50px;
   }
@@ -546,13 +541,13 @@ top: 540px !important;
   }
 }
 
-@media(max-width:800px) {
+@media(max-width:900px) {
   .image__four img {
-    position: absolute;
-    left: 40px;
+    position: relative;
+    left: -100px;
     bottom: 160px;
     border-radius: 3px;
-    width: 300px;
+    width: 330px;
     height: 500px;
     z-index: -333;
   }
@@ -564,27 +559,19 @@ top: 540px !important;
    .dateContent img{
     width: 300px;
    }
-
+.dateContent{
+  left: 90px;
+}
    .dateContent button{
    margin-top: 50px;
    }
 
 
   .image__one img {
-    position: relative;
-    border-radius: 3px;
-    bottom: 100px;
-    width: 208px;
-    height: 280px;
-    right: 80px;
+   display: none;
   }
   .image__two img {
-    position: relative;
-    right: 80px;
-    bottom: 140px;
-    border-radius: 3px;
-    width: 208px;
-    height: 280px;
+  display: none;
   }
   .dateContent__content {
     background-size: cover;
@@ -593,9 +580,7 @@ top: 540px !important;
   .dateContent {
     margin-left: -100px;
   }
-  .animated-button {
-    top: 434px;
-  }
+
 }
 
 @media(max-width:720px) {
@@ -715,12 +700,16 @@ display: none;
     width: 350px;
     height: 500px;
     position: relative;
-    padding-bottom:60px;
+  
     margin-left: 0px;
   }
 
+  .retreat__logo{
+  display: none;
+}
+
   .dateContent__content {
-    padding-bottom: 600px;
+    padding-bottom: 110dvh;
     
   }
 
@@ -776,8 +765,8 @@ display: none;
   }
 
   .dateContent button {
-    top: 400px;
-    margin-left: -10px;
+    top: 480px;
+    margin-left: 10px;
     margin-bottom:0px;
   }
 

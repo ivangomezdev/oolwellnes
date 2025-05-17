@@ -62,7 +62,7 @@ const DateContent = () => {
       className={`dateContent__content ${isVisible ? "is-visible" : ""}`}
       ref={containerRef}
     >
-      <div className="dateContent__imgs" style={{ marginTop: "50px" }}>
+      <div className="dateContent__imgs" >
         <div
           className={`image__one ${imageVisibility.one ? "image-visible" : ""}`}
         >
@@ -96,9 +96,10 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984565/VO_OolCorazon2-11_jn5xod.jpg"
+              "https://res.cloudinary.com/dc5zbh38m/image/upload/f_jpg/v1745984565/VO_OolCorazon2-11_jn5xod.jpg"
             }
             alt="Decorative image 1"
+            loading="lazy"
           />
           <Image
             width={500}
@@ -129,7 +130,7 @@ const DateContent = () => {
             width={370}
             height={190}
             alt="time"
-            className="dateContent__imgage"
+            className="dateContent__image"
           />
           <p className="dateContent__description">
             Más que una retiro, una experiencia expansiva. <span style={{color:"white"}}>Tres días de conexión,

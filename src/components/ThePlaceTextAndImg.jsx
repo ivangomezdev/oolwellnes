@@ -49,7 +49,7 @@ const ThePlaceTextAndImg = () => {
       ],
     },
     {
-      id: 2,
+      id: 3,
       name: "Suite Ocean Front (Adults)",
       plan: "HA-VIP",
       image:
@@ -268,7 +268,7 @@ const ThePlaceTextAndImg = () => {
 
       <div className="thePlaceText__description">
         <h2>{places[currentIndex].name}</h2>
-         <p>{places[currentIndex].plan}</p>
+        <p>{places[currentIndex].plan}</p>
         <p>{places[currentIndex].description}</p>
         <div className="thePlaceText__btnDiv">
           <button
@@ -278,17 +278,19 @@ const ThePlaceTextAndImg = () => {
             Ver más
           </button>
         </div>
-        <img
-          style={{
-            position: "absolute",
-            right: "0px",
-            width: "400px",
-            bottom: "0px",
-          }}
-          src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"
-          alt=""
-        />
       </div>
+
+      <img
+      className="thePlace__logo"
+        style={{
+          position: "absolute",
+          right: "0px",
+          bottom: "0px",
+          width: "400px",
+        }}
+        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"
+        alt=""
+      />
 
       {selectedPlace && (
         <div className="popup-overlay" onClick={closePopup}>

@@ -19,29 +19,8 @@ const LayoutData = () => {
 
   return (
     <div className="layout">
-      {/* Imágenes decorativas con position: absolute */}
-      {decorativeImages.map((pos, index) => (
-        <div key={`decorative-${index}`} className="layout__decorative-image" style={{ top: pos.top, left: pos.left, right: pos.right, bottom: pos.bottom }}>
-          <Image
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746936901/Dise%C3%B1o_sin_t%C3%ADtulo_8_n2o3nm.png"
-            width={50}
-            height={50}
-            alt="Decorative image"
-          />
-        </div>
-      ))}
 
       <h1 className="layout__title">¿Para qué es esto?</h1>
-      <div className="layout__content">
-        <div className="layout__text-column">
-          <div className="layout__text-area">
-            <p>
-             
-Un viaje diseñado para sumergirte, recordar y celebrar tu verdadera esencia.
-            </p>
-          </div>
-        </div>
-
         <div className="layout__image-column">
           {images.map((i, index) => (
             <div key={index} className="layout__image-container">
@@ -51,15 +30,21 @@ Un viaje diseñado para sumergirte, recordar y celebrar tu verdadera esencia.
             </div>
           ))}
         </div>
+      <div className="layout__content">
+        <div className="layout__text-column">
+     
+        </div>
 
-        <div className="layout__right-column">
-          <div className="layout__text-area">
+         <div className="layout__text-area">
             <p>
              Más que una retiro, una experiencia expansiva.
 Tres días de conexión, movimiento y comunidad. 
 Sumérgete en el arte del bienestar.
             </p>
           </div>
+
+        <div className="layout__right-column">
+       
         </div>
       </div>
     </div>

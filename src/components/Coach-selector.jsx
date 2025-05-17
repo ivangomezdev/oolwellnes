@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import "./coach-selector.css"
 
 const coachesData = [
-  { id: 1, name: "Pepe Abreu", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746830353/The_soul_vibrates_higher_when_we_truly_connect.This_August_1__2___3__come_and_live_a_transformative_experience_with_PEPE_ABREU.Are_you_ready_to_feel_it__Connect_to_what_truly_matters-removebg-preview_zwfihn.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745808467/bg_psumum.png" },
-  { id: 2, name: "Kristina Girod", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746830354/The_wait_is_over___We_re_thrilled_to_introduce_the_amazing_coach_Kristina_Girod__our_first_headliner.__And_to_make_it_even_better__the_presale_is_coming_soon__Get_ready_to_be_part_of_something_special_hhhrke.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745774380/oool_bhe8w5.png" },
-  { id: 3, name: "Juan Pérez", image: "/placeholder.svg?height=200&width=200", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745808467/bg_psumum.png" },
+  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501028/Kristina_1_r48nut.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/BackVerde_1_vanwwo.png" },
+  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501028/Pepe_cy2jxy.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/Backazul_j0piw0.png" },
+  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747508705/Kristina_1_r0xxpe.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/BackVerde_1_vanwwo.png" },
 ]
 
 export default function CoachSelector() {
@@ -34,7 +34,7 @@ export default function CoachSelector() {
       }}
     >
       <div className="header-coaches">
-        <h2 className="coach-selector__title">Coaches</h2>
+        <h2 className="coach-selector__title">Talento</h2>
       </div>
 
       <div className="coach-selector__inner">

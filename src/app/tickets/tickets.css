@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   gap: 50px;
+background-color: #9F9668 !important;
 }
 
 /* Ensure video covers the container */

@@ -13,6 +13,52 @@
   height: 100dvh;
 }
 
+@media(max-width:462px){
+
+  .plansPre__content{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+.plansPre__bgBlack2Logo {
+  width: 120px !important;
+  position: relative;
+  left: 60px;
+  top: 10px;
+
+}
+
+.plansPre__bgBlack2 {
+  width: 240px !important;
+  
+  height: 230px !important;
+   margin-left:10px;
+     border: solid 6px #9F9668;
+ 
+}
+
+.plansPre__content video {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0px !important;
+
+}
+
+}
+
+@media(max-width:352px){
+
+  .plansPre__plan{
+    width: 90%;
+  }
+  .plansPre__plan li{
+    width: 70%;
+  }
+
+   .plansPre__plan h3{
+    width: 70%;
+  }
+}
+
 .plansPre__bgBlack {
   position: absolute;
   top: "32px";

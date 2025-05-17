@@ -26,8 +26,8 @@
 
 body {
   font-family: "CalSans", sans-serif;
-  color: var(--color-text);
-  background-color: var(--color-white);
+ 
+
 }
 
 .bares__item-title,
@@ -103,7 +103,6 @@ body {
   margin-top: -100px;
   background-color: #9f9668;
   padding: 10px;
-    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745896756/oollogo-removebg-preview_ehhgld.png") ;
     background-position-y: 0px;
     background-size: 50px;
     background-position-x:0px ;
@@ -139,7 +138,6 @@ body {
   align-items: center;
    background-color: #9f9668;
    padding: 2rem;
-   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747459592/Dise%C3%B1o_sin_t%C3%ADtulo_10_qdgivu.png");
     background-position: -200px 100px;
     background-repeat:round;
 

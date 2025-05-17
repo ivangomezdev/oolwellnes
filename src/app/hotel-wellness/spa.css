@@ -13,7 +13,6 @@
   padding:20px;
     background-color: #9f9668;
   padding: 10px;
-    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745896756/oollogo-removebg-preview_ehhgld.png") ;
     background-position-y: 0px;
     background-size: 50px;
     background-position-x:0px ;
@@ -42,9 +41,7 @@
   align-items: center;
    background-color: #9f9668;
    padding: 2rem;
-   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747459592/Dise%C3%B1o_sin_t%C3%ADtulo_10_qdgivu.png");
-    background-position: -200px 100px;
-    background-repeat:round;
+
 
 }
 
@@ -54,7 +51,11 @@
 
 .spa__info {
   flex: 1;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .spa__info p{
