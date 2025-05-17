@@ -75,7 +75,7 @@ const PlansPreSaleInfo = () => {
           </ul>
         </div>
         <div className="plansPre__plan">
-          <h3>Ha - VIP Package - Ocean Front Stay</h3>
+          <h3>Ha - VIP Package</h3>
           <ul>
             <li>3 Días y 2 noches en hotel Xcaret</li>
             <li>Menú por chefs con estrella Michellin</li>

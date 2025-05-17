@@ -697,12 +697,16 @@ display: none;
 
 @media (max-width: 500px) {
   .dateContent__imgs {
-    width: 350px;
-    height: 500px;
     position: relative;
-  
+    left: 10px;
+    height: 500px;
+
+
     margin-left: 0px;
   }
+
+
+
 
   .retreat__logo{
   display: none;
@@ -840,7 +844,11 @@ display: none;
     height: 490px;
     position: relative;
   }
-
+.dateContent__description{
+  margin-left: 0px;
+ 
+  left: 30px;
+}
   .image__four {
     width: 330px;
     height: 490px;
@@ -876,6 +884,7 @@ display: none;
 
   .dateContent img {
     margin-top: 30px;
+    left: 30px;
   }
 
   .text {
@@ -883,7 +892,7 @@ display: none;
   }
 
   .dateContent button {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 }
 
@@ -895,9 +904,10 @@ display: none;
     width: 300px !important;
     height: 470px !important;
     position: relative;
-    margin-right: -35px;
+    left: 20px;
  
   }
+  
 
   .dateContent__imgage{
     top: -60px;

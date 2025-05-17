@@ -107,7 +107,7 @@ const HeroComponent = () => {
       <div className={`hero-container ${showVideo ? 'video-active' : ''}`} ref={heroRef}>
         <div className="section red">
           <img
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978390/Rode_Tulum-111_uhlusw.jpg"
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978390/Rode_Tulum-111_uhlusw.jpg"
             alt="Hero Image 1"
           />
           <div className="content"></div>
@@ -123,13 +123,13 @@ const HeroComponent = () => {
               loop
             >
               <source
-                src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1745715439/We_ve_carefully_crafted_and_designed_this_experience_just_for_you.Featuring_the_best_spots_the_best_coaches_and_the_best_location_in_all_of_the_Riviera_Maya.The_countdown_has_begun_see_you_on_August_1_2_3_2025._vnakux.mp4"
+                src="https://res.cloudinary.com/dc5zbh38m/video/upload/f_auto/v1745715439/We_ve_carefully_crafted_and_designed_this_experience_just_for_you.Featuring_the_best_spots_the_best_coaches_and_the_best_location_in_all_of_the_Riviera_Maya.The_countdown_has_begun_see_you_on_August_1_2_3_2025._vnakux.mp4"
                 type="video/mp4"
               />
             </video>
             <img
               className={showVideo ? "fade-out" : "fade-in"}
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978572/VO_OolCorazon-3_1_wcwlup.jpg"
+              src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978572/VO_OolCorazon-3_1_wcwlup.jpg"
               alt="Hero Image Temporary"
             />
           </div>
@@ -139,7 +139,7 @@ const HeroComponent = () => {
         </div>
         <div className="section yellow">
           <img
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745978474/VOEUX_OolTakesOverTulum2-11_1_kqkeov.jpg"
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978474/VOEUX_OolTakesOverTulum2-11_1_kqkeov.jpg"
             alt="Hero Image 3"
           />
           <div className="content">

@@ -164,6 +164,7 @@ const DateContent = () => {
         </div>
         <div className="retreat__logo">
           <Image
+          
             src={
               "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"
             }
