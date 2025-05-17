@@ -176,11 +176,13 @@ function BaresContent() {
   return (
     <div className="bares">
       <section className="bares__header">
+
         <h1 className="bares__title">BARES</h1>
         <p className="bares__description">
           Para completar esta ópera culinaria, Hotel Xcaret Arte también cuenta con una mixología contemporánea y
           siempre magnífica.
         </p>
+    
       </section>
 
       <section className="bares__item">
@@ -193,7 +195,7 @@ function BaresContent() {
         </div>
         <div className="bares__image-container">
           <Image
-            src="/images/changarrito.jpg"
+            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/changarrito_hcypsp.webp"
             alt="Cocktail Changarrito"
             width={600}
             height={400}
@@ -212,7 +214,7 @@ function BaresContent() {
           </p>
         </div>
         <div className="bares__image-container">
-          <Image src="/images/cafeteca.jpg" alt="Cafeteca coffee" width={600} height={400} className="bares__image" />
+          <Image src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafeteca_nxl1nd.webp" alt="Cafeteca coffee" width={600} height={400} className="bares__image" />
         </div>
       </section>
 
@@ -224,7 +226,7 @@ function BaresContent() {
           </p>
         </div>
         <div className="bares__image-container">
-          <Image src="/images/cafecito.jpg" alt="Cafecito coffee" width={600} height={400} className="bares__image" />
+          <Image src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafecito_bowu49.webp" alt="Cafecito coffee" width={600} height={400} className="bares__image" />
         
         </div>
       </section>
@@ -234,71 +236,61 @@ function BaresContent() {
 
 function RestaurantesContent() {
   const restaurants = [
-    {
-      name: "COMER ES VIVIR",
-      description:
-        "El restaurante gastronómico donde cada experiencia culinaria es un acto de amor que nutre el cuerpo y el alma.",
-      image: "/images/comer-es-vivir.jpg",
-      isHeader: true,
-    },
-    {
-      name: "XAAK",
-      description:
-        "La fusión de la cocina yucateca y libanesa, donde la tradición se encuentra con la innovación. Sabores que cuentan historias de dos culturas milenarias.",
-      image: "/images/xaak.jpg",
-      chef: "/images/chef-xaak.jpg",
-    },
+
+  
     {
       name: "ENCANTA",
       description:
         "Inspirado en la cocina del Caribe y del Golfo de México. Sabores frescos y vibrantes que te transportarán a las costas más hermosas.",
-      image: "/images/encanta.jpg",
-      chef: "/images/chef-encanta.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443822/img-encanta-1_b2odmv.webp",
+      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/paco-mendez_tu0atq.webp",
     },
     {
-      name: "HA",
+      name: "CHINO POBLANO",
       description:
-        "Cocina de autor donde cada plato es una obra de arte. Experiencia gastronómica de alto nivel con ingredientes locales y técnicas innovadoras.",
-      image: "/images/ha.jpg",
-      chef: "/images/chef-ha.jpg",
+        "Divertido y sofisticado abrazo culinario de estas dos culturas por el Chef Jonatan Gómez Luna, líder de una nueva generación de chefs que ha conquistado las grandes mesas del mundo.",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-chino_poblano-1_l2bj7k.webp",
+      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/jonatan-gomez_f2ddkb.webp",
     },
     {
       name: "V.I.P.Y.",
       description:
         "Gastronomía vegetal inspirada en sabores de México. Una celebración de ingredientes frescos y sostenibles.",
-      image: "/images/vipy.jpg",
-      chef: "/images/chef-vipy.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-VI_AI_PY-1_bukjd6.webp",
+      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/alejandro-ruiz_dawd4n.webp",
     },
-    {
-      name: "CID KOH",
-      description:
-        "Fusión de sabores asiáticos con un toque mexicano. Descubre nuevas dimensiones culinarias en cada bocado.",
-      image: "/images/cid-koh.jpg",
-      chef: "/images/chef-cid-koh.jpg",
-    },
+   
     {
       name: "MERCADO SAN JUAN",
       description:
         "Homenaje a los sabores tradicionales mexicanos. Un recorrido por los mercados más emblemáticos del país.",
-      image: "/images/mercado-san-juan.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-mercado_san_juan-1_penjkt.webp",
     },
     {
       name: "CAYUCO",
       description:
         "Sabores del Caribe mexicano en un ambiente relajado. Disfruta de los tesoros culinarios de la costa.",
-      image: "/images/cayuco.jpg",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/img-cayuco-1_ykjbqk.webp",
     },
     {
-      name: "TABSHO",
+      name: "TAH-XIDO",
       description:
-        "Una experiencia gastronómica inspirada en las técnicas ancestrales de cocción a la leña. Sabores auténticos y ahumados.",
-      image: "/images/tabsho.jpg",
-      chef: "/images/chef-tabsho.jpg",
+        "Restaurante japonés contemporáneo del Chef Luis Arzapalo exponiendo lo mejor del arte gastronómico oriental",
+      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/img-tahxido-1_hupre7.webp",
+      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/luis-arzapalo-chef_pgcyc8.webp",
     },
   ]
 
   return (
     <div className="restaurantes">
+        <section className="bares__header">
+
+        <h1 className="bares__title">RESTAURANTES</h1>
+        <p className="bares__description">
+          Experiencias gastronómicas a cargo del mejor Colectivo Gastronómico del país conformado por verdaderos artistas del sabor.
+        </p>
+    
+      </section>
       {restaurants.map((restaurant, index) =>
         restaurant.isHeader ? (
           <section key={index} className="restaurantes__header">
@@ -306,10 +298,10 @@ function RestaurantesContent() {
             <p className="restaurantes__description">{restaurant.description}</p>
           </section>
         ) : (
-          <section key={index} className={`restaurantes__item ${index % 2 !== 0 ? "restaurantes__item--reverse" : ""}`}>
+          <section key={index} className={`bares__item ${index % 2 !== 0 ? "bares__item--reverse" : ""}`}>
             <div className="restaurantes__info">
-              <h2 className="restaurantes__item-title">{restaurant.name}</h2>
-              <p className="restaurantes__item-description">{restaurant.description}</p>
+              <h2 className="bares__item-title">{restaurant.name}</h2>
+              <p className="bares__item-description">{restaurant.description}</p>
          
             </div>
             <div className="restaurantes__media">

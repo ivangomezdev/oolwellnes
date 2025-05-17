@@ -13,11 +13,7 @@
 }
 
 /* Reset y estilos base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   font-family: "CalSans", sans-serif;
@@ -87,13 +83,16 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  
 }
 
 /* Secciones */
 .xcaret__section {
   margin-bottom: 40px;
   text-align: center;
+    padding: 5px !important;
   background-color: #F2E2C6;
+  box-shadow:1px 3px 2px  #d5c7ae;
 }
 
 .xcaret__title {
@@ -132,6 +131,8 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .xcaret__list-item {
@@ -143,7 +144,7 @@ a {
 .xcaret__separator {
   width: 80%;
   height: 1px;
-  background-color: #ddd;
+  background-color: #BFB47B;
   margin: 30px auto;
 }
 
@@ -192,8 +193,9 @@ a {
 
 .xcaret__section-title {
   font-size: 1.5rem;
-  color: #6a1b9a;
+
   margin-bottom: 20px;
+
 }
 
 .xcaret__logos {

@@ -130,7 +130,7 @@
 
 .ticket__button {
   background-color: #9F9668;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
+ 
   color: white;
   margin-top: 240px;
   margin-right: 20px;
@@ -209,7 +209,7 @@
   font-family: "CalSans";
   margin-right: 20px;
   background-position: center;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
+ 
 }
 
 .ticket__seeMore:hover {

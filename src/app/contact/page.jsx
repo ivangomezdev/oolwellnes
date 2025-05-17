@@ -16,7 +16,7 @@ const Page = () => {
     setIsMobileMenuActive(!isMobileMenuActive)
   }
   return (
-    <div>
+    <div className='contact__content'>
       <nav className={`navbar ${showLogo ? "logo-visible" : ""}`}>
         <div className="navbar-container">
           {/* Hamburguesa */}

@@ -1,3 +1,4 @@
+// src/lib/firebase.js
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 
@@ -15,14 +16,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Guardar ticket
-export async function saveTicket(ticketId, email, eventName, plan, customerName) {
+export async function saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality) {
   try {
     await setDoc(doc(db, 'tickets', ticketId), {
       ticketId,
       email,
       eventName,
-      plan, // Guardar el tipo de plan
-      customerName, // Guardar el nombre
+      plan,
+      customerName,
+      phone,
+      dob,
+      nationality,
       status: 'valid',
       used: false,
       createdAt: new Date().toISOString(),

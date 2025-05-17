@@ -1,3 +1,4 @@
+// api/stripe-webhook/route.js
 import { createWalletPass } from '@/lib/wallet-pass';
 import { sendTicketEmail } from '../../../lib/nodeMailer';
 import { saveTicket } from '@/lib/firebase';
@@ -26,8 +27,11 @@ export async function POST(req) {
       const ticketId = session.id;
       const eventName = 'OOL Wellness 2025';
       const eventDate = '2025-08-01';
-      const customerName = session.metadata.customerName || 'Asistente'; // Nombre desde metadata
-      const ticketType = session.metadata.ticketType; // priceId desde metadata
+      const customerName = session.metadata.customerName || 'Asistente';
+      const ticketType = session.metadata.ticketType;
+      const phone = session.metadata.phone;
+      const dob = session.metadata.dob;
+      const nationality = session.metadata.nationality;
 
       // Determinar el plan basado en el priceId
       const plan = ticketType === 'price_1RLvqlRWJlybi2c9hUQf8Aaa' ? 'KIN - Regular Package' : 'HA - VIP Package';
@@ -35,7 +39,7 @@ export async function POST(req) {
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
       // Guardar ticket en Firebase
-      await saveTicket(ticketId, email, eventName, plan, customerName);
+      await saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality);
 
       // Generar pase
       const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);

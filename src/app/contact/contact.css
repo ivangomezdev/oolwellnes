@@ -1,6 +1,10 @@
 .contact__content{
     background-image:url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984881/Fondo_Retiro_vqqpq4.png") ;
-    background-color: #9B956A;
+ 
+}
+
+.contact__content{
+       background-color: #9B956A !important;
 }
 
 @media(max-width:769px){

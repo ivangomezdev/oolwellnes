@@ -37,7 +37,7 @@ const ThePlaceTextAndImg = () => {
       image:
         "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-JSOF-EC-002_ofssvv.jpg",
       description:
-        "El mar Caribe frente a ti, adornado por la paleta de colores del amanecer y la luna. Una vista inigualable desde donde podrá ver la isla de Cozumel, y el infinito se fusiona con el mar.",
+        "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
         "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
       gallery: [
@@ -55,7 +55,7 @@ const ThePlaceTextAndImg = () => {
       image:
         "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-JSOF-EC-002_ofssvv.jpg",
       description:
-                "El mar Caribe frente a ti, adornado por la paleta de colores del amanecer y la luna. Una vista inigualable desde donde podrá ver la isla de Cozumel, y el infinito se fusiona con el mar.",
+        "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
         "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
       gallery: [

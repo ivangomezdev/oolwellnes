@@ -17,47 +17,27 @@ const PlansPreSaleInfo = () => {
           className="plansPre__imgsCont"
           style={{ position: "relative", display: "inline-block" }}
         >
-          <div style={{ position: "absolute", top: "-9px" }}>
+          <div
+            className="plansPre__occult"
+            style={{ position: "absolute", top: "-9px" }}
+          >
             <img
-              style={{
-                left: "-160px",
-                bottom: "-20px",
-                border: " solid 13px #9F9668;", // Mantén tu estilo de borde aquí, ej. '2px solid #fff'
-              }}
               className="plansPre__imgsContimg"
               src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104265/HABITACIONARTISTAS-SuiteRiver_002_jugrsp.jpg"
               alt=""
             />
-            <div
-              className="plansPre__bgBlack"
-              style={{
-                position: "absolute",
-                top: "32px",
-                left: "-147px",
-                width: "270px",
-                borderRadius: "50%",
-                height: "270px",
-                backgroundColor: "rgba(0, 0, 0, 0.5)", // Capa negra semitransparente
-                zIndex: 1,
-              }}
+            <div />
+          </div>
+          <div className="plansPre__bgBlack2">
+            <img
+              className="plansPre__bgBlack2Logo"
+              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747381099/Sin_t%C3%ADtulo-removebg-preview_vxjtsj.png"
+              alt="icon"
             />
           </div>
-          <img
-            className="plansPre__bgBlack2"
-            style={{
-              position: "absolute",
-              top: "141px",
-              width: "130px",
-              left: "-13px",
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747381099/Sin_t%C3%ADtulo-removebg-preview_vxjtsj.png"
-            alt="icon"
-          />
         </div>
       </div>
-      
+
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="plansPre__plan">
           <h3>Kin - Regular Package</h3>
@@ -78,8 +58,19 @@ const PlansPreSaleInfo = () => {
             <li>Closing Sunset Party</li>
             <li>Y mucho más...</li>
             <div className="PlanPre__btns">
-              <button>Conocé el lugar</button>
-              <button>Ír a Preventa</button>
+              <Link href={"/hotel-gastronomia"}>
+                {" "}
+                <button>Restaurantes</button>
+              </Link>
+              <Link href={"/hotel-wellness"}>
+                {" "}
+                <button>Wellness/Spa</button>
+              </Link>
+
+              <Link href={"/tickets"}>
+                {" "}
+                <button>Preventa</button>
+              </Link>
             </div>
           </ul>
         </div>
@@ -117,9 +108,20 @@ const PlansPreSaleInfo = () => {
               </span>{" "}
               clases, restaurantes y experiencias adicionales.
             </li>
-             <div className="PlanPre__btns">
-              <Link href={"/Hotel-arte"}> <button>Conocé el lugar</button> </Link>
-             <Link href={"/tickets"}> <button>Ír a Preventa</button></Link>
+            <div className="PlanPre__btns">
+              <Link href={"/hotel-gastronomia"}>
+                {" "}
+                <button>Restaurantes</button>
+              </Link>
+              <Link href={"/hotel-wellness"}>
+                {" "}
+                <button>Wellness/Spa</button>
+              </Link>
+
+              <Link href={"/tickets"}>
+                {" "}
+                <button>Preventa</button>
+              </Link>
             </div>
           </ul>
         </div>

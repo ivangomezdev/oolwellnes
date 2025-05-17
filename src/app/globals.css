@@ -5,6 +5,12 @@ html,body{
 
 }
 
+a{
+  text-decoration: none;
+}
+
+
+
 @font-face {
   font-family: "TotShriftBold";
   src: url("/fonts/TotShriftBold.otf");

@@ -1,4 +1,4 @@
-//app/tickets/page.jsx
+// app/tickets/page.jsx
 "use client";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
@@ -55,7 +55,6 @@ const ticketOptions = [
     features: [
       "3 days / 2 nights at Hotel Xcaret Arte (Ocean Front Suite)",
       "Early Check-in (from 9AM) & Late Check-out (6PM)",
-        
       "All-Inclusive gourmet experience – Menus designed by Michelin-star chefs",
       "All-Fun Inclusive – Unlimited access to all Grupo Xcaret parks and tours",
       "Round-trip airport transportation (CUN – hotel – CUN)",
@@ -68,7 +67,6 @@ const ticketOptions = [
       "Lifestyle activities: kayak, paddle board, ceramics, ice bath, embroidery",
       "Wellness keynote",
       "Exclusive Welcome Kit",
-      // ... other features
     ],
     image:
       "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
@@ -79,6 +77,9 @@ const ticketOptions = [
 const CheckoutPopup = ({ ticket, onClose }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [dob, setDob] = useState("");
+  const [nationality, setNationality] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -94,7 +95,10 @@ const CheckoutPopup = ({ ticket, onClose }) => {
         body: JSON.stringify({
           priceId: ticket.priceId,
           email,
-          name, // Optionally send name to the backend if needed
+          name,
+          phone,
+          dob,
+          nationality,
         }),
       });
 
@@ -142,6 +146,30 @@ const CheckoutPopup = ({ ticket, onClose }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email Address"
+            className={styles.popup__input}
+            required
+          />
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone Number"
+            className={styles.popup__input}
+            required
+          />
+          <input
+            type="date"
+            value={dob}
+            onChange={(e) => setDob(e.target.value)}
+            placeholder="Date of Birth"
+            className={styles.popup__input}
+            required
+          />
+          <input
+            type="text"
+            value={nationality}
+            onChange={(e) => setNationality(e.target.value)}
+            placeholder="Nationality"
             className={styles.popup__input}
             required
           />
@@ -193,7 +221,7 @@ const FeaturesPopup = ({ ticket, onClose }) => {
 };
 
 export default function TicketsPage() {
-  const [popupTicket, setPopupTicket] = useState(null); // For features popup
+  const [popupTicket, setPopupTicket_] = useState(null); // For features popup
   const [checkoutTicket, setCheckoutTicket] = useState(null); // For checkout popup
   const [showLogo, setShowLogo] = useState(true);
   const [showNavbarLinks, setShowNavbarLinks] = useState(true);
@@ -353,74 +381,71 @@ export default function TicketsPage() {
         </div>
       </nav>
 
-    <div>
-    
-      <div className="tickets__Content">
-        <div className="tickets__videoAndForm">
-          <div className={styles.tickets__videoAndTitle}> 
-         
-          <video
-            src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746950529/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis.mp4"
-            autoPlay
-            muted
-            playsInline
-            loop
-          ></video></div>
-          
-          <div className={styles.tickets__titleAndTickets}>
-           
-            <div className={styles.tickets__gridAndTitle}>
-              <div className={styles.tickets__grid}>
-                   <h1 className={styles.tickets__title}>
-             Preventa <br/> "Rivera Maya 2025"
-            </h1>
-                {ticketOptions.map((ticket) => (
-                  <div key={ticket.id} className={styles.ticket}>
-               
-                    <h2 className={styles.ticket__name}>{ticket.name}</h2>
-                    <p className={styles.ticket__price}>${ticket.price} MXN</p>
-                    <ul className={styles.ticket__features}>
-                      {ticket.features.slice(0, 2).map((feature, idx) => (
-                        <li key={idx} className={styles.ticket__feature}>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      onClick={() => openFeaturesPopup(ticket)}
-                      className={styles.ticket__seeMore}
-                    >
-                      More info
-                    </button>
-                    <button
-                      onClick={() => openCheckoutPopup(ticket)}
-                      className={styles.ticket__button}
-                    >
-                      Get Tickets
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <h1 className={styles.tickets__titleVertical}>
-                Get your tickets!
-              </h1>
+      <div>
+        <div className="tickets__Content">
+          <div className="tickets__videoAndForm">
+            <div className={styles.tickets__videoAndTitle}>
+              <video
+                src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746950529/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis.mp4"
+                autoPlay
+                muted
+                playsInline
+                loop
+              ></video>
             </div>
-            {popupTicket && (
-              <FeaturesPopup
-                ticket={popupTicket}
-                onClose={closeFeaturesPopup}
-              />
-            )}
-            {checkoutTicket && (
-              <CheckoutPopup
-                ticket={checkoutTicket}
-                onClose={closeCheckoutPopup}
-              />
-            )}
+
+            <div className={styles.tickets__titleAndTickets}>
+              <div className={styles.tickets__gridAndTitle}>
+                <div className={styles.tickets__grid}>
+                  <h1 className={styles.tickets__title}>
+                    Preventa <br /> "Rivera Maya 2025"
+                  </h1>
+                  {ticketOptions.map((ticket) => (
+                    <div key={ticket.id} className={styles.ticket}>
+                      <h2 className={styles.ticket__name}>{ticket.name}</h2>
+                      <p className={styles.ticket__price}>${ticket.price} MXN</p>
+                      <ul className={styles.ticket__features}>
+                        {ticket.features.slice(0, 2).map((feature, idx) => (
+                          <li key={idx} className={styles.ticket__feature}>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <button
+                        onClick={() => openFeaturesPopup(ticket)}
+                        className={styles.ticket__seeMore}
+                      >
+                        More info
+                      </button>
+                      <button
+                        onClick={() => openCheckoutPopup(ticket)}
+                        className={styles.ticket__button}
+                      >
+                        Get Tickets
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <h1 className={styles.tickets__titleVertical}>
+                  Get your tickets!
+                </h1>
+              </div>
+              {popupTicket && (
+                <FeaturesPopup
+                  ticket={popupTicket}
+                  onClose={closeFeaturesPopup}
+                />
+              )}
+              {checkoutTicket && (
+                <CheckoutPopup
+                  ticket={checkoutTicket}
+                  onClose={closeCheckoutPopup}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-        </>
+    </>
   );
 }

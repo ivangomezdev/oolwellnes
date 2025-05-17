@@ -58,8 +58,8 @@
 }
 
 .coach-selector__image-container {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 20px;
@@ -147,7 +147,7 @@
   height: 60px; /* Tamaño fijo para el botón */
   padding: 0; /* Eliminamos padding para centrar la imagen */
   border: 1px solid #00000000;
-    background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
+   
 
  background-color: #9F9668;
   border-radius: 10px;
