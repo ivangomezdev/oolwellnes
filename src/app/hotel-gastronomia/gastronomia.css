@@ -30,12 +30,8 @@ body {
   background-color: var(--color-white);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.bares__item-title,
+.bares__title{
   font-family: "Broadsheet regular";
   font-weight: normal;
   color: #9f9668 !important;

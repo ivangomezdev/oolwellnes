@@ -36,7 +36,8 @@ const LayoutData = () => {
         <div className="layout__text-column">
           <div className="layout__text-area">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             
+Un viaje diseñado para sumergirte, recordar y celebrar tu verdadera esencia.
             </p>
           </div>
         </div>
@@ -54,7 +55,9 @@ const LayoutData = () => {
         <div className="layout__right-column">
           <div className="layout__text-area">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Más que una retiro, una experiencia expansiva.
+Tres días de conexión, movimiento y comunidad. 
+Sumérgete en el arte del bienestar.
             </p>
           </div>
         </div>
