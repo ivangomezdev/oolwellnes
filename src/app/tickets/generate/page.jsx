@@ -17,12 +17,15 @@ export default function GenerateTicketPage() {
   const [password, setPassword] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [passwordError, setPasswordError] = useState(null);
+  const [formErrors, setFormErrors] = useState({});
 
   // Fixed password
   const FIXED_PASSWORD = 'ool2025admin';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error for this field when user types
+    setFormErrors({ ...formErrors, [e.target.name]: '' });
   };
 
   const handlePasswordSubmit = (e) => {
@@ -36,17 +39,52 @@ export default function GenerateTicketPage() {
     }
   };
 
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = 'Full name is required';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Invalid email format';
+    if (!formData.phone.trim()) errors.phone = 'Phone number is required';
+    if (!formData.dob) errors.dob = 'Date of birth is required';
+    if (!formData.nationality.trim()) errors.nationality = 'Nationality is required';
+    if (!formData.plan) errors.plan = 'Plan selection is required';
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setSuccess(null);
+    setFormErrors({});
+
+    // Validate form
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      setLoading(false);
+      return;
+    }
+
+    // Split name into firstName and lastName for backward compatibility
+    const [firstName, ...lastNameParts] = formData.name.trim().split(' ');
+    const lastName = lastNameParts.join(' ') || '';
+
+    const payload = {
+      firstName,
+      lastName,
+      email: formData.email,
+      phone: formData.phone,
+      dob: formData.dob,
+      nationality: formData.nationality,
+      plan: formData.plan,
+    };
 
     try {
       const response = await fetch('/api/generate-ticket', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -189,6 +227,7 @@ export default function GenerateTicketPage() {
             placeholder="Enter full name"
             required
           />
+          {formErrors.name && <p className="field-error">{formErrors.name}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -201,6 +240,7 @@ export default function GenerateTicketPage() {
             placeholder="Enter email"
             required
           />
+          {formErrors.email && <p className="field-error">{formErrors.email}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="phone">Phone Number</label>
@@ -213,6 +253,7 @@ export default function GenerateTicketPage() {
             placeholder="Enter phone number"
             required
           />
+          {formErrors.phone && <p className="field-error">{formErrors.phone}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="dob">Date of Birth</label>
@@ -224,6 +265,7 @@ export default function GenerateTicketPage() {
             onChange={handleChange}
             required
           />
+          {formErrors.dob && <p className="field-error">{formErrors.dob}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="nationality">Nationality</label>
@@ -236,6 +278,7 @@ export default function GenerateTicketPage() {
             placeholder="Enter nationality"
             required
           />
+          {formErrors.nationality && <p className="field-error">{formErrors.nationality}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="plan">Plan</label>
@@ -243,6 +286,7 @@ export default function GenerateTicketPage() {
             <option value="KIN - Regular Package">KIN - Regular Package</option>
             <option value="HA - VIP Package">HA - VIP Package</option>
           </select>
+          {formErrors.plan && <p className="field-error">{formErrors.plan}</p>}
         </div>
         <button type="submit" disabled={loading}>
           {loading ? 'Generating...' : 'Generate and Send Ticket'}
@@ -332,6 +376,11 @@ export default function GenerateTicketPage() {
           padding: 1rem;
           border-radius: 8px;
           margin: 1rem 0;
+        }
+        .field-error {
+          color: #d32f2f;
+          font-size: 0.9rem;
+          margin-top: 0.3rem;
         }
         .success {
           color: #388e3c;
