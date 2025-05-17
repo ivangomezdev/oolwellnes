@@ -63,23 +63,24 @@ export default function CoachSelector() {
           </div>
         </div>
 
-        <div className="coach-selector__buttons">
-          {coachesData.map((coach) => (
-            <button
-              key={coach.id}
-              className={`coach-selector__button ${
-                selectedCoach.id === coach.id ? "coach-selector__button--active" : ""
-              }`}
-              onClick={() => handleCoachSelect(coach)}
-            >
-              <img
-                style={{ width: "50px" }} // Aumentamos el tamaño de la imagen
-                src={"https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/alma-removebg-preview_kzfpoe.png"}
-                alt="Icon"
-              />
-            </button>
-          ))}
-        </div>
+<div className="coach-selector__buttons">
+  {coachesData.map((coach) => (
+    <button
+      key={coach.id}
+      className={`coach-selector__button ${
+        selectedCoach.id === coach.id ? "coach-selector__button--active" : ""
+      }`}
+      onClick={() => handleCoachSelect(coach)}
+    >
+      <img
+      
+        style={{ width: "56px", height:"100px", backgroundImage: `url(${coach.bgImage})`,backgroundSize:"cover" }}
+        src={coach.image}
+        alt={`Icono de ${coach.name}`}
+      />
+    </button>
+  ))}
+</div>
       </div>
     </div>
   )
