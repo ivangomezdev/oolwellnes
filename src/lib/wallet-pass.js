@@ -33,6 +33,17 @@ async function ensureTempDir() {
 
 // Función para generar pass.json
 function createPassJson(ticketId, email, eventName, eventDate, customerName, plan) {
+  // Validar y mapear el valor de plan
+  const validPlans = ['KIN - Regular Package', 'HA - VIP Package'];
+  let planDisplayName = 'KIN Regular'; // Valor por defecto
+  if (validPlans.includes(plan)) {
+    planDisplayName = plan === 'KIN - Regular Package' ? 'KIN Regular' : 'HA VIP';
+  } else {
+    console.warn(`Valor de plan inválido: ${plan}. Usando valor por defecto: ${planDisplayName}`);
+  }
+
+  console.log(`Generando pass.json con plan: ${planDisplayName}`);
+
   return {
     formatVersion: 1,
     passTypeIdentifier: PASS_CONFIG.passTypeIdentifier,
@@ -54,14 +65,14 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName, pla
         {
           key: 'date',
           label: 'Fecha',
-          value: "1,2 & 3 Agosto,2025"
+          value: '1,2 & 3 Agosto,2025',
         },
       ],
       primaryFields: [
         {
           key: 'name',
           label: '',
-          textAlignment: "PKTextAlignmentCenter",
+          textAlignment: 'PKTextAlignmentCenter',
           value: customerName,
         },
       ],
@@ -77,13 +88,13 @@ function createPassJson(ticketId, email, eventName, eventDate, customerName, pla
         {
           key: 'Venue',
           label: 'Lugar',
-          value: "Xcaret Arte",
+          value: 'Xcaret Arte',
           textAlignment: 'PKTextAlignmentCenter',
         },
         {
           key: 'plan',
           label: 'Paquete',
-          value: plan, // Usar el valor del parámetro plan
+          value: planDisplayName, // Usar el valor mapeado
           textAlignment: 'PKTextAlignmentCenter',
         },
         {
