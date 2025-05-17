@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import "./coach-selector.css"
+import Image from "next/image"
 
 const coachesData = [
-  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501028/Kristina_1_r48nut.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/BackVerde_1_vanwwo.png" },
-  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501028/Pepe_cy2jxy.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/Backazul_j0piw0.png" },
-  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747508705/Kristina_1_r0xxpe.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747501029/BackVerde_1_vanwwo.png" },
+  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501028/Kristina_1_r48nut.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/BackVerde_1_vanwwo.png" },
+  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501028/Pepe_cy2jxy.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/Backazul_j0piw0.png" },
+  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747508705/Kristina_1_r0xxpe.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/BackVerde_1_vanwwo.png" },
 ]
 
 export default function CoachSelector() {
@@ -44,10 +45,12 @@ export default function CoachSelector() {
               isAnimating ? "coach-selector__image-container--fade-out" : "coach-selector__image-container--fade-in"
             }`}
           >
-            <img
+            <Image
               src={selectedCoach.image || "/placeholder.svg"}
               alt={`Foto de ${selectedCoach.name}`}
               className="coach-selector__image"
+              width={500}
+              height={500}
             />
           </div>
 
