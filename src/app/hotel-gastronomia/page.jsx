@@ -328,15 +328,7 @@ function RestaurantesContent() {
           </div>
         </section>
       ))}
-      <section className="xcaret__cta-section">
-        <h2 className="xcaret__cta-title">VER MÁS</h2>
-        <div className="xcaret__buttons">
-          <Link href="/hotel-gastronomia">
-            <button className="xcaret__button">Gastronomía</button>
-          </Link>
-          <button className="xcaret__button">Spa & Wellness</button>
-        </div>
-      </section>
+ 
     </div>
   )
 }
