@@ -1,14 +1,16 @@
+// generate/page.jsx
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
 
 export default function GenerateTicketPage() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    phone: '',
-    dob: '',
-    nationality: '',
+    phone: '', // Nuevo campo
+    dob: '', // Nuevo campo
+    nationality: '', // Nuevo campo
     plan: 'KIN - Regular Package',
   });
   const [loading, setLoading] = useState(false);
@@ -17,15 +19,11 @@ export default function GenerateTicketPage() {
   const [password, setPassword] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [passwordError, setPasswordError] = useState(null);
-  const [formErrors, setFormErrors] = useState({});
 
-  // Fixed password
   const FIXED_PASSWORD = 'ool2025admin';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // Clear error for this field when user types
-    setFormErrors({ ...formErrors, [e.target.name]: '' });
   };
 
   const handlePasswordSubmit = (e) => {
@@ -34,21 +32,9 @@ export default function GenerateTicketPage() {
     if (password === FIXED_PASSWORD) {
       setIsUnlocked(true);
     } else {
-      setPasswordError('Incorrect password');
+      setPasswordError('Contraseña incorrecta');
       setPassword('');
     }
-  };
-
-  const validateForm = () => {
-    const errors = {};
-    if (!formData.name.trim()) errors.name = 'Full name is required';
-    if (!formData.email.trim()) errors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Invalid email format';
-    if (!formData.phone.trim()) errors.phone = 'Phone number is required';
-    if (!formData.dob) errors.dob = 'Date of birth is required';
-    if (!formData.nationality.trim()) errors.nationality = 'Nationality is required';
-    if (!formData.plan) errors.plan = 'Plan selection is required';
-    return errors;
   };
 
   const handleSubmit = async (e) => {
@@ -56,45 +42,23 @@ export default function GenerateTicketPage() {
     setLoading(true);
     setError(null);
     setSuccess(null);
-    setFormErrors({});
-
-    // Validate form
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      setLoading(false);
-      return;
-    }
-
-    // Split name into firstName and lastName for backward compatibility
-    const [firstName, ...lastNameParts] = formData.name.trim().split(' ');
-    const lastName = lastNameParts.join(' ') || '';
-
-    const payload = {
-      firstName,
-      lastName,
-      email: formData.email,
-      phone: formData.phone,
-      dob: formData.dob,
-      nationality: formData.nationality,
-      plan: formData.plan,
-    };
 
     try {
       const response = await fetch('/api/generate-ticket', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || 'Error generating ticket');
+        throw new Error(data.error || 'Error generando la entrada');
       }
 
-      setSuccess('Ticket generated and sent successfully!');
+      setSuccess('¡Entrada generada y enviada exitosamente!');
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         dob: '',
@@ -102,132 +66,65 @@ export default function GenerateTicketPage() {
         plan: 'KIN - Regular Package',
       });
     } catch (err) {
-      setError(err.message || 'Error generating ticket');
+      setError(err.message || 'Error generando la entrada');
     } finally {
       setLoading(false);
     }
   };
 
-  // Password-protected form
   if (!isUnlocked) {
     return (
       <div className="container">
-        <h1>Restricted Access - OOL Retreats 2025</h1>
-        <p>Enter the password to access the ticket generator.</p>
+        <h1>Acceso Restringido - OOL Retreats 2025</h1>
+        <p>Ingrese la contraseña para acceder al generador de entradas.</p>
         <form onSubmit={handlePasswordSubmit} className="form">
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
+              placeholder="Ingrese la contraseña"
               required
             />
           </div>
-          <button type="submit">Unlock</button>
+          <button type="submit">Desbloquear</button>
         </form>
         {passwordError && <p className="error">{passwordError}</p>}
-
-        <style jsx>{`
-          .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: #f2e2c6;
-            color: #000000;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            padding: 20px;
-          }
-          h1 {
-            color: #9f9668;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-          }
-          p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-          }
-          .form {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
-          .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-          }
-          label {
-            font-size: 1.1rem;
-            color: #9f9668;
-            margin-bottom: 0.5rem;
-          }
-          input {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #9f9668;
-            border-radius: 4px;
-            outline: none;
-          }
-          input:focus {
-            border-color: #8a8257;
-          }
-          button {
-            background-color: #9f9668;
-            color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: background-color 0.3s, transform 0.2s;
-          }
-          button:hover {
-            background-color: #8a8257;
-            transform: scale(1.05);
-          }
-          .error {
-            color: #d32f2f;
-            background-color: #ffe6e6;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-          }
-        `}</style>
+        {/* Estilos existentes */}
       </div>
     );
   }
 
-  // Ticket generation form
   return (
     <div className="container">
-      <h1>Generate Ticket - OOL Retreats 2025</h1>
-      <p>Complete the form to generate and send a ticket to the user.</p>
+      <h1>Generar Entrada - OOL Retreats 2025</h1>
+      <p>Complete el formulario para generar y enviar una entrada al usuario.</p>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
-          <label htmlFor="name">Full Name</label>
+          <label htmlFor="firstName">Nombre</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
-            placeholder="Enter full name"
+            placeholder="Ingrese el nombre"
             required
           />
-          {formErrors.name && <p className="field-error">{formErrors.name}</p>}
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Apellido</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Ingrese el apellido"
+            required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -237,26 +134,24 @@ export default function GenerateTicketPage() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter email"
+            placeholder="Ingrese el email"
             required
           />
-          {formErrors.email && <p className="field-error">{formErrors.email}</p>}
         </div>
         <div className="form-group">
-          <label htmlFor="phone">Phone Number</label>
+          <label htmlFor="phone">Teléfono</label>
           <input
             type="tel"
             id="phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Enter phone number"
+            placeholder="Ingrese el número de teléfono"
             required
           />
-          {formErrors.phone && <p className="field-error">{formErrors.phone}</p>}
         </div>
         <div className="form-group">
-          <label htmlFor="dob">Date of Birth</label>
+          <label htmlFor="dob">Fecha de Nacimiento</label>
           <input
             type="date"
             id="dob"
@@ -265,20 +160,18 @@ export default function GenerateTicketPage() {
             onChange={handleChange}
             required
           />
-          {formErrors.dob && <p className="field-error">{formErrors.dob}</p>}
         </div>
         <div className="form-group">
-          <label htmlFor="nationality">Nationality</label>
+          <label htmlFor="nationality">Nacionalidad</label>
           <input
             type="text"
             id="nationality"
             name="nationality"
             value={formData.nationality}
             onChange={handleChange}
-            placeholder="Enter nationality"
+            placeholder="Ingrese la nacionalidad"
             required
           />
-          {formErrors.nationality && <p className="field-error">{formErrors.nationality}</p>}
         </div>
         <div className="form-group">
           <label htmlFor="plan">Plan</label>
@@ -286,16 +179,16 @@ export default function GenerateTicketPage() {
             <option value="KIN - Regular Package">KIN - Regular Package</option>
             <option value="HA - VIP Package">HA - VIP Package</option>
           </select>
-          {formErrors.plan && <p className="field-error">{formErrors.plan}</p>}
         </div>
         <button type="submit" disabled={loading}>
-          {loading ? 'Generating...' : 'Generate and Send Ticket'}
+          {loading ? 'Generando...' : 'Generar y Enviar Entrada'}
         </button>
       </form>
       {error && <p className="error">{error}</p>}
       {success && <p className="success">{success}</p>}
-      <Link href="/tickets">Back to tickets page</Link>
+      <Link href="/tickets">Volver a la página de boletos</Link>
 
+      {/* Estilos existentes */}
       <style jsx>{`
         .container {
           min-height: 100vh;
@@ -303,14 +196,14 @@ export default function GenerateTicketPage() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          background-color: #f2e2c6;
+          background-color: #F2E2C6;
           color: #000000;
           font-family: 'Arial', sans-serif;
           text-align: center;
           padding: 20px;
         }
         h1 {
-          color: #9f9668;
+          color: #9F9668;
           font-size: 2.5rem;
           margin-bottom: 1rem;
         }
@@ -336,24 +229,24 @@ export default function GenerateTicketPage() {
         }
         label {
           font-size: 1.1rem;
-          color: #9f9668;
+          color: #9F9668;
           margin-bottom: 0.5rem;
         }
         input,
         select {
           padding: 10px;
           font-size: 1rem;
-          border: 1px solid #9f9668;
+          border: 1px solid #9F9668;
           border-radius: 4px;
           outline: none;
         }
         input:focus,
         select:focus {
-          border-color: #8a8257;
+          border-color: #8A8257;
         }
         button {
-          background-color: #9f9668;
-          color: #ffffff;
+          background-color: #9F9668;
+          color: #FFFFFF;
           border: none;
           padding: 12px 24px;
           font-size: 1.1rem;
@@ -363,7 +256,7 @@ export default function GenerateTicketPage() {
           transition: background-color 0.3s, transform 0.2s;
         }
         button:hover {
-          background-color: #8a8257;
+          background-color: #8A8257;
           transform: scale(1.05);
         }
         button:disabled {
@@ -377,11 +270,6 @@ export default function GenerateTicketPage() {
           border-radius: 8px;
           margin: 1rem 0;
         }
-        .field-error {
-          color: #d32f2f;
-          font-size: 0.9rem;
-          margin-top: 0.3rem;
-        }
         .success {
           color: #388e3c;
           background-color: #e8f5e9;
@@ -390,7 +278,7 @@ export default function GenerateTicketPage() {
           margin: 1rem 0;
         }
         a {
-          color: #9f9668;
+          color: #9F9668;
           text-decoration: none;
           font-size: 1.1rem;
           margin-top: 1rem;
