@@ -1,3 +1,4 @@
+// /api/generate-ticket
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import { saveTicket } from '@/lib/firebase';
@@ -7,10 +8,10 @@ import QRCode from 'qrcode';
 
 export async function POST(request) {
   try {
-    const { firstName, lastName, email, plan } = await request.json();
+    const { firstName, lastName, email, phone, dob, nationality, plan } = await request.json();
 
     // Validar campos
-    if (!firstName || !lastName || !email || !plan) {
+    if (!firstName || !lastName || !email || !phone || !dob || !nationality || !plan) {
       return NextResponse.json({ error: 'Todos los campos son requeridos' }, { status: 400 });
     }
     if (!email.includes('@')) {
@@ -26,7 +27,7 @@ export async function POST(request) {
     const eventDate = '2025-08-01';
 
     // Guardar ticket en Firebase
-    await saveTicket(ticketId, email, eventName, plan, customerName);
+    await saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality);
 
     // Generar pase
     const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
