@@ -110,7 +110,9 @@ const Page = () => {
             </div>
           </div>
           <div className="dropdown-mobile">
-            Services
+            <Link href="/oolExperience" className="nav-link" onClick={toggleMobileMenu}>
+            Retreats
+            </Link>
             {/* Submenú oculto en el menú móvil */}
             <div className="dropdown-menu-mobile" style={{ display: 'none' }}>
               <Link href="/oolExperience" className="dropdown-item" onClick={toggleMobileMenu}>

@@ -131,7 +131,9 @@ export default function SpaPage() {
             </div>
           </div>
           <div className="dropdown-mobile">
+          <Link href="/oolExperience" className="nav-link" onClick={toggleMobileMenu}>
             Retreats
+            </Link>
             <div className="dropdown-menu-mobile" style={{ display: "none" }}>
               <Link
                 href="/oolExperience"
