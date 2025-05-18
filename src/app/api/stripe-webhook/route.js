@@ -34,7 +34,7 @@ export async function POST(req) {
       const nationality = session.metadata.nationality;
 
       // Determinar el plan basado en el priceId
-      const plan = ticketType === 'price_1RLvqlRWJlybi2c9hUQf8Aaa' ? 'KIN - Regular Package' : 'HA - VIP Package';
+      const plan = ticketType === 'price_1RPteVDEXHZiGUEkpmNO2MZM' ? 'KIN - Regular Package' : 'HA - VIP Package';
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 

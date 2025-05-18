@@ -27,7 +27,7 @@ const ticketOptions = [
     id: "kin-regular",
     name: "KIN - Regular Package",
     price: 35000,
-    priceId: "price_1RLvqlRWJlybi2c9hUQf8Aaa",
+    priceId: "price_1RPteVDEXHZiGUEkpmNO2MZM",
     features: [
       "- 3 days / 2 nights at Hotel Xcaret Arte",
       "- Early Check-in (from 9AM) & Late Check-out (6PM)",
@@ -51,7 +51,7 @@ const ticketOptions = [
     id: "ha-vip",
     name: "HA - VIP Package",
     price: 51000,
-    priceId: "price_1RPteVDEXHZiGUEkpmNO2MZM",
+    priceId: "price_1RPtf8DEXHZiGUEkJVtMhJ54",
     features: [
       "3 days / 2 nights at Hotel Xcaret Arte (Ocean Front Suite)",
       "Early Check-in (from 9AM) & Late Check-out (6PM)",
