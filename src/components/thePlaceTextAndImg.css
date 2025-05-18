@@ -10,7 +10,7 @@
   background-color: #BEAA88;
   align-items: center;
   position: relative;
-  z-index: 99999;
+  z-index: 1000;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
@@ -84,15 +84,8 @@
 .image-container img {
   width: 100% !important;
   height: 100%;
-  
   display: block;
   border-radius: 20px !important;
-}
-
-@media(max-width:537px){
- .thePlace__logo{
-display: none;
- } 
 }
 
 .image-overlay {
@@ -212,34 +205,31 @@ display: none;
   left: 0;
   width: 100vw;
   height: 100vh;
-  padding-bottom: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 100000;
-  overflow: hidden;
+  align-items: flex-start;
+  z-index: 10000;
+  overflow-y: auto; /* Page-level scrolling */
+  padding-top: 20px; /* Ensure top content is visible */
 }
 
 .popup-content {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background-color: #f2e2ce;
   border-radius: 8px;
   width: 90%;
-  max-height: 90vh;
+  max-height: 90vh; /* Flexible height */
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   position: relative;
+  overflow-y: auto; /* Allow scrolling only if content exceeds */
 }
 
 .popup-image-section {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+  width: 100%;
 }
 
 .popup-image-container {
@@ -249,7 +239,7 @@ display: none;
 .popup-image-container img {
   width: 100%;
   height: auto;
-  max-height: 400px;
+  max-height: 40vh; /* Adjusted for better fit */
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
@@ -277,43 +267,41 @@ display: none;
 }
 
 .popup-description {
-  width: 50%;
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
 }
 
 .popup-description h4 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
   color: #9F9668;
 }
 
 .popup-description p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
   font-family: "CalSans";
 }
 
 .additional-info-list {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   list-style-type: disc;
   padding-left: 20px;
   font-family: "CalSans";
 }
 
 .additional-info-list li {
-  margin-bottom: 10px;
-  line-height: 1.5;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 .buy-tickets-btn {
-  padding: 10px 20px;
-  width: 200px;
+  padding: 8px 16px;
+  width: 180px;
   margin: 0 auto;
   background-color: #9F9668;
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
@@ -321,13 +309,12 @@ display: none;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
   transition: background-color 0.3s;
-  font-size: 20px;
   font-family: "CalSans";
 }
 
@@ -336,17 +323,17 @@ display: none;
 }
 
 .ticket-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .popup-close-btn {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   align-self: flex-start;
   transition: background-color 0.3s;
 }
@@ -399,6 +386,12 @@ body.popup-open {
   overflow: hidden;
 }
 
+@media (max-width: 537px) {
+  .thePlace__logo {
+    display: none;
+  }
+}
+
 @media (max-width: 767px) {
   .thePlaceText__cont {
     flex-direction: column;
@@ -426,20 +419,21 @@ body.popup-open {
   }
 
   .view-more-btn {
-    z-index: 9999999999;
+    z-index: 2000;
     position: relative;
     font-family: "CalSans";
   }
 
   .popup-content {
     flex-direction: column;
-    max-height: 95vh;
-    overflow-y: auto;
+    width: 95%;
+    max-height: 90vh; /* Increased for better fit */
+    padding: 10px;
+    overflow-y: auto; /* Allow content to scroll if needed */
   }
 
   .popup-image-section {
     width: 100%;
-    margin-top: 10px;
   }
 
   .popup-image-container {
@@ -447,15 +441,41 @@ body.popup-open {
   }
 
   .popup-image-container img {
-    max-height: 350px;
     width: 100%;
+    height: auto;
+    max-height: 40vh; /* Adjusted to allow more space */
     object-fit: cover;
-    padding-top: 360px;
+    border-radius: 8px;
   }
 
   .popup-description {
-    padding: 10px;
-    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .popup-description h4 {
+    font-size: 1.2rem;
+  }
+
+  .popup-description p {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .additional-info-list {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+
+  .additional-info-list li {
+    margin-bottom: 6px;
+  }
+
+  .buy-tickets-btn {
+    width: 160px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 
   .image-container {
@@ -465,36 +485,13 @@ body.popup-open {
 
   .image-container img {
     width: 100%;
-    height: 100%; /* Restore height to fill the container */
+    height: 100%;
     object-fit: cover;
     border-radius: 20px !important;
   }
 
   .carousel-slide {
     padding: 0;
-  }
-
-  .popup-content {
-    flex-direction: column;
-  }
-
-  .popup-image-section {
-    width: 100%;
-  }
-
-  .popup-description {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .popup-image-container img {
-    max-height: 300px;
-  }
-
-  .thePlaceText__cont img {
-    width: 200px;
-    right: 10px;
-    bottom: 10px;
   }
 }
 
@@ -514,6 +511,10 @@ body.popup-open {
 
 @media (max-width: 400px) {
   .popup-image-container img {
-    padding-top: 400px;
+    max-height: 35vh;
+  }
+
+  .popup-content {
+    max-height: 85vh;
   }
 }
