@@ -17,7 +17,7 @@ export async function POST(request) {
     if (!email.includes('@')) {
       return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
     }
-    if (!['KIN - Regular Package', 'HA - VIP Package'].includes(plan)) {
+    if (!['KIN - Regular Package', 'HA - VIP Package', 'HA - prueba Package'].includes(plan)) {
       return NextResponse.json({ error: 'Plan inválido' }, { status: 400 });
     }
 

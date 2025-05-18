@@ -7,7 +7,7 @@ import Image from "next/image"
 const coachesData = [
   { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501028/Kristina_1_r48nut.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/BackVerde_1_vanwwo.png" },
   { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501028/Pepe_cy2jxy.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/Backazul_j0piw0.png" },
-  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747508705/Kristina_1_r0xxpe.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1747501029/BackVerde_1_vanwwo.png" },
+  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747527928/Majo_1_inlire.png", bgImage: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747527927/BackAmarillo_1_idaehc.png" },
 ]
 
 export default function CoachSelector() {
