@@ -10,7 +10,7 @@
   background-color: #BEAA88;
   align-items: center;
   position: relative;
-  z-index: 1000;
+  z-index: 99999;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
@@ -47,6 +47,8 @@
   height: 400px;
 }
 
+
+
 .carousel-track-container {
   width: 100%;
   overflow: hidden;
@@ -82,8 +84,9 @@
 }
 
 .image-container img {
-  width: 100% !important;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
   border-radius: 20px !important;
 }
@@ -116,6 +119,7 @@
 
 .view-more-btn {
   padding: 10px 20px;
+  
   background-color: #9F9668;
   color: white;
   font-family: "CalSans";
@@ -205,31 +209,37 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 100vh;
 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  z-index: 10000;
-  overflow-y: auto; /* Page-level scrolling */
-  padding-top: 20px; /* Ensure top content is visible */
+  align-items: center;
+  z-index: 100000;
+  overflow: hidden;
 }
+
+
 
 .popup-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: #f2e2ce;
   border-radius: 8px;
   width: 90%;
-  max-height: 90vh; /* Flexible height */
-  padding: 10px;
+  height: auto;
+  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  position: relative;
-  overflow-y: auto; /* Allow scrolling only if content exceeds */
+  
+  position: relative; /* Ensure content stays within overlay */
 }
 
 .popup-image-section {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .popup-image-container {
@@ -239,7 +249,7 @@
 .popup-image-container img {
   width: 100%;
   height: auto;
-  max-height: 40vh; /* Adjusted for better fit */
+  max-height: 400px;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
@@ -267,41 +277,44 @@
 }
 
 .popup-description {
-  width: 100%;
-  padding: 10px;
-  font-size: 0.9rem;
+  width: 50%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .popup-description h4 {
-  font-size: 1.5rem;
-  margin-bottom: 8px;
+  font-size: 2rem;
+  margin-bottom: 10px;
   color: #9F9668;
 }
 
 .popup-description p {
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-  line-height: 1.4;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
   font-family: "CalSans";
 }
 
 .additional-info-list {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #555;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   list-style-type: disc;
   padding-left: 20px;
-  font-family: "CalSans";
+    font-family: "CalSans";
+
 }
 
 .additional-info-list li {
-  margin-bottom: 8px;
-  line-height: 1.4;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 
 .buy-tickets-btn {
-  padding: 8px 16px;
-  width: 180px;
+  padding: 10px 20px;
+  width: 200px;
   margin: 0 auto;
   background-color: #9F9668;
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747029170/Objeto_inteligente_vectorial_hlhi6c.png");
@@ -309,12 +322,13 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
   transition: background-color 0.3s;
+  font-size: 20px;
   font-family: "CalSans";
 }
 
@@ -323,17 +337,17 @@
 }
 
 .ticket-icon {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .popup-close-btn {
-  padding: 8px 16px;
+  padding: 10px 20px;
   background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   align-self: flex-start;
   transition: background-color 0.3s;
 }
@@ -348,7 +362,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -386,9 +400,40 @@ body.popup-open {
   overflow: hidden;
 }
 
-@media (max-width: 537px) {
-  .thePlace__logo {
-    display: none;
+@media (max-width: 750px) {
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    z-index: 100000;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .popup-content {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    max-height: none;
+    margin-bottom: 100px;
+    overflow: visible;
+    position: relative;
+  }
+
+  .popup-image-container img {
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+    padding-top: 0;
   }
 }
 
@@ -397,7 +442,7 @@ body.popup-open {
     flex-direction: column;
     font-size: 16px;
   }
-
+  
   .thePlaceText__imgs {
     width: 100%;
     margin-bottom: -180px;
@@ -410,8 +455,8 @@ body.popup-open {
     margin: 0 auto;
     align-items: center;
   }
-
-  .thePlaceText__description p {
+  
+  .thePlaceText__description p{
     text-align: center;
     margin: 0 auto;
     width: 250px;
@@ -419,79 +464,22 @@ body.popup-open {
   }
 
   .view-more-btn {
-    z-index: 2000;
+    z-index: 9999999999;
     position: relative;
     font-family: "CalSans";
-  }
-
-  .popup-content {
-    flex-direction: column;
-    width: 95%;
-    max-height: 90vh; /* Increased for better fit */
-    padding: 10px;
-    overflow-y: auto; /* Allow content to scroll if needed */
   }
 
   .popup-image-section {
     width: 100%;
   }
 
-  .popup-image-container {
-    padding: 5px;
-  }
-
-  .popup-image-container img {
-    width: 100%;
-    height: auto;
-    max-height: 40vh; /* Adjusted to allow more space */
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
   .popup-description {
     width: 100%;
-    padding: 8px;
-    font-size: 0.85rem;
-  }
-
-  .popup-description h4 {
-    font-size: 1.2rem;
-  }
-
-  .popup-description p {
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-  }
-
-  .additional-info-list {
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-  }
-
-  .additional-info-list li {
-    margin-bottom: 6px;
-  }
-
-  .buy-tickets-btn {
-    width: 160px;
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    padding: 10px;
   }
 
   .image-container {
     height: 300px;
-    width: 100%;
-  }
-
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px !important;
-  }
-
-  .carousel-slide {
-    padding: 0;
   }
 }
 
@@ -509,12 +497,6 @@ body.popup-open {
   }
 }
 
-@media (max-width: 400px) {
-  .popup-image-container img {
-    max-height: 35vh;
-  }
-
-  .popup-content {
-    max-height: 85vh;
-  }
+@media(max-width:400px){
+  /* Eliminar el padding-top que causa problemas */
 }
