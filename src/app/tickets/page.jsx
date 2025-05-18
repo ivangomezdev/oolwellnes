@@ -71,7 +71,7 @@ const ticketOptions = [
     image:
       "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
   },
-    {
+  {
     id: "ha-prueba",
     name: "HA - prueba Package",
     price: 100,
@@ -134,7 +134,6 @@ const CheckoutPopup = ({ ticket, onClose }) => {
 
       const { sessionId } = data;
 
-      // Redirect to Stripe Checkout
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({ sessionId });
 
@@ -152,65 +151,95 @@ const CheckoutPopup = ({ ticket, onClose }) => {
       <div className={styles.popup__content}>
         <img
           src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
-          alt=""
+          alt="Logo"
           style={{ top: "10px", width: "90px", position: "absolute" }}
         />
-        <h2 className={styles.popup__title}>Complete Your Purchase</h2>
+        <h2 className={styles.popup__title}>Completa tu Compra</h2>
         <form onSubmit={handleSubmit} className={styles.popup__form}>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-            className={styles.popup__input}
-            required
-          />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email Address"
-            className={styles.popup__input}
-            required
-          />
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone Number"
-            className={styles.popup__input}
-            required
-          />
-          <input
-            type="date"
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
-            placeholder="Date of Birth"
-            className={styles.popup__input}
-            required
-          />
-          <input
-            type="text"
-            value={nationality}
-            onChange={(e) => setNationality(e.target.value)}
-            placeholder="Nationality"
-            className={styles.popup__input}
-            required
-          />
+          <div className={styles.input__group}>
+            <label htmlFor="name" className={styles.input__label}>
+              Nombre Completo
+            </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Ingresa tu nombre completo"
+              className={styles.popup__input}
+              required
+            />
+          </div>
+          <div className={styles.input__group}>
+            <label htmlFor="email" className={styles.input__label}>
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Ingresa tu correo electrónico"
+              className={styles.popup__input}
+              required
+            />
+          </div>
+          <div className={styles.input__group}>
+            <label htmlFor="phone" className={styles.input__label}>
+              Número de Teléfono
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Ingresa tu número de teléfono"
+              className={styles.popup__input}
+              required
+            />
+          </div>
+          <div className={styles.input__group}>
+            <label htmlFor="dob" className={styles.input__label}>
+              Fecha de Nacimiento
+            </label>
+            <input
+              type="date"
+              id="dob"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              placeholder="Selecciona tu fecha de nacimiento"
+              className={`${styles.popup__input} ${styles.date__input}`}
+              required
+            />
+          </div>
+          <div className={styles.input__group}>
+            <label htmlFor="nationality" className={styles.input__label}>
+              Nacionalidad
+            </label>
+            <input
+              type="text"
+              id="nationality"
+              value={nationality}
+              onChange={(e) => setNationality(e.target.value)}
+              placeholder="Ingresa tu nacionalidad"
+              className={styles.popup__input}
+              required
+            />
+          </div>
           {error && <p className={styles.popup__error}>{error}</p>}
           <button
             type="submit"
             disabled={loading}
             className={styles.popup__button}
           >
-            {loading ? "Processing..." : `Pay $${ticket.price},00 MXN`}
+            {loading ? "Procesando..." : `Pagar $${ticket.price},00 MXN`}
           </button>
           <button
             type="button"
             onClick={onClose}
             className={styles.popup__close}
           >
-            Cancel
+            Cancelar
           </button>
         </form>
       </div>
@@ -245,7 +274,7 @@ const FeaturesPopup = ({ ticket, onClose }) => {
 };
 
 export default function TicketsPage() {
-  const [popupTicket, setPopupTicket_] = useState(null); // For features popup
+  const [popupTicket, setPopupTicket] = useState(null); // For features popup
   const [checkoutTicket, setCheckoutTicket] = useState(null); // For checkout popup
   const [showLogo, setShowLogo] = useState(true);
   const [showNavbarLinks, setShowNavbarLinks] = useState(true);

@@ -5,24 +5,22 @@
 
 /* Ensure content respects navbar height */
 .tickets__Content {
-  padding-top: 100px; /* Adjust based on your navbar height (e.g., 80px or measure it) */
-
+  padding-top: 100px; /* Adjust based on your navbar height */
 }
 
- .tickets__title {
+.tickets__title {
   text-align: center;
   max-width: 450px;
   font-size: 45px;
   padding-top: 60px;
   color: #D9BCA3;
   font-family: "Broadsheet Regular";
-  }
+}
 
 /* Video container */
 .tickets__videoAndForm {
   position: relative;
   width: 100dvh;
-
 }
 
 .tickets__videoAndTitle {
@@ -74,8 +72,6 @@
   align-items: center;
   width: 100%;
   margin: 0 auto;
-
-  
 }
 
 .tickets__grid {
@@ -85,7 +81,7 @@
 }
 
 .ticket {
-  border: 4px solid #9F9668; /* Reverted to original dashed border */
+  border: 4px solid #9F9668;
   border-style: dashed;
   padding: 1.5rem;
   border-radius: 8px;
@@ -130,7 +126,6 @@
 
 .ticket__button {
   background-color: #9F9668;
- 
   color: white;
   margin-top: 240px;
   margin-right: 20px;
@@ -209,7 +204,6 @@
   font-family: "CalSans";
   margin-right: 20px;
   background-position: center;
- 
 }
 
 .ticket__seeMore:hover {
@@ -241,6 +235,9 @@
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .popup__title {
@@ -249,6 +246,7 @@
   margin-bottom: 1rem;
   font-family: "Broadsheet Regular";
   text-align: center;
+  width: 100%;
 }
 
 .popup__features {
@@ -266,7 +264,9 @@
 .popup__form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 
 .popup__input {
@@ -274,8 +274,12 @@
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin: 0 auto;
   width: 90%;
+  max-width: 400px;
+  box-sizing: border-box;
+  font-family: "CalSans";
+  background-color: #fff;
+  color: #333;
 }
 
 .popup__error {
@@ -287,36 +291,36 @@
 .popup__button {
   background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1745809227/bg_jgyrb3.png");
   color: black;
-  
   padding: 0.75rem;
   border: none;
   width: 95%;
-  margin: 0 auto;
+  max-width: 400px;
+  margin: 0.5rem auto;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.4rem;
   font-family: "CalSans";
-  background-size: 200% auto; /* Increase size to allow panning */
-  background-position: 0% center; /* Start position for animation */
-  background-repeat: no-repeat; /* Prevent tiling */
+  background-size: 200% auto;
+  background-position: 0% center;
+  background-repeat: no-repeat;
   transition: ease 2s color;
-  animation: slideBackground 120s linear infinite; /* Animation properties */
+  animation: slideBackground 120s linear infinite;
 }
 
 @keyframes slideBackground {
   0% {
-    background-position: 0% right; /* Start from the left */
+    background-position: 0% right;
   }
   50% {
-    background-position: 100% center; /* Move to the right */
+    background-position: 100% center;
   }
   100% {
-    background-position: 0% center; /* Return to the left */
+    background-position: 0% center;
   }
 }
 
 .popup__button:hover {
-  animation: slideBackground 20s linear infinite; /* Animation properties */
+  animation: slideBackground 20s linear infinite;
   color: #9F9668;
 }
 
@@ -333,48 +337,87 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-  margin-top: 1rem;
+  margin: 0.5rem auto;
   display: block;
-  margin-left: auto;
   font-family: "CalSans";
-  margin-right: auto;
+  width: 95%;
+  max-width: 400px;
+  text-align: center;
 }
 
 .popup__close:hover {
   background-color: #c0392b;
 }
 
+/* Estilos para el grupo de input (label + input) */
+.input__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input__label {
+  font-size: 1.1rem;
+  color: #F2E2C6;
+  font-family: "CalSans";
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Estilos específicos para el input de fecha */
+.date__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Placeholder para el input de fecha */
+.date__input::-webkit-datetime-edit {
+  color: #888;
+}
+.date__input:invalid::-webkit-datetime-edit {
+  color: #888;
+}
+
 /* Media query for screens 750px or wider */
 @media (min-width: 750px) {
   .tickets__videoAndForm {
-    height: 120vh; /* Full viewport height */
+    height: 120vh;
     margin-top: 80px;
   }
 
   .tickets__videoAndTitle {
-    background: rgba(0, 0, 0, 0.5); /* Maintain semi-transparent background */
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .tickets__videoAndForm video {
-    height: 100vh; /* Full height */
+    height: 100vh;
     width: 100%;
-    object-fit: cover; /* Cover the container */
+    object-fit: cover;
   }
 
   .tickets__title {
-    margin-top: 20px; /* Add space from the top */
-    
+    margin-top: 20px;
   }
 }
-
-
 
 /* Media queries from original CSS */
 @media (max-width: 1914px) {
   .tickets__titleVertical {
-    display: none; /* Show the vertical title */
+    display: none;
     font-size: 2.5rem;
-    min-width: 50px; /* Ensure title has enough space */
+    min-width: 50px;
     margin: 0;
   }
 
@@ -386,23 +429,21 @@
 
   .tickets__gridAndTitle {
     display: flex;
-    flex-direction: row; /* Grid and title side by side */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    gap: 2rem; /* Space between grid and title */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .tickets__grid {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center tickets horizontally */
+    align-items: center;
     margin: 0;
     position: relative;
     top: 100px;
     gap: 15px;
   }
-
- 
 
   .ticket {
     width: 100%;
@@ -426,24 +467,22 @@
 }
 
 @media (max-width: 768px) {
-
-
   .tickets__gridAndTitle {
-    gap: 1rem; /* Reduce gap on smaller screens */
+    gap: 1rem;
   }
 
   .ticket {
-    max-width: 300px; /* Slightly smaller tickets for mobile */
+    max-width: 300px;
   }
 }
 
 @media (max-width: 870px) {
   .tickets__gridAndTitle {
-    gap: 1rem; /* Reduce gap on smaller screens */
+    gap: 1rem;
   }
 
   .ticket {
-    max-width: 300px; /* Slightly smaller tickets for mobile */
+    max-width: 300px;
   }
 }
 
@@ -454,24 +493,24 @@
   }
 
   .tickets__title {
-    display: block; /* Hide the original title */
+    display: block;
     font-size: 40px;
     width: 300px;
-    padding-top:60px ;
+    padding-top: 60px;
   }
 
   .tickets__titleVertical {
-    display: none; /* Show the vertical title */
+    display: none;
     font-size: 2.5rem;
-    min-width: 50px; /* Ensure title has enough space */
+    min-width: 50px;
     margin: 0;
   }
 
   .tickets__videoAndForm video {
-    height: auto; /* Allow video to scale naturally on smaller screens */
+    height: auto;
   }
 
   .tickets__videoAndTitle {
-    background: rgba(0, 0, 0, 0.5); /* Maintain semi-transparent background */
+    background: rgba(0, 0, 0, 0.5);
   }
 }
