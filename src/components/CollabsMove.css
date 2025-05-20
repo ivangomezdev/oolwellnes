@@ -19,6 +19,19 @@
     width: fit-content;
     animation: scroll 90s linear infinite;
   }
+
+  .taller-icon img {
+  height: 122px !important; /* 102px + 20px */
+  width: auto !important;
+  object-fit: contain;
+}
+
+
+/* Para set2 si querés ajustarlo proporcionalmente */
+.taller-icon img[alt="icons"] {
+  height: 192px !important; /* 172px + 20px */
+}
+
   
   /* Cada conjunto de iconos */
   .movement-bar__icons {

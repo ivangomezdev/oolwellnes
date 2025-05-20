@@ -42,7 +42,7 @@ const PlansPreSaleInfo = () => {
         <div className="plansPre__plan">
           <h3>Kin - Regular Package</h3>
           <ul>
-            <li>3 Días y 2 noches en hotel Xcaret</li>
+            <li>3 Días y 2 noches en Hotel Xcaret Arte</li>
             <li>Menú por chefs con estrella Michellin</li>
             <li>
               Acceso ilimitado a todos los parques y tours de Grupo Xcaret
@@ -77,7 +77,7 @@ const PlansPreSaleInfo = () => {
         <div className="plansPre__plan">
           <h3>Ha - VIP Package</h3>
           <ul>
-            <li>3 Días y 2 noches en hotel Xcaret</li>
+            <li>3 Días y 2 noches en Hotel Xcaret Arte</li>
             <li>Menú por chefs con estrella Michellin</li>
             <li>
               Acceso ilimitado a todos los parques y tours de Grupo Xcaret
