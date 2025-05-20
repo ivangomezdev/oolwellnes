@@ -1,7 +1,7 @@
+// app/tickets/page.jsx
 "use client";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import styles from "./styles/tickets.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,7 +44,8 @@ const ticketOptions = [
       "- Wellness keynote",
       "- Exclusive Welcome Kit",
     ],
-    image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745774380/oool_bhe8w5.png",
+    image:
+      "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745774380/oool_bhe8w5.png",
   },
   {
     id: "ha-vip",
@@ -67,21 +68,19 @@ const ticketOptions = [
       "Wellness keynote",
       "Exclusive Welcome Kit",
     ],
-    image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
-  },
+    image:
+      "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
+  }
   
 ];
 
 // Checkout Popup Component
 const CheckoutPopup = ({ ticket, onClose }) => {
-  const stripe = useStripe();
-  const elements = useElements();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [dob, setDob] = useState("");
   const [nationality, setNationality] = useState("");
-  const [paymentOption, setPaymentOption] = useState("single");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -89,12 +88,6 @@ const CheckoutPopup = ({ ticket, onClose }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
-    if (!stripe || !elements) {
-      setError("Stripe no está cargado. Por favor, intenta de nuevo.");
-      setLoading(false);
-      return;
-    }
 
     try {
       const response = await fetch("/api/checkout", {
@@ -107,40 +100,25 @@ const CheckoutPopup = ({ ticket, onClose }) => {
           phone,
           dob,
           nationality,
-          paymentOption,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Error creando la sesión de pago");
+        throw new Error(data.error || "Error creating payment session");
       }
 
-      const { clientSecret } = data;
+      const { sessionId } = data;
 
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            name,
-            email,
-            phone,
-          },
-        },
-      });
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({ sessionId });
 
       if (error) {
         throw new Error(error.message);
       }
-
-      if (paymentIntent.status === "succeeded") {
-        window.location.href = `${process.env.NEXT_PUBLIC_BASE_URL}tickets/success`;
-      } else {
-        throw new Error("El pago no se completó correctamente.");
-      }
     } catch (err) {
-      setError(err.message || "Error iniciando el pago");
+      setError(err.message || "Error initiating payment");
       setLoading(false);
     }
   };
@@ -225,50 +203,13 @@ const CheckoutPopup = ({ ticket, onClose }) => {
               required
             />
           </div>
-          <div className={styles.input__group}>
-            <label htmlFor="paymentOption" className={styles.input__label}>
-              Opción de Pago
-            </label>
-            <select
-              id="paymentOption"
-              value={paymentOption}
-              onChange={(e) => setPaymentOption(e.target.value)}
-              className={styles.popup__input}
-              required
-            >
-              <option value="single">Pago Único (${ticket.price},00 MXN)</option>
-              <option value="installments">
-                3 Cuotas (${Math.round((ticket.price * 1.15) / 3)},00 MXN c/u)
-              </option>
-            </select>
-          </div>
-          <div className={styles.input__group}>
-            <label className={styles.input__label}>Detalles de la Tarjeta</label>
-            <CardElement
-              className={styles.popup__input}
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#333",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#e5424d",
-                  },
-                },
-              }}
-            />
-          </div>
           {error && <p className={styles.popup__error}>{error}</p>}
           <button
             type="submit"
-            disabled={loading || !stripe || !elements}
+            disabled={loading}
             className={styles.popup__button}
           >
-            {loading ? "Procesando..." : "Pagar"}
+            {loading ? "Procesando..." : `Pagar $${ticket.price},00 MXN`}
           </button>
           <button
             type="button"
@@ -282,13 +223,6 @@ const CheckoutPopup = ({ ticket, onClose }) => {
     </div>
   );
 };
-
-// Wrapper para Stripe Elements
-const CheckoutWrapper = ({ ticket, onClose }) => (
-  <Elements stripe={stripePromise}>
-    <CheckoutPopup ticket={ticket} onClose={onClose} />
-  </Elements>
-);
 
 // Features Popup Component
 const FeaturesPopup = ({ ticket, onClose }) => {
@@ -317,8 +251,8 @@ const FeaturesPopup = ({ ticket, onClose }) => {
 };
 
 export default function TicketsPage() {
-  const [popupTicket, setPopupTicket] = useState(null);
-  const [checkoutTicket, setCheckoutTicket] = useState(null);
+  const [popupTicket, setPopupTicket] = useState(null); // For features popup
+  const [checkoutTicket, setCheckoutTicket] = useState(null); // For checkout popup
   const [showLogo, setShowLogo] = useState(true);
   const [showNavbarLinks, setShowNavbarLinks] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
@@ -349,6 +283,7 @@ export default function TicketsPage() {
     <>
       <nav className={`navbar ${showLogo ? "logo-visible" : ""}`}>
         <div className="navbar-container">
+          {/* Hamburger */}
           <div
             className={`hamburger ${isMobileMenuActive ? "active" : ""}`}
             onClick={toggleMobileMenu}
@@ -357,6 +292,8 @@ export default function TicketsPage() {
             <span className="bar"></span>
             <span className="bar"></span>
           </div>
+
+          {/* Left nav links */}
           <div
             className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}
           >
@@ -378,6 +315,8 @@ export default function TicketsPage() {
               )}
             </div>
           </div>
+
+          {/* Logo */}
           <div className="navbarLogo2">
             <Image
               alt="logo"
@@ -388,6 +327,8 @@ export default function TicketsPage() {
               height={90}
             />
           </div>
+
+          {/* Right nav links */}
           <div
             className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}
           >
@@ -414,11 +355,14 @@ export default function TicketsPage() {
                 </div>
               )}
             </div>
+
             <Link href="/contact" className="nav-link contact">
               Contact
             </Link>
           </div>
         </div>
+
+        {/* Mobile menu */}
         <div className={`mobile-menu ${isMobileMenuActive ? "active" : ""}`}>
           <Link href="/" className="nav-link" onClick={toggleMobileMenu}>
             Home
@@ -450,13 +394,13 @@ export default function TicketsPage() {
             </div>
           </div>
           <div className="dropdown-mobile">
-            <Link
-              href="/oolExperience"
-              style={{ textDecoration: "none", color: "#333333" }}
-              onClick={toggleMobileMenu}
-            >
-              Retreats
-            </Link>
+              <Link
+                href="/oolExperience"
+                style={{textDecoration:"none",color:"#333333"}}
+                onClick={toggleMobileMenu}
+              >
+                Retreats
+              </Link>
             <div className="dropdown-menu-mobile" style={{ display: "none" }}>
               <Link
                 href="/oolExperience"
@@ -472,6 +416,7 @@ export default function TicketsPage() {
           </Link>
         </div>
       </nav>
+
       <div>
         <div className="tickets__Content">
           <div className="tickets__videoAndForm">
@@ -484,6 +429,7 @@ export default function TicketsPage() {
                 loop
               ></video>
             </div>
+
             <div className={styles.tickets__titleAndTickets}>
               <div className={styles.tickets__gridAndTitle}>
                 <div className={styles.tickets__grid}>
@@ -527,7 +473,7 @@ export default function TicketsPage() {
                 />
               )}
               {checkoutTicket && (
-                <CheckoutWrapper
+                <CheckoutPopup
                   ticket={checkoutTicket}
                   onClose={closeCheckoutPopup}
                 />

@@ -1,3 +1,4 @@
+// api/stripe-webhook/route.js
 import { createWalletPass } from '@/lib/wallet-pass';
 import { sendTicketEmail } from '../../../lib/nodeMailer';
 import { saveTicket } from '@/lib/firebase';
@@ -20,22 +21,22 @@ export async function POST(req) {
       return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
     }
 
-    if (event.type === 'payment_intent.succeeded') {
-      const paymentIntent = event.data.object;
-      const email = paymentIntent.receipt_email || paymentIntent.metadata.email;
-      const ticketId = paymentIntent.id;
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object;
+      const email = session.customer_details.email;
+      const ticketId = session.id;
       const eventName = 'OOL Wellness 2025';
       const eventDate = '2025-08-01';
-      const customerName = paymentIntent.metadata.customerName || 'Asistente';
-      const ticketType = paymentIntent.metadata.ticketType;
-      const phone = paymentIntent.metadata.phone;
-      const dob = paymentIntent.metadata.dob;
-      const nationality = paymentIntent.metadata.nationality;
+      const customerName = session.metadata.customerName || 'Asistente';
+      const ticketType = session.metadata.ticketType;
+      const phone = session.metadata.phone;
+      const dob = session.metadata.dob;
+      const nationality = session.metadata.nationality;
 
       // Determinar el plan basado en el priceId
       const plan = ticketType === 'price_1RPteVDEXHZiGUEkpmNO2MZM' ? 'KIN - Regular Package' : 'HA - VIP Package';
 
-      console.log(`✅ Procesando ticket para ${email} - Payment Intent ID: ${ticketId}`);
+      console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
       // Guardar ticket en Firebase
       await saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality);
