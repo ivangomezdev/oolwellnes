@@ -1,0 +1,47 @@
+.container__success {
+  border: solid 2px black;
+  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519971/BackVerde_1_nxdupa.png");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2e2c6;
+
+  text-align: center;
+  padding: 20px;
+}
+
+.container__success h1 {
+  font-family: "Broadsheet Regular";
+  color: wheat;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.container__success p {
+  font-family: "CalSans";
+  width: 250px;
+  margin: 0 auto !important;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.container__success_card {
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #9F9668;
+}
+
+
+ .container_container_link{
+          color: #9F9668;
+          text-decoration: none;
+          font-size: 1.1rem;
+          margin-top: 1rem;
+        }

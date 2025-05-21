@@ -3,6 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import QRCode from 'qrcode';
+import "./success.css"
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -24,10 +25,10 @@ function SuccessContent() {
   };
 
   return (
-    <div className="container">
+    <div className="container container__success">
+      <div className='container__success_card'>
       <h1>¡Pago Exitoso!</h1>
       <p>Gracias por tu compra para OOL Wellness 2025.</p>
-      <p>Tu ID de sesión es: <strong>{sessionId}</strong></p>
       <p>Recibirás un correo con tu entrada y código QR pronto.</p>
       <div className="download-section">
         <button onClick={handleDownloadPass} disabled={!sessionId}>
@@ -40,30 +41,13 @@ function SuccessContent() {
           </div>
         )}
       </div>
-      <Link href="/tickets">Volver a la página de boletos</Link>
+      </div>
+      <Link className='container_container_link' href="/tickets">Volver a la página de boletos</Link>
 
       <style jsx>{`
-        .container {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: #F2E2C6;
-          color: #000000;
-          font-family: 'Arial', sans-serif;
-          text-align: center;
-          padding: 20px;
-        }
-        h1 {
-          color: #9F9668;
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
-        }
-        p {
-          font-size: 1.2rem;
-          margin: 0.5rem 0;
-        }
+     
+       
+       
         .download-section {
           margin: 1.5rem 0;
         }
@@ -94,12 +78,7 @@ function SuccessContent() {
           border: 2px solid #9F9668;
           border-radius: 8px;
         }
-        a {
-          color: #9F9668;
-          text-decoration: none;
-          font-size: 1.1rem;
-          margin-top: 1rem;
-        }
+       
         a:hover {
           text-decoration: underline;
         }
