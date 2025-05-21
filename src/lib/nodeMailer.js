@@ -23,13 +23,16 @@ export const sendTicketEmail = async (email, ticketId, eventName, eventDate, pas
       from: `"OOL Wellness" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Tu entrada para OOL Wellness 2025',
-      text: `Hola Cliente,\n\nAdjuntamos tu entrada para el evento ${eventName} (ID: ${ticketId}). Si usas Apple Wallet, añádela desde el adjunto. Si usas Android, usa el código QR en la imagen.\n\n¡Gracias por tu compra!`,
+      text: `Hola \n\nAdjuntamos tu entrada para el evento ${eventName} (ID: ${ticketId}). Si usas Apple Wallet, añádela desde el adjunto. Si usas Android, usa el código QR en la imagen.\n\n¡Gracias por tu compra!`,
       html: `
-        <p>Hola Cliente,</p>
+        <p>Hola</p>
         <p>Adjuntamos tu entrada para el evento <strong>${eventName}</strong> (ID: ${ticketId}).</p>
         <p>Si usas Apple Wallet, añádela desde el adjunto.</p>
         <p>Si usas Android, usa este código QR para validar tu entrada:</p>
         <img src="${qrImage}" alt="Código QR" style="max-width: 200px;" />
+        <p>¿Sabias que puedes obtener una noche adicional?</p>
+        <p>Si compraste el paquete KIN - REGULAR https://buy.stripe.com/aFaeVd5qP5FEfO2fOM1kA00 </p>
+         <p>Si compraste el paquete HA - VIP https://buy.stripe.com/eVq28rf1p1po7hwfOM1kA01 </p>
         <p>¡Gracias por tu compra!</p>
       `,
       attachments: [
