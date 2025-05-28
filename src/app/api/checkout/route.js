@@ -1,4 +1,3 @@
-// api/checkout/route.js
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -19,9 +18,8 @@ export async function POST(request) {
       );
     }
 
-    // Crea una sesión de checkout en Stripe
+    // Crea una sesión de checkout en Stripe usando la configuración "Default"
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       line_items: [
         {
           price: priceId,
@@ -39,6 +37,7 @@ export async function POST(request) {
         dob,
         nationality,
       },
+      payment_method_configuration: 'pmc_1R6zHiDEXHZiGUEkwvNe8uKc', // Usa la configuración "Default"
     });
 
     // Retorna el ID de la sesión

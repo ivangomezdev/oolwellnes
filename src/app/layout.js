@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "../context/LanguageContext"; // Asegúrate de la ruta correcta
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,11 +39,13 @@ export default function RootLayout({ children }) {
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLMGN5N4"
-            height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>`,
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
         {/* End Google Tag Manager (noscript) */}
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

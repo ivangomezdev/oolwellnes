@@ -11,6 +11,32 @@ import "@/components/Navbar.css"
 import Image from 'next/image'
 import Link from 'next/link'
 import Footer from '@/components/Footer'
+import { useLanguage } from "../../context/LanguageContext"
+
+const t = {
+  es: {
+    home: "Inicio",
+    retreats: "ÓOL Retreats",
+    popUp: "Pop Up Experience",
+    contact: "Contacto",
+    rivera: "Rivera Maya 2025",
+    takesOverTulum: "Takes Over Tulum",
+    takesOverGeely: "Takes Over Geely Cancun",
+    upcoming: "Próximas",
+    retreatsMobile: "Retreats",
+  },
+  en: {
+    home: "Home",
+    retreats: "ÓOL Retreats",
+    popUp: "Pop Up Experience",
+    contact: "Contact",
+    rivera: "Rivera Maya 2025",
+    takesOverTulum: "Takes Over Tulum",
+    takesOverGeely: "Takes Over Geely Cancun",
+    upcoming: "Upcoming",
+    retreatsMobile: "Retreats",
+  },
+};
 
 const Page = () => {
   const [showLogo, setShowLogo] = useState(true)
@@ -18,6 +44,8 @@ const Page = () => {
   const [popupOpen, setPopupOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false)
+
+  const { language, toggleLanguage } = useLanguage();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuActive(!isMobileMenuActive)
@@ -40,17 +68,17 @@ const Page = () => {
           {/* Enlaces de la izquierda */}
           <div className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}>
             <Link href="/" className="nav-link home">
-              Home
+              {t[language].home}
             </Link>
-           <div
+            <div
               className="nav-link about dropdown"
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-             ÓOL Retreats
+              {t[language].retreats}
               {servicesOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/oolExperience" className="dropdown-item">Rivera Maya 2025</Link>
+                  <Link href="/oolExperience" className="dropdown-item">{t[language].rivera}</Link>
                 </div>
               )}
             </div>
@@ -73,62 +101,120 @@ const Page = () => {
               onMouseEnter={() => setPopupOpen(true)}
               onMouseLeave={() => setPopupOpen(false)}
             >
-              Pop Up Experience
+              {t[language].popUp}
               {popupOpen && (
                 <div className="dropdown-menu">
-                  <Link href="/takes-over-tulum" className="dropdown-item">Takes Over Tulum</Link>
-                  <Link href="/takes-over-geely-cancun" className="dropdown-item">Takes Over Geely Cancun</Link>
-                  <Link href="/proximas" className="dropdown-item">Proximas</Link>
+                  <Link href="/takes-over-tulum" className="dropdown-item">{t[language].takesOverTulum}</Link>
+                  <Link href="/takes-over-geely-cancun" className="dropdown-item">{t[language].takesOverGeely}</Link>
+                  <Link href="/proximas" className="dropdown-item">{t[language].upcoming}</Link>
                 </div>
               )}
             </div>
-           
             <Link href="/contact" className="nav-link contact">
-              Contact
+              {t[language].contact}
             </Link>
+            {/* Botón de bandera para cambiar idioma */}
+            <button
+              className="lang-btn"
+              onClick={toggleLanguage}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                marginLeft: "1rem",
+                fontSize: "1.5rem",
+                padding: 0,
+              }}
+              aria-label="Cambiar idioma"
+            >
+              {language === "es" ? (
+                <img
+                  src="https://flagcdn.com/es.svg"
+                  alt="Español"
+                  style={{ width: "2rem", height: "auto" }}
+                />
+              ) : (
+                <img
+                  src="https://flagcdn.com/gb.svg"
+                  alt="English"
+                  style={{ width: "2rem", height: "auto" }}
+                />
+              )}
+            </button>
           </div>
         </div>
 
         {/* Menú móvil */}
         <div className={`mobile-menu ${isMobileMenuActive ? "active" : ""}`}>
           <Link href="/" className="nav-link" onClick={toggleMobileMenu}>
-            Home
+            {t[language].home}
           </Link>
           <div className="dropdown-mobile">
-            Pop Up Experience
+            {t[language].popUp}
             {/* Submenús ocultos en el menú móvil */}
             <div className="dropdown-menu-mobile" style={{ display: 'none' }}>
               <Link href="/takes-over-tulum" className="dropdown-item" onClick={toggleMobileMenu}>
-                Takes Over Tulum
+                {t[language].takesOverTulum}
               </Link>
               <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={toggleMobileMenu}>
-                Takes Over Geely Cancun
+                {t[language].takesOverGeely}
               </Link>
               <Link href="/proximas" className="dropdown-item" onClick={toggleMobileMenu}>
-                Proximas
+                {t[language].upcoming}
               </Link>
             </div>
           </div>
           <div className="dropdown-mobile">
             <Link href="/oolExperience" className="nav-link" onClick={toggleMobileMenu}>
-            Retreats
+              {t[language].retreatsMobile}
             </Link>
             {/* Submenú oculto en el menú móvil */}
             <div className="dropdown-menu-mobile" style={{ display: 'none' }}>
               <Link href="/oolExperience" className="dropdown-item" onClick={toggleMobileMenu}>
-                Rivera Maya 2025
+                {t[language].rivera}
               </Link>
             </div>
           </div>
           <Link href="/contact" className="nav-link" onClick={toggleMobileMenu}>
-            Contact
+            {t[language].contact}
           </Link>
+          {/* Botón de bandera para cambiar idioma en menú móvil */}
+          <button
+            className="lang-btn"
+            onClick={() => {
+              toggleLanguage();
+              toggleMobileMenu();
+            }}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              marginLeft: "1rem",
+              fontSize: "1.5rem",
+              padding: 0,
+              marginTop: "1rem"
+            }}
+            aria-label="Cambiar idioma"
+          >
+            {language === "es" ? (
+              <img
+                src="https://flagcdn.com/es.svg"
+                alt="Español"
+                style={{ width: "2rem", height: "auto" }}
+              />
+            ) : (
+              <img
+                src="https://flagcdn.com/gb.svg"
+                alt="English"
+                style={{ width: "2rem", height: "auto" }}
+              />
+            )}
+          </button>
         </div>
       </nav>
 
       <VideoWLogo />
       <TextAndPhoto />
-  
       <ThePlace />
       <PlansPreSaleInfo/>
       <ThePlaceTextAndImg />

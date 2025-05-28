@@ -1,38 +1,72 @@
 import React, { useState, useEffect } from "react";
 import "./textAndPhoto.css";
 import Image from "next/image";
+import { useLanguage } from "../context/LanguageContext.jsx";
+
+const t = {
+  es: {
+    join: "Únetenos por 3 dias y 2 noches en",
+    hotel: "Hotel Xcaret Arte, Riviera Maya.",
+    spans: [
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        text: "Rituales de bienestar",
+        alt: "Soul Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
+        text: "Indoor cycling",
+        alt: "Mente Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+        text: "Clases de funcional",
+        alt: "Cuerpo Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        text: "Breathwork y más",
+        alt: "Soul Icon",
+      },
+    ],
+  },
+  en: {
+    join: "Join us for 3 days and 2 nights at",
+    hotel: "Hotel Xcaret Arte, Riviera Maya.",
+    spans: [
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        text: "Wellness rituals",
+        alt: "Soul Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
+        text: "Indoor cycling",
+        alt: "Mente Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+        text: "Functional classes",
+        alt: "Cuerpo Icon",
+      },
+      {
+        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        text: "Breathwork & more",
+        alt: "Soul Icon",
+      },
+    ],
+  },
+};
+
+const images = [
+  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png",
+  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
+  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+];
 
 const TextAndPhoto = () => {
-  const images = [
-    "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png",
-    "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
-    "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
-    "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
-  ];
-
-  const spans = [
-    {
-      icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
-      text: "Rituales de bienestar",
-      alt: "Soul Icon",
-    },
-    {
-      icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
-      text: "Indoor cycling",
-      alt: "Mente Icon",
-    },
-    {
-      icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
-      text: "Clases de funcional",
-      alt: "Cuerpo Icon",
-    },
-    {
-      icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
-      text: "Breathwork y más",
-      alt: "Soul Icon",
-    },
-  ];
-
+  const { language } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
   const [currentPair, setCurrentPair] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -56,6 +90,7 @@ const TextAndPhoto = () => {
     }, imageDurations[currentImage]);
 
     const spanInterval = setInterval(() => {
+      const spans = t[language].spans;
       if (isMobile) {
         setCurrentPair((prev) => (prev + 1) % spans.length);
       } else {
@@ -67,10 +102,12 @@ const TextAndPhoto = () => {
       clearInterval(imageInterval);
       clearInterval(spanInterval);
     };
-  }, [currentImage, isMobile, images.length, spans.length]);
+  }, [currentImage, isMobile, language]);
+
+  const spans = t[language].spans;
 
   return (
-    <div className="textAndPhoto__cont">
+    <div className="textAndPhoto__cont" style={{ position: "relative" }}>
       <div className="textAndPhoto__textCont">
         <div className="text-content">
           <div style={{ position: "relative" }}>
@@ -81,10 +118,8 @@ const TextAndPhoto = () => {
             />
           </div>
           <p style={{ marginTop: "10px", fontSize: "36px", color: "#F4E1D1" }}>
-           Únetenos por 3 dias y 2 noches en{" "}  <br />
-            <span style={{ color: "white" }}>
-              Hotel Xcaret Arte, Riviera Maya.
-            </span>
+            {t[language].join} <br />
+            <span style={{ color: "white" }}>{t[language].hotel}</span>
             <br />
           </p>
           <div

@@ -1,7 +1,100 @@
 import React from "react";
 import "./PlansPreSaleInfo.css";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext.jsx";
+
+const t = {
+  es: {
+    kinTitle: "Kin - Paquete Regular",
+    haTitle: "Ha - Paquete VIP",
+    kin: [
+      "3 Días y 2 noches en Hotel Xcaret Arte",
+      "Menú por chefs con estrella Michellin",
+      "Acceso ilimitado a todos los parques y tours de Grupo Xcaret",
+      "Transporte al aeropuerto (CUN - Hotel - CUN)",
+      "Welcome Social Gathering con DJ",
+      <>
+        6 high-energy cycling sessions con top coaches como{" "}
+        <span style={{ color: "#F4E1D1" }}>
+          Kristina Girod, Pepe Abreu y Majo Ake{" "}
+        </span>
+      </>,
+      "Closing Sunset Party",
+      "Y mucho más...",
+    ],
+    ha: [
+      "3 Días y 2 noches en Hotel Xcaret Arte",
+      "Menú por chefs con estrella Michellin",
+      "Acceso ilimitado a todos los parques y tours de Grupo Xcaret",
+      "Transporte al aeropuerto (CUN - Hotel - CUN)",
+      "Welcome Social Gathering con DJ",
+      <>
+        6 sessions con top coaches como{" "}
+        <span style={{ color: "#F4E1D1" }}>
+          Kristina Girod, Pepe Abreu y Majo Ake
+        </span>
+      </>,
+      "Closing Sunset Party",
+      <span style={{ color: "#F4E1D1" }}> Exclusive restaurants</span>,
+      <span style={{ color: "#F4E1D1" }}> Ocean Front Suite</span>,
+      <>
+        Early booking access para{" "}
+        <span style={{ color: "#F4E1D1" }}>reservar antes que nadie</span>{" "}
+        clases, restaurantes y experiencias adicionales.
+      </>,
+    ],
+    btnRestaurants: "Restaurantes",
+    btnWellness: "Wellness/Spa",
+    btnPresale: "Preventa",
+  },
+  en: {
+    kinTitle: "Kin - Regular Package",
+    haTitle: "Ha - VIP Package",
+    kin: [
+      "3 days and 2 nights at Hotel Xcaret Arte",
+      "Menu by Michelin-starred chefs",
+      "Unlimited access to all Grupo Xcaret parks and tours",
+      "Airport transportation (CUN - Hotel - CUN)",
+      "Welcome Social Gathering with DJ",
+      <>
+        6 high-energy cycling sessions with top coaches like{" "}
+        <span style={{ color: "#F4E1D1" }}>
+          Kristina Girod, Pepe Abreu, and Majo Ake{" "}
+        </span>
+      </>,
+      "Closing Sunset Party",
+      "And much more...",
+    ],
+    ha: [
+      "3 days and 2 nights at Hotel Xcaret Arte",
+      "Menu by Michelin-starred chefs",
+      "Unlimited access to all Grupo Xcaret parks and tours",
+      "Airport transportation (CUN - Hotel - CUN)",
+      "Welcome Social Gathering with DJ",
+      <>
+        6 sessions with top coaches like{" "}
+        <span style={{ color: "#F4E1D1" }}>
+          Kristina Girod, Pepe Abreu, and Majo Ake
+        </span>
+      </>,
+      "Closing Sunset Party",
+      <span style={{ color: "#F4E1D1" }}> Exclusive restaurants</span>,
+      <span style={{ color: "#F4E1D1" }}> Ocean Front Suite</span>,
+      <>
+        Early booking access to{" "}
+        <span style={{ color: "#F4E1D1" }}>book before anyone else</span>{" "}
+        classes, restaurants, and additional experiences.
+      </>,
+    ],
+    btnRestaurants: "Restaurants",
+    btnWellness: "Wellness/Spa",
+    btnPresale: "Pre-sale",
+  },
+};
+
 const PlansPreSaleInfo = () => {
+  const { language } = useLanguage();
+
   return (
     <div className="plansPre__content">
       <video
@@ -40,87 +133,39 @@ const PlansPreSaleInfo = () => {
 
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="plansPre__plan">
-          <h3>Kin - Regular Package</h3>
+          <h3>{t[language].kinTitle}</h3>
           <ul>
-            <li>3 Días y 2 noches en Hotel Xcaret Arte</li>
-            <li>Menú por chefs con estrella Michellin</li>
-            <li>
-              Acceso ilimitado a todos los parques y tours de Grupo Xcaret
-            </li>
-            <li>Transporte al aeropuerto (CUN - Hotel - CUN)</li>
-            <li>Welcome Social Gathering con DJ</li>
-            <li>
-              6 high-energy cycling sessions con top coaches como{" "}
-              <span style={{ color: "#F4E1D1" }}>
-                Kristina Girod, Pepe Abreu y Majo Ake{" "}
-              </span>{" "}
-            </li>
-            <li>Closing Sunset Party</li>
-            <li>Y mucho más...</li>
+            {t[language].kin.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
             <div className="PlanPre__btns">
               <Link href={"/hotel-gastronomia"}>
-                {" "}
-                <button>Restaurantes</button>
+                <button>{t[language].btnRestaurants}</button>
               </Link>
               <Link href={"/hotel-wellness"}>
-                {" "}
-                <button>Wellness/Spa</button>
+                <button>{t[language].btnWellness}</button>
               </Link>
-
               <Link href={"/tickets"}>
-                {" "}
-                <button>Preventa</button>
+                <button>{t[language].btnPresale}</button>
               </Link>
             </div>
           </ul>
         </div>
         <div className="plansPre__plan">
-          <h3>Ha - VIP Package</h3>
+          <h3>{t[language].haTitle}</h3>
           <ul>
-            <li>3 Días y 2 noches en Hotel Xcaret Arte</li>
-            <li>Menú por chefs con estrella Michellin</li>
-            <li>
-              Acceso ilimitado a todos los parques y tours de Grupo Xcaret
-            </li>
-            <li>Transporte al aeropuerto (CUN - Hotel - CUN)</li>
-            <li>Welcome Social Gathering con DJ</li>
-            <li>
-              6 sessions con top coaches como{" "}
-              <span style={{ color: "#F4E1D1" }}>
-                {" "}
-                Kristina Girod, Pepe Abreu y Majo Ake
-              </span>
-            </li>
-            <li>Closing Sunset Party</li>
-            <li>
-              {" "}
-              <span style={{ color: "#F4E1D1" }}> Exclusive restaurants</span>
-            </li>
-            <li>
-              {" "}
-              <span style={{ color: "#F4E1D1" }}> Ocean Front Suite</span>
-            </li>
-            <li>
-              Early booking access para{" "}
-              <span style={{ color: "#F4E1D1" }}>
-                {" "}
-                reservar antes que nadie
-              </span>{" "}
-              clases, restaurantes y experiencias adicionales.
-            </li>
+            {t[language].ha.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
             <div className="PlanPre__btns">
               <Link href={"/hotel-gastronomia"}>
-                {" "}
-                <button>Restaurantes</button>
+                <button>{t[language].btnRestaurants}</button>
               </Link>
               <Link href={"/hotel-wellness"}>
-                {" "}
-                <button>Wellness/Spa</button>
+                <button>{t[language].btnWellness}</button>
               </Link>
-
               <Link href={"/tickets"}>
-                {" "}
-                <button>Preventa</button>
+                <button>{t[language].btnPresale}</button>
               </Link>
             </div>
           </ul>

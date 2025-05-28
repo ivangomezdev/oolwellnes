@@ -4,6 +4,18 @@ import { useState, useEffect, useRef } from "react";
 import "./thePlaceTextAndImg.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext.jsx";
+
+const t = {
+  es: {
+    viewMore: "Ver más",
+    buyTickets: "Comprar boletos",
+  },
+  en: {
+    viewMore: "View more",
+    buyTickets: "Buy Tickets",
+  },
+};
 
 const ThePlaceTextAndImg = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,6 +24,7 @@ const ThePlaceTextAndImg = () => {
   const [enlargedImage, setEnlargedImage] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
+  const { language } = useLanguage();
 
   const places = [
     {
@@ -275,13 +288,13 @@ const ThePlaceTextAndImg = () => {
             className="view-more-btn"
             onClick={() => openPopup(places[currentIndex])}
           >
-            Ver más
+            {t[language].viewMore}
           </button>
         </div>
       </div>
 
       <img
-      className="thePlace__logo"
+        className="thePlace__logo"
         style={{
           position: "absolute",
           right: "0px",
@@ -341,7 +354,7 @@ const ThePlaceTextAndImg = () => {
                 href={"/tickets"}
               >
                 <button className="buy-tickets-btn">
-                  <span className="ticket-icon">🎟️</span> Buy Tickets
+                  <span className="ticket-icon">🎟️</span> {t[language].buyTickets}
                 </button>
               </Link>
             </div>
