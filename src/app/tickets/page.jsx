@@ -548,8 +548,23 @@ export default function TicketsPage() {
                   </h1>
                   {ticketOptions.map((ticket) => (
                     <div key={ticket.id} className={styles.ticket}>
+                            {/* SOLO para KIN REGULAR */}
+                      {ticket.id === "kin-regular" && (
+                        <p style={{
+                          color: "#9F9668",
+                          fontWeight: "bold",
+                          fontFamily:"Cal Sans",
+                          marginBottom: "-10px",
+                          marginTop: "-20px",
+                          fontSize: "1.1rem"
+                        }}>
+                          Hasta 3 Meses sín intereses
+                        </p>
+                      )}
                       <h2 className={styles.ticket__name}>{ticket.name[language]}</h2>
+                     
                       <p className={styles.ticket__price}>${ticket.price} MXN</p>
+               
                       <ul className={styles.ticket__features}>
                         {ticket.features[language].slice(0, 2).map((feature, idx) => (
                           <li key={idx} className={styles.ticket__feature}>
