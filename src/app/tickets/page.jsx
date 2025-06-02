@@ -18,8 +18,8 @@ const ticketOptions = [
   {
     id: "kin-regular",
     name: { es: "KIN - Paquete Regular", en: "KIN - Regular Package" },
-    price: 35000,
-    priceId: "price_1RPteVDEXHZiGUEkpmNO2MZM",
+    price: 41000,
+    priceId: "price_1RVQJBDEXHZiGUEk5wfLSxmB",
     features: {
       es: [
         "- 3 días / 2 noches en Hotel Xcaret Arte",
@@ -59,8 +59,8 @@ const ticketOptions = [
   {
     id: "ha-vip",
     name: { es: "HA - Paquete VIP", en: "HA - VIP Package" },
-    price: 51000,
-    priceId: "price_1RPtf8DEXHZiGUEkJVtMhJ54",
+    price: 65000,
+    priceId: "price_1RVQNBDEXHZiGUEk0hlcy2As",
     features: {
       es: [
         "3 días / 2 noches en Hotel Xcaret Arte (Suite Frente al Mar)",
