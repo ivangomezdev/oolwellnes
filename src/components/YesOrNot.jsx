@@ -12,9 +12,9 @@ const t = {
     vip: "VIP: HA'",
     description1: "Hospedaje + Traslados + Acceso completo a las actividades wellness, clases, conferencias y rituales.",
     description2: "Hospedaje Ocean View + Traslados+ Todo lo incluido en Aire, más beneficios premium, accesos preferenciales y detalles exclusivos.",
-    preSale: "Preventa",
-    price1: "$35,000.00",
-    price2: "$55,000.00",
+    preSale: "Venta",
+    price1: "$41,000.00",
+    price2: "$65,000.00",
   },
   en: {
     included: "What's included?",
@@ -22,9 +22,9 @@ const t = {
     vip: "VIP: HA'",
     description1: "Lodging + Transfers + Full access to wellness activities, classes, conferences, and rituals.",
     description2: "Ocean View Lodging + Transfers + Everything included in Aire, plus premium benefits, preferential access, and exclusive details.",
-    preSale: "Pre-sale",
-    price1: "$35,000.00",
-    price2: "$55,000.00",
+    preSale: "Venta",
+    price1: "$41,000.00",
+    price2: "$65,000.00",
   },
 };
 

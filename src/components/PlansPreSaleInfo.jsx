@@ -45,7 +45,7 @@ const t = {
     ],
     btnRestaurants: "Restaurantes",
     btnWellness: "Wellness/Spa",
-    btnPresale: "Preventa",
+    btnPresale: "venta",
   },
   en: {
     kinTitle: "Kin - Regular Package",
@@ -88,7 +88,7 @@ const t = {
     ],
     btnRestaurants: "Restaurants",
     btnWellness: "Wellness/Spa",
-    btnPresale: "Pre-sale",
+    btnPresale: "Sale",
   },
 };
 

@@ -10,7 +10,9 @@ import { useLanguage } from "../../context/LanguageContext.jsx";
 
 // Validate Stripe public key
 if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) {
-  throw new Error("Stripe public key is not configured. Check your .env.local file");
+  throw new Error(
+    "Stripe public key is not configured. Check your .env.local file"
+  );
 }
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -54,7 +56,8 @@ const ticketOptions = [
         "- Exclusive Welcome Kit",
       ],
     },
-    image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745774380/oool_bhe8w5.png",
+    image:
+      "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745774380/oool_bhe8w5.png",
   },
   {
     id: "ha-vip",
@@ -95,7 +98,8 @@ const ticketOptions = [
         "Exclusive Welcome Kit",
       ],
     },
-    image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
+    image:
+      "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746984297/tr_qxdvkx.png",
   },
 ];
 
@@ -108,7 +112,7 @@ const t = {
     moreInfo: "Más info",
     getTickets: "Comprar boletos",
     getYourTickets: "¡Obtén tus boletos!",
-    preSale: "Preventa",
+    preSale: "Evento",
     rivera: '"Rivera Maya 2025"',
     close: "Cerrar",
     cancel: "Cancelar",
@@ -138,7 +142,7 @@ const t = {
     moreInfo: "More info",
     getTickets: "Get Tickets",
     getYourTickets: "Get your tickets!",
-    preSale: "Pre-sale",
+    preSale: "Sale",
     rivera: '"Rivera Maya 2025"',
     close: "Close",
     cancel: "Cancel",
@@ -358,7 +362,10 @@ export default function TicketsPage() {
   return (
     <>
       {/* Navbar */}
-      <nav className={`navbar ${showLogo ? "logo-visible" : ""}`} style={{ position: "relative" }}>
+      <nav
+        className={`navbar ${showLogo ? "logo-visible" : ""}`}
+        style={{ position: "relative" }}
+      >
         <div className="navbar-container">
           {/* Hamburger */}
           <div
@@ -371,7 +378,9 @@ export default function TicketsPage() {
           </div>
 
           {/* Left nav links */}
-          <div className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}>
+          <div
+            className={`nav-links left ${showNavbarLinks ? "links-visible" : ""}`}
+          >
             <Link href="/" className="nav-link home">
               {t[language].home}
             </Link>
@@ -402,7 +411,9 @@ export default function TicketsPage() {
           </div>
 
           {/* Right nav links */}
-          <div className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}>
+          <div
+            className={`nav-links right ${showNavbarLinks ? "links-visible" : ""}`}
+          >
             <div
               className="nav-link about dropdown"
               onMouseEnter={() => setPopupOpen(true)}
@@ -414,7 +425,10 @@ export default function TicketsPage() {
                   <Link href="/takes-over-tulum" className="dropdown-item">
                     {t[language].takesOverTulum}
                   </Link>
-                  <Link href="/takes-over-geely-cancun" className="dropdown-item">
+                  <Link
+                    href="/takes-over-geely-cancun"
+                    className="dropdown-item"
+                  >
                     {t[language].takesOverGeely}
                   </Link>
                   <Link href="/proximas" className="dropdown-item">
@@ -465,13 +479,25 @@ export default function TicketsPage() {
           <div className="dropdown-mobile">
             {t[language].popUp}
             <div className="dropdown-menu-mobile" style={{ display: "none" }}>
-              <Link href="/takes-over-tulum" className="dropdown-item" onClick={toggleMobileMenu}>
+              <Link
+                href="/takes-over-tulum"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
                 {t[language].takesOverTulum}
               </Link>
-              <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={toggleMobileMenu}>
+              <Link
+                href="/takes-over-geely-cancun"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
                 {t[language].takesOverGeely}
               </Link>
-              <Link href="/proximas" className="dropdown-item" onClick={toggleMobileMenu}>
+              <Link
+                href="/proximas"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
                 {t[language].upcoming}
               </Link>
             </div>
@@ -485,7 +511,11 @@ export default function TicketsPage() {
               {t[language].retreatsMobile}
             </Link>
             <div className="dropdown-menu-mobile" style={{ display: "none" }}>
-              <Link href="/oolExperience" className="dropdown-item" onClick={toggleMobileMenu}>
+              <Link
+                href="/oolExperience"
+                className="dropdown-item"
+                onClick={toggleMobileMenu}
+              >
                 {t[language].rivera.replace(/"/g, "")}
               </Link>
             </div>
@@ -507,7 +537,7 @@ export default function TicketsPage() {
               marginLeft: "1rem",
               fontSize: "1.5rem",
               padding: 0,
-              marginTop: "1rem"
+              marginTop: "1rem",
             }}
             aria-label="Cambiar idioma"
           >
@@ -548,29 +578,38 @@ export default function TicketsPage() {
                   </h1>
                   {ticketOptions.map((ticket) => (
                     <div key={ticket.id} className={styles.ticket}>
-                            {/* SOLO para KIN REGULAR */}
-                      {ticket.id === "kin-regular" && (
-                        <p style={{
-                          color: "#9F9668",
-                          fontWeight: "bold",
-                          fontFamily:"Cal Sans",
-                          marginBottom: "-10px",
-                          marginTop: "-20px",
-                          fontSize: "1.1rem"
-                        }}>
+                      {/* SOLO para KIN REGULAR */}
+                      {(ticket.id === "kin-regular" ||
+                        ticket.id === "ha-vip") && (
+                        <p
+                          style={{
+                            color: "#9F9668",
+                            fontWeight: "bold",
+                            fontFamily: "Cal Sans",
+                            marginBottom: "-10px",
+                            marginTop: "-20px",
+                            fontSize: "1.1rem",
+                          }}
+                        >
                           Hasta 3 Meses sín intereses
                         </p>
                       )}
-                      <h2 className={styles.ticket__name}>{ticket.name[language]}</h2>
-                     
-                      <p className={styles.ticket__price}>${ticket.price} MXN</p>
-               
+                      <h2 className={styles.ticket__name}>
+                        {ticket.name[language]}
+                      </h2>
+
+                      <p className={styles.ticket__price}>
+                        ${ticket.price} MXN
+                      </p>
+
                       <ul className={styles.ticket__features}>
-                        {ticket.features[language].slice(0, 2).map((feature, idx) => (
-                          <li key={idx} className={styles.ticket__feature}>
-                            {feature}
-                          </li>
-                        ))}
+                        {ticket.features[language]
+                          .slice(0, 2)
+                          .map((feature, idx) => (
+                            <li key={idx} className={styles.ticket__feature}>
+                              {feature}
+                            </li>
+                          ))}
                       </ul>
                       <button
                         onClick={() => openFeaturesPopup(ticket)}
