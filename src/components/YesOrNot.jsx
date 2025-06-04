@@ -88,8 +88,8 @@ function YesOrNot() {
               <div className="yesOrNot__header">
                 <div className="yesOrNot__icon">
                   <img
-                    style={{ width: "80px" }}
-                    src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351565/esd_aflm96.png"
+                    style={{ width: "330px" }}
+                    src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreatsLogo_kgwtew_liodfw.png"
                     alt=""
                   />
                 </div>
@@ -112,15 +112,11 @@ function YesOrNot() {
               <div className="yesOrNot__header">
                 <div className="yesOrNot__icon">
                   <div style={{ position: "relative" }}>
-                    <img
-                      style={{ position: "absolute" }}
-                      src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746936901/Dise%C3%B1o_sin_t%C3%ADtulo_8_n2o3nm.png"
-                      alt=""
-                    />
+                  
                   </div>
                   <img
-                    style={{ width: "80px" }}
-                    src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351565/esd_aflm96.png"
+       style={{ width: "330px" }}
+                    src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreatsLogo_kgwtew_liodfw.png"
                     alt=""
                   />
                 </div>

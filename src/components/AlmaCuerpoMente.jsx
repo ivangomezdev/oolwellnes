@@ -45,7 +45,7 @@ export default function AlmaCuerpoMente() {
             >
               <Image
                 alt={text.toLowerCase()}
-                src={`https://res.cloudinary.com/dc5zbh38m/image/upload/v174598197${index === 0 ? '6/Logo_Icono_SOUL_2_pxukpq.png' : index === 1 ? '7/Logo_Icono_Cuerpo_2_vahswu.png' : '7/Logo_Icono_Mente_1_cu5qom.png'}`}
+                src={`https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/${index === 0 ? 'Logo_Icono_SOUL_2_pxukpq_h7kuum.webp' : index === 1 ? 'Logo_Icono_Cuerpo_2_vahswu_isfz8h.webp' : 'Logo_Icono_Mente_1_cu5qom_sxmyls.webp'}`}
                 width={120}
                 height={120}
               />

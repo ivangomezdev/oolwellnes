@@ -73,7 +73,7 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
         </div>
         <div className="navbar-logo">
           <Image 
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745979884/LogoOolWeb_ri9tvt.png" 
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062931/LogoOolWeb_ri9tvt_oit8th.png" 
             width={160} 
             height={80} 
             alt="Ool Retreat Logo"

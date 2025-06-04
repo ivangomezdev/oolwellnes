@@ -107,7 +107,7 @@ const HeroComponent = () => {
       <div className={`hero-container ${showVideo ? 'video-active' : ''}`} ref={heroRef}>
         <div className="section red">
           <img
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978390/Rode_Tulum-111_uhlusw.jpg"
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/f_auto/v1749062931/Rode_Tulum-111_uhlusw_arzqkq.jpg"
             alt="Hero Image 1"
           />
           <div className="content"></div>
@@ -123,13 +123,13 @@ const HeroComponent = () => {
               loop
             >
               <source
-                src="https://res.cloudinary.com/dc5zbh38m/video/upload/f_auto/v1745715439/We_ve_carefully_crafted_and_designed_this_experience_just_for_you.Featuring_the_best_spots_the_best_coaches_and_the_best_location_in_all_of_the_Riviera_Maya.The_countdown_has_begun_see_you_on_August_1_2_3_2025._vnakux.mp4"
+                src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749064576/We_ve_carefully_crafted_and_designed_this_experience_just_for_you.Featuring_the_best_spots_the_best_coaches_and_the_best_location_in_all_of_the_Riviera_Maya.The_countdown_has_begun_see_you_on_August_1_2_3_2025._vnakux_cpxttg.mp4"
                 type="video/mp4"
               />
             </video>
             <img
               className={showVideo ? "fade-out" : "fade-in"}
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978572/VO_OolCorazon-3_1_wcwlup.jpg"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/VO_OolCorazon-3_1_wcwlup_ithd2j.jpg"
               alt="Hero Image Temporary"
             />
           </div>

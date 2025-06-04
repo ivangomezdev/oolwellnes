@@ -12,12 +12,14 @@ export async function POST(request) {
 
     // Validar campos
     if (!firstName || !lastName || !email || !phone || !dob || !nationality || !plan) {
+      
       return NextResponse.json({ error: 'Todos los campos son requeridos' }, { status: 400 });
     }
     if (!email.includes('@')) {
       return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
     }
     if (!['KIN - Regular Package', 'HA - VIP Package', 'HA - prueba Package'].includes(plan)) {
+   
       return NextResponse.json({ error: 'Plan inválido' }, { status: 400 });
     }
 
@@ -30,8 +32,7 @@ export async function POST(request) {
     await saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality);
 
     // Generar pase
-    const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
-
+ const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName, plan);
     // Generar QR
     const qrData = `${process.env.NEXT_PUBLIC_BASE_URL}/tickets/validate?ticketId=${ticketId}`;
     const qrImage = await QRCode.toDataURL(qrData);

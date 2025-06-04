@@ -3,7 +3,7 @@ import { createWalletPass } from '@/lib/wallet-pass';
 import { sendTicketEmail } from '../../../lib/nodeMailer';
 import { saveTicket } from '@/lib/firebase';
 import Stripe from 'stripe';
-import QRCode from 'qrcode';
+import QRCode from 'qrcode';  
 import { NextResponse } from 'next/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -34,7 +34,7 @@ export async function POST(req) {
       const nationality = session.metadata.nationality;
 
       // Determinar el plan basado en el priceId
-      const plan = ticketType === 'price_1RVQJBDEXHZiGUEk5wfLSxmB' ? 'KIN - Regular Package' : 'HA - VIP Package';
+     const plan = session.metadata.plan || 'KIN - Regular Package';
 
       console.log(`✅ Procesando ticket para ${email} - Session ID: ${ticketId}`);
 
@@ -42,7 +42,7 @@ export async function POST(req) {
       await saveTicket(ticketId, email, eventName, plan, customerName, phone, dob, nationality);
 
       // Generar pase
-      const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName);
+      const passBuffer = await createWalletPass(ticketId, email, eventName, eventDate, customerName, plan);
       console.log(`Tamaño del pase: ${(passBuffer.length / 1024).toFixed(2)} KB`);
 
       // Generar QR con URL de validación

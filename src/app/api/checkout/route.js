@@ -17,6 +17,10 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+    let plan = 'KIN - Regular Package';
+    if (priceId === 'price_1RVQNBDEXHZiGUEk0hlcy2As') {
+      plan = 'HA - VIP Package';
+    }
 
     // Crea una sesión de checkout en Stripe usando la configuración "Default"
     const session = await stripe.checkout.sessions.create({
@@ -36,9 +40,12 @@ export async function POST(request) {
         phone,
         dob,
         nationality,
+        plan, // <-- Agrega el plan aquí
       },
       payment_method_configuration: 'pmc_1R6zHiDEXHZiGUEkwvNe8uKc', // Usa la configuración "Default"
     });
+
+    
 
     // Retorna el ID de la sesión
     return NextResponse.json({ sessionId: session.id });

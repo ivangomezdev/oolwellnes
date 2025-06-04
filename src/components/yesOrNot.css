@@ -16,7 +16,7 @@
       color: #333333;
       font-family: "Broadsheet Regular";
       display: block;
-      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746851328/Dise%C3%B1o_sin_t%C3%ADtulo_5_wvxjyq.png');
+      background-image: url('https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062935/Dise%C3%B1o_sin_t%C3%ADtulo_5_wvxjyq_nnwcdg.png');
       background-size: 800px;
       background-position: center;
       background-repeat: no-repeat;
@@ -86,15 +86,15 @@
 
     /* Alternating icons for list items */
     .yesOrNot__list li:nth-child(3n+1)::before {
-      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png');
+      background-image: url('https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/Logo_Icono_SOUL_2_pxukpq_h7kuum.webp');
     }
 
     .yesOrNot__list li:nth-child(3n+2)::before {
-      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png');
+      background-image: url('https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Mente_1_cu5qom_sxmyls.webp');
     }
 
     .yesOrNot__list li:nth-child(3n+3)::before {
-      background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png');
+      background-image: url('https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Cuerpo_2_vahswu_isfz8h.webp');
     }
 
     /* Animation keyframes */
@@ -148,7 +148,7 @@
   background-color: #beaa88;
   font-family: Arial, sans-serif;
   flex-wrap: wrap;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1747351134/iconsbg_tlapjg.png");
+  background-image: url("https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/iconsbg_tlapjg_kymgz6.png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;

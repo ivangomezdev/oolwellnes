@@ -6,20 +6,20 @@ import Image from "next/image"
 export default function CollabsMove() {
   const icons = [
     {
-      Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747520119/mark_vw5b8h.png",
+      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062935/Colaboradores_Mesa_de_trabajo_1_copia_3_mi4pfy_bvmllt.png",
     },
     {
       Icon:
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746069835/Colaboradores_Mesa_de_trabajo_1_copia_3_mi4pfy.png",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/Azul-e1724207354672_seovov_u5jqxg.png",
     },
     {
-      Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519830/maxresdefault_uoblio.png",
+      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/maxresdefault_z5xaen_o3dyp9.png",
     },
     {
       Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519579/rode-up_uxey41.png",
     },
     {
-      Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747520392/Azul-e1724207354672_seovov.png",
+      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/mark_vw5b8h_gboqc0.png",
     },
   ]
 

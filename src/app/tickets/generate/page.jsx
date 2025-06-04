@@ -37,11 +37,13 @@ export default function GenerateTicketPage() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+  setSuccess(null);
+
+  console.log('Datos enviados:', formData); // <-- Agrega esto
 
     try {
       const response = await fetch('/api/generate-ticket', {

@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <div className='footer__cont'>
-      <img src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745979884/LogoOolWeb_ri9tvt.png" alt="" />
+      <img src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062931/LogoOolWeb_ri9tvt_oit8th.png" alt="" />
       <div className="card">
         <span className="card__title">{t[language].privacy}</span>
         <p className="card__content">{t[language].please}</p>

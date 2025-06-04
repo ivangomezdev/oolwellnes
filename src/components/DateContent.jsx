@@ -88,7 +88,7 @@ const DateContent = () => {
             width={308}
             height={425}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984562/VOEUX_OolTakesOverTulum13-5_ez7v3b.jpg"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062926/VOEUX_OolTakesOverTulum13-5_ez7v3b_htoito.jpg"
             }
             alt="Decorative image"
           />
@@ -100,7 +100,7 @@ const DateContent = () => {
             width={308}
             height={425}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984570/VO_ool-22_yakzkr.jpg"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062929/VO_ool-22_yakzkr_hn6zmm.jpg"
             }
             alt="Decorative image"
           />
@@ -123,7 +123,7 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984570/VO_ool-22_yakzkr.jpg"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062927/VO_OolCorazon2-11_jn5xod_w2pbzz.jpg"
             }
             alt="Decorative image 2"
             className="small-screen-only"
@@ -132,7 +132,7 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745984563/VOEUX_OolTakesOverTulum12-7_ygrnml.jpg"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062926/VOEUX_OolTakesOverTulum12-7_ygrnml_xbvbtb.jpg"
             }
             alt="Decorative image 3"
             className="small-screen-only"
@@ -143,7 +143,7 @@ const DateContent = () => {
         <div className="dateContent">
           <Image
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749065983/2025-removebg-preview_vjljx9_wvk7oj.png"
             }
             width={370}
             height={190}
@@ -182,7 +182,7 @@ const DateContent = () => {
         <div className="retreat__logo">
           <Image
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"
+              "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062931/Logo_Retiro_b7gkar_apvhc8.png"
             }
             width={1060}
             alt="logo"
