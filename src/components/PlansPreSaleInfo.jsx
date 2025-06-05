@@ -98,7 +98,7 @@ const PlansPreSaleInfo = () => {
   return (
     <div className="plansPre__content">
       <video
-        src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1747379677/AQNOeKr5Fpg0nmpTCm9buI-ZXSHOXpQnm6gPyEaqcxAwhP25VLeodkUttM67OM6Qt7ytejlYqmP54e4L0oqK89zQe_tA1j-mQZgtkbY_wcrkpk.mp4"
+        src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749062926/AQNOeKr5Fpg0nmpTCm9buI-ZXSHOXpQnm6gPyEaqcxAwhP25VLeodkUttM67OM6Qt7ytejlYqmP54e4L0oqK89zQe_tA1j-mQZgtkbY_wcrkpk_b3dnhj.mp4"
         playsInline
         muted
         autoPlay
@@ -116,7 +116,7 @@ const PlansPreSaleInfo = () => {
           >
             <img
               className="plansPre__imgsContimg"
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104265/HABITACIONARTISTAS-SuiteRiver_002_jugrsp.jpg"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq_uvh9s0.jpg"
               alt=""
             />
             <div />
@@ -124,7 +124,7 @@ const PlansPreSaleInfo = () => {
           <div className="plansPre__bgBlack2">
             <img
               className="plansPre__bgBlack2Logo"
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747381099/Sin_t%C3%ADtulo-removebg-preview_vxjtsj.png"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062926/Sin_t%C3%ADtulo-removebg-preview_vxjtsj_v0lrul.png"
               alt="icon"
             />
           </div>

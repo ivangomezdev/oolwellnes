@@ -322,7 +322,7 @@ const FeaturesPopup = ({ ticket, onClose, language }) => {
     <div className={styles.popup__overlay}>
       <div className={styles.popup__content}>
         <img
-          src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
+          src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749065983/2025-removebg-preview_vjljx9_wvk7oj.png"
           alt=""
           style={{ top: "10px", width: "90px", position: "absolute" }}
         />
@@ -404,7 +404,7 @@ export default function TicketsPage() {
           <div className="navbarLogo2">
             <Image
               alt="logo"
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
               width={90}
               height={90}
             />
@@ -563,7 +563,7 @@ export default function TicketsPage() {
           <div className="tickets__videoAndForm">
             <div className={styles.tickets__videoAndTitle}>
               <video
-                src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746950529/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis.mp4"
+                src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749062926/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis_ytlyiu.mp4"
                 autoPlay
                 muted
                 playsInline

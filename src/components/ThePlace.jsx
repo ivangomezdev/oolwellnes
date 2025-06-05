@@ -10,7 +10,7 @@ const ThePlace = () => {
         loop
         muted
         playsInline
-        src="https://res.cloudinary.com/dc5zbh38m/video/upload/v1746835040/WhatsApp_Video_2025-05-09_at_18.53.11_vtkdmq.mp4"
+        src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749062941/WhatsApp_Video_2025-05-09_at_18.53.11_vtkdmq_g1iboy.mp4"
       ></video>
       <div className="thePlace__overlay"></div>
       <h1 className="thePlace__text">Un venue inigualable</h1>

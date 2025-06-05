@@ -110,7 +110,7 @@ export default function Home() {
             <Image
               alt="logo"
               src={
-                "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
+                "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
               }
               width={90}
               height={90}
@@ -303,7 +303,7 @@ function BaresContent({ language }) {
         </div>
         <div className="bares__image-container">
           <Image
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/changarrito_hcypsp.webp"
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749097809/1_orn1l7.webp"
             alt="Cocktail Changarrito"
             width={600}
             height={400}
@@ -321,7 +321,7 @@ function BaresContent({ language }) {
         </div>
         <div className="bares__image-container">
           <Image
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafeteca_nxl1nd.webp"
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749097809/2_rhwtip.webp"
             alt="Cafeteca coffee"
             width={600}
             height={400}
@@ -339,7 +339,7 @@ function BaresContent({ language }) {
         </div>
         <div className="bares__image-container">
           <Image
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747444549/cafecito_bowu49.webp"
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749097809/3_ouhuog.webp"
             alt="Cafecito coffee"
             width={600}
             height={400}
@@ -359,8 +359,8 @@ function RestaurantesContent({ language }) {
         es: "Inspirado en la cocina del Caribe y del Golfo de México. Sabores frescos y vibrantes que te transportarán a las costas más hermosas.",
         en: "Inspired by the cuisine of the Caribbean and the Gulf of Mexico. Fresh and vibrant flavors that will transport you to the most beautiful coasts.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443822/img-encanta-1_b2odmv.webp",
-      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/paco-mendez_tu0atq.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/img-encanta-1_b2odmv_wbb4ma.webp",
+      chef: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/paco-mendez_tu0atq_nxjwxr.webp",
     },
     {
       name: "CHINO POBLANO",
@@ -368,8 +368,8 @@ function RestaurantesContent({ language }) {
         es: "Divertido y sofisticado abrazo culinario de estas dos culturas por el Chef Jonatan Gómez Luna, líder de una nueva generación de chefs que ha conquistado las grandes mesas del mundo.",
         en: "A fun and sophisticated culinary embrace of these two cultures by Chef Jonatan Gómez Luna, leader of a new generation of chefs who has conquered the world's great tables.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-chino_poblano-1_l2bj7k.webp",
-      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/jonatan-gomez_f2ddkb.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/img-chino_poblano-1_l2bj7k_sni1c7.webp",
+      chef: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062929/jonatan-gomez_f2ddkb_w5pizc.webp",
     },
     {
       name: "V.I.P.Y.",
@@ -377,8 +377,8 @@ function RestaurantesContent({ language }) {
         es: "Gastronomía vegetal inspirada en sabores de México. Una celebración de ingredientes frescos y sostenibles.",
         en: "Plant-based cuisine inspired by Mexican flavors. A celebration of fresh and sustainable ingredients.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-VI_AI_PY-1_bukjd6.webp",
-      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/alejandro-ruiz_dawd4n.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/img-VI_AI_PY-1_bukjd6_lpgeoi.webp",
+      chef: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749098143/alejandro-ruiz_dawd4n_1_n3o2t8.webp",
     },
     {
       name: "MERCADO SAN JUAN",
@@ -386,7 +386,7 @@ function RestaurantesContent({ language }) {
         es: "Homenaje a los sabores tradicionales mexicanos. Un recorrido por los mercados más emblemáticos del país.",
         en: "A tribute to traditional Mexican flavors. A journey through the country's most iconic markets.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443821/img-mercado_san_juan-1_penjkt.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/img-mercado_san_juan-1_penjkt_rr5fxe.webp",
     },
     {
       name: "CAYUCO",
@@ -394,7 +394,7 @@ function RestaurantesContent({ language }) {
         es: "Sabores del Caribe mexicano en un ambiente relajado. Disfruta de los tesoros culinarios de la costa.",
         en: "Flavors of the Mexican Caribbean in a relaxed atmosphere. Enjoy the culinary treasures of the coast.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/img-cayuco-1_ykjbqk.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749098241/img-cayuco-1_ykjbqk_qb7lgd.webp",
     },
     {
       name: "TAH-XIDO",
@@ -402,8 +402,8 @@ function RestaurantesContent({ language }) {
         es: "Restaurante japonés contemporáneo del Chef Luis Arzapalo exponiendo lo mejor del arte gastronómico oriental",
         en: "Contemporary Japanese restaurant by Chef Luis Arzapalo showcasing the best of oriental culinary art.",
       },
-      image: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/img-tahxido-1_hupre7.webp",
-      chef: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747443820/luis-arzapalo-chef_pgcyc8.webp",
+      image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749098241/img-tahxido-1_hupre7_1_a0ftmi.webp",
+      chef: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749098241/luis-arzapalo-chef_pgcyc8_mxxtkd.webp",
     },
   ]
 

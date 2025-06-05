@@ -9,17 +9,17 @@ const t = {
     hotel: "Hotel Xcaret Arte, Riviera Maya.",
     spans: [
       {
-        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/Logo_Icono_SOUL_2_pxukpq_h7kuum.webp",
         text: "Rituales de bienestar",
         alt: "Soul Icon",
       },
       {
-        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
+        icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Mente_1_cu5qom_sxmyls.webp",
         text: "Indoor cycling",
         alt: "Mente Icon",
       },
       {
-        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+        icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Cuerpo_2_vahswu_isfz8h.webp",
         text: "Clases de funcional",
         alt: "Cuerpo Icon",
       },
@@ -35,12 +35,12 @@ const t = {
     hotel: "Hotel Xcaret Arte, Riviera Maya.",
     spans: [
       {
-        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
+        icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/Logo_Icono_SOUL_2_pxukpq_h7kuum.webp",
         text: "Wellness rituals",
         alt: "Soul Icon",
       },
       {
-        icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
+        icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Mente_1_cu5qom_sxmyls.webp",
         text: "Indoor cycling",
         alt: "Mente Icon",
       },
@@ -59,10 +59,10 @@ const t = {
 };
 
 const images = [
-  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png",
-  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Mente_1_cu5qom.png",
-  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981976/Logo_Icono_SOUL_2_pxukpq.png",
-  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png",
+  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Mente_1_cu5qom_sxmyls.webp",
+  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/Logo_Icono_SOUL_2_pxukpq_h7kuum.webp",
+   "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
 ];
 
 const TextAndPhoto = () => {

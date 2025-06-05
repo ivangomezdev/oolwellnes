@@ -32,15 +32,15 @@ const ThePlaceTextAndImg = () => {
       name: "Suite Garden",
       plan: "Kin-Regular",
       image:
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONMUSICA-MR-EC-002_ttkosh.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONMUSICA-MR-EC-002_ttkosh_rbuqws.jpg",
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
         "Vista al jardín 60 m2 I 645.8 ft2 I Capacidad máxima hasta 3 adultos I 2 adultos + 1 menor de 16 a 17 años I 1 adulto + 2 menores de 16 a 17 años I Shuttle aeropuerto - hotel - aeropuerto cada 30 minutos de 9:00 a 17:00 horas y cada 60 minutos de 17:00 a 9:00 horas I ALL-FUN INCLUSIVE",
       gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104273/HABITACIONPIRAMIDE-Sug-EC-001_ukt5zv.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONPAZ-ADA-EC-001_rmctqv.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747104266/HABITACIONPIRAMIDE-SR-EC-003_truolf.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/HABITACIONPIRAMIDE-Sug-EC-001_ukt5zv_eeyigu.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/HABITACIONPIRAMIDE-SR-EC-003_truolf_jrwgct.jpg",
       ],
     },
     {
@@ -48,17 +48,17 @@ const ThePlaceTextAndImg = () => {
       name: "Suite Ocean Front",
       plan: "HA-VIP",
       image:
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-JSOF-EC-002_ofssvv.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749096750/aaaaaa_dphlcl.jpg",
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
         "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
       gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADABA%C3%91O-EC-001_w9sa7q.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADAKING-EC-002_acy1oo.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONPIRAMIDE-MSOV-EC-002_lfwhlz.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062936/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv_kbrr8p.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONARTISTASADAKING-EC-002_acy1oo_dkyraf.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONDISE%C3%91O-SUG-EC-001_sixt9a_dvtukb.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq_uvh9s0.jpg",
       ],
     },
     {
@@ -66,17 +66,17 @@ const ThePlaceTextAndImg = () => {
       name: "Suite Ocean Front (Adults)",
       plan: "HA-VIP",
       image:
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-JSOF-EC-002_ofssvv.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749096750/aaaaaa_dphlcl.jpg",
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
         "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
       gallery: [
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADABA%C3%91O-EC-001_w9sa7q.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102700/HABITACIONARTISTASADAKING-EC-002_acy1oo.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONPIRAMIDE-MSOV-EC-002_lfwhlz.jpg",
-        "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747102701/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq.jpg",
+ "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062936/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv_kbrr8p.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONARTISTASADAKING-EC-002_acy1oo_dkyraf.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONDISE%C3%91O-SUG-EC-001_sixt9a_dvtukb.jpg",
+        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq_uvh9s0.jpg",
       ],
     },
   ];
@@ -301,7 +301,7 @@ const ThePlaceTextAndImg = () => {
           bottom: "0px",
           width: "400px",
         }}
-        src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746066714/Logo_Retiro_b7gkar.png"
+        src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062931/Logo_Retiro_b7gkar_apvhc8.png"
         alt=""
       />
 

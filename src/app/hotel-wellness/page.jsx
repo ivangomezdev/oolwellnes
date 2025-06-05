@@ -112,7 +112,7 @@ export default function SpaPage() {
             <Image
               alt="logo"
               src={
-                "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
+                "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
               }
               width={90}
               height={90}
@@ -275,7 +275,7 @@ export default function SpaPage() {
         <section className="spa__section">
           <div className="spa__image-container">
             <Image
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747463245/muluc_mshoyx.webp"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062926/spa1_tdefjh_p9h7bn.webp"
               alt="Muluk Spa - Área principal"
               width={600}
               height={400}
@@ -314,7 +314,7 @@ export default function SpaPage() {
           </div>
           <div className="spa__image-container">
             <Image
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1747463245/spa2_xmafot.webp"
+              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062848/spa2_l3dmty_q0ty7e.webp"
               alt="Muluk Spa - Cabina de tratamiento"
               width={600}
               height={400}
