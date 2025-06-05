@@ -221,10 +221,9 @@
 .yesOrNot__price {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #9B956A;
-
+color: #F2E2CE;
   margin: 20px 0;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png");
+ 
   background-size: cover;
   background-position: center;
   
@@ -233,11 +232,11 @@
 .yesOrNot__price1{
    font-size: 1.8rem;
   font-weight: bold;
-  color: #9B956A;
+color: #F2E2CE;
 
   margin-top: 46px;
     margin-bottom: 18px;
-  background-image: url("https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png");
+ 
   background-size: cover;
   background-position: center;
 }

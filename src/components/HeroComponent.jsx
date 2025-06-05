@@ -139,7 +139,7 @@ const HeroComponent = () => {
         </div>
         <div className="section yellow">
           <img
-            src="https://res.cloudinary.com/dc5zbh38m/image/upload/f_auto/v1745978474/VOEUX_OolTakesOverTulum2-11_1_kqkeov.jpg"
+            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749064817/VOEUX_OolTakesOverTulum2-11_zfcrc5_bm7hbx.jpg"
             alt="Hero Image 3"
           />
           <div className="content">
