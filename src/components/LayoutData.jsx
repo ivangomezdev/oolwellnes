@@ -28,9 +28,9 @@ const t = {
 
 const LayoutData = () => {
   const images = [
-    { src: 'https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797568/meditacion-removebg-preview_cntkbz.png', data: 'img1' },
-    { src: 'https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797579/mindfullnes-removebg-preview_iop81z.png', data: 'dadsdsd' },
-    { src: 'https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797587/move-removebg-preview_f9psa9.png', data: 'dadsdsd' },
+    { src: 'https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png', data: 'img1' },
+    { src: 'https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_Mente_lvk3sa.png', data: 'dadsdsd' },
+    { src: 'https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png', data: 'dadsdsd' },
   ];
 
   const { language } = useLanguage();
@@ -42,7 +42,7 @@ const LayoutData = () => {
         {images.map((i, index) => (
           <div key={index} className="layout__image-container">
             <div className="layout__image">
-              <Image width={90} height={70} src={i.src} alt={`Image ${index}`} />
+              <Image width={150} height={150} src={i.src} alt={`Image ${index}`} />
             </div>
           </div>
         ))}

@@ -15,9 +15,7 @@ export default function CollabsMove() {
     {
       Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/maxresdefault_z5xaen_o3dyp9.png",
     },
-    {
-      Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1747519579/rode-up_uxey41.png",
-    },
+ 
     {
       Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/mark_vw5b8h_gboqc0.png",
     },

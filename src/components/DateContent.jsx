@@ -114,7 +114,7 @@ const DateContent = () => {
             width={500}
             height={750}
             src={
-              "https://res.cloudinary.com/dc5zbh38m/image/upload/f_jpg/v1745984565/VO_OolCorazon2-11_jn5xod.jpg"
+              "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564826/VO_OolCorazon2-11_mpa5wj.jpg"
             }
             alt="Decorative image 1"
             loading="lazy"

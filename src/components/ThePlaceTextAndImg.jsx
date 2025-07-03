@@ -218,7 +218,7 @@ const ThePlaceTextAndImg = () => {
               <Image
                 alt="arrow"
                 src={
-                  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745779085/mente-removebg-preview_1_gjy7z2.png"
+                  "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png"
                 }
                 width={100}
                 height={100}
@@ -269,7 +269,7 @@ const ThePlaceTextAndImg = () => {
             <span className="arrow">
               <Image
                 src={
-                  "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745779085/mente-removebg-preview_1_gjy7z2.png"
+                  "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png"
                 }
                 width={100}
                 height={100}

@@ -6,14 +6,14 @@ import Image from "next/image"
 export default function MovementBar() {
   // Array de iconos con sus componentes y colores
   const icons = [
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/cuerpo-removebg-preview_ukbvid.png", color: "#eab308" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797587/move-removebg-preview_f9psa9.png", color: "#1e293b" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745779085/mente-removebg-preview_1_gjy7z2.png", color: "#f59e0b" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/alma-removebg-preview_kzfpoe.png", color: "#ef4444" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797579/mindfullnes-removebg-preview_iop81z.png", color: "#e11d48" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797568/meditacion-removebg-preview_cntkbz.png", color: "#10b981" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745775146/alma-removebg-preview_kzfpoe.png", color: "#a855f7" },
-    { Icon: "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745797568/meditacion-removebg-preview_cntkbz.png", color: "#06b6d4" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png", color: "#eab308" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_Mente_lvk3sa.png", color: "#1e293b" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png", color: "#f59e0b" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png", color: "#ef4444" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_Mente_lvk3sa.png", color: "#e11d48" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png", color: "#10b981" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_Mente_lvk3sa.png", color: "#a855f7" },
+    { Icon: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png", color: "#06b6d4" },
   ]
 
 
