@@ -36,7 +36,7 @@ const ThePlaceTextAndImg = () => {
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
-        "Vista al jardín 60 m2 I 645.8 ft2 I Capacidad máxima hasta 3 adultos I 2 adultos + 1 menor de 16 a 17 años I 1 adulto + 2 menores de 16 a 17 años I Shuttle aeropuerto - hotel - aeropuerto cada 30 minutos de 9:00 a 17:00 horas y cada 60 minutos de 17:00 a 9:00 horas I ALL-FUN INCLUSIVE",
+        "Vista al jardín 60 m2 I 645.8 ft2 I Capacidad máxima hasta 3 adultos I 2 adultos + 1 menor de 16 a 17 años I 1 adulto + 2 menores de 16 a 17 años I Shuttle aeropuerto - hotel - aeropuerto cada 30 minutos de 9:00 a 17:00 horas y cada 60 minutos de 17:00 a 9:00 horas I ALL-FUN INCLUSIVE I Habitaciòn compartida.",
       gallery: [
         "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062932/HABITACIONPIRAMIDE-Sug-EC-001_ukt5zv_eeyigu.jpg",
         "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
@@ -52,7 +52,7 @@ const ThePlaceTextAndImg = () => {
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
-        "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
+        "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00 | Habitaciòn compartida.",
       gallery: [
         "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062936/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv_kbrr8p.jpg",
         "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
@@ -70,7 +70,7 @@ const ThePlaceTextAndImg = () => {
       description:
         "El verde intenso de la selva maya te abrazará conectándote con lo más sagrado de la naturaleza. Un lugar donde sientes que el tiempo se detiene.",
       additionalInfo:
-        "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00",
+        "Vista al mar 60 m² | 645.8 ft² Capacidad máxima: 3 adultos | 2 adultos + 1 joven de 16 a 17 años | 1 adulto + 2 jóvenes de 16 a 17 años. Servicio de transporte aeropuerto-hotel-aeropuerto cada 30 minutos de 9:00 a 17:00 y cada 60 minutos de 17:00 a 9:00 | Habitaciòn compartida.",
       gallery: [
  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062936/HABITACIONARTISTAS-SuiteOceanFrontDoble_evcamv_kbrr8p.jpg",
         "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062933/HABITACIONPAZ-ADA-EC-001_rmctqv_ryer28.jpg",
