@@ -18,8 +18,8 @@ export async function POST(request) {
     if (!email.includes('@')) {
       return NextResponse.json({ error: 'Email inválido' }, { status: 400 });
     }
-    if (!['KIN - Regular Package', 'HA - VIP Package', 'HA - prueba Package'].includes(plan)) {
-   
+    if (!['KIN - Regular Package', 'HA - VIP Package', 'DAYPASS - 1-3 august', 'DAYPASS - 1 august', 'DAYPASS - 2 august', 'DAYPASS - 3 august'].includes(plan)) {
+
       return NextResponse.json({ error: 'Plan inválido' }, { status: 400 });
     }
 

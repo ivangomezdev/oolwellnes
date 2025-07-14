@@ -188,6 +188,11 @@ const handleSubmit = async (e) => {
           <select className="container__select" id="plan" name="plan" value={formData.plan} onChange={handleChange} required>
             <option value="KIN - Regular Package">KIN - Regular Package</option>
             <option value="HA - VIP Package">HA - VIP Package</option>
+            <option value="DAYPASS - 1-3 august">DAYPASS - 1-3 august</option>
+            <option value="DAYPASS - 1 august">DAYPASS - 1 august</option>
+            <option value="DAYPASS - 2 august">DAYPASS - 2 august</option>
+            <option value="DAYPASS - 3 august">DAYPASS - 3 august</option>
+
           </select>
         </div>
         <button className='container__button' type="submit" disabled={loading}>

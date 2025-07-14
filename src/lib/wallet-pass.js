@@ -34,11 +34,20 @@ async function ensureTempDir() {
 // Función para generar pass.json
 function createPassJson(ticketId, email, eventName, eventDate, customerName, plan) {
   // Validar y mapear el valor de plan
-  const validPlans = ['KIN - Regular Package', 'HA - VIP Package'];
-  let planDisplayName = 'KIN Regular'; // Valor por defecto
-  if (validPlans.includes(plan)) {
-    planDisplayName = plan === 'KIN - Regular Package' ? 'KIN Regular' : 'HA VIP';
-  } else {
+  const validPlans = [
+    'KIN - Regular Package',
+    'HA - VIP Package',
+    'DAYPASS - 1-3 august',
+    'DAYPASS - 1 august',
+    'DAYPASS - 2 august',
+    'DAYPASS - 3 august'
+  ];
+  let planDisplayName = plan; // Mostrar el plan tal cual lo eligió el usuario
+  if (!validPlans.includes(plan)) {
+    planDisplayName = 'KIN Regular'; // Valor por defecto
+    console.warn(`Valor de plan inválido: ${plan}. Usando valor por defecto: ${planDisplayName}`);
+  }
+ else {
     console.warn(`Valor de plan inválido: ${plan}. Usando valor por defecto: ${planDisplayName}`);
   }
 

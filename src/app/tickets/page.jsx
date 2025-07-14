@@ -219,9 +219,9 @@ const CheckoutPopup = ({ ticket, onClose, language }) => {
     <div className={styles.popup__overlay}>
       <div className={styles.popup__content}>
         <img
-          src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1745799167/2025-removebg-preview_vjljx9.png"
+          src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
           alt="Logo"
-          style={{ top: "10px", width: "90px", position: "absolute" }}
+          style={{ top: "10px", width: "70px", position: "absolute" }}
         />
         <h2 className={styles.popup__title}>{t[language].completePurchase}</h2>
         <form onSubmit={handleSubmit} className={styles.popup__form}>
