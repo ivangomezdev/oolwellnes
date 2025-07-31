@@ -107,7 +107,7 @@ const HeroComponent = () => {
       <div className={`hero-container ${showVideo ? 'video-active' : ''}`} ref={heroRef}>
         <div className="section red">
           <img
-            src="https://res.cloudinary.com/dtovwv8hi/image/upload/f_auto/v1749062931/Rode_Tulum-111_uhlusw_arzqkq.jpg"
+            src="https://i.imgur.com/p7XkJdQ.jpeg"
             alt="Hero Image 1"
           />
           <div className="content"></div>
@@ -123,13 +123,13 @@ const HeroComponent = () => {
               loop
             >
               <source
-                src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749064576/We_ve_carefully_crafted_and_designed_this_experience_just_for_you.Featuring_the_best_spots_the_best_coaches_and_the_best_location_in_all_of_the_Riviera_Maya.The_countdown_has_begun_see_you_on_August_1_2_3_2025._vnakux_cpxttg.mp4"
+                src="https://i.imgur.com/npLIk4L.mp4"
                 type="video/mp4"
               />
             </video>
             <img
               className={showVideo ? "fade-out" : "fade-in"}
-              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/VO_OolCorazon-3_1_wcwlup_ithd2j.jpg"
+              src="https://i.imgur.com/7aH10SL.jpeg"
               alt="Hero Image Temporary"
             />
           </div>
@@ -139,7 +139,7 @@ const HeroComponent = () => {
         </div>
         <div className="section yellow">
           <img
-            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749064817/VOEUX_OolTakesOverTulum2-11_zfcrc5_bm7hbx.jpg"
+            src="https://i.imgur.com/AsMPb3A.jpeg"
             alt="Hero Image 3"
           />
           <div className="content">

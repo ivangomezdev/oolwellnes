@@ -217,7 +217,7 @@ const Page = () => {
       <TextAndPhoto />
       <ThePlace />
       <PlansPreSaleInfo/>
-      <ThePlaceTextAndImg />
+      
       <CoachSelector />
       <LayoutData />
       <Footer />

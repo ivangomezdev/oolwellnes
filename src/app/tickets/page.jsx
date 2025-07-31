@@ -563,7 +563,7 @@ export default function TicketsPage() {
           <div className="tickets__videoAndForm">
             <div className={styles.tickets__videoAndTitle}>
               <video
-                src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749062926/AQNmPU9uPvlvTyIqQo7o7uGC9ftGR3FRBb0G87kZZnOmsNmigoxV49VM88vb8lAK_xKYKMJ-r0X4wPev8AQ1kijs0LeG7uz38LILdvo_ovhxis_ytlyiu.mp4"
+                src="https://i.imgur.com/XgunryB.mp4"
                 autoPlay
                 muted
                 playsInline

@@ -98,7 +98,7 @@ const PlansPreSaleInfo = () => {
   return (
     <div className="plansPre__content">
       <video
-        src="https://res.cloudinary.com/dtovwv8hi/video/upload/v1749062926/AQNOeKr5Fpg0nmpTCm9buI-ZXSHOXpQnm6gPyEaqcxAwhP25VLeodkUttM67OM6Qt7ytejlYqmP54e4L0oqK89zQe_tA1j-mQZgtkbY_wcrkpk_b3dnhj.mp4"
+        src="https://i.imgur.com/JpGH8TW.mp4"
         playsInline
         muted
         autoPlay
@@ -116,7 +116,7 @@ const PlansPreSaleInfo = () => {
           >
             <img
               className="plansPre__imgsContimg"
-              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062934/HABITACIONDISE%C3%91O-SO-EC-002_fikpnq_uvh9s0.jpg"
+              src="https://www.hotelxcaret.com/assets/concentrador-hoteles/hxa/mobile/allfun2.webp"
               alt=""
             />
             <div />
@@ -124,7 +124,7 @@ const PlansPreSaleInfo = () => {
           <div className="plansPre__bgBlack2">
             <img
               className="plansPre__bgBlack2Logo"
-              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062926/Sin_t%C3%ADtulo-removebg-preview_vxjtsj_v0lrul.png"
+              src="https://i.imgur.com/n3FNeE0.png"
               alt="icon"
             />
           </div>
