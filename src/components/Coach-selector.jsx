@@ -5,9 +5,9 @@ import "./coach-selector.css"
 import Image from "next/image"
 
 const coachesData = [
-  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062848/Kristina_eojlys_ffkdhm.png", bgImage: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062850/BackVerde_wl1yng_a2ueyj.png" },
-  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062848/Pepe_t0mumu_hrblrv.png", bgImage: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/Backazul_rvvyfb_mlsxjh.png" },
-  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062850/Majo_1_inlire_jmbysw.png", bgImage: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062850/BackAmarillo_1_idaehc_tr9mxj.png" },
+  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png" },
+  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png" },
+  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png" },
 ]
 
 export default function CoachSelector() {
