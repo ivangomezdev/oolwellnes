@@ -52,10 +52,10 @@ const t = {
 };
 
 const images = [
-  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png",
-  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066209/Logo_Icono_Mente_1_cu5qom_sxmyls.webp",
-  "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/Logo_Icono_SOUL_2_pxukpq_h7kuum.webp",
-   "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745981977/Logo_Icono_Cuerpo_2_vahswu.png",
+  "https://i.imgur.com/m7dMDQq.png",
+  "https://i.imgur.com/3mxhrHd.png",
+  "https://i.imgur.com/kwiQ8Mj.png",
+   "https://i.imgur.com/B8yu1AJ.png",
 ];
 
 const TextAndPhoto = () => {
