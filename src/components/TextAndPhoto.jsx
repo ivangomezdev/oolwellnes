@@ -52,7 +52,7 @@ const t = {
 };
 
 const images = [
-  "https://i.imgur.com/m7dMDQq.png",
+  "https://i.imgur.com/jdu5PZX.png",
   "https://i.imgur.com/3mxhrHd.png",
   "https://i.imgur.com/kwiQ8Mj.png",
    "https://i.imgur.com/B8yu1AJ.png",
