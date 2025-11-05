@@ -15,7 +15,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-
+  
   background: inherit;
   clip-path: circle(0% at 50% 30%);
   transition: clip-path 0.5s ease;
@@ -40,8 +40,8 @@
 }
 
 .coach-selector__inner{
-  padding-bottom: 100px;
-  margin: 0 auto;
+  margin-top:400px;
+ 
 
 }
 

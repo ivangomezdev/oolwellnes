@@ -86,10 +86,10 @@ const Page = () => {
             <Image
               alt="logo"
               src={
-                "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
+                "https://i.imgur.com/m7dMDQq.png"
               }
-              width={90}
-              height={90}
+              width={130}
+              height={75}
             />
           </div>
 

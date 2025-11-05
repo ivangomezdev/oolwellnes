@@ -17,6 +17,8 @@
 /* Media query for screens 750px or wider */
 @media (min-width: 750px) {
   .tickets__videoAndForm {
+    display: flex;
+    justify-content: center;
     height: 100vh; /* Full viewport height */
 
   }
@@ -33,6 +35,7 @@
   .tickets__videoAndForm {
     display: flex;
     flex-direction: column;
+    
     margin: 0;
     height: auto; /* Allow natural scaling */
     padding-top: 0;

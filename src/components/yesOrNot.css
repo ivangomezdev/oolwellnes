@@ -161,6 +161,9 @@
 }
 
 .yesOrNot__card {
+  background-image: url("https://i.imgur.com/5oDklMu.png");
+  background-size: cover;
+  background-position: -30px -70px;
   background-color: #9B956A;
   border-radius: 20px;
   overflow: hidden;
@@ -193,7 +196,7 @@
 
 .yesOrNot__titleCard {
   font-size: 1.8rem;
-  
+  text-shadow: 0px 0px 3px black;
   font-family: "Broadsheet Regular";
   margin: 0;
 }

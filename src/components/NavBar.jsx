@@ -73,7 +73,7 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
         </div>
         <div className="navbar-logo">
           <Image 
-            src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062931/LogoOolWeb_ri9tvt_oit8th.png" 
+            src="https://i.imgur.com/m7dMDQq.png" 
             width={160} 
             height={80} 
             alt="Ool Retreat Logo"
@@ -88,15 +88,15 @@ const Navbar = ({ showLogo, showLinks, forceHamburger }) => {
             {t[language].popUp}
             {popupOpen && (
               <div className="dropdown-menu">
-                <Link href="/takes-over-tulum" className="dropdown-item" onClick={handleLinkClick}>
+                <span className="dropdown-item" onClick={handleLinkClick}>
                   {t[language].takesOverTulum}
-                </Link>
-                <Link href="/takes-over-geely-cancun" className="dropdown-item" onClick={handleLinkClick}>
+                </span>
+                <span className="dropdown-item" onClick={handleLinkClick}>
                   {t[language].takesOverGeely}
-                </Link>
-                <Link href="/proximas" className="dropdown-item" onClick={handleLinkClick}>
+                </span>
+                <span  className="dropdown-item" onClick={handleLinkClick}>
                   {t[language].upcoming}
-                </Link>
+                </span>
               </div>
             )}
           </div>

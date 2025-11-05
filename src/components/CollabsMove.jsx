@@ -6,18 +6,18 @@ import Image from "next/image"
 export default function CollabsMove() {
   const icons = [
     {
-      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062935/Colaboradores_Mesa_de_trabajo_1_copia_3_mi4pfy_bvmllt.png",
+      Icon: "https://i.imgur.com/WkO8JLm.png",
     },
     {
       Icon:
-        "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/Azul-e1724207354672_seovov_u5jqxg.png",
+        "https://i.imgur.com/FrQjBDK.png",
     },
     {
-      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/maxresdefault_z5xaen_o3dyp9.png",
+      Icon: "https://i.imgur.com/39eq5iD.png",
     },
  
     {
-      Icon: "https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062849/mark_vw5b8h_gboqc0.png",
+      Icon: "https://i.imgur.com/DCYjkdv.png",
     },
   ]
 

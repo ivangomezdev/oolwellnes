@@ -33,6 +33,12 @@ export default function AlmaCuerpoMente() {
     }
   }, [])
 
+  const images = [
+    "https://i.imgur.com/kwiQ8Mj.png",
+    "https://i.imgur.com/3mxhrHd.png",
+    "https://i.imgur.com/B8yu1AJ.png"
+  ]
+
   return (
     <div className={`alma-cuerpo-mente ${isVisible ? "alma-cuerpo-mente--visible" : ""}`} ref={containerRef}>
       <div className="alma-cuerpo-mente__content">
@@ -45,7 +51,7 @@ export default function AlmaCuerpoMente() {
             >
               <Image
                 alt={text.toLowerCase()}
-                src={`https://res.cloudinary.com/dtovwv8hi/image/upload/v1749066210/${index === 0 ? 'Logo_Icono_SOUL_2_pxukpq_h7kuum.webp' : index === 1 ? 'Logo_Icono_Cuerpo_2_vahswu_isfz8h.webp' : 'Logo_Icono_Mente_1_cu5qom_sxmyls.webp'}`}
+                src={images[index]}
                 width={120}
                 height={120}
               />

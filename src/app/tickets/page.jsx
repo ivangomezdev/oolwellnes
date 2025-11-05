@@ -404,9 +404,9 @@ export default function TicketsPage() {
           <div className="navbarLogo2">
             <Image
               alt="logo"
-              src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreats-removebg-preview_plvlhh_xq82zk.png"
-              width={90}
-              height={90}
+              src="https://i.imgur.com/m7dMDQq.png"
+              width={130}
+              height={75}
             />
           </div>
 

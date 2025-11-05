@@ -14,20 +14,15 @@
 
 @media(max-width:472px){
  .dateContent__content.is-visible img {
-top: -100px;
-}
-.dateContent-bg {
-margin-top: -70px
-}
+  top: -100px;
+ }
+ .dateContent-bg {
+  margin-top: -70px
+ }
 
-.animated-button {
-top: 45 0px !important;
-
-}
-
-
-
-
+ .animated-button {
+  top: 450px !important;
+ }
 }
 
 .dateContent__content.is-visible {
@@ -38,14 +33,11 @@ top: 45 0px !important;
 .dateContent__imgs {
   margin-left: 160px;
   margin-top: 200px !important;
- 
 }
 
-.dateContent img {
-  position: relative;
-  right: 20px;
+.dateContent__image {
+  margin: 0 auto;
 }
-
 
 .dateContent {
   position: relative;
@@ -56,13 +48,14 @@ top: 45 0px !important;
   font-family: 'CalSans';
   text-align: center;
   border-radius: 5px;
-  
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dateContent__description {
-  position: absolute;
-  top: 200px;
+  position: relative;
+  top: 20px;
   left: 0px;
   width: 450px;
   text-align: left;
@@ -70,29 +63,24 @@ top: 45 0px !important;
   color: #f2e2c6;
   font-weight: normal;
   padding: 5px;
-
-  
-
+  margin: 0 auto;
 }
 
-
- @media(max-width:497px){
+@media(max-width:497px){
   .dateContent__description {
-  background-color: #B7AD88 !important;
-  padding: 8px;
-  left: -20px;
+    background-color: #B7AD88 !important;
+    padding: 8px;
+    left: -20px;
     text-align: center;
-  border: solid 4px rgba(255, 255, 255, 0.436); 
+    border: solid 4px rgba(255, 255, 255, 0.436); 
+  }
 }
- }
 
-
-
-   @media(max-width:450px){
+@media(max-width:450px){
   .animated-button {
- display: block !important;
+    display: block !important;
+  }
 }
- }
 
 .dateContent__button {
   position: absolute;
@@ -117,9 +105,10 @@ top: 45 0px !important;
 }
 
 .animated-button {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   padding: 16px 36px;
   border: 4px solid;
@@ -128,22 +117,19 @@ top: 45 0px !important;
   background-color: inherit;
   border-radius: 100px;
   font-weight: 600;
-  top: 500px;
-  left: 100px;
-  margin-top: 20px;
+  margin-top: 40px;
   color: #FEFEFE;
   box-shadow: 0 0 0 2px #F2E2C6;
   cursor: pointer;
   overflow: hidden;
-  z-index: inherit 9999999;
+  z-index: 9999999;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-
 }
 
 .animated-button svg {
   position: absolute;
   width: 24px;
-    z-index: inherit 9999999;
+  z-index: 9999999;
   fill: #FEFEFE;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -230,6 +216,13 @@ top: 45 0px !important;
   opacity: 1;
 }
 
+.image__four {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .image__four img {
   position: absolute;
   left: 240px;
@@ -261,7 +254,6 @@ top: 45 0px !important;
   position: absolute;
   z-index: -2;
   top:250px;
-
 }
 
 .retreat__logo img {
@@ -276,67 +268,7 @@ top: 45 0px !important;
     margin-left: -230px;
   }
   .dateContent button {
-    margin-left: -50px;
-  }
-}
-
-@media(max-width:1620px) {
-  .dateContent {
-    margin-left: -80px;
-    margin-top: -50px;
-  }
-  .dateContent button {
     margin-left: 0px;
-  }
-}
-
-@media(max-width:1351px) {
-  .dateContent__content {
-    background-size: 1600px;
-  }
-  .image__four img {
-    position: absolute;
-    
-    bottom: 170px;
-    border-radius: 3px;
-    width: 380px;
-    height: 630px;
-    z-index: -333;
-  }
-  .image__one img {
-    position: relative;
-    border-radius: 3px;
-    bottom: 100px;
-    width: 258px;
-    height: 355px;
-    right: 80px;
-  }
-  .image__two img {
-    position: relative;
-    right: 80px;
-    bottom: 140px;
-    border-radius: 3px;
-    width: 258px;
-    height: 355px;
-  }
-  .dateContent__description {
-    right: 20px;
-    width: 370px;
-    font-size: 20px;
-  }
-  .dateContent img {
-    right: 50px;
-  }
-  .dateContent {
-    right: 50px;
-    width: 300px;
-  }
-  .animated-button {
-    top: 460px;
-    left: 30px;
-  }
-  .dateContent-bg {
-    margin-right: 100px;
   }
 }
 
@@ -346,7 +278,6 @@ top: 45 0px !important;
   }
   .image__four img {
     position: absolute;
-    
     bottom: 170px;
     border-radius: 3px;
     width: 380px;
@@ -382,8 +313,7 @@ top: 45 0px !important;
     width: 300px;
   }
   .animated-button {
-    top: 460px;
-    left: 30px;
+    margin-top: 30px;
   }
   .dateContent-bg {
     margin-right: 100px;
@@ -404,10 +334,8 @@ top: 45 0px !important;
     z-index: -333;
   }
 
-    .dateContent__description {
-    
+  .dateContent__description {
     width: 310px;
-
   }
 
   .image__one img {
@@ -440,8 +368,7 @@ top: 45 0px !important;
     top: 100px;
   }
   .animated-button {
-    top: 500px;
-    left: 30px;
+    margin-top: 40px;
   }
   .dateContent-bg {
     margin-right: 100px;
@@ -465,7 +392,6 @@ top: 45 0px !important;
     z-index: -333;
   }
 
-  
   .dateContent {
     margin-left: -50px;
   }
@@ -509,7 +435,6 @@ top: 45 0px !important;
   .dateContent__content {
     background-size: cover;
     background-position-x: -80px;
-   
   }
   .image__four img {
     position: absolute;
@@ -537,7 +462,7 @@ top: 45 0px !important;
     height: 280px;
   }
   .dateContent p{
-   width: 300px;
+    width: 300px;
   }
 }
 
@@ -554,24 +479,23 @@ top: 45 0px !important;
 
   .dateContent p{
     width: 250px;
-   }
+  }
 
-   .dateContent img{
+  .dateContent img{
     width: 300px;
-   }
-.dateContent{
-  left: 90px;
-}
-   .dateContent button{
-   margin-top: 50px;
-   }
-
+  }
+  .dateContent{
+    left: 90px;
+  }
+  .dateContent button{
+    margin-top: 50px;
+  }
 
   .image__one img {
-   display: none;
+    display: none;
   }
   .image__two img {
-  display: none;
+    display: none;
   }
   .dateContent__content {
     background-size: cover;
@@ -580,7 +504,6 @@ top: 45 0px !important;
   .dateContent {
     margin-left: -100px;
   }
-
 }
 
 @media(max-width:720px) {
@@ -608,84 +531,105 @@ top: 45 0px !important;
     margin-top: -100px;
   }
   .dateContent p{
-    
     margin-top: -10px;
   }
 
   .animated-button {
-    top: 400px;
-    left: 10px;
+    margin-top: 30px;
   }
 }
 
 @media(max-width:1244px) {
-.dateContent{
-  margin-left: -100px;
-}
+  .dateContent{
+    margin-left: -100px;
+  }
 }
 
 @media(max-width:1170px) {
-
   .dateContent{
     margin-left: -150px;
-    
   }
   .dateContent__imgs{
     width: 400px;
   }
-  }
-  
+}
 
-  
 @media(max-width:1072px) {
-
   .dateContent{
     margin-left: -170px;
-    
   }
 
   .dateContent__imgs{
     width: 400px;
   }
-  }
-  
+}
 
 @media(max-width:660px) {
   .dateContent__content {
     grid-template-columns: 1fr;
     justify-items: center;
     padding-bottom: 200px;
-    padding-top: 100px;
-  }
-  .dateContent__content {
-    height: 570px;
-  }
-  .dateContent img {
-    bottom: 120px;
-    left: 40px;
-  }
-  .animated-button {
-    top: 140px;
-  }
-  .dateContent__description{
-display: none;
-  }
-
-  .animated-button{
-    top: 60px;
-    left: 90px;
-    margin-top: -300px;
-  }
-  
-  
-  .dateContent__imgs img {
-    width: 350px;
-    margin-left: 20px;
-    border-radius: 5px;
-  }
-  .dateContent__content {
+    min-height: 800px;
     background-size: cover;
     background-position: 0px;
+  }
+  
+  .dateContent {
+    left: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .dateContent__image {
+    position: relative;
+
+    left: 50px !important;
+    top: 30px !important;
+    margin: 0 auto;
+  }
+  
+  .animated-button {
+    top: 30px;
+    left: 35px;
+  }
+  
+  .dateContent__description{
+    display: none;
+  }
+
+  .dateContent__imgs {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .image__four {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .image__four img {
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 7/10;
+    object-fit: cover;
+    border-radius: 5px;
   }
 }
 
@@ -695,53 +639,69 @@ display: none;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width:430px) {
   .dateContent__imgs {
     position: relative;
-    left: 10px;
-    height: 500px;
+    left: 0;
+    height: auto;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+  }
 
-
-    margin-left: 0px;
+  .retreat__logo{
+    display: none;
   }
 
 
-
-
-  .retreat__logo{
-  display: none;
-}
-
-  .dateContent__content {
-    padding-bottom: 100dvh;
-    
+  .dateContent {
+    left: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
   }
 
   .dateContent__description {
     display: block;
-    width: 300px !important;
+    width: 90% !important;
+    max-width: 300px;
     color: #ffffff;
-    margin-top: -25px;
+    top: 80px;
+    left: 50px;
     font-weight: 100;
     letter-spacing: 1px;
-    margin-left: 65px;
+    margin-left: 0;
+    text-align: center;
   }
 
   .image__four {
-    width: 350px;
-    height: 500px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
     position: relative;
-    left: -20px;
-    margin-top: -100px;
+     left: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .image__four img {
     position: absolute;
-    width: 350px;
-    height: 500px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 7/10;
+    object-fit: cover;
     border-radius: 5px;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     transition: opacity 1s ease-in-out;
   }
 
@@ -760,8 +720,13 @@ display: none;
     animation: fadeThird 15s infinite ease-in-out;
   }
 
-  .dateContent img {
-    margin-top: 100px;
+  .dateContent__image {
+   margin-top: 400px;
+    position: relative;
+    left: 50px !important;
+    bottom: 100px;
+    max-width: 100%;
+    height: auto;
   }
 
   .text {
@@ -769,9 +734,8 @@ display: none;
   }
 
   .dateContent button {
-    top: 480px;
-    margin-left: 10px;
-    margin-bottom:0px;
+    bottom: 200px;
+    margin-bottom: 0px;
   }
 
   @keyframes fadeFirst {
@@ -838,83 +802,5 @@ display: none;
   }
 }
 
-@media (max-width: 490px) {
-  .dateContent__imgs {
-    width: 330px;
-    height: 490px;
-    position: relative;
-  }
-.dateContent__description{
-  margin-left: 0px;
-  top: 120px;
-  left: 30px;
-}
-  .image__four {
-    width: 330px;
-    height: 490px;
-    position: relative;
-    left: -40px;
-    margin-top: -100px;
-  }
-
-  .image__four img {
-    position: absolute;
-    width: 350px;
-    height: 500px;
-    border-radius: 5px;
-    top: 0;
-    left: 0;
-    transition: opacity 1s ease-in-out;
-  }
-
-  .image__four img:first-child {
-    opacity: 1;
-    animation: fadeFirst 10s infinite ease-in-out;
-  }
-
-  .image__four img:nth-child(2) {
-    opacity: 0;
-    animation: fadeSecond 10s infinite ease-in-out;
-  }
-
-  .image__four img:nth-child(3) {
-    opacity: 0;
-    animation: fadeThird 10s infinite ease-in-out;
-  }
-
-  .dateContent img {
-    margin-top: 30px;
-    left: 30px;
-  }
-
-  .text {
-    font-family: "CalSans";
-  }
-
-  .dateContent button {
-    margin-top: 10px;
-  }
-}
 
 
-@media (max-width: 384px) {
-
- 
-  .dateContent__imgs {
-    width: 300px !important;
-    height: 470px !important;
-    position: relative;
-    left: 20px;
- 
-  }
-  
-
-  .dateContent__imgage{
-    top: -60px;
-    width: 400px;
-  }
-  .image__four img {
-    width: 300px !important;
-    height: 470px !important;
-  }
-}

@@ -97,10 +97,10 @@ export default function XcaretArte() {
             <Image
               alt="logo"
               src={
-                "https://res.cloudinary.com/dc5zbh38m/image/upload/v1745891523/retreats-removebg-preview_plvlhh.png"
+                "https://i.imgur.com/m7dMDQq.png"
               }
-              width={90}
-              height={90}
+              width={130}
+              height={75}
             />
           </div>
 

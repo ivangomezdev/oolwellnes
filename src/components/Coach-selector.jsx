@@ -5,9 +5,9 @@ import "./coach-selector.css"
 import Image from "next/image"
 
 const coachesData = [
-  { id: 1, name: "Kristina Girod", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png" },
-  { id: 2, name: "Pepe Abreu", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564510/Logo_Icono_SOUL_wcynom.png" },
-  { id: 3, name: "Próximamente", image: "https://res.cloudinary.com/dufp4z4gq/image/upload/v1751564509/Logo_Icono_Cuerpo_skxtfs.png" },
+  { id: 1, name: "", image: "https://i.imgur.com/Hej8u0k.jpeg",bgImage:"https://i.imgur.com/vmmuSa8.png" },
+  { id: 2, name: " ", image: "https://i.imgur.com/kxtsihO.jpeg",bgImage:"https://i.imgur.com/xHExNK4.png" },
+  { id: 3, name: " ", image: "https://i.imgur.com/klqXfIq.jpeg",bgImage:"https://i.imgur.com/ffCU5ir.png" },
 ]
 
 export default function CoachSelector() {
@@ -28,10 +28,10 @@ export default function CoachSelector() {
     <div
       className={`coach-selector ${isAnimating ? "coach-selector--animate" : ""}`}
       style={{
-        backgroundImage: `url(${selectedCoach.bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transition: "background-image 0.5s ease",
+   backgroundImage: `url(${selectedCoach.bgImage})`,
+backgroundSize: "cover",
+transition: "background-image 0.5s ease",
+backgroundPosition:"center"
       }}
     >
       <div className="header-coaches">
@@ -40,19 +40,7 @@ export default function CoachSelector() {
 
       <div className="coach-selector__inner">
         <div className="coach-selector__content">
-          <div
-            className={`coach-selector__image-container ${
-              isAnimating ? "coach-selector__image-container--fade-out" : "coach-selector__image-container--fade-in"
-            }`}
-          >
-            <Image
-              src={selectedCoach.image || "/placeholder.svg"}
-              alt={`Foto de ${selectedCoach.name}`}
-              className="coach-selector__image"
-              width={500}
-              height={500}
-            />
-          </div>
+     
 
           <div
             className={`coach-selector__name-container ${

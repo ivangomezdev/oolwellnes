@@ -135,7 +135,7 @@ const ContactForm = () => {
             </div>
           </div>
         )}
-        <Image alt="logo" src={"https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062930/LIFESTYLE-EC-AGO2021-003_-_VIP_qv2gqr_fqozhw.jpg"} width={700} height={860} />
+        <Image alt="logo" src={"https://i.imgur.com/Hej8u0k.jpeg"} width={700} height={860} />
       </div>
     </div>
   )

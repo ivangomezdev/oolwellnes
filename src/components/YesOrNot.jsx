@@ -88,8 +88,8 @@ function YesOrNot() {
               <div className="yesOrNot__header">
                 <div className="yesOrNot__icon">
                   <img
-                    style={{ width: "330px" }}
-                    src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreatsLogo_kgwtew_liodfw.png"
+                    style={{ width: "140px" }}
+                    src="https://i.imgur.com/m7dMDQq.png"
                     alt=""
                   />
                 </div>
@@ -115,8 +115,8 @@ function YesOrNot() {
                   
                   </div>
                   <img
-       style={{ width: "330px" }}
-                    src="https://res.cloudinary.com/dtovwv8hi/image/upload/v1749062928/retreatsLogo_kgwtew_liodfw.png"
+       style={{ width: "140px" }}
+                    src="https://i.imgur.com/m7dMDQq.png"
                     alt=""
                   />
                 </div>
