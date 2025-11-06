@@ -12,18 +12,22 @@ const t = {
       
         text: "Rituales de bienestar",
         alt: "Soul Icon",
+         icon:"https://i.imgur.com/kwiQ8Mj.png"
       },
       {
         text: "Indoor cycling",
         alt: "Mente Icon",
+         icon:"https://i.imgur.com/kwiQ8Mj.png"
       },
       {
         text: "Clases de funcional",
         alt: "Cuerpo Icon",
+         icon:"https://i.imgur.com/kwiQ8Mj.png"
       },
       {
         text: "Breathwork y más",
         alt: "Soul Icon",
+        icon:"https://i.imgur.com/kwiQ8Mj.png"
       },
     ],
   },
@@ -106,7 +110,7 @@ const TextAndPhoto = () => {
           <div style={{ position: "relative" }}>
             <img
               style={{ position: "absolute", left: "-340px", top: "-40px" }}
-              src="https://res.cloudinary.com/dc5zbh38m/image/upload/v1746936901/Dise%C3%B1o_sin_t%C3%ADtulo_8_n2o3nm.png"
+              src="https://i.imgur.com/kwiQ8Mj.png"
               alt=""
             />
           </div>

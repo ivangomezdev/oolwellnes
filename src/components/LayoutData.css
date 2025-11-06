@@ -29,8 +29,8 @@
   font-size: 2.5rem;
   color: black;
   margin-bottom: 4rem;
-  background-image: url('https://res.cloudinary.com/dc5zbh38m/image/upload/v1746852160/Dise%C3%B1o_sin_t%C3%ADtulo_6_artvuj.png');
-  background-size: 500px 200px;
+  background-image: url('https://i.imgur.com/cvJB5bi.png');
+  background-size: 300px;
   background-position: center;
   background-repeat: no-repeat;
   padding: 2rem;
@@ -56,6 +56,20 @@
   background-position: 15px;
   justify-content: center;
   
+}
+
+@media(max-width:404px){
+  .layout__image-column img{
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+  }
+
+  .layout__image {
+    width: 0px !important;
+    padding: 0px;
+    gap: 0px;
+  }
 }
 
 .layout__right-column {

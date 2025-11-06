@@ -21,6 +21,12 @@
   transition: clip-path 0.5s ease;
 }
 
+@media(max-width:600px){
+  .coach-selector{
+    display: none !important;
+  }
+}
+
 .coach-selector--animate::before {
   clip-path: circle(150% at 50% 30%);
 }

@@ -189,9 +189,14 @@
 }
 
 
+
 @media(max-width:636px){
-    .plansPre__occult{
-      display: none;
+   .plansPre__occult{
+   display: none;
+   }
+
+    .plansPre__bgBlack2{
+      background-color: #F2E2C6;
     }
 
 }

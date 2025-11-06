@@ -12,14 +12,17 @@
 
 .image-wrapper{
   background-position: center;
-  background-size: 150px;
+  background-size: 170px;
   width: 160px;
   height: 160px;
-  background-image: url("https://res.cloudinary.com/dtovwv8hi/image/upload/v1749162323/Dise%C3%B1o_sin_t%C3%ADtulo_g3u25k.png");
+  margin: 0 auto;
+     display: flex;
+    justify-content: center;
+  background-image: url("https://i.imgur.com/P5wqyoE.png");
 }
 
 .image-wrapper img{
-  margin-left: 26px;
+ 
   margin-top: 26px;
     filter: drop-shadow(0px 0px 3px black);
 }
@@ -164,6 +167,12 @@
   }
 }
 
+
+@media(max-width:361px){
+  .text-content{
+    width: 300px;
+  }
+}
 @media (max-width: 436px) {
   .textAndPhoto__cont {
     height: 470px;
